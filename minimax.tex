@@ -1,0 +1,320 @@
+% !TEX root = scombinatorics.tex
+\documentclass[scombinatorics.tex]{subfiles}
+\begin{document}
+\chapter{Three minimax theorems}
+\label{minimax}
+
+
+
+\def\medrel#1{\parbox[t]{6ex}{$\displaystyle\hfil #1$}}
+\def\ceq#1#2#3{\parbox[t]{40ex}{$\displaystyle #1$}\medrel{#2}{$\displaystyle #3$}}
+
+\def\separatore{\hfil o \rule[0.5ex]{4ex}{0.1ex} o \rule[0.5ex]{4ex}{0.1ex} o}
+
+
+
+
+
+Let $\U$ and $\V$ be two (large) sets.
+Let $\phi(x\;;\,z)$ be a relation symbol.
+We denote by $\phi(\U\;;\,\V)$ the set $\{\<a,b\>\in\U\times\V\ :\ \phi(a\;;\,b)\}$ which we call: the relation defined by $\phi(x\;;\,z)$.
+Sets of the form $\phi(\U\;;\,b)=\{a\in\U\ :\ \phi(a\;;\,b)\}$, for some $b\in\V$, are called definable sets.
+If $A\subseteq\U$ we write $\phi(A\;;\,b)$ for the trace of $\phi(\U\;;\,b)$ on $A$, that is, the set $\phi(\U\;;\,b)\cap A$.
+We call it a definable subset of $A$.
+It would be more appropriate to call these sets \textit{global types}, respectively \textit{types over $A$}.
+But this would make the terminology (if possible) more obscure.
+
+We denote by $\phi(\U\;;\,b)_{b\in\V}$ and $\phi(A\;;\,b)_{b\in\V}$ the collection of definable sets, respectively definable subsets of $A$.
+
+For $k\le|A|$ we use following notation interchangeably
+
+\ceq{\hfill{A\choose k}\medrel{=}A^{(k)}}
+{=}
+{\Big\{A'\subseteq A\ :\ |A'|=k \Big\}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%
+\section{Hall's Marriage Theorem}\label{marriage}
+
+\def\ceq#1#2#3{\parbox[t]{30ex}{$\displaystyle #1$}\medrel{#2}{$\displaystyle #3$}}
+
+Let $\phi(x\,;z)$ be given. 
+Let $A\subseteq\U$ and $B\subseteq\V$ be finite sets. 
+
+We say that $A'\subseteq A$ is a \emph{set of distinct representatives\/} for $\phi(A\,;B)$ if  $|\phi(A';b)|=1$ for every $b\in B$.
+
+\begin{void_thm}[Hall's Marriage Theorem]\label{thm_marriage}
+   For every finite $B\subseteq\V$, the following are equivalent
+   \begin{itemize}
+   \item[1.] $\phi(A\,;B)$ has a set of distinct representatives;
+
+   \item[2.] $\displaystyle|B'|\ \le\ \bigg|\bigcup_{b\in B'}\phi(A\,;b')\bigg|$ for every $B'\subseteq B$.
+   \end{itemize}
+\end{void_thm}
+
+\begin{proof}
+   $(\ssf{1}\IMP\ssf{2})$ 
+   The following holds for any set of distinct representatives $A'$ and $B'\subseteq B$  
+
+   \ceq{\hfill|B'|}{=}{\bigg|\bigcup_{b\in B'}\phi(A';b')\bigg|}
+
+   \ceq{}{\subseteq}{\bigg|\bigcup_{b\in B'}\phi(A\,;b')\bigg|.}
+
+   $(\ssf{2}\IMP\ssf{1})$ 
+   Reason by induction on the cardinality of $B$.
+   If $B$ is empty, the claim is clear.
+   Now assume $|B|>0$ and consider two cases.
+
+   \begin{itemize}
+   \item[a.]
+   This is the case when the inequality in \ssf{2} is strict for all $B'\subseteq B$. 
+   Pick any pair $a,b$ such that $\phi(a,b)$. 
+   Then $\phi(A\sm\{a\}, B\sm\{b\})$ still satisfy \ssf{2}.
+   By induction hypothesis, it has a set of distinct representatives $A'$.
+   Then $A'\cup\{a\}$ is a set of distinct representatives for $\phi(A\,;B)$.
+
+   
+   \item[b.]
+   Suppose instead that, for some $B'\subseteq B$, \ssf{2} holds with equality.
+   Define
+
+   \ceq{\hfill A'}{=}{\bigcup_{b\in B'}\phi(A\,;b)}
+   
+   It is clear that \ssf{2} holds for $\phi(A';B')$.
+   Below we prove that \ssf{2} also holds for $\phi(A{\sm} A'\,;\,{B\sm} B')$.
+   Once this claim is proved, we apply the induction hypothesis to obtain sets of distinct representatives for these two relations and note that their union is a set of distinct representatives for $\phi(A\,;B)$.
+
+   To prove the claim assume that there is a set $B''\subseteq B$ that contradicts \ssf{2}, then
+
+   \ceq{\hfill\bigg|\bigcup_{b\in B''}\phi(A{\sm} A';\,b)\bigg|}{<}{|B''|.}
+
+   By the definition of $A'$
+
+   \ceq{\hfill A'\ \cup\ \bigcup_{b\in B}\phi(A{\sm} A';b)}{=}{ A'\cup\bigcup_{b\in B''}\phi(A\,;b)}
+
+   \ceq{}{=}{\bigcup_{b\in B'\cup B''}\phi(A\,;b)}
+
+   Hence 
+
+   \ceq{\hfill\bigg|\bigcup_{b\in B'\cup B''}\phi(A\,;b)\bigg|}{=}{|A'|+|B''|}
+
+   As $|A'|=|B'|$ by the choice of $B'$, this contracticts the assumption that $B$ satisfies \ssf{2}.
+   This prove the claim and with it the theorem.
+   \end{itemize}\vspace*{-4ex}
+\end{proof}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%
+\section{K\H{o}nig's Minimax Theorem}\label{Konig}
+
+
+Let $\phi(x\,;z)$ be given. 
+Let $A\subseteq\U$ and $B\subseteq\V$ be finite sets. 
+
+A \emph{matching\/} of $\phi(A\,;B)$ is a pair of sets $A'\subseteq A$  and $B'\subseteq B$ such that $|\phi(A'\,;b)|=|\phi(a\,;B')|= 1$ for every $a,b\in A',B'$.
+In other words $\phi(A'\,;B')$ is the graph of a bijection between $A'$ and $B'$.
+Therefore $|A'|=|B'|$; this is called the cardinality of the matching.
+The \emph{matching number} of $\phi(A\,;B)$ is the maximal cardinality of a matching.
+
+Note that is $A'$ is a set of distinct representatives for $\phi(A\,;B)$, then there is a $B'\subseteq B$ such that $A',B'$.
+Hence $\nu(\phi)$ is less or equal than the cardinality of any set of distinct representatives.
+
+% A \emph{packing\/} of  $\phi(A\,;B)$ is a set $B'\subseteq B$ such that $\phi(A\,;b)_{b\in B'}$ is a family of distinct, non-empty, and pairwise disjoint sets.
+% The \emph{packing number\/} is the maximal cardinality of a packing of $\phi(A\,;B)$. 
+% This is denoted by  $\nu\big(\phi(A\,;B)\big)$ or, for short, \emph{$\nu(\phi)$}.
+
+A \emph{(vertex) cover\/} of $\phi(A\,;B)$ is a pair of sets $A'\subseteq A$ and $B'\subseteq B$ such that $\phi(A\,;B)$ is contained in $(A'\times B)\cup (A\times B')$. We will mainly use the easy characterization given by the fact below.
+
+\begin{fact}
+   The following are equivalent
+   \begin{itemize}
+      \item[1.] $A',B'$ is a cover;
+      \item[2.] $\phi(A\,;b)\subseteq A'$ for every $b\in B\sm B'$;
+      \item[3.] $\phi(a\,;B)\subseteq B'$ for every $a\in A\sm A'$.\QED
+   \end{itemize}
+\end{fact}
+
+We call $|A'|+|B'|$ the cardinality of the cover.
+the \emph{cover number\/} of $\phi(A\,;B)$ is the minimal cardinality of a cover.
+
+
+\begin{void_thm}[K\H{o}nig's Minimax Theorem]
+   For any given  $\phi(A\,;B)$, matching number $=$ cover number.
+   That is, the maximal cardinality of a matching equals the minimal cardinality of a cover.
+\end{void_thm}
+
+\begin{proof}
+   $(\le)$ 
+   We prove that $|A''|\le|A'|+|B'|$ for every cover $A',B'$ and every matching $A'',B''$.
+
+   As  $\phi(A\,;b)\subseteq A'$ for every $b\in B\sm B'$, in particular we have that $\phi(A''\,;b)\subseteq A'$ for every $b\in B''\sm B'$.
+   Therefore all elements of $A''$ are in $A'$ but for at most $|B'|$ elements. 
+   Hence $|A''|\le|A'|+|B'|$ is clear.
+
+
+   $(\ge)$ 
+   Let $A',B'$ be a cover of minimal cardinality. 
+   We prove that there is a matching of cardinality at least $|A'|+|B'|$.
+
+   We break $\phi(A\,;B)$ into two relations, find a matching of each of these and join them together to obtain a matching of cardinality $\ge\tau(\phi)$.
+   Precisely, first we show that $\phi(A{\sm} A'\,;B')$ has a set of distinct representatives $A_1\subseteq A\sm A'$.
+   Hence $A_1,B_1$ is a matching for some $B_1\subseteq B'$.
+   Second, we apply the same argument shows that $\phi(A'\,;B{\sm} B')^*$ has a  set of distinct representatives $B_2\subseteq B\sm B'$.
+   Hence $A_2,B_2$ is a matching for some $A_2\subseteq A'$.
+   Then $(A_1\cup A_2),\ (B_1\cup B_2)$ is a matching of  $\phi(A\,;B)$.
+   The cardinality of this maching is $|A_1|+|A_2|=|B_1|+|A_2|\le|B'|+|A'|$.
+   
+   We use Hall's Marriage Theorem to prove the first claim above.
+   The second is proved by the symmetric argument (using \ssf{3} for \ssf{2} of the fact above). 
+
+   We need to check that $\phi(A{\sm} A'\,;B')$ satisfies \ssf{2} of Theorem~\ref{thm_marriage}.
+   Suppose not. Then there is a set $B''\subseteq B'$ such that $|A''|<|B''|$, where
+
+   \ceq{\hfill A''}{=}{\bigcup_{b\in B''}\phi(A{\sm} A',b)}
+
+   Then $(A'\cup A''), (B'\sm B'')$ would be a cover of cardinality $<|A'|+|B'|$.
+   This contradicts the minimality of $A',B'$.
+\end{proof}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%
+\section{Dilworth's Theorem}\label{shadow}
+
+Dilworth's Theorem is minimax theorem essentially equivalent to K\H{o}nig's Theorem.
+To highlight the connection we choose to prove it using K\H{o}nig's Theorem. 
+Alternatively we could have proved Dilworth's Theorem directly and derived K\H{o}nig's and Hall's Theorem from it.
+
+In this section we assume that $\U=\V$ and that $\phi(x\,;z)$ defines a (strict) partial order on $\U$. An \emph{antichain\/} is a set $A\subseteq\U$ such that $\neg\phi(a\,;b)$ for every $a,b\in A$. A \emph{chain\/} is a set $A$ such that $\phi(a\,;b)\vee\phi(b\,;a)$ for every distinct $a,b\in A$.
+
+\begin{void_thm}[Dilworth's Theorem]
+   The maximal cardinality of an antichain $A'\subseteq A$ equals the minimal cardinality of a partition of $A$ into chains. 
+\end{void_thm}
+
+\begin{proof}
+   $(\le)$ 
+   We prove that the cardinality of an antichain cannot exceed the cardinality of a partition of $A$ into chains.
+
+   Let $A_1,\dots,A_k$ be a partition of $A$ into chains and let $A'$ be an antichains.
+   A chain can contain at most one element of $A'$, hence $|A'|\le k$.
+
+   $(\ge)$  
+   Let $A\sm A'\subseteq A$ be an antichain (for uniformity with the notation in K\H{o}nig's Theorem). 
+   We prove that there is a partition $A_1,\dots,A_k$ into chains for some $k\le|A\sm A'|$.
+
+   Let $B'\subseteq B\subseteq\V$ be a disjoint copies of $A'\subseteq A\subseteq\U$. 
+   Then $\phi(A\,;b)\subseteq A'$ for every $b\in B\sm B'$.
+   By K\H{o}nig's Theorem there is a matching $A'',B''$ of cardinality $|A''|=|B''|\ge|A'\cup B'|=|A'|$.
+
+   We construct a chain-partition as follow.
+   Pick an element of $a\in A''$ and construct the longest possible chain $a=a_0,a_1,\dots$ where $\phi(a_i;a_{i+1})$ and $a_{2i},a_{2i+1}\in A'',B''$.
+   When the construction halts, initiate a new one from some fresh element of $A''$.
+   Finally, put each element of $A\sm(A''\cup B'')$ in a chain on its own.
+   
+   As no element of $A''$ belongs to a chain on its own, therefore the number of chains is $\le |A|\sm |A''| \le |A|\sm |A'|$.
+\end{proof}
+
+\end{document}
+\begin{comment}
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%
+\section{Shadows}\label{shadow}
+\def\ceq#1#2#3{\parbox[t]{29ex}{$\displaystyle #1$}
+\medrel{#2}
+{$\displaystyle #3$}}
+
+Define the formula
+
+\ceq{\hfill\partial\phi(x\;;\,y,z)}
+{=}
+{\phi(x\;;\,z)\wedge x{\neq} y.}
+
+It is called the shadow of $\phi(x\;;\,z$).
+It defines a relation between $\U$ and $\U\times\V$.  
+Note that
+
+\ceq{\hfill\partial\phi(x\;;\,y,z)_{a,b\in\U,\V}}
+{=}
+{\Big\{\phi(A\;;\,b)\sm\{a\}\ :\ a,b\in\U,\V\Big\}.}
+
+The following is sometimes called the local LYM inequality.
+
+\begin{lemma}
+
+   For any $1\le k\le n$
+
+   % \ceq{\hfill\bigg|{A\choose k}\cap\phi(A\;;\,b)_{b\in\V}\bigg|\cdot{n\choose k}^{\kern-.8ex-1}{\kern-1.5ex}}
+   % {\le}
+   % {\bigg|{A\choose k-1}\cap\partial\phi(A\;;\,a,b)_{a,b\in\U,\V}\bigg|\cdot{n\choose k-1}^{\kern-.8ex-1}{\kern-.8ex}}
+
+   % \ceq{\hfill\bigg|{A\choose k}\cap\phi(A\;;\,b)_{b\in\V}\bigg|\cdot{n\choose k}^{\kern-.8ex-1}{\kern-.8ex}}
+   % {\le}
+   % {\bigg|{A\choose k-1}\cap\phi(A\sm\{a\}\;;\,b)_{a,b\in\U,\V}\bigg|\cdot{n\choose k-1}^{\kern-.8ex-1}{\kern-.8ex}}
+
+   \ceq{\hfill\Pr{}_k\Big(\phi(A\;;\,b)_{b\in\V}\Big)}
+   {\le}
+   {\Pr{}_{k-1}\Big(\partial\phi(A\;;\,a,b)_{a,b\in\U,\V}\Big)}
+
+
+\end{lemma}
+
+\begin{proof}
+   Consider the bipartite graph between $A^{(k)}$ and $A^{(k-1)}$ that has an edge between all sets $\phi(A\;;\,b)\in A^{(k)}$ and their respective subsets in $A^{(k-1)}$.
+   That is $\phi(A\;;\,b){\sm}\{a\}$ where $a$ is any of the $k$ elements of $\phi(A\;;\,b)$.
+   The number of edges of this graph is
+
+   \ceq{\hfill\bigg|{A\choose k}\cap\phi(A\;;\,b)_{b\in\V}\bigg|\cdot k}{}{}
+
+   Each set $\phi(A\;;\,b){\sm}\{a\}\in A^{(k-1)}$ is a node of degree at most $n-k+1$.
+   Hence the number of edges of this graph is
+
+   \ceq{}{\le}{\bigg|{A\choose k-1}\cap\partial\phi(A\;;\,a,b)_{a,b\in\U,\V}\bigg|\cdot(n-k+1)}
+
+   To obtaned the required inequality it suffice to note that
+
+
+   \ceq{\hfill{n\choose k}^{\kern-.8ex-1}{\kern-.8ex}\cdot (n-k+1)}{=}{{n\choose k-1}^{\kern-.8ex-1}{\kern-.8ex}\cdot k}
+
+   % \ceq{\hfill\bigg|{A\choose k}\cap\phi(A\;;\,b)_{b\in\V}\bigg|\cdot{n\choose k}^{\kern-.8ex-1}{\kern-.8ex}}
+   % {\le}
+   % {\bigg|{A\choose k-1}\cap\partial\phi(A\;;\,a,b)_{a,b\in\U,\V}\bigg|\cdot{n\choose k-1}^{\kern-.8ex-1}{\kern-.8ex}}
+
+   % \ceq{\hfill{A\choose k-1}\cap\partial\phi(A\;;\,a,b)_{a,b\in\U,\V}}
+   % {\subseteq}
+   % {\bigg({A\choose k}\cup{A\choose k-1}\bigg)\cap\phi(A\;;\,b)_{b\in\V}}
+
+   \vskip-3ex
+\end{proof}
+
+is the formula that define a relation between $\U$ and $\U\times\V$
+
+\ceq{\hfill\partial^k\phi(x\;;\,z\,y_1\dots y_k)}{=}{\phi(x\;;\,z)\wedge \bigwedge^k_{i=1} x{\neq} y_i.}
+
+
+\ceq{\hfill\partial^k\phi(A\;;\,b\,a_1\dots a_k)_{b,a_1\dots a_k\in\V\times\U^k}}{=}{\bigcup_{a_1\dots a_k\in A^k}\phi(A\sm\{a_1\dots a_k\}\;;\,b)_{b\in\V}.}
+
+\ceq{\hfill\partial^k\phi(A\;;\,b\,a_1\dots a_k)_{b,a_1\dots a_k\in\V\times\U^k}}{=}{
+\Big\{\phi(A\sm\{a_1\dots a_k\}\;;\,b)\: :\ a_1,\dots,a_k\in\U, b\in\V \Big\}.}
+
+$\big(\partial^k\phi(x\;;\,z\,y_1\dots y_k)\big)_{b,a_1\dots a_k\in\V\times\U^k,\, n-k}$
+
+$\phi(A\;;\,b)_{b\in\V,\, k}$
+
+\end{comment}

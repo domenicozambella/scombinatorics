@@ -1,0 +1,95 @@
+% !TEX root = scombinatorics.tex
+\documentclass[scombinatorics.tex]{subfiles}
+\begin{document}
+\chapter{Set systems}
+\label{sperner}
+
+
+
+\def\medrel#1{\parbox[t]{6ex}{$\displaystyle\hfil #1$}}
+\def\ceq#1#2#3{\parbox[t]{40ex}{$\displaystyle #1$}\medrel{#2}{$\displaystyle #3$}}
+
+\def\separatore{\hfil o \rule[0.5ex]{4ex}{0.1ex} o \rule[0.5ex]{4ex}{0.1ex} o}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%
+\section{Sperner's Theorem}\label{sperner}
+
+We say that $\phi(A\,;b)_{b\in\V}$ is an \emph{antichain\/} if there is no pair of elements $b,b'\in\V$ such that $\phi(A\,;b)\subset\phi(A\,;b')$.
+Antichains are also called \emph{Sperner systems}.
+
+\def\ceq#1#2#3{\parbox[t]{36ex}{$\displaystyle #1$}\medrel{#2}{$\displaystyle #3$}}
+
+\begin{void_thm}[Sperner's Theorem]
+   Let $A\subseteq\U$ have cardinality $n$, finite.
+   If $\phi(A\,;b)_{b\in\V}$ is an antichain then
+   
+   \ceq{\hfill\big|\phi(A\,;b)_{b\in\V}\big|}{\le}{{n\choose\lfloor n/2\rfloor}.}
+\end{void_thm}
+\smallskip
+\begin{proof}
+   Clearly, $\phi(A\,;b)_{b\in\V}$ is the disjoint union of the sets \smash{$\displaystyle{A\choose k}\cap\phi(A\,;b)_{b\in\V}$} for $k$ ranging over $\{0,\dots,n\}$.
+   Then 
+
+   \ceq{\hfill\big|\phi(A\,;b)_{b\in\V}\big|}{\le}{\sum^n_{k=0}\bigg|{A\choose k}\cap\phi(A\,;b)_{b\in\V}\bigg|.}
+
+   As for every $k\le n$
+   
+   \ceq{\hfill{n\choose k}}{\le}{{n\choose\lfloor n/2\rfloor},}
+
+   the theorem follows immediately from the LYM inequality that we prove below.
+\end{proof}
+
+The acronym LYM stands for Lubell-Yamamoto-Meshalkin.
+
+\begin{lemma}[(LYM inequality)]
+   Let $A\subseteq\U$ have cardinality $n$, finite.
+   If $\phi(A\,;b)_{b\in\V}$ is an antichain then
+   
+   % \ceq{\hfill\sum^n_{k=0}\frac{\big|\phi(A\,;b)_{b\in\V}\ \cap\  A^{(k)}\big|}{\big|A^{(k)}\big|}}{\le}{1.}
+
+
+   \ceq{\hfill\sum^n_{k=0}\bigg|{A\choose k}\cap\phi(A\,;b)_{b\in\V}\bigg|\cdot{n\choose k}^{\kern-.8ex -1}\kern-.8ex}{\le}{1.}
+\end{lemma}
+\smallskip
+\begin{proof}
+   Let $\Pi$ be uniform random variable that ranges over the set of permutations of $A=\{a_1,\dots,a_n\}$.
+   For any $\phi(A\,;b)$ of cardinality $k$
+   
+   \ceq{\hfill\Pr\bigg(\Pi\{a_1,\dots,a_k\}=\phi(A\,;b)\bigg)\kern-.8ex}{=}{ {n\choose k}^{\kern-.8ex -1}\kern-1.5ex.}
+
+   The events above are disjoint for distinct sets $\phi(A\,;b)$, hence 
+
+   \ceq{\hfill\Pr\bigg(\Pi\{a_1,\dots,a_k\}\in\phi(A\,;b)_{b\in\V} \bigg)\kern-.8ex}{=}{\bigg|{A\choose k}\cap\phi(A\,;b)_{b\in\V}\bigg|\cdot{n\choose k}^{\kern-.8ex -1}\kern-1.5ex. }
+
+   As $\phi(A\,;b)_{b\in\V}$ is an antichain, for distinct $k$ the events above are disjoint, hence
+
+   \ceq{\hfill\Pr\bigg(\bigcup^n_{k=0}\Pi\{a_1,\dots,a_k\}\in\phi(A\,;b)_{b\in\V} \bigg)\kern-.8ex}{=}{\sum^n_{k=0}\bigg|{A\choose k}\cap\phi(A\,;b)_{b\in\V}\bigg|\cdot{n\choose k}^{\kern-.8ex-1}\kern-1.5ex. }
+
+   Now, the inequality is evident.
+\end{proof}
+
+Let $\Pr_k$ be the probability measure on the subsets of $A$ that is concentrated and uniform on $A^{(k)}$.
+Namely, for $A'\subseteq A$
+
+\ceq{\hfill{\Pr}_k\big(\{A'\}\big)}
+{=}
+{\left\{
+\begin{array}{ll}
+   \kern1.5ex0&\textrm{if}\kern1.5ex |A'|\neq k\\
+   \displaystyle{n\choose k}^{\kern-.8ex-1} &\textrm{if}\kern1.5ex |A'|= k\\
+\end{array}\right.}
+
+Then the the LYM inequality asserts that if $\phi(A\,;b)_{b\in\V}$ is an antichain then
+
+
+\ceq{\hfill\sum^n_{k=0}{\Pr}_k\big(\phi(A\,;b)_{b\in\V}\big)}{\le}{1.}
+
+This inequality is strict when $\phi(A\,;b)_{b\in\V}=A^{(k)}$ for some $k$. 
+In the next section we show that these are the only cases.
+
+\end{document}
