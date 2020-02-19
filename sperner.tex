@@ -52,7 +52,6 @@ The acronym LYM stands for Lubell-Yamamoto-Meshalkin.
    
    % \ceq{\hfill\sum^n_{k=0}\frac{\big|\phi(A\,;b)_{b\in\V}\ \cap\  A^{(k)}\big|}{\big|A^{(k)}\big|}}{\le}{1.}
 
-
    \ceq{\hfill\sum^n_{k=0}\bigg|{A\choose k}\cap\phi(A\,;b)_{b\in\V}\bigg|\cdot{n\choose k}^{\kern-.8ex -1}\kern-.8ex}{\le}{1.}
 \end{lemma}
 \smallskip
@@ -92,4 +91,72 @@ Then the the LYM inequality asserts that if $\phi(A\,;b)_{b\in\V}$ is an anticha
 This inequality is strict when $\phi(A\,;b)_{b\in\V}=A^{(k)}$ for some $k$. 
 In the next section we show that these are the only cases.
 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%
+\section{The Erd\H{o}s-Ko-Rado Theorem}\label{ErdosKoRado}
+
+\def\medrel#1{\parbox[t]{4ex}{$\displaystyle\hfil #1$}}
+\def\ceq#1#2#3{\parbox[t]{20ex}{$\displaystyle #1$}\medrel{#2}{$\displaystyle #3$}}
+
+\begin{lemma}[(Peter J.~Cameron)]
+   Let $G$ be a $1$-transitive finite graph.
+   If $G$ contains a clique of cardinality $m$, then every subgraph $H\subseteq G$ contains a clique of cardinality 
+   
+   \ceq{}{\ge}{m\frac{|H|}{|G|}.}
+\end{lemma}
+
+\begin{proof}
+   Let $C$ be a clique in $G$ of cardinality $m$.
+   Let $k$ the cardinality of the largest clique in $H$.
+   Let $n=|\Aut(G)|$.
+   By $1$-transitivity, the sets $\{f\in\Aut(G): fa=b\}$, for any fixed $a\in G$ and $b$ ranging over $G$, have all the same cardinality. 
+   Hence, for any given pair $\<a,b\>$, they have cardinality $n/|G|$.
+
+   Count the pairs $\<a,f\>\in C\times\Aut(G)$ such that $fa\in H$.
+   For every $a\in C$ there are $n\cdot|H|$ automorphisms.
+   So the number of pairs is $m\cdot n\cdot|H|/|G|$
+
+   On the other hand for each $f\in\Aut(G)$ there are at most $k$ choices of $a\in C$.
+   So $m\cdot n\cdot|H|/|G|\le k\,n$.
+\end{proof}
+
+
+
+\begin{void_thm}[Erd\H{o}s-Ko-Rado Theorem]
+   Let $A\subseteq\U$ be a finite set of cardinality $n$. 
+   Let $k\le n/2$.
+   Let $\phi(A\,;b)_{b\in\V}$ be an intersecting family of sets of cardinality $k$.
+   Then 
+   
+   \ceq{\hfill\Big|\phi(A\,;b)_{b\in\V}\Big|}{\le}{{n-1\choose k-1}.}
+\end{void_thm}
+   
+\begin{proof}
+   Let $m=\Big|\phi(A\,;b)_{b\in\V}\Big|$.
+   Consider the graph 
+   
+   \ceq{\hfill G}{=}{{A\choose k},}
+   
+   \ceq{\hfill E(G)}{=}{\Big\{\{A',A''\}\ :\  A'\cap A''\neq\0\Big\}.}
+
+   Enumerate the elements of $A$, say $A=\{a_0,\dots,a_{n-1}\}$.
+   Consider the following subgraph of $G$ 
+   
+   \ceq{\hfill H}{=}{\Big\{\{a_i,\dots,a_{i+k-1}\}\ :\  0\le i<n\Big\},}
+
+   where the indices are intended modulo $n$.
+   As $k\le n$, the largest clique in $H$ has cardinality $k$.
+   As $\phi(A'\,;b)_{b\in\V}$ is a clique of $G$, by the lemma above, 
+
+   \ceq{\hfill k}{\ge}{m\frac{|H|}{|G|}}\medrel{=}$\displaystyle m\cdot n\cdot {n\choose k}^{\!-1}$
+   
+   therefore
+
+   \ceq{\hfill m}{\le}{{n-1\choose k-1}}
+\end{proof}
 \end{document}

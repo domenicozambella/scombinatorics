@@ -1,0 +1,40 @@
+% !TEX root = scombinatorics.tex
+\documentclass[scombinatorics.tex]{subfiles}
+\begin{document}
+
+\chapter*{Preliminaries}
+\addcontentsline{toc}{chapter}{Preliminaries}
+
+\label{minimax}
+
+
+\def\medrel#1{\parbox[t]{6ex}{$\displaystyle\hfil #1$}}
+\def\ceq#1#2#3{\parbox[t]{25ex}{$\displaystyle #1$}\medrel{#2}{$\displaystyle #3$}}
+
+\thickmuskip=1mu plus 0.5mu minus 0.5mu
+\medmuskip=0.5mu plus 0.2mu minus 0.2mu
+
+Let $\U$ and $\V$ be two (large) sets.
+Let $\phi(x\,;z)$ be a relation symbol.
+We denote by $\phi(\U\,;\V)$ the set $\{\<a,b\>\in\U\times\V\, :\, \phi(a\,;b)\}$ which we call: the relation defined by $\phi(x\,;z)$.
+Sets of the form $\phi(\U\,;b)=\{a\in\U\,:\, \phi(a\,;b)\}$, for some $b\in\V$, are called definable sets.
+
+
+In the first chapters we will always restrict the study to the trace of $\phi(\U\,;\V)$ on some finite set $A\times B$, where $A\subseteq\U$ and $B\subseteq\V$. 
+We will wite $\phi(A\,;B)$ for $\phi(\U\,;\V)\cap A\times B$.
+Similarly, we write $\phi(A\,;b)$ for the trace of $\phi(\U\,;b)$ on $A$, that is, the set $\phi(\U\,;b)\cap A$.
+We call it a definable subset of $A$.
+
+We denote by \emph{$\phi(\U\,;b)_{b\in\V}$} and \emph{$\phi(A\,;b)_{b\in\V}$} the collection of definable sets, respectively definable subsets of $A$.
+
+It would be more appropriate to call these sets \textit{global types}, respectively \textit{types over $A$}.
+But this would make the terminology (if possible) more obscure.
+
+For $k\le|A|$ we use following notation interchangeably
+
+\ceq{\hfill\emph{$\displaystyle{A\choose k}$}\medrel{=}\emph{$\vphantom{\Big[}A^{(k)}$}}
+{=}
+{\Big\{A'\subseteq A\ :\ |A'|=k \Big\}}
+
+
+\end{document}

@@ -1,0 +1,230 @@
+% !TEX root = scombinatorics.tex
+\documentclass[scombinatorics.tex]{subfiles}
+\begin{document}
+\chapter{Stable and {\sc nip} relations}
+\label{sauer}
+
+
+
+\def\medrel#1{\parbox[t]{5ex}{$\displaystyle\hfil #1$}}
+\def\ceq#1#2#3{\parbox[t]{20ex}{$\displaystyle #1$}\medrel{#2}{$\displaystyle #3$}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%
+\section{Stable formulas}\label{VCdim}
+
+The \emph{ladder-dimension\/} of $\phi(\U\,;b)_{b\in\V}$, or of $\phi(x\,;z)$ when $\U$ and $\V$ are clear, is the maximal length $n$ of a chain of the form
+
+\ceq{\hfill\phi(A\,;b_0)\ \subset}{\dots}{\subset\ \phi(A\,;b_{n-1})}
+ 
+for some set $A\subseteq\U$ and some $b_0,\dots,b_{n-1}\in\V$. If a maximal length exists we say that  $\phi(x\,;z)$ is \emph{stable\/} otherwise we say that $\phi(x\,;z)$ is \emph{unstable.}
+
+When $\U$ and $\V$ are clear from the context, we say \vc-dimension of $\phi(x\,;z)$ for the \vc-dimension of $\phi(\U\,;b)_{b\in\V}$.
+
+
+% \begin{lemma}
+%   If $\psi_i(x\,;z_i)$ are stable formulas on $\V_i$ then $\psi_2(x\,;z_2)\wedge\psi_2(x\,;z_2)$ is a stable formula on $\V_1\times\V_2$.
+% \end{lemma}
+  
+% \begin{proof}
+%   Let $A\subseteq\U$ and $b_i,c_i\in\V,\W$ be such that 
+  
+%   \ceq{\hfill\phi(A\,;b_0,c_0)\ \subset}{\dots}{\subset\ \phi(A\,;b_{n-1}),c_{n-1}}
+ 
+  
+%   For $n=1,2$ let $H_n\subseteq{\omega\choose 2}$ contain those pairs $j<i$ such that $\neg\phi_n({\mr a^n_i}\,;{\gr b_j})$. 
+%   By the equivalence above $H_1\cup H_2={\omega\choose 2}$. 
+%   By the Ramsey Theorem there is an infinite set $H$ such that ${H\choose 2}\subseteq H_n$ for at least one of $n=1,2$.
+%   Suppose $H_1$ for definiteness. So, we obtain an infinite sequence $a^1_i$, $b_i$ such that
+  
+%   \ceq{\hfill j<i}{\IFF}{\neg\phi_1({\mr a^1_i}\,;{\gr b_j})}\hfill for all $i,j<\omega$
+  
+%   hence $\phi_1({\mr x_1}\,;{\gr z})$ is unstable.
+% \end{proof}
+  
+% We say that $\Aa\subseteq\U$ is \emph{approximable\/} if for every finite set $A\subseteq\U$ there is a $b\in\V$ such that $\phi(A\,;b)=\Aa\cap A$.
+% If we also have that $\phi(\U\,;b)\subseteq\U$, then we say that $\Aa\subseteq\U$ is approximable \emph{from below.}
+
+% \begin{fact}
+%   The following are equivalent
+%   \begin{itemize}
+%     \item[1.] $\Aa\subseteq\U$ is approximable from below;
+%     \item[2.] for every finite set $A\subseteq\Aa$ there is a $b\in\V$ such that $A\subseteq\phi(\U\,;b)\subseteq\U$.\QED
+%   \end{itemize}
+% \end{fact}
+
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%
+\section{The Vapnik-Chervonenkis dimension}\label{VCdim}
+
+If all subsets of $A\subseteq\U$ are definable, that is $\P A=\phi(A,b)_{b\in\V}$ we say that $A$ is \emph{shattered\/} by $\phi(x\,;z)$.
+%Paraphrase the the definition,  $A$ is shattered by $\phi$ if fr every $C\subseteq A$ there is a $b_C\in\V$ such that $C=\phi(A,b_C)$.
+The following is called the \emph{shatter function\/}
+
+%\ceq{\hfill\emph{$\pi_\phi(n)$}}{=}{\max\Big\{|\phi(A,b)_{b\in\V}|\ \ :\ \ A\subseteq\U,\ |A|=n\Big\}.}
+
+\ceq{\hfill\emph{$\pi_\phi(n)$}}{=}{\max\bigg\{|\phi(A,b)_{b\in\V}|\ \ :\ \ A\in {\U\choose n}\bigg\}}
+
+So, $\pi_\phi(n)$ gives the maximal number of definable subsets that a set of cardinality $n$ can have.
+Trivially, $\pi_\phi(n)\le2^n$ for all $n$.
+Moreover, if $\pi_\phi(n)=2^n$ for some $n$, then $\pi_\phi(k)=2^k$ for every $k\le n$.
+
+
+The \emph{Vapnik-Cher\-vo\-nen\-kis dimension\/} of $\phi(\U\,;b)_{b\in\V}$, abbreviated by \emph{\vc-dimension}, is the maximal cardinality of a finite set $A\subseteq\U$ that is shattered by $\phi(x\,;z)$.
+Equivalently, it is the maximal $k$ such that $\pi_\phi(k)=2^k$.
+If such a maximum does not exist,
+we say that the \vc-dimension is infinite.
+
+As $\U$ and $\V$ are usually clear from the context, we usually say \vc-dimension of $\phi(x\,;z)$ for the \vc-dimension of $\phi(\U\,;b)_{b\in\V}$.
+
+
+\begin{example}
+  If $\phi(x\,;z)$ is either $\top$ or $\bot$, then it shatters only the empty set, therefore it has \vc-dimension $0$.\QED
+\end{example}
+
+
+\begin{example}
+  If $\phi(x\,;z)$ has ladder dimension $n$ then it has \vc-dimension at most $n$. Hence stable formulas are \nip.\QED
+\end{example}
+ 
+\begin{example}
+  If $\phi(\U\,;b)_{b\in\V}$ is a non trivial chain of sets, then its \vc-dimension is $1$.\QED
+\end{example}
+ 
+\begin{example} 
+  Let $\U=\RR$ and $\V=\RR^2$.
+  Let $\phi(x\,;z_1,z_2)$ be the formula $z_1<x<z_2$.
+  Then its \vc-dimension $2$.\QED
+\end{example}
+ 
+\begin{example} 
+  Let $\U=\V=\RR^2$.
+  Let $\phi(x_1,x_2\,;z_1,z_2)$ be the formula $y<z_1\cdot x + z_2$.
+  Then its  \vc-dimension $3$ (by Radon's Theorem).\QED
+\end{example}
+ 
+\begin{example}\label{ex_vcdim_opt}
+  If $\phi(\U\,;b)_{b\in\V}$ is the set of all subsets of $\U$ of cardinality $\le k$.
+  Then its \vc-dimension is $k$ and
+  
+  \ceq{\hfill\pi_\phi(n)}{=}{\sum^k_{i=0} \binom{n}{i}.}\QED
+\end{example}
+
+We call the \vc-dimension of $\phi(x\,;z)^*$ the \emph{dual \vc-dimension\/} of  $\phi(x\,;z)$.
+
+\begin{proposition}
+  If $\phi(x\,;z)$ has \vc-dimension $<k$ then its dual \vc-dimension is $< 2^k$.
+\end{proposition}
+  
+\begin{proof}
+  Suppose that the \vc-dimension of $\phi(x\,;z)^*$ is at least $2^k$.
+  We prove that the \vc-dimension of $\phi(x\,;z)$ is at least $k$.
+  Let $B=\{b_I\,:\,I\subseteq k\}$ be a set of cardinality $2^k$ shattered by $\phi(x\,;z)^*$. 
+  That is, for every $\J\subseteq \P(k)$ there is $a_\J$ such that
+  
+  \ceq{\hfill\phi(a_\J, b_I)}{\IFF}{I\in\J}
+  
+  Let $a_i=a_{\{I\subseteq k\,:\, i\in I\}}$. Then from the equivalence above we obtain
+  
+  \ceq{\hfill\phi(a_i, b_I)}{\IFF}{i\in I}
+  
+  That is, $\phi(x\,;z)$ shatters $A=\{a_i\,:\, i\in k\}$.
+\end{proof}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%
+\section{The Sauer-Shelah lemma}
+
+\def\ceq#1#2#3{\parbox[t]{15ex}{$\displaystyle #1$}\medrel{#2}{$\displaystyle #3$}}
+
+
+According to Gil Kalai in~\cite{kalai}, Sauer-Shelah's Lemma can been described as an \textit{eigentheorem\/} because it is important in many different areas of mathematic (model theory, learning theory, probability theory, ergodic theory, Banach spaces, to name a few).
+No wonder it has been discovered and rediscovered may times.
+
+It has been proved independently by Shelah~\cite{shelah72}, Sauer~\cite{sauer}, and Vapnik-Cher\-vo\-nen\-kis~\cite{VC} around 1970 (Shelah gives credit to Micha Perles).
+Saharon Shelah was working in model theory while Norbert Sauer, Vladimir Vapnik and Alexey Chervonenkis were in statistical learning theory.
+
+\begin{void_thm}[Sauer-Shelah Lemma]\label{thm_sauer}
+If $\phi(x\,;z)$ has \vc-dimension $k$ then for every $n\ge k$
+
+\ceq{\hfill\pi_\phi(n)}{\le}{\bigsum^{k}_{i=0} \binom{n}{i}.}\QED 
+\end{void_thm}
+
+The set system presented in Example~\ref{ex_vcdim_opt} shows that the bound is optimal.
+
+An alternative proof of the Sauer-Shelah Lemma derives it as corollary of a lemma by Alain Pajor~\cite{pajor}.
+
+
+\begin{void_thm}[Pajor's Lemma]\label{lem_pajor}
+  Let $A\subseteq\U$ be finite.
+  
+  \ceq{\hfill|\phi(A,b)_{b\in\V}|}{\le}{\Big|\{C\subseteq A\; :\; C \textrm{\ is\ shattered\ by\ }\phi(x\,;z)\}\Big|}.
+\end{void_thm}
+
+
+\begin{proof}
+  If $A$ is empty then $|\phi(A,b)_{b\in\V}|=1$ and $\0$ is the only subset of $A$ that $\phi$ shatters, so the inequality holds trivially.
+  Otherwise, pick an $a\in A$ and assume the lemma holds for $A'=A\sm\{a\}$.
+  Define 
+
+  \ceq{\hfill\psi(x\,;y)}{=}{\phi(x\,;y)\ \wedge\neg \phi(a\,;y)\ \wedge\ \E y'\, \Big[ \phi(a\,;y')\ \wedge\ \phi(A'\,;y')=\phi(A'\,;y)\Big].}
+
+  Notice that
+  
+  \ceq{\hfill\phi(A,b)_{b\in\V}}{=}{\phi(A',b)_{b\in\V}\quad \cup\quad \Big\{\{a\}\cup\psi(A',b)\ :\ b\in\V\Big\}.}
+  
+  as the two sets in the r.h.s.\@ are disjoint
+
+  \ceq{\hfill\big|\phi(A,b)_{b\in\V}\big|}{=}{\big|\phi(A',b)_{b\in\V}\big|\ +\ \big|\psi(A',b)_{b\in\V}\big|.}
+
+  By induction hypothesis, 
+
+  \ceq{\hfill\big|\phi(A',b)_{b\in\V}\big|}{\le}{\Big|\{C\subseteq A'\; :\; C \textrm{\ is\ shattered\ by\ }\phi(x\,;z)\}\Big|}\hfill(1)
+  
+  and
+
+  \ceq{\hfill\big|\psi(A',b)_{b\in\V}\big|}{\le}{\Big|\{C\subseteq A'\; :\; C \textrm{\ is\ shattered\ by\ }\psi(x\,;z)\}\Big|.}
+
+  \ceq{}{=}{\Big|\{C\subseteq A'\; :\; C\cup\{a\} \textrm{\ is\ shattered\ by\ }\phi(x\,;z)\}\Big|}\hfill(2)
+
+  In fact, $C\subseteq A'$ is shattered by $\psi(x\,;y)$ if an only if $C\cup\{a\}$ it is shattered by $\phi(x\,;y)$.
+  Clearly, 
+
+  \ceq{\hfill(1)+(2)}{=}{\Big|\{C\subseteq A\; :\; C \textrm{\ is\ shattered\ by\ }\phi(x\,;z)\}\Big|,}
+
+  so the lemma follows.
+\end{proof}
+  
+\begin{proof}[Proof of the Sauer-Shelah Lemma]
+  Assume $\phi(x\,;z)$ has \vc-dimension $k$ and let $n\ge k$.
+  Then
+
+  \ceq{\hfill\pi_\phi(n)}{=}{\max_{|A|=n}\big|\phi(A,b)_{b\in\V}\big|}\smallskip
+
+  \ceq{\hfill\pi_\phi(n)}{\le}{\max_{|A|=n}\big|\{C\subseteq A\; :\; C\textrm{\ shattered\ by\ }\phi(x\,;z)\}\big|}\hfill by  Pajor's Lemma\smallskip
+  
+  \ceq{}{\le}{\sum^k_{i=0}{n\choose i}}\hfill because $\phi(x\,;z)$ has \vc-dimension $k$
+\end{proof}
+
+The \emph{\vc-density\/} of $\phi$ is the infimum over all real number $r$ such that $\pi_\phi(n)\in O(n^r)$.
+It is infinite if no such $r$ exist.
+The  \emph{dual \vc-density\/} is defined accordingly.
+
+
+\end{document}

@@ -49,7 +49,7 @@ diagrams={>=latex}
    \setlength{\listparindent}{0mm}
    \setlength{\itemindent}{0mm}
    \setlength{\labelwidth}{2ex}
-   \setlength{\itemsep}{.4\baselineskip}
+   \setlength{\itemsep}{.2\baselineskip}
    \setlength{\parsep}{1ex}
    \setlength{\partopsep}{0mm}
    \setlength{\labelsep}{1ex}
@@ -80,7 +80,7 @@ diagrams={>=latex}
 \def\PP{\mathds P}
 \def\Ar{{\rm Ar}}
 \def\dom{\mathop{\rm dom}}
-\def\range{\mathop{\rm rng}}
+\def\range{\mathop{\rm range}}
 \def\supp{\mathop{\rm supp}}
 \def\rank{\mathop{\rm rank}}
 \def\dcl{\mathop{\rm dcl}}
@@ -270,12 +270,25 @@ diagrams={>=latex}
 \def\grD{{\gr\D}}
 
 
+% \thickmuskip=2mu plus 0.5mu minus 0.5mu
+% \medmuskip=1mu plus 0.2mu minus 0.2mu
+\def\vc{{\footnotesize VC}}
+\def\nip{{\footnotesize NIP}}
+\def\Fr{\mathop{\rm Fr}}
+\def\Var{\mathop{\rm Var}}
+\def\Ex{\mathord{\mathds E}}
+\def\Pr{\mathord{\mathds P}}
+
 \begin{document}
 \raggedbottom
-\renewcommand{\contentsname}{Aberrant notes on combinatorics}
+\renewcommand{\contentsname}{Scombinatorics}
 \tableofcontents
 
 \bigskip
+\subfile{pre}
 \subfile{minimax}
 \subfile{sperner}
+\subfile{sauer}
+\subfile{ulln}
+\subfile{bib}
 \end{document}

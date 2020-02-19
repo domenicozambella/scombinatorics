@@ -1,0 +1,433 @@
+% !TEX root = scombinatorics.tex
+\documentclass[scombinatorics.tex]{subfiles}
+\begin{document}
+\chapter{A uniform law of large numbers}
+\label{ulln}
+
+
+
+\def\medrel#1{\parbox[t]{5ex}{$\displaystyle\hfil #1$}}
+\def\ceq#1#2#3{\parbox[t]{25ex}{$\displaystyle #1$}\medrel{#2}{$\displaystyle #3$}}
+
+Quoting Carlos C. Rodr\'iguez
+
+\begin{quotation}\parindent0mm\parskip1ex\noindent
+What is a Law of Large Numbers?
+I am glad you asked! The Laws of Large Numbers, or LLNs for short, come in
+three basic flavors: Weak, Strong and Uniform. They all state that the observed
+frequencies of events tend to approach the actual probabilities as the number
+of observations increases. Saying it in another way, the LLNs show that under
+certain conditions, we can asymptotically learn the probabilities of events from
+their observed frequencies. To add some drama we could say that if God is
+not cheating and S/he doesn’t change the innitial standard probabilistic model
+too much then, in principle, we (or other machines, or even the universe as a
+whole) could eventually find out the Truth, the whole Truth, and nothing but
+the Truth.
+
+Bull! The Devil, is in the details.
+
+I suspect that for reasons not too different in spirit to the ones above, famous
+minds of the past took the slippery slope of defining probabilities as the limits
+of relative frequencies. They became known as “frequentists”. They wrote
+books and indoctrinated generations of confused students.
+\end{quotation}
+
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%
+\section{Inequalities}
+
+
+\begin{void_thm}[Markov's inequality]\label{Markov}
+  Let $X$ be a nonnegative random variable with finite mean.
+  The, for every $\epsilon>0$
+
+  \ceq{\hfill\Pr\Big(X\ge\epsilon\Big)}{\le}{\frac{\Ex[X]}{\epsilon}}
+\end{void_thm}
+
+\begin{proof}
+  For simplicity, we will assume that the sample space $\Omega$ is finite. Define $A=\{a\in\Omega\,:\, X(a)\ge\epsilon\}$ and assume, for the moment, that $A\neq\0$.
+
+  \ceq{\hfill\Ex[X]}{=}{\sum_{a\in\Omega} \Pr(a)\, X(a)}
+
+  \ceq{}{=}{\sum_{a\in A} \Pr(a)\, X(a) + \sum_{a\notin A} \Pr(a)\, X(a)}
+
+  \ceq{}{\ge}{\sum_{a\in A} \Pr(a)\, X(a)}
+
+  \ceq{}{\ge}{\epsilon\sum_{a\in A}\Pr(a)}
+
+  \ceq{}{=}{\epsilon\,\Pr(X\ge\epsilon)}
+\end{proof}
+
+\begin{corollary}
+  Let $X$ be a nonnegative random variable.
+  If $\Ex\big[X^k\big]$ exists, then for every $\epsilon>0$
+  
+  \ceq{\hfill\Pr\Big(X\ge\epsilon\Big)}
+  {\le}
+  {\frac{\Ex[X^k]}{\epsilon^k}}
+\end{corollary}
+
+\begin{proof}
+  By Markov's inequality, since $\Pr\big(X\ge\epsilon\big)=\Pr\big(X^k\ge\epsilon^k\big)$.
+\end{proof}
+
+Chebyshev's inequality (a.k.a. Chebysheff, Chebyshov, Tschebyscheff, Tschebycheff) is a special case of the corollary above.
+
+\begin{void_thm}[Chebyshev's inequality]\label{Chebyshev}
+    Let $X$ be a random variable with finite mean and variance.
+    The, for every $\epsilon>0$
+    
+    \ceq{\hfill\Pr\Big(\big|X-\Ex[X]\big|\ge\epsilon\Big)}
+    {\le}
+    {\frac{\Var[X]}{\epsilon^2}}\QED
+\end{void_thm}
+
+To obtain exponential bounds, we frequently apply the following trick.
+
+\begin{void_thm}[Chernoff's method]\label{lem_chernoff_method}
+  For every random variable $X$ with finite mean and every $t>0$
+
+  \ceq{\hfill\Pr\big(X\ge\epsilon\big)}
+  {\le}
+  {e^{-t\epsilon}\,\Ex\big[e^{tX}\big]}
+\end{void_thm}
+
+\begin{proof}
+  For  every $t>0$
+
+  \ceq{\hfill\Pr\big(X\ge\epsilon\big)}
+  {=}
+  {\Pr\big(e^{tX}\ge e^{t\epsilon}\big)}
+  \hfill because $e^{tx}$ is increasing
+  
+  \ceq{}
+  {\le}
+  {e^{-t\epsilon}\,\Ex\big[e^{tX}\big],}
+
+  by Markov's inequality, which me may apply since $e^{tX}$ is always positive. 
+\end{proof}
+
+
+  \begin{void_thm}[Hoeffding's lemma]\label{lem_Hoeffding}
+    Let $X$ be a bounded random variable, say $a\le X\le b$. 
+    Let $\Ex[X]=\mu$ and $d=b-a$.
+    Then
+    
+    \ceq{\hfill\Ex\Big[e^{t(X-\mu)}\Big]}
+    {\le}
+    {\exp{\Big(\frac{t^2d^2}8}\Big).}\smallskip
+  \end{void_thm}
+
+\begin{proof}
+  For clarity, assume $\mu=0$.
+  The general result follows easily from this special case by centralization.
+  Recall that, by convexity, for every $x\in[a,b]$
+
+  \ceq{\hfill e^{tx}}
+  {\le}
+  {\frac{x-a}{d}\ e^{tb}\ +\ \frac{b-x}{d}\ e^{ta}}
+
+  Then
+
+  \ceq{\hfill e^{tX}}
+  {\le}
+  {\frac{X-a}{d}\ e^{tb}\ +\ \frac{b-X}{d}\ e^{ta}}
+
+  By the linearity of expectation,
+
+  \ceq{\hfill\Ex\Big[e^{tX}\Big]}
+  {\le}
+  {\frac{b\,e^{ta}-a\,e^{tb}}{d}}
+
+  \ceq{\hfill\log\Ex\Big[e^{tX}\Big]}
+  {\le}
+  {\log\frac{b\,e^{ta}-a\,e^{tb}}{d}}
+
+taking the Taylor series expansion of the r.h.s.\@ at $t=0$ we obtain (the first and second derivatives vanish at $0$; the second derivative is always $\le 1/4$)
+
+\ceq{\hfill\log\Ex\Big[e^{tX}\Big]}
+    {\le}
+    {\frac{t^2d^2}8.}
+\end{proof}
+
+\begin{void_thm}[Hoeffding's inequality]\label{Chebyshev}
+  Let $X_1,\dots,X_n$ be independent random variables with bounded range, say $a\le X_i\le b$. Define $d=b-a$.
+  
+  \ceq{\hfill M}{=}{\sum^n_{i=1}\Big(X_i-\Ex[X_i]\Big)}
+  
+  Then for every $\epsilon>0$ 
+
+  \ceq{\hfill\Pr \Big(M\ge\epsilon\Big)}
+      {\le}
+      {\exp{\Big(-\frac{2\epsilon^2}{nd^2}}\Big),}
+
+  \ceq{\hfill\Pr \Big(M\le-\epsilon\Big)}
+      {\le}
+      {\exp{\Big(-\frac{2\epsilon^2}{nd^2}}\Big).}\smallskip
+\end{void_thm}
+
+Clearly, the two inequalities above imply the following
+
+\ceq{\hfill\Pr \Big(|M|\ge\epsilon\Big)}
+    {\le}
+    {2\exp{\Big(-\frac{2\epsilon^2}{nd^2}}\Big).}\smallskip
+
+
+\begin{proof}
+  Define $\Ex[X_i]=\mu_i$.
+  Let $t>0$ be arbitrary.
+
+  \ceq{\hfill \Pr\Big(M\ge\epsilon\Big)}{\le}{e^{-t\epsilon}\,\Ex\Big[e^{tM}\Big]}\hfill by Lemma~\ref{lem_chernoff_method} (Chernoff's method)
+
+  \ceq{}
+      {=}
+      {e^{-t\epsilon}\,\prod^n_{i=1}\Ex\Big[e^{t\,(X_i-\mu_i)}\Big]}
+      \hfill by independence.
+
+
+      \ceq{}
+      {\le}
+      {e^{-t\epsilon}\,\prod^n_{i=1}\exp\Big(\frac{t^2d^2}{8}\Big)}
+      \hfill by Hoeffding Lemma.
+
+  \ceq{}
+      {=}
+      {\exp\Big(\frac{n\,t^2d^2}{8}-t\epsilon\Big)}
+
+  Now substitute $4\epsilon/nd^2$ for $t$.
+\end{proof}
+
+
+
+We prove Hoeffding's lemma with a slightly weaker bound ($2$ for $8$).
+The purpose is to present a clever trick called \textit{symmetrization\/} which in the following section is applied in a more complex setting.
+
+First we need the following lemma.
+
+
+\begin{lemma}\label{lem_sign}
+  Let $S$ be a random sign variable (a.k.a.\@ Rademacher random variable).
+  That is, $S\in\{-1,1\}$ with uniform distribution.
+  Then for every $t>0$
+
+  \ceq{\hfill\Ex\Big[e^{tS}\Big]}
+      {\le}
+      {e^{t^2/2}}
+\end{lemma}
+
+\begin{proof}
+  Replace $e^x$ with its Taylor expansion around $x=0$
+
+  \ceq{\hfill\Ex\Big[e^{tS}\Big]}
+  {=}
+  %     {\Ex\Bigg[\sum^\infty_{i=0}\frac{(tS)^i}{i!}\Bigg]}
+  %
+  % \ceq{}
+  %     {=}
+  {\sum^\infty_{i=0}\frac{t^i\Ex\big[S^i\big]}{i!}}
+
+  \ceq{}
+  {=}
+  {\sum^\infty_{i=0}\frac{t^{2i}}{(2i)!}}
+  \hfill since
+  $\Ex\big[S^i\big]=\bigg\{\kern-1ex
+  \begin{array}{ll}1&i{\rm\ even}\\0&i{\rm\ odd}\end{array}$
+
+  \ceq{}
+  {=}
+  {\sum^\infty_{i=0}\frac{(t/2)^{2i}}{i!}}
+
+  \ceq{}
+  {=}
+  {e^{t^2/2}.}
+\end{proof}
+
+\begin{proof}[Second proof of Hoeffding's lemma]
+  Recall that the Jensen's inequality asserts that for every convex function $f\big(\Ex[X]\big)\le\Ex\big[f(X)\big]$.
+  Then
+
+
+  Let $X'$ be an independent copy of $X$.
+  In particular $\mu=\Ex(X')$.
+  Then
+
+  \ceq{\hfill\Ex\Big[e^{t(X-\mu)}\Big]}
+  {=}
+  {\Ex\Big[e^{t(X-\Ex[X'])}\Big]}
+
+
+  \ceq{}
+  {\le}
+  {\Ex\Big[\Ex\big[e^{t(X-X')}\, |\, X\big]\Big]}\hfill by Jensen's inequality
+
+  \ceq{}
+  {\le}
+  {\Ex\Big[e^{t(X-X')}\Big]}
+
+  Let $S$ be a random sign variable independent of $X,X'$.
+  % That is, $S\in\{-1,1\}$ with uniform distribution.
+  % Assume also that $S$ is independent of $X,X'$.
+  Then $S(X-X')$ has the same distribution of $X-X'$.
+
+  \ceq{}
+  {=}
+  {\Ex\Big[e^{tS(X-X')}\Big]}
+
+  \ceq{}
+  {=}
+  {\Ex\bigg[\Ex\Big[e^{tS(X-X')}\ |\ X,X'\Big]\bigg]}
+  
+  \ceq{}
+  {\le}
+  {\Ex\Big[e^{t^2(X-X')^2/2}\Big]}
+  \hfill by Lemma~\ref{lem_sign}
+      
+  \ceq{}
+  {\le}
+  {e^{t^2d^2/2},}
+  
+  because $|X-X'|\le d$.
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%
+\section{The Law(s) of Large Numbers}\label{samples}
+
+A \emph{sample\/} $s$ is a sequence $s_0,\dots,s_{n-1}$ of elements of $\U$.
+Its length $|s|=n$ is also called \emph{size\/} or \emph{dimension.}.
+We write $\range(s)$ for the set $\{s_0,\dots,s_{n-1}\}$.
+Note that this set may have cardinality $<n$.
+
+To a sample $s$ of size $n$ we associate a finite probability measure on the subsets of $\U$, namely for any $A\subseteq\U$ we define 
+
+\ceq{\hfill\emph{$\displaystyle\Fr\big(s, A\big)$}}
+{=}
+{\frac1n\cdot \big|\big\{i<n\ :\ s_i\in A\big\}\big|.}
+
+Let $X=X_1,\dots,X_n$ be independent random elements of $\Omega$, that is, random variables such that $\Pr(X_i\in A)=\Pr(A)$ for every $A\subseteq\Omega$.
+Write ${\mathds 1}_A$ for the indicator function of $A$. 
+Then ${\mathds 1}_A{\circ} X_i$ as a Bernoulli random variable with probability of success $\Pr(A)$.
+Moreover
+
+\ceq{\hfill \Fr(X,A)}{=}{\frac1n\sum^n_{i=1}{\mathds 1}_A{\circ} X_i.}
+
+
+
+\begin{void_thm}[Weak Law of Large Numbers]
+  Let $\Pr$ be a probability measure on a set $\Omega\subseteq\U$.
+  Then, for every event $A\subseteq\Omega$ and every $n>0$
+  
+  \ceq{\hfill \frac1{n\epsilon^2}}
+  {\ge}
+  {\Pr \Big(s\in\Omega^n\ :\ \big|\Fr(s,A) - \Pr(A)  \big|\ge\epsilon\Big).}
+\end{void_thm}
+
+
+\begin{proof}
+  Let $X_1,\dots,X_n$ be independent random elements of $\Omega$.
+  Up to the factor $1/n$, the distribution of $\Fr(X,A)$ is binomial with parameters $n$ and $\Pr(A)$.
+  Therefore it has expected value $\Pr(A)$ and  variance $\le1/n$. 
+  By Chebyshev's inequality we obtain 
+  
+  \ceq{\hfill \frac1{n\epsilon^2}}
+  {\ge}
+  {\Pr\Big(\big|\Fr(X,A) - \Pr(A)\big|\ge\epsilon\Big)}
+
+  which proves the theorem.
+\end{proof}
+
+Sometime we are interested in the minimal size of a sample that approximates the probability up to a given $\epsilon$.
+
+\begin{corollary}
+  Let $\Pr$ be a probability measure on a finite set $\Omega\subseteq\U$.
+  Then, for every $A\subseteq\Omega$ and every $\epsilon>0$ there is a sample of size
+
+  \ceq{\hfill n}
+      {=}
+      {\left\lfloor\frac1{\epsilon^2}+1\right\rfloor} 
+      
+  such that
+
+  \ceq{\hfill\epsilon}{>}{\Big|\Fr(s,A) - \Pr(A) \Big|.}
+\end{corollary}
+
+
+\begin{proof}
+  By the Weak Law of Large Numbers above, a sample of size $n$ exists if
+
+  \ceq{\hfill 1}
+      {>}
+      {\frac1{n\epsilon^2}}
+\end{proof}
+
+
+In the following section we need a better bound for the Weak Law of Large Numbers.
+This is obtained with a similar proof
+
+\begin{void_thm}[Weak Law of Large Numbers (with exponential bound)]
+  Let $\Pr$ be a probability measure on a finite set $\Omega\subseteq\U$.
+  Then, for every event $A\subseteq\Omega$ and every $n>0$
+  
+  \ceq{\hfill 2 e^{-2n\epsilon^2}}
+  {\ge}
+  {\Pr \Big(s\in\Omega^n\ :\ \big|\Fr(s,A) - \Pr(A)  \big|\ge\epsilon\Big).}
+\end{void_thm}
+
+\begin{proof}
+  Let $X_1,\dots,X_n$ be independent random elements of $\Omega$.
+  Define
+  
+  \ceq{\hfill M}
+  {=}
+  {\sum^n_{i=1}\Big({\mathds 1}_A{\circ} X_i-\Ex[{\mathds 1}_A{\circ} X_i]\Big)}
+
+  As $\Ex[{\mathds 1}_A{\circ} X_i]=\Pr(A)$, the inequality we have to prove can be rewritten as 
+
+  \ceq{\hfill 2\, e^{-2n\epsilon^2}}
+  {\ge}
+  {\Pr \Big(|M|\ge n\epsilon\Big)}
+
+  and this follows immediately from Hoeffding inequality.
+  \end{proof}
+
+
+Using the exponential bounds above, we can improve (by a constant factor) the size of the minimal sample size that approximates the probability.
+
+\begin{corollary}
+  Let $\Pr$ be a probability measure on a finite set $\Omega\subseteq\U$.
+  Then, for every $A\subseteq\Omega$ and every $\epsilon>0$ there is a sample of size
+
+  \ceq{\hfill n}
+      {=}
+      {\left\lfloor\frac{\log 2}{2\epsilon^2}+1\right\rfloor} 
+      
+  such that
+
+  \ceq{\hfill\epsilon}{>}{\Big|\Fr(s,A) - \Pr(A) \Big|.}\QED
+\end{corollary}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%
+\section{The uniform law of large numbers}\label{samples}
+
+Given a probability measure on a finite set $\Omega\subseteq \U$ and a family of definable subsets $\phi(\Omega\,;b)_{b\in\V}$, an \emph{$\epsilon$-approximation\/} is a sample $s$ such that
+
+\ceq{\hfill\epsilon}{>}{\Big|\Pr\Big(\phi(\Omega\,;b)\Big) - \Fr\Big(s,\phi(\Omega\,;b)\Big)\Big|}\hfill for every $b\in\V$.
+
+We are interested in estimating the minimal size of an $\epsilon$-approximation.
+
+
+
+
+
+\end{document}
