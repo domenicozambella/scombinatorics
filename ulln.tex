@@ -484,7 +484,9 @@ An \emph{$\epsilon$-approximation\/} is a sample $s$ such that
 
 We are interested in estimating the minimal size of an $\epsilon$-approximation.
 
-
+The main theorem of this section is this famous result of Vapnik-Chervonenkis~\cite{VC}.
+Following Devroye and Lugosi~\cite{DL}, we prove a slightly better bound.
+ 
 
 \begin{void_thm}[Vapnik-Chervonenkis inequality]\label{VC_inequality}
   Let $\pi_\phi(n)$ be the shatter function of $\phi(\Omega\,;b)_{b\in\V}$.
@@ -540,6 +542,7 @@ Before embarking of the proof of the theorem above, we prove the following easy 
 The lemma is obtained taking the logarithm and substituting $t=\dfrac{\sqrt{2\log m}}{c}$.
 \end{proof}
 
+\textbf{Proof of the Vapnik-Chervonenkis inequality}
 Let $S'=S'_1,\dots,S'_n$ be an independent copy of $S$.
 We claim that
 
@@ -621,5 +624,5 @@ As $\sigma_i\big(\Indicator_b\,s_i -  \Indicator_b\,s'_i\big)$ takes values in $
 
 \ceq{}
 {\le}
-{e^{nt^2/2}.}
+{e^{nt^2/2}.}\QED
 \end{document}
