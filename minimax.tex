@@ -4,14 +4,16 @@
 \chapter{Three minimax theorems}
 \label{minimax}
 
-
 \def\medrel#1{\parbox[t]{6ex}{$\displaystyle\hfil #1$}}
 \def\ceq#1#2#3{\parbox[t]{30ex}{$\displaystyle #1$}\medrel{#2}{$\displaystyle #3$}}
 
 \def\separatore{\hfil o \rule[0.5ex]{4ex}{0.1ex} o \rule[0.5ex]{4ex}{0.1ex} o}
 
+Though apparently unrelated, the three theorems in this chapter could be derived one from the other in any order.
+The order we choose is arbitrary.
 
-
+The last two theorems are, evidently, minimax theorems.
+The first one is not, so the title is only approximately correct. 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%
@@ -28,74 +30,86 @@ Let $A\subseteq\U$ and $B\subseteq\V$ be finite sets.
 
 We say that $A'\subseteq A$ is a \emph{set of distinct representatives\/} for $\phi(A\,;B)$ if
 
-\ceq{\hfill|\phi(A';b)|\medrel{=}|\phi(a\,;B)|}{=}{1}\quad for every $a,b\in A',B$,
+\ceq{\hfill|\phi(A';b)|\medrel{=}|\phi(a\,;B)|}
+{=}
+{1}
+\quad for every $a,b\in A',B$,
 
 or, in other words, if $\phi(A';B)$ is the graph of a bijection.
 
 \begin{void_thm}[Hall's Marriage Theorem]\label{thm_marriage}
-   For every finite $B\subseteq\V$, the following are equivalent
-   \begin{itemize}
-   \item[1.] $\phi(A\,;B)$ has a set of distinct representatives;
+  For every finite $B\subseteq\V$, the following are equivalent
+  \begin{itemize}
+    \item[1.] $\phi(A\,;B)$ has a set of distinct representatives;
 
-   \item[2.] $\displaystyle|B'|\ \le\ \bigg|\bigcup_{b\in B'}\phi(A\,;b)\bigg|$ for every $B'\subseteq B$.
-   \end{itemize}
+    \item[2.] $\displaystyle|B'|\ \le\ \bigg|\bigcup_{b\in B'}\phi(A\,;b)\bigg|$ for every $B'\subseteq B$.
+  \end{itemize}
 \end{void_thm}
 
 \begin{proof}
-   (\ssf{1}$\IMP$\ssf{2})
-   The following holds for any set of distinct representatives $A'$ and $B'\subseteq B$  
+  (\ssf{1}$\IMP$\ssf{2})
+  The following holds for any set of distinct representatives $A'$ and $B'\subseteq B$  
 
-   \ceq{\hfill|B'|\medrel{=}\bigg|\bigcup_{b\in B'}\phi(A';b')\bigg|}{\subseteq}{\bigg|\bigcup_{b\in B'}\phi(A\,;b)\bigg|.}
+  \ceq{\hfill|B'|\medrel{=}\bigg|\bigcup_{b\in B'}\phi(A';b')\bigg|}
+  {\subseteq}
+  {\bigg|\bigcup_{b\in B'}\phi(A\,;b)\bigg|.}
 
-   (\ssf{2}$\IMP$\ssf{1})
-   Reason by induction on the cardinality of $B$.
-   If $B$ is empty, the claim is clear.
-   Now assume $|B|>0$ and consider two cases.
+  (\ssf{2}$\IMP$\ssf{1})
+  Reason by induction on the cardinality of $B$.
+  If $B$ is empty, the claim is clear.
+  Now assume $|B|>0$ and consider two cases.
 
-   \begin{itemize}
-   \item[a.]
-   This is the case when the inequality in \ssf{2} is strict for all $B'\subseteq B$. 
-   Pick any pair $a,b\in A,B$ such that $\phi(a\,;b)$. 
-   Then $\phi(A\sm\{a\}\,; B\sm\{b\})$ still satisfy \ssf{2}.
-   By induction hypothesis, it has a set of distinct representatives $A'$.
-   Then $A'\cup\{a\}$ is a set of distinct representatives for $\phi(A\,;B)$.
+  \begin{itemize}
+    \item[a.]
+    This is the case when the inequality in \ssf{2} is strict for all $B'\subseteq B$. 
+    Pick any pair $a,b\in A,B$ such that $\phi(a\,;b)$. 
+    Then $\phi(A\sm\{a\}\,; B\sm\{b\})$ still satisfy \ssf{2}.
+    By induction hypothesis, it has a set of distinct representatives $A'$.
+    Then $A'\cup\{a\}$ is a set of distinct representatives for $\phi(A\,;B)$.
 
-   
-   \item[b.]
-   Suppose instead that for some $B'\subseteq B$ the inequality in \ssf{2} holds with equality.
-   Define
+    
+    \item[b.]
+    Suppose instead that for some $B'\subseteq B$ the inequality in \ssf{2} holds with equality.
+    Define
 
-   \ceq{\hfill A'}{=}{\bigcup_{b\in B'}\phi(A\,;b)}
-   
-   It is clear that \ssf{2} holds for $\phi(A';B')$.
-   Below we prove that \ssf{2} also holds for $\phi(A{\sm} A'\,;\,{B\sm} B')$.
-   Once this claim is proved, we apply the induction hypothesis to obtain sets of distinct representatives for these two relations and note that their union is a set of distinct representatives for $\phi(A\,;B)$.
+    \ceq{\hfill A'}
+    {=}
+    {\bigcup_{b\in B'}\phi(A\,;b)}
+    
+    It is clear that \ssf{2} holds for $\phi(A';B')$.
+    Below we prove that \ssf{2} also holds for $\phi(A{\sm} A'\,;\,{B\sm} B')$.
+    Once this claim is proved, we apply the induction hypothesis to obtain sets of distinct representatives for these two relations and note that their union is a set of distinct representatives for $\phi(A\,;B)$.
 
-   To prove the claim assume that there is a set $B''\,\subseteq\ B\sm B'$ that contradicts \ssf{2}, then
+    To prove the claim assume that there is a set $B''\,\subseteq\ B\sm B'$ that contradicts \ssf{2}, then
 
-   \ceq{\hfill\bigg|\bigcup_{b\in B''}\phi(A{\sm} A'\,;\,b)\bigg|}{<}{|B''|.}
+    \ceq{\hfill\bigg|\bigcup_{b\in B''}\phi(A{\sm} A'\,;\,b)\bigg|}
+    {<}
+    {|B''|.}
 
-   By the definition of $A',B'$
+    By the definition of $A',B'$
 
-   \ceq{\hfill \bigcup_{b\in B'\cup B''}\phi(A\,;b)}
-   {=}
-   {\bigcup_{b\in B'}\phi(A\,;b)\ \ \cup\ \ \bigcup_{b\in B''}\phi(A\,;b)}
+    \ceq{\hfill \bigcup_{b\in B'\cup B''}\phi(A\,;b)}
+    {=}
+    {\bigcup_{b\in B'}\phi(A\,;b)\ \ \cup\ \ \bigcup_{b\in B''}\phi(A\,;b)}
 
-   \ceq{}{=}{\phantom{\bigcup_{b\in B'}\phi(A\,;b)}\llap{$A'$\kern4ex}\ \ \cup\ \ \bigcup_{b\in B''}\phi(A\,;b)}
+    \ceq{}
+    {=}
+    {\phantom{\bigcup_{b\in B'}\phi(A\,;b)}\llap{$A'$\kern4ex}\ \ \cup\ \ \bigcup_{b\in B''}\phi(A\,;b)}
 
-   \ceq{}{=}{\phantom{\bigcup_{b\in B'}\phi(A\,;b)}\llap{$A'$\kern4ex}\ \ \cup\ \ \bigcup_{b\in B''}\phi(A{\sm} A'\,;b)}
+    \ceq{}
+    {=}
+    {\phantom{\bigcup_{b\in B'}\phi(A\,;b)}\llap{$A'$\kern4ex}\ \ \cup\ \ \bigcup_{b\in B''}\phi(A{\sm} A'\,;b)}
 
-   The two sets above are disjunct, hence 
+    The two sets above are disjunct, hence 
 
-   \ceq{\hfill\bigg|\bigcup_{b\in B'\cup B''}\phi(A\,;b)\bigg|}{>}{|A'|+|B''|}
+    \ceq{\hfill\bigg|\bigcup_{b\in B'\cup B''}\phi(A\,;b)\bigg|}
+    {>}
+    {|A'|+|B''|}
 
-   As $|A'|=|B'|$ By the choice of $A',B'$, we obtain that $B'\cup B''$ contradicts the inequality in \ssf{2}.
-   This prove the claim and with it the theorem.
-   \end{itemize}\vspace*{-4ex}
+    As $|A'|=|B'|$, by the choice of $A',B'$, we obtain that $B'\cup B''$ contradicts the inequality in \ssf{2}.
+    This prove the claim and with it the theorem.
+  \end{itemize}\vspace*{-4ex}
 \end{proof}
-
-
-
 
 %%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%
