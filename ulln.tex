@@ -243,7 +243,7 @@ Clearly, the two inequalities above imply the following
 
 
 We prove Hoeffding's lemma with a slightly weaker bound ($2$ for $8$).
-The purpose is to present a clever trick called \textit{symmetrization\/} which in the following section is applied in a more complex setting.
+The purpose is to present two clever tricks  \textit{ghost sample\/} and \textit{symmetrization\/} which in the following section is applied in a more complex setting.
 
 First we need the following lemma.
 A \emph{random sign variable\/} (a.k.a.\@ Rademacher random variable) is a random variable $\sigma\in\{-1,1\}$ with mean $0$.
@@ -289,11 +289,11 @@ A \emph{random sign variable\/} (a.k.a.\@ Rademacher random variable) is a rando
   
   \ceq{\hfill\Ex\Big[e^{t(X-\mu)}\Big]}
   {\le}
-  {\exp{\Big(\frac{t^2d^2}8}\Big).}
+  {\exp{\Big(\frac{t^2d^2}8}\Big),}
 
   where $\Ex[X]=\mu$ and $d=b-a$.
 
-  Let $X'$ be an independent copy of $X$.
+  Let $X'$ be an independent copy of $X$ (a.k.a.\@ ghost sample).
   In particular $\mu=\Ex(X')$.
   Then
 
@@ -360,14 +360,11 @@ To a sample $s$ of size $n$ we associate a finite probability measure on the sub
 {=}
 {\frac1n\cdot \big|\big\{i\ :\ s_i\in A\big\}\big|.}
 
-It is convenient to rewrite it using indicator functions.
-Write $\Indicator_{A$ for the indicator function of $A$.
-That is, $\Indicator_As_i=1$ if $s_i\in A$, otherwise $\Indicator_As_i=0$.
-Then
+It is convenient to rewrite it using indicator functions
 
 \ceq{\hfill \Fr(s,A)}
 {=}
-{\frac1n\sum^n_{i=1}\Indicator_As_i.}
+{\frac1n\sum^n_{i=1}\Indicator_{s_i\in A}.}
 
 We are interested in the \textit{existence\/} of samples that approximate the probability within $\epsilon$. Suppose that for a given $A$ we can prove that
 
@@ -379,11 +376,11 @@ Then the required sample is guaranteed to exit.
 Random variables are a more convenient formalism to estimate these probabilities.
 Let $S=S_1,\dots,S_n$ be \emph{independent random elements\/} of $\Omega$, that is, random variables such that $\Pr(S_i\in A)=\Pr(A)$ for every $A\subseteq\Omega$.
 Write $\Indicator_A$ for the indicator function of $A$. 
-Then $\Indicator_A\smallcirc S_i$ as a Bernoulli random variable with probability of success $\Pr(A)$ and 
+Then $\Indicator_{S_i\in A}$ as a Bernoulli random variable with probability of success $\Pr(A)$ and 
 
 \ceq{\hfill \Fr(S,A)}
 {=}
-{\frac1n\sum^n_{i=1}\Indicator_A\smallcirc S_i}
+{\frac1n\sum^n_{i=1}\Indicator_{S_i\in A}}
 
 is a binomial random variable (up to the factor $1/n$).
 
@@ -450,9 +447,9 @@ This is obtained with a similar proof.
   
   \ceq{\hfill M}
   {=}
-  {\sum^n_{i=1}\Big(\Indicator_A\smallcirc S_i-\Ex[\Indicator_A\smallcirc S_i]\Big)}
+  {\sum^n_{i=1}\Big(\Indicator_{S_i\in A}-\Ex[\Indicator_{S_i\in A}]\Big)}
 
-  As $\Ex[\Indicator_A\smallcirc S_i]=\Pr(A)$, the inequality we have to prove can be rewritten as 
+  As $\Ex[\Indicator_{S_i\in A}]=\Pr(A)$, the inequality we have to prove can be rewritten as 
 
   \ceq{\hfill 2\, e^{-2n\epsilon^2}}
   {\ge}
@@ -495,6 +492,10 @@ It is convenient to introduce some abbreviations
 {=}
 {\Fr\Big(s,\phi(\Omega\,;b)\Big)}
 
+\ceq{\hfill\Indicator_{s,b}}
+{=}
+{\Indicator_{\phi(s;b)}}
+
 An \emph{$\epsilon$-approximation\/} is a sample $s$ such that
 
 \ceq{\hfill\Big|\Fr(s,b) -\Pr(b)\Big|}
@@ -523,7 +524,7 @@ N.B. Some technical hypothesis of measurability are necessary when $\phi(\Omega\
 Before embarking of the proof of the theorem above, we prove the following (easy though mysterious) lemma, which also has independent interest.
 
 \begin{lemma}\label{lem_mistero}
-  Let $X_1,\dots,X_m$ be real valued random variables (the sample space $\Omega,\Pr$ is arbitrary).
+  Let $X_1,\dots,X_m$ be real valued random variables.
   Let $c$ be such that 
 
   \ceq{\hfill\Ex\big[e^{tX_i}\big]}
@@ -609,37 +610,37 @@ Then
 
 \ceq{\hfill\big|\Fr(S,b) - \Fr(S',b)\big|}
 {=}
-{\frac1n\bigg|\sum^n_{i=1} \Big(\Indicator_b\smallcirc S_i -  \Indicator_b\smallcirc S'_i\Big)\bigg|}
+{\frac1n\bigg|\sum^n_{i=1} \Big(\Indicator_{S_i,b} -  \Indicator_{S'_i,b}\Big)\bigg|}
 
 Let $\sigma=\sigma_1,\dots,\sigma_n$ be a tuple of independent sign random variable.
-The random variable $\Indicator_b\smallcirc S_i -  \Indicator_b\smallcirc S'_i$ has the same distribution of $\sigma_i\big(\Indicator_b\smallcirc S_i -  \Indicator_b\smallcirc S'_i\big)$ hence
+The random variable $\Indicator_{S_i,b} -  \Indicator_{S'_i,b}$ has the same distribution of $\sigma_i\big(\Indicator_{S_i,b} -  \Indicator_{S'_i,b}\big)$ hence
 
 \ceq{}
 {=}
-{\frac1n\Ex\bigg|\sum^n_{i=1} \sigma_i\Big(\Indicator_b\smallcirc S_i -  \Indicator_b\smallcirc S'_i\Big)\ \Big|\ S,S'\bigg|}
+{\frac1n\Ex\bigg|\sum^n_{i=1} \sigma_i\Big(\Indicator_{S_i,b} -  \Indicator_{S'_i,b}\Big)\ \Big|\ S,S'\bigg|}
 
 Inserting this into (1) we obtain
 
-% \ceq{\hfill\sup_{b\in\V}\Ex\bigg|\sum^n_{i=1} \sigma_i\big(\Indicator_b\,s_i -  \Indicator_b\,s'_i\big)\bigg|}
+% \ceq{\hfill\sup_{b\in\V}\Ex\bigg|\sum^n_{i=1} \sigma_i\big(\Indicator_{s_i,b} -  \Indicator_{s'_i,b}\big)\bigg|}
 % {}
 % {}
 
 \ceq{\hfill\Ex\Big[\sup_{b\in\V}\big|\Fr(S,b) - \Pr(b)\big|\Big]}
 {\le}
-{\frac1n\,\Ex\bigg[\sup_{b\in\V}\Ex\bigg|\sum^n_{i=1} \sigma_i\Big(\Indicator_b\smallcirc S_i -  \Indicator_b\smallcirc S'_i\Big)\ \Big|\ S,S'\bigg|\bigg]}
+{\frac1n\,\Ex\bigg[\sup_{b\in\V}\Ex\bigg|\sum^n_{i=1} \sigma_i\Big(\Indicator_{S_i,b} -  \Indicator_{S'_i,b}\Big)\ \Big|\ S,S'\bigg|\bigg]}
 
 Let $s,s'$ be a generic realization of $S,S'$
 
 
 \ceq{}
 {\le}
-{\frac1n\,\sup_{s,s'}\,\sup_{b\in\V}\Ex\bigg|\sum^n_{i=1} \sigma_i\big(\Indicator_b\,s_i -  \Indicator_b\,s'_i\big)\bigg|}
+{\frac1n\,\sup_{s,s'}\,\sup_{b\in\V}\Ex\bigg|\sum^n_{i=1} \sigma_i\big(\Indicator_{s_i,b} -  \Indicator_{s'_i,b}\big)\bigg|}
 
 and, by what remarked in (2)
 
 \ceq{}
 {\le}
-{\frac1n\,\sup_{s,s'}\Ex\bigg[\sup_{b\in\V}\bigg|\sum^n_{i=1} \sigma_i\big(\Indicator_b\,s_i -  \Indicator_b\,s'_i\big)\bigg|\bigg]}
+{\frac1n\,\sup_{s,s'}\Ex\bigg[\sup_{b\in\V}\bigg|\sum^n_{i=1} \sigma_i\big(\Indicator_{s_i,b} -  \Indicator_{s'_i,b}\big)\bigg|\bigg]}
 
 
 Observe that once $s,s'$ is fixed, $\sup_{b\in\V}$ is actually a maximum among $\pi_\phi(2n)$ sets, in fact, $\pi_\phi(2n)$ is the number of definable subsets of $A=\{s_1,\dots,s_n,s'_1,\dots,s'_n\}$.
@@ -657,15 +658,15 @@ Finally, as the r.h.s.\@ does not depend on $s,s'$,
 
 The Vapnik-Chervonenkis inequality is proved if we can show the assumption of Lemma~\ref{lem_mistero} holds with $c=\sqrt{n}$.
 
-\ceq{\hfill\Ex\bigg[\exp\bigg(t\sum^n_{i=1} \sigma_i\big(\Indicator_b\,s_i -  \Indicator_b\,s'_i\big)\bigg)\bigg]}
+\ceq{\hfill\Ex\bigg[\exp\bigg(t\sum^n_{i=1} \sigma_i\big(\Indicator_{s_i,b} -  \Indicator_{s'_i,b}\big)\bigg)\bigg]}
 {=}
-{\prod^n_{i=1} \Ex\bigg[\exp\Big(t\,\sigma_i\big(\Indicator_b\,s_i -  \Indicator_b\,s'_i\big)\Big)\bigg]}
+{\prod^n_{i=1} \Ex\bigg[\exp\Big(t\,\sigma_i\big(\Indicator_{s_i,b} -  \Indicator_{s'_i,b}\big)\Big)\bigg]}
 
-As $\sigma_i\big(\Indicator_b\,s_i -  \Indicator_b\,s'_i\big)$ takes values in $\{-1,1\}$ with mean $0$, by Lemma~\ref{lem_sign}
+As $\sigma_i\big(\Indicator_{s_i,b} -  \Indicator_{s'_i,b}\big)$ takes values in $\{-1,1\}$ with mean $0$, by Lemma~\ref{lem_sign}
 
 \ceq{}
 {\le}
 {e^{nt^2/2}}
 
-and the same holds for $-\sigma_i\big(\Indicator_b\,s_i -  \Indicator_b\,s'_i\big)$.\QED
+and the same holds for $-\sigma_i\big(\Indicator_{s_i,b} -  \Indicator_{s'_i,b}\big)$.\QED
 \end{document}
