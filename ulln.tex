@@ -9,7 +9,7 @@
 \def\medrel#1{\parbox[t]{5ex}{$\displaystyle\hfil #1$}}
 \def\ceq#1#2#3{\parbox[t]{20ex}{$\displaystyle #1$}\medrel{#2}{$\displaystyle #3$}}
 
-Quoting some notes by Carlos C.~Rodr\'iguez
+Quoting from some unpublished notes by Carlos C.~Rodr\'iguez
 
 \begin{quotation}\parindent0mm\parskip1ex\noindent
 What is a Law of Large Numbers?
@@ -41,9 +41,8 @@ books and indoctrinated generations of confused students.
 
 Throughout this and the next section we work with a given sample space $\Omega,\Pr$.
 For simplicity, the following two propositions are proved for finite $\Omega$, but they are easily seen to hold in  general.
-The finiteness will be an essential hypothesis In Section~\ref{uniform}.
 
-A function $f:\RR\to\RR$ is \emph{convex\/} if for every tuples of real numbers $p_i$ and $x_i$ such that
+\begin{definition}A function $f:\RR\to\RR$ is \emph{convex\/} if for every tuples of real numbers $p_i$ and $x_i$ such that
 
 \ceq{\hfill\sum^n_{i=1}p_i}
 {=}
@@ -53,7 +52,8 @@ we have
 
 \ceq{\hfill f\bigg(\sum^n_{i=1}p_ix_i\bigg)}
 {\le}
-{\sum^n_{i=1}p_if(x_i)}\smallskip
+{\sum^n_{i=1}p_if(x_i).}\QED
+\end{definition}
 
 Note that, though the definition is usually given with $n=2$, the general property above follows easily.
 
@@ -246,11 +246,10 @@ We prove Hoeffding's lemma with a slightly weaker bound ($2$ for $8$).
 The purpose is to present a clever trick called \textit{symmetrization\/} which in the following section is applied in a more complex setting.
 
 First we need the following lemma.
-
+A \emph{random sign variable\/} (a.k.a.\@ Rademacher random variable) is a random variable $\sigma\in\{-1,1\}$ with mean $0$.
 
 \begin{lemma}\label{lem_sign}
-  Let $\sigma$ be a random sign variable (a.k.a.\@ Rademacher random variable).
-  That is, $\sigma\in\{-1,1\}$ with uniform distribution.
+  Let $\sigma$ be a random sign variable.
   Then for every $t>0$
 
   \ceq{\hfill\Ex\Big[e^{t\sigma}\Big]}
@@ -343,35 +342,57 @@ This yields the bound above (only with 2 in place of 8).\QED
 %%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%
 \section{Two Weak Laws of Large Numbers}\label{samples}
+\def\medrel#1{\parbox[t]{5ex}{$\displaystyle\hfil #1$}}
+\def\ceq#1#2#3{\parbox[t]{34ex}{$\displaystyle #1$}\medrel{#2}{$\displaystyle #3$}}
 
 \def\smallcirc{\mathord{\kern-.2ex\raisebox{.4ex}{$\scriptscriptstyle\circ$}}}
 \def\Indicator{{\mathds I}}
 
 
-A \emph{sample\/} $s$ is a sequence $s_0,\dots,s_{n-1}$ of elements of $\Omega$.
+A \emph{sample\/} $s$ is a sequence $s_1,\dots,s_n$ of elements of $\Omega$.
 Its length $|s|=n$ is also called \emph{size\/} or \emph{dimension.}
-We write $\range(s)$ for the set $\{s_0,\dots,s_{n-1}\}$.
+We write $\range(s)$ for the set $\{s_1,\dots,s_n\}$.
 Note that this set may have cardinality $<n$.
 
-To a sample $s$ of size $n$ we associate a finite probability measure on the subsets of $\Omega$, namely for any $A\subseteq\Omega$ we define 
+To a sample $s$ of size $n$ we associate a finite probability measure on the subsets of $\Omega$, namely for any event $A\subseteq\Omega$ we define the empirical frequence of $A$ given $s$
 
 \ceq{\hfill\emph{$\displaystyle\Fr\big(s, A\big)$}}
 {=}
-{\frac1n\cdot \big|\big\{i<n\ :\ s_i\in A\big\}\big|.}
+{\frac1n\cdot \big|\big\{i\ :\ s_i\in A\big\}\big|.}
 
-Let $S=S_1,\dots,S_n$ be independent random elements of $\Omega$, that is, random variables such that $\Pr(S_i\in A)=\Pr(A)$ for every $A\subseteq\Omega$.
+It is convenient to rewrite it using indicator functions.
+Write $\Indicator_{A$ for the indicator function of $A$.
+That is, $\Indicator_As_i=1$ if $s_i\in A$, otherwise $\Indicator_As_i=0$.
+Then
+
+\ceq{\hfill \Fr(s,A)}
+{=}
+{\frac1n\sum^n_{i=1}\Indicator_As_i.}
+
+We are interested in the \textit{existence\/} of samples that approximate the probability within $\epsilon$. Suppose that for a given $A$ we can prove that
+
+\ceq{\hfill\Pr \Big(s\in\Omega^n:\, \big|\Fr(s,A) - \Pr(A) \big|\ge\epsilon\Big)}{\le}{\textrm{some\_bound}(\epsilon,n)}
+
+and that, for $n$ large enough, some\_bound$(\epsilon,n)<1$.
+Then the required sample is guaranteed to exit.
+
+Random variables are a more convenient formalism to estimate these probabilities.
+Let $S=S_1,\dots,S_n$ be \emph{independent random elements\/} of $\Omega$, that is, random variables such that $\Pr(S_i\in A)=\Pr(A)$ for every $A\subseteq\Omega$.
 Write $\Indicator_A$ for the indicator function of $A$. 
-Then $\Indicator_A\smallcirc S_i$ as a Bernoulli random variable with probability of success $\Pr(A)$.
-Moreover
+Then $\Indicator_A\smallcirc S_i$ as a Bernoulli random variable with probability of success $\Pr(A)$ and 
 
-\ceq{\hfill \Fr(S,A)}{=}{\frac1n\sum^n_{i=1}\Indicator_A\smallcirc S_i.}
+\ceq{\hfill \Fr(S,A)}
+{=}
+{\frac1n\sum^n_{i=1}\Indicator_A\smallcirc S_i}
+
+is a binomial random variable (up to the factor $1/n$).
 
 \begin{void_thm}[Weak Law of Large Numbers]
   For every event $A\subseteq\Omega$ and every $n>0$
   
-  \ceq{\hfill \frac1{n\epsilon^2}}
-  {\ge}
-  {\Pr \Big(s\in\Omega^n\ :\ \big|\Fr(s,A) - \Pr(A)  \big|\ge\epsilon\Big).}
+  \ceq{\hfill\Pr\Big(\big|\Fr(s,A) - \Pr(A)  \big|\ge\epsilon\Big)}
+  {\le}
+  {\frac1{n\epsilon^2}.}
 \end{void_thm}
 
 
@@ -381,9 +402,9 @@ Moreover
   Therefore it has expected value $\Pr(A)$ and  variance $\le1/n$. 
   By Chebyshev's inequality we obtain 
   
-  \ceq{\hfill \frac1{n\epsilon^2}}
-  {\ge}
-  {\Pr\Big(\big|\Fr(S,A) - \Pr(A)\big|\ge\epsilon\Big)}
+  \ceq{\hfill\Pr\Big(\big|\Fr(S,A) - \Pr(A)\big|\ge\epsilon\Big)}
+  {\le}
+  {\frac1{n\epsilon^2}}
 
   which proves the theorem.
 \end{proof}
@@ -391,6 +412,7 @@ Moreover
 Sometime we are interested in the minimal size of a sample that approximates the probability up to a given $\epsilon$.
 
 \begin{corollary}\label{corl_wlln}
+  Assume $\Omega$ is finite (of arbitrary cardinality, tough).
   For every $A\subseteq\Omega$ and every $\epsilon>0$ there is a sample $s$ of size
 
   \ceq{\hfill |s|}
@@ -399,16 +421,16 @@ Sometime we are interested in the minimal size of a sample that approximates the
       
   such that
 
-  \ceq{\hfill\epsilon}{>}{\Big|\Fr(s,A) - \Pr(A) \Big|.}
+  \ceq{\hfill\Big|\Fr(s,A) - \Pr(A) \Big|}{<}{\epsilon.}
 \end{corollary}
 
 
 \begin{proof}
   By the Weak Law of Large Numbers above, a sample of size $n$ exists if
 
-  \ceq{\hfill 1}
-      {>}
-      {\frac1{n\epsilon^2}}
+  \ceq{\hfill\frac1{n\epsilon^2}}
+      {<}
+      {1}
 \end{proof}
 
 In the following section we need a better bound for the Weak Law of Large Numbers.
@@ -461,11 +483,9 @@ Using the exponential bounds above, we can improve (by a constant factor) the si
 %%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%
 \section{The Uniform Law of Large Numbers}\label{uniform}
-\def\medrel#1{\parbox[t]{5ex}{$\displaystyle\hfil #1$}}
-\def\ceq#1#2#3{\parbox[t]{35ex}{$\displaystyle #1$}\medrel{#2}{$\displaystyle #3$}}
 
-In this section we work with a fixed formula $\phi(x\,;z)$ and with the family of definable subsets $\phi(\Omega\,;b)_{b\in\V}$ of a given finite sample space $\Omega,\Pr$.
-It is convenient to introduce e some abbreviations
+Thoughtout this section we work with some fixed formula $\phi(x\,;z)$ and with a the family of definable subsets $\phi(\Omega\,;b)_{b\in\V}$ that are events of the sample space $\Omega,\Pr$.
+It is convenient to introduce some abbreviations
 
 \ceq{\hfill \Pr(b)}
 {=}
@@ -485,9 +505,8 @@ An \emph{$\epsilon$-approximation\/} is a sample $s$ such that
 We are interested in estimating the minimal size of an $\epsilon$-approximation.
 
 The main theorem of this section is this famous result of Vapnik-Chervonenkis~\cite{VC}.
-Following Devroye and Lugosi~\cite{DL}, we prove a slightly better bound.
+Following Devroye and Lugosi~\cite{DL}, we prove a slightly different inequality.
  
-
 \begin{void_thm}[Vapnik-Chervonenkis inequality]\label{VC_inequality}
   Let $\pi_\phi(n)$ be the shatter function of $\phi(\Omega\,;b)_{b\in\V}$.
   Let $S=S_1,\dots,S_n$ be independent random elements of $\Omega$.
@@ -495,18 +514,21 @@ Following Devroye and Lugosi~\cite{DL}, we prove a slightly better bound.
 
   \ceq{\hfill\Ex\,\Big|\Fr(S,b) - \Pr(b)\Big|}
   {<}
-  {2\sqrt{\frac{\log\;2\pi_\phi(2n)}{n}}}.\QED
+  {2\sqrt{\frac{\log\;2\,\pi_\phi(2n)}{n}}}.\QED
 \end{void_thm}
 
-Before embarking of the proof of the theorem above, we prove the following easy but mysterious lemma which is of independent interest.
+N.B. Some technical hypothesis of measurability are necessary when $\phi(\Omega\,;b)_{b\in\V}$ is uncountable. This have been omitted in the statement above, and will be discussed below.
+
+
+Before embarking of the proof of the theorem above, we prove the following (easy though mysterious) lemma, which also has independent interest.
 
 \begin{lemma}\label{lem_mistero}
-  Let $X_1,\dots,X_m$ real valued random variable (the sample space $\Omega,\Pr$ is arbitrary).
+  Let $X_1,\dots,X_m$ be real valued random variables (the sample space $\Omega,\Pr$ is arbitrary).
   Let $c$ be such that 
 
   \ceq{\hfill\Ex\big[e^{tX_i}\big]}
   {\le}
-  {e^{t^2c^2/2}}
+  {e^{c^2t^2/2}}
   \hfill for every $i\le m$ and every $t>0$.
 
   Then 
@@ -514,6 +536,19 @@ Before embarking of the proof of the theorem above, we prove the following easy 
   \ceq{\hfill\Ex\big[\max_{i\le m} X_i\big]}
   {\le}
   {c\sqrt{2\log m}}.
+
+If in addition
+
+\ceq{\hfill\Ex\big[e^{-tX_i}\big]}
+{\le}
+{e^{c^2t^2/2}}
+\hfill for every $i\le m$ and every $t>0$,
+
+then 
+
+\ceq{\hfill\Ex\big[\max_{i\le m} |X_i|\big]}
+{\le}
+{c\sqrt{2\log(2m)}}.
 \end{lemma}
 
 \begin{proof}
@@ -537,9 +572,12 @@ Before embarking of the proof of the theorem above, we prove the following easy 
 
   \ceq{}
   {=}
-  {m\,nullae^{t^2c^2/2}}
+  {m\,e^{c^2t^2/2}}
 
-The lemma is obtained taking the logarithm and substituting $t=\dfrac{\sqrt{2\log m}}{c}$.
+Taking the logarithm of both sides and replacing $t$ with \smash{$\dfrac{\sqrt{2\log m}}{c}$}, we obtain the first inequality of the lemma.
+
+To prove the second inequality, apply the first one to $X_1,\dots,X_m, -X_1,\dots,-X_m$.
+(N.B. note independence is not assumed.)
 \end{proof}
 
 \textbf{Proof of the Vapnik-Chervonenkis inequality}
@@ -562,11 +600,11 @@ In fact,
 
 Now, apply Jensen's inequality to the absolute value function, then use that 
 
-\ceq{\hfill\sup_{b\in\V}\Ex\big[\cdots\big]}
+\ceq{(2)\hfill\sup_{b\in\V}\Ex\big[\cdots\big]}
 {\le}
 {\Ex\big[\sup_{b\in\V}(\cdots)\big].}
 
-Write $\Indicator_b$ for the indicator function of $\phi(\Omega)$.
+Write $\Indicator_b$ for the indicator function of $\phi(\Omega\,;b)$.
 Then
 
 \ceq{\hfill\big|\Fr(S,b) - \Fr(S',b)\big|}
@@ -597,24 +635,27 @@ Let $s,s'$ be a generic realization of $S,S'$
 {\le}
 {\frac1n\,\sup_{s,s'}\,\sup_{b\in\V}\Ex\bigg|\sum^n_{i=1} \sigma_i\big(\Indicator_b\,s_i -  \Indicator_b\,s'_i\big)\bigg|}
 
+and, by what remarked in (2)
+
 \ceq{}
 {\le}
 {\frac1n\,\sup_{s,s'}\Ex\bigg[\sup_{b\in\V}\bigg|\sum^n_{i=1} \sigma_i\big(\Indicator_b\,s_i -  \Indicator_b\,s'_i\big)\bigg|\bigg]}
 
-Observe that once $s,s'$ is fixed, $\sup_{b\in\V}$ is actually a maximum among $m=\pi_\phi(2n)$ sets, that is,the definable subsets of $\{s_1,\dots,s_n,s'_1,\dots,s'_n\}$.
-Then, by Lemma~\ref{lem_mistero}, for the appropiate $c$ we obtain
+
+Observe that once $s,s'$ is fixed, $\sup_{b\in\V}$ is actually a maximum among $\pi_\phi(2n)$ sets, in fact, $\pi_\phi(2n)$ is the number of definable subsets of $A=\{s_1,\dots,s_n,s'_1,\dots,s'_n\}$.
+Then, by Lemma~\ref{lem_mistero} (the second inequality, with $m =\pi_\phi(2n)$ and $i$ ranging over the definable subsets of $A$), for an appropriate constant $c$,
 
 \ceq{}
 {\le}
-{\frac1n\,\sup_{s,s'}c\sqrt{2\log 2\pi_\phi(2n)}.}
+{\frac1n\,\sup_{s,s'}c\sqrt{2\log\big( 2\,\pi_\phi(2n)\big)}.}
 
-Finally, as the l.h.s.\@ does not depend on $s,s'$
+Finally, as the r.h.s.\@ does not depend on $s,s'$,
 
 \ceq{}
 {\le}
 {\frac{c}n\sqrt{2\log\big(2\,\pi_\phi(2n)\big).}}
 
-We are only left with proving that the assumption of Lemma~\ref{lem_mistero} holds with $c=\sqrt{n}$.
+The Vapnik-Chervonenkis inequality is proved if we can show the assumption of Lemma~\ref{lem_mistero} holds with $c=\sqrt{n}$.
 
 \ceq{\hfill\Ex\bigg[\exp\bigg(t\sum^n_{i=1} \sigma_i\big(\Indicator_b\,s_i -  \Indicator_b\,s'_i\big)\bigg)\bigg]}
 {=}
@@ -624,5 +665,7 @@ As $\sigma_i\big(\Indicator_b\,s_i -  \Indicator_b\,s'_i\big)$ takes values in $
 
 \ceq{}
 {\le}
-{e^{nt^2/2}.}\QED
+{e^{nt^2/2}}
+
+and the same holds for $-\sigma_i\big(\Indicator_b\,s_i -  \Indicator_b\,s'_i\big)$.\QED
 \end{document}
