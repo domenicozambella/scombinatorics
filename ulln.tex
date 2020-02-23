@@ -28,7 +28,7 @@ Bull! The Devil, is in the details.
 
 I suspect that for reasons not too different in spirit to the ones above, famous
 minds of the past took the slippery slope of defining probabilities as the limits
-of relative frequencies. They became known as “frequentists”. They wrote
+of relative frequencies. They became known as ``frequentist''. They wrote
 books and indoctrinated generations of confused students.
 \end{quotation}
 
@@ -366,16 +366,17 @@ It is convenient to rewrite it using indicator functions
 {=}
 {\frac1n\sum^n_{i=1}\Indicator_{s_i\in A}.}
 
-We are interested in the \textit{existence\/} of samples that approximate the probability within $\epsilon$. Suppose that for a given $A$ we can prove that
+We are interested in the \textit{existence\/} of samples that approximate the probability within $\epsilon$.
+Suppose that, for a given event $A$, we can prove that
 
 \ceq{\hfill\Pr \Big(s\in\Omega^n:\, \big|\Fr(s,A) - \Pr(A) \big|\ge\epsilon\Big)}{\le}{\textrm{some\_bound}(\epsilon,n)}
 
 and that, for $n$ large enough, some\_bound$(\epsilon,n)<1$.
-Then the required sample is guaranteed to exit.
+Then a sample of size $\le n$ sample is guaranteed to exit.
 
-Random variables are a more convenient formalism to estimate these probabilities.
+Random variables are convenient formalism to discuss these probabilities.
 Let $S=S_1,\dots,S_n$ be \emph{independent random elements\/} of $\Omega$, that is, random variables such that $\Pr(S_i\in A)=\Pr(A)$ for every $A\subseteq\Omega$.
-Write $\Indicator_A$ for the indicator function of $A$. 
+Write $\Indicator_A$ for the indicator function of $A$.
 Then $\Indicator_{S_i\in A}$ as a Bernoulli random variable with probability of success $\Pr(A)$ and 
 
 \ceq{\hfill \Fr(S,A)}
@@ -578,7 +579,7 @@ then
 Taking the logarithm of both sides and replacing $t$ with \smash{$\dfrac{\sqrt{2\log m}}{c}$}, we obtain the first inequality of the lemma.
 
 To prove the second inequality, apply the first one to $X_1,\dots,X_m, -X_1,\dots,-X_m$.
-(N.B. note independence is not assumed.)
+(N.B. note that independence is not assumed.)
 \end{proof}
 
 \textbf{Proof of the Vapnik-Chervonenkis inequality}
