@@ -8,4 +8,4 @@ These are some aberrant notes on combinatorics.
 
 They may be aberrant also for other reasons that I am not aware of.
 
-N.B. The title is a pun intended for Italian speakers. 
+Finally, the title is a pun intended for Italian speakers. 
