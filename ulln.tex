@@ -31,7 +31,7 @@ minds of the past took the slippery slope of defining probabilities as the limit
 of relative frequencies. They became known as ``frequentist''. They wrote
 books and indoctrinated generations of confused students.
 \end{quotation}
-
+%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%
@@ -335,7 +335,7 @@ A \emph{random sign variable\/} (a.k.a.\@ Rademacher random variable) is a rando
   
 This yields the bound above (only with 2 in place of 8).\QED
 \end{void_def}
-
+%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%
@@ -344,10 +344,8 @@ This yields the bound above (only with 2 in place of 8).\QED
 \section{Two Weak Laws of Large Numbers}\label{samples}
 \def\medrel#1{\parbox[t]{5ex}{$\displaystyle\hfil #1$}}
 \def\ceq#1#2#3{\parbox[t]{34ex}{$\displaystyle #1$}\medrel{#2}{$\displaystyle #3$}}
-
-\def\smallcirc{\mathord{\kern-.2ex\raisebox{.4ex}{$\scriptscriptstyle\circ$}}}
+%\def\smallcirc{\mathord{\kern-.2ex\raisebox{.4ex}{$\scriptscriptstyle\circ$}}}
 \def\Indicator{{\mathds I}}
-
 
 A \emph{sample\/} $s$ is a sequence $s_1,\dots,s_n$ of elements of $\Omega$.
 Its length $|s|=n$ is also called \emph{size\/} or \emph{dimension.}
@@ -383,7 +381,7 @@ Then $\Indicator_{S_i\in A}$ as a Bernoulli random variable with probability of 
 {=}
 {\frac1n\sum^n_{i=1}\Indicator_{S_i\in A}}
 
-is a binomial random variable (up to the factor $1/n$).
+is (up to the factor $1/n$) a binomial random variable.
 
 \begin{void_thm}[Weak Law of Large Numbers]
   For every event $A\subseteq\Omega$ and every $n>0$
@@ -392,7 +390,6 @@ is a binomial random variable (up to the factor $1/n$).
   {\le}
   {\frac1{n\epsilon^2}.}
 \end{void_thm}
-
 
 \begin{proof}
   Let $S_1,\dots,S_n$ be independent random elements of $\Omega$.
@@ -421,7 +418,6 @@ Sometime we are interested in the minimal size of a sample that approximates the
 
   \ceq{\hfill\Big|\Fr(s,A) - \Pr(A) \Big|}{<}{\epsilon.}
 \end{corollary}
-
 
 \begin{proof}
   By the Weak Law of Large Numbers above, a sample of size $n$ exists if
@@ -459,7 +455,6 @@ This is obtained with a similar proof.
   and this follows immediately from Hoeffding inequality.
   \end{proof}
 
-
 Using the exponential bounds above, we can improve (by a constant factor) the size of the minimal sample size that approximates the probability obtained in Corollary~\ref{corl_wlln}.
 
 \begin{corollary}
@@ -473,8 +468,7 @@ Using the exponential bounds above, we can improve (by a constant factor) the si
 
   \ceq{\hfill\epsilon}{>}{\Big|\Fr(s,A) - \Pr(A) \Big|.}\QED
 \end{corollary}
-
-
+%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%
@@ -482,7 +476,7 @@ Using the exponential bounds above, we can improve (by a constant factor) the si
 %%%%%%%%%%%%%%%%%%%%%%%
 \section{The Uniform Law of Large Numbers}\label{uniform}
 
-Thoughtout this section we work with some fixed formula $\phi(x\,;z)$ and with a the family of definable subsets $\phi(\Omega\,;b)_{b\in\V}$ that are events of the sample space $\Omega,\Pr$.
+Throughout this section we work with some fixed formula $\phi(x\,;z)$ and with a the family of definable subsets $\phi(\Omega\,;b)_{b\in\V}$ that are events of the sample space $\Omega,\Pr$.
 It is convenient to introduce some abbreviations
 
 \ceq{\hfill \Pr(b)}
@@ -539,18 +533,18 @@ Before embarking of the proof of the theorem above, we prove the following (easy
   {\le}
   {c\sqrt{2\log m}}.
 
-If in addition
+  If in addition
 
-\ceq{\hfill\Ex\big[e^{-tX_i}\big]}
-{\le}
-{e^{c^2t^2/2}}
-\hfill for every $i\le m$ and every $t>0$,
+  \ceq{\hfill\Ex\big[e^{-tX_i}\big]}
+  {\le}
+  {e^{c^2t^2/2}}
+  \hfill for every $i\le m$ and every $t>0$,
 
-then 
+  then 
 
-\ceq{\hfill\Ex\big[\max_{i\le m} |X_i|\big]}
-{\le}
-{c\sqrt{2\log(2m)}}.
+  \ceq{\hfill\Ex\big[\max_{i\le m} |X_i|\big]}
+  {\le}
+  {c\sqrt{2\log(2m)}}.
 \end{lemma}
 
 \begin{proof}
@@ -576,98 +570,93 @@ then
   {=}
   {m\,e^{c^2t^2/2}}
 
-Taking the logarithm of both sides and replacing $t$ with \smash{$\dfrac{\sqrt{2\log m}}{c}$}, we obtain the first inequality of the lemma.
+  Taking the logarithm of both sides and replacing $t$ with \smash{$\dfrac{\sqrt{2\log m}}{c}$}, we obtain the first inequality of the lemma.
 
-To prove the second inequality, apply the first one to $X_1,\dots,X_m, -X_1,\dots,-X_m$.
-(N.B. note that independence is not assumed.)
+  To prove the second inequality, apply the first one to $X_1,\dots,X_m, -X_1,\dots,-X_m$.
+  (N.B. note that independence is not assumed.)
 \end{proof}
 
 \textbf{Proof of the Vapnik-Chervonenkis inequality}
-Let $S'=S'_1,\dots,S'_n$ be an independent copy of $S$.
-We claim that
+  Let $S'=S'_1,\dots,S'_n$ be an independent copy of $S$.
+  We claim that
 
-\ceq{(1)\hfill\Ex\Big[\sup_{b\in\V}\big|\Fr(S,b) - \Pr(b)\big|\Big]}
-{\le}
-{\Ex\Big[\sup_{b\in\V}\big|\Fr(S,b) - \Fr(S',b)\big|\Big]}
+  \ceq{(1)\hfill\Ex\Big[\sup_{b\in\V}\big|\Fr(S,b) - \Pr(b)\big|\Big]}
+  {\le}
+  {\Ex\Big[\sup_{b\in\V}\big|\Fr(S,b) - \Fr(S',b)\big|\Big]}
 
-In fact,
+  In fact,
 
-\ceq{\hfill\Fr(S,b) - \Pr(b)}
-{=}
-{\Fr(S,b) - \Ex\big[\Fr(S',b)\big]}
+  \ceq{\hfill\Fr(S,b) - \Pr(b)}
+  {=}
+  {\Fr(S,b) - \Ex\big[\Fr(S',b)\big]}
 
-\ceq{}
-{=}
-{\Ex\Big[\Fr(S,b) - \Fr(S',b)\ \big|\ S\Big].}
+  \ceq{}
+  {=}
+  {\Ex\Big[\Fr(S,b) - \Fr(S',b)\ \big|\ S\Big].}
 
-Now, apply Jensen's inequality to the absolute value function, then use that 
+  Now, apply Jensen's inequality to the absolute value function, then use that 
 
-\ceq{(2)\hfill\sup_{b\in\V}\Ex\big[\cdots\big]}
-{\le}
-{\Ex\big[\sup_{b\in\V}(\cdots)\big].}
+  \ceq{(2)\hfill\sup_{b\in\V}\Ex\big[\cdots\big]}
+  {\le}
+  {\Ex\big[\sup_{b\in\V}(\cdots)\big].}
 
-Write $\Indicator_b$ for the indicator function of $\phi(\Omega\,;b)$.
-Then
+  Write $\Indicator_b$ for the indicator function of $\phi(\Omega\,;b)$.
+  Then
 
-\ceq{\hfill\big|\Fr(S,b) - \Fr(S',b)\big|}
-{=}
-{\frac1n\bigg|\sum^n_{i=1} \Big(\Indicator_{S_i,b} -  \Indicator_{S'_i,b}\Big)\bigg|}
+  \ceq{\hfill\big|\Fr(S,b) - \Fr(S',b)\big|}
+  {=}
+  {\frac1n\bigg|\sum^n_{i=1} \Big(\Indicator_{S_i,b} -  \Indicator_{S'_i,b}\Big)\bigg|}
 
-Let $\sigma=\sigma_1,\dots,\sigma_n$ be a tuple of independent sign random variable.
-The random variable $\Indicator_{S_i,b} -  \Indicator_{S'_i,b}$ has the same distribution of $\sigma_i\big(\Indicator_{S_i,b} -  \Indicator_{S'_i,b}\big)$ hence
+  Let $\sigma=\sigma_1,\dots,\sigma_n$ be a tuple of independent sign random variable.
+  The random variable $\Indicator_{S_i,b} -  \Indicator_{S'_i,b}$ has the same distribution of $\sigma_i\big(\Indicator_{S_i,b} -  \Indicator_{S'_i,b}\big)$ hence
 
-\ceq{}
-{=}
-{\frac1n\Ex\bigg|\sum^n_{i=1} \sigma_i\Big(\Indicator_{S_i,b} -  \Indicator_{S'_i,b}\Big)\ \Big|\ S,S'\bigg|}
+  \ceq{}
+  {=}
+  {\frac1n\Ex\bigg|\sum^n_{i=1} \sigma_i\Big(\Indicator_{S_i,b} -  \Indicator_{S'_i,b}\Big)\ \Big|\ S,S'\bigg|}
 
-Inserting this into (1) we obtain
+  Inserting this into (1) we obtain
 
-% \ceq{\hfill\sup_{b\in\V}\Ex\bigg|\sum^n_{i=1} \sigma_i\big(\Indicator_{s_i,b} -  \Indicator_{s'_i,b}\big)\bigg|}
-% {}
-% {}
+  \ceq{\hfill\Ex\Big[\sup_{b\in\V}\big|\Fr(S,b) - \Pr(b)\big|\Big]}
+  {\le}
+  {\frac1n\,\Ex\bigg[\sup_{b\in\V}\Ex\bigg|\sum^n_{i=1} \sigma_i\Big(\Indicator_{S_i,b} -  \Indicator_{S'_i,b}\Big)\ \Big|\ S,S'\bigg|\bigg]}
 
-\ceq{\hfill\Ex\Big[\sup_{b\in\V}\big|\Fr(S,b) - \Pr(b)\big|\Big]}
-{\le}
-{\frac1n\,\Ex\bigg[\sup_{b\in\V}\Ex\bigg|\sum^n_{i=1} \sigma_i\Big(\Indicator_{S_i,b} -  \Indicator_{S'_i,b}\Big)\ \Big|\ S,S'\bigg|\bigg]}
+  Let $s,s'$ be a generic realization of $S,S'$
 
-Let $s,s'$ be a generic realization of $S,S'$
+  \ceq{}
+  {\le}
+  {\frac1n\,\sup_{s,s'}\,\sup_{b\in\V}\Ex\bigg|\sum^n_{i=1} \sigma_i\big(\Indicator_{s_i,b} -  \Indicator_{s'_i,b}\big)\bigg|}
 
+  and, by what remarked in (2)
 
-\ceq{}
-{\le}
-{\frac1n\,\sup_{s,s'}\,\sup_{b\in\V}\Ex\bigg|\sum^n_{i=1} \sigma_i\big(\Indicator_{s_i,b} -  \Indicator_{s'_i,b}\big)\bigg|}
+  \ceq{}
+  {\le}
+  {\frac1n\,\sup_{s,s'}\Ex\bigg[\sup_{b\in\V}\bigg|\sum^n_{i=1} \sigma_i\big(\Indicator_{s_i,b} -  \Indicator_{s'_i,b}\big)\bigg|\bigg]}
 
-and, by what remarked in (2)
+  Observe that once $s,s'$ is fixed, $\sup_{b\in\V}$ is actually a maximum among $\pi_\phi(2n)$ sets, in fact, $\pi_\phi(2n)$ is the number of definable subsets of $A=\{s_1,\dots,s_n,s'_1,\dots,s'_n\}$.
+  Then, by Lemma~\ref{lem_mistero} (the second inequality, with $m =\pi_\phi(2n)$ and $i$ ranging over the definable subsets of $A$), for an appropriate constant $c$,
 
-\ceq{}
-{\le}
-{\frac1n\,\sup_{s,s'}\Ex\bigg[\sup_{b\in\V}\bigg|\sum^n_{i=1} \sigma_i\big(\Indicator_{s_i,b} -  \Indicator_{s'_i,b}\big)\bigg|\bigg]}
+  \ceq{}
+  {\le}
+  {\frac1n\,\sup_{s,s'}c\sqrt{2\log\big( 2\,\pi_\phi(2n)\big)}.}
 
+  Finally, as the r.h.s.\@ does not depend on $s,s'$,
 
-Observe that once $s,s'$ is fixed, $\sup_{b\in\V}$ is actually a maximum among $\pi_\phi(2n)$ sets, in fact, $\pi_\phi(2n)$ is the number of definable subsets of $A=\{s_1,\dots,s_n,s'_1,\dots,s'_n\}$.
-Then, by Lemma~\ref{lem_mistero} (the second inequality, with $m =\pi_\phi(2n)$ and $i$ ranging over the definable subsets of $A$), for an appropriate constant $c$,
+  \ceq{}
+  {\le}
+  {\frac{c}n\sqrt{2\log\big(2\,\pi_\phi(2n)\big).}}
 
-\ceq{}
-{\le}
-{\frac1n\,\sup_{s,s'}c\sqrt{2\log\big( 2\,\pi_\phi(2n)\big)}.}
+  The Vapnik-Chervonenkis inequality is proved if we can show the assumption of Lemma~\ref{lem_mistero} holds with $c=\sqrt{n}$.
 
-Finally, as the r.h.s.\@ does not depend on $s,s'$,
+  \ceq{\hfill\Ex\bigg[\exp\bigg(t\sum^n_{i=1} \sigma_i\big(\Indicator_{s_i,b} -  \Indicator_{s'_i,b}\big)\bigg)\bigg]}
+  {=}
+  {\prod^n_{i=1} \Ex\bigg[\exp\Big(t\,\sigma_i\big(\Indicator_{s_i,b} -  \Indicator_{s'_i,b}\big)\Big)\bigg]}
 
-\ceq{}
-{\le}
-{\frac{c}n\sqrt{2\log\big(2\,\pi_\phi(2n)\big).}}
+  As $\sigma_i\big(\Indicator_{s_i,b} -  \Indicator_{s'_i,b}\big)$ takes values in $\{-1,1\}$ with mean $0$, by Lemma~\ref{lem_sign}
 
-The Vapnik-Chervonenkis inequality is proved if we can show the assumption of Lemma~\ref{lem_mistero} holds with $c=\sqrt{n}$.
+  \ceq{}
+  {\le}
+  {e^{nt^2/2}}
 
-\ceq{\hfill\Ex\bigg[\exp\bigg(t\sum^n_{i=1} \sigma_i\big(\Indicator_{s_i,b} -  \Indicator_{s'_i,b}\big)\bigg)\bigg]}
-{=}
-{\prod^n_{i=1} \Ex\bigg[\exp\Big(t\,\sigma_i\big(\Indicator_{s_i,b} -  \Indicator_{s'_i,b}\big)\Big)\bigg]}
-
-As $\sigma_i\big(\Indicator_{s_i,b} -  \Indicator_{s'_i,b}\big)$ takes values in $\{-1,1\}$ with mean $0$, by Lemma~\ref{lem_sign}
-
-\ceq{}
-{\le}
-{e^{nt^2/2}}
-
-and the same holds for $-\sigma_i\big(\Indicator_{s_i,b} -  \Indicator_{s'_i,b}\big)$.\QED
+  and the same holds for $-\sigma_i\big(\Indicator_{s_i,b} -  \Indicator_{s'_i,b}\big)$.%
+\QED
 \end{document}
