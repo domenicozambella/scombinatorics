@@ -39,8 +39,8 @@ books and indoctrinated generations of confused students.
 %%%%%%%%%%%%%%%%%%%%%%%
 \section{Inequalities}
 
-Throughout this and the next section we work with a given sample space $\Omega,\Pr$.
-For simplicity, the following two propositions are proved for finite $\Omega$, but they are easily seen to hold in  general.
+Throughout this and the next section we work with a given probability space $\U,\Pr$.
+For simplicity, the following two propositions are proved for finite $\U$, but they are easily seen to hold in  general.
 
 \begin{definition}A function $f:\RR\to\RR$ is \emph{convex\/} if for every tuples of real numbers $p_i$ and $x_i$ such that
 
@@ -57,7 +57,7 @@ we have
 
 Note that, though the definition is usually given with $n=2$, the general property above follows easily.
 
-\begin{void_thm}[Jensen's inequality]\label{Jensen}
+\begin{void_thm}[Jensen's Inequality]\label{Jensen}
 Let $f:\RR\to\RR$ be a convex function.
   Then
 
@@ -68,14 +68,14 @@ Let $f:\RR\to\RR$ be a convex function.
 
 
 \begin{proof}
-  For simplicity, assume that the sample space $\Omega$ is finite.
+  For simplicity, assume that the sample space $\U$ is finite.
   Then the claim is obvious from the definition.
 \end{proof}
 
 The following is arguably the most basic inequality in probability theory.
 Although it is almost trivial, it will be required several times in this chapter. 
 
-\begin{void_thm}[Markov's inequality]\label{Markov}
+\begin{void_thm}[Markov's Inequality]\label{Markov}
   Let $X$ be a nonnegative random variable with finite mean.
   Then for every $\epsilon>0$
 
@@ -85,11 +85,11 @@ Although it is almost trivial, it will be required several times in this chapter
 \end{void_thm}
 
 \begin{proof}
-  For simplicity, assume that the sample space $\Omega$ is finite.
+  For simplicity, assume that the sample space $\U$ is finite.
   (The theorem holds in general, but we only need the finite case.)
-  Define $A=\{a\in\Omega\,:\, X(a)\ge\epsilon\}$.
+  Define $A=\{a\in\U\,:\, X(a)\ge\epsilon\}$.
 
-  \ceq{\hfill\Ex[X]}{=}{\sum_{a\in\Omega} \Pr(a)\, X(a)}
+  \ceq{\hfill\Ex[X]}{=}{\sum_{a\in\U} \Pr(a)\, X(a)}
 
   \ceq{}{=}{\sum_{a\in A} \Pr(a)\, X(a) + \sum_{a\notin A} \Pr(a)\, X(a)}
 
@@ -115,7 +115,7 @@ Although it is almost trivial, it will be required several times in this chapter
 
 Chebyshev's inequality (a.k.a. Chebysheff, Chebyshov, Tschebyscheff, Tschebycheff) is a special case of the corollary above.
 
-\begin{void_thm}[Chebyshev's inequality]\label{Chebyshev}
+\begin{void_thm}[Chebyshev's Inequality]\label{Chebyshev}
     Let $X$ be a random variable with finite mean and variance.
     Then for every $\epsilon>0$
     
@@ -186,14 +186,14 @@ To obtain exponential bounds, we frequently apply the following trick.
   {\le}
   {\log\frac{b\,e^{ta}-a\,e^{tb}}{d}}
 
-taking the Taylor series expansion of the r.h.s.\@ at $t=0$ we obtain (the first and second derivatives vanish at $0$; the second derivative is always $\le 1/4$)
+  taking the Taylor series expansion of the r.h.s.\@ at $t=0$ (the first and second derivatives vanish at $0$; the second derivative is always $\le 1/4$) we obtain
 
-\ceq{\hfill\log\Ex\Big[e^{tX}\Big]}
-    {\le}
-    {\frac{t^2d^2}8.}
+  \ceq{\hfill\log\Ex\Big[e^{tX}\Big]}
+  {\le}
+  {\frac{t^2d^2}8.}
 \end{proof}
 
-\begin{void_thm}[Hoeffding's inequality]\label{Hoeffding_inequality}
+\begin{void_thm}[Hoeffding's Inequality]\label{Hoeffding_inequality}
   Let $X_1,\dots,X_n$ be independent random variables with bounded range, say $a\le X_i\le b$. Define $d=b-a$.
   
   \ceq{\hfill M}{=}{\sum^n_{i=1}\Big(X_i-\Ex[X_i]\Big)}
@@ -201,12 +201,12 @@ taking the Taylor series expansion of the r.h.s.\@ at $t=0$ we obtain (the first
   Then for every $\epsilon>0$ 
 
   \ceq{\hfill\Pr \Big(M\ge\epsilon\Big)}
-      {\le}
-      {\exp{\Big(-\frac{2\epsilon^2}{nd^2}}\Big),}
+  {\le}
+  {\exp{\Big(-\frac{2\epsilon^2}{nd^2}}\Big),}
 
   \ceq{\hfill\Pr \Big(M\le-\epsilon\Big)}
-      {\le}
-      {\exp{\Big(-\frac{2\epsilon^2}{nd^2}}\Big).}\smallskip
+  {\le}
+  {\exp{\Big(-\frac{2\epsilon^2}{nd^2}}\Big).}\smallskip
 \end{void_thm}
 
 Clearly, the two inequalities above imply the following
@@ -347,12 +347,12 @@ This yields the bound above (only with 2 in place of 8).\QED
 %\def\smallcirc{\mathord{\kern-.2ex\raisebox{.4ex}{$\scriptscriptstyle\circ$}}}
 \def\Indicator{{\mathds I}}
 
-A \emph{sample\/} $s$ is a sequence $s_1,\dots,s_n$ of elements of $\Omega$.
+A \emph{sample\/} $s$ is a sequence $s_1,\dots,s_n$ of elements of $\U$.
 Its length $|s|=n$ is also called \emph{size\/} or \emph{dimension.}
 We write $\range(s)$ for the set $\{s_1,\dots,s_n\}$.
 Note that this set may have cardinality $<n$.
 
-To a sample $s$ of size $n$ we associate a finite probability measure on the subsets of $\Omega$, namely for any event $A\subseteq\Omega$ we define the empirical frequence of $A$ given $s$
+To a sample $s$ of size $n$ we associate a finite probability measure on the subsets of $\U$ namely, for any event $A\subseteq\U$, we define the empirical frequence of $A$ given $s$
 
 \ceq{\hfill\emph{$\displaystyle\Fr\big(s, A\big)$}}
 {=}
@@ -367,14 +367,14 @@ It is convenient to rewrite it using indicator functions
 We are interested in the \textit{existence\/} of samples that approximate the probability within $\epsilon$.
 Suppose that, for a given event $A$, we can prove that
 
-\ceq{\hfill\Pr \Big(s\in\Omega^n:\, \big|\Fr(s,A) - \Pr(A) \big|\ge\epsilon\Big)}{\le}{\textrm{some\_bound}(\epsilon,n)}
+\ceq{\hfill\Pr \Big(s\in\U^n:\, \big|\Fr(s,A) - \Pr(A) \big|\ge\epsilon\Big)}{\le}{\textrm{some\_bound}(\epsilon,n)}
 
 and that, for $n$ large enough, some\_bound$(\epsilon,n)<1$.
-Then a sample of size $\le n$ sample is guaranteed to exit.
+Then a sample of size $\le n$ that approximate the probability within $\epsilon$ is guaranteed to exit.
 
 Random variables are convenient formalism to discuss these probabilities.
-Let $S=S_1,\dots,S_n$ be \emph{independent random elements\/} of $\Omega$, that is, random variables such that $\Pr(S_i\in A)=\Pr(A)$ for every $A\subseteq\Omega$.
-Write $\Indicator_A$ for the indicator function of $A$.
+We say \emph{random element\/} of $\U$ for a random variables $S$ such that $\Pr(S\in A)=\Pr(A)$ for every $A\subseteq\U$.
+A \emph{random sample\/} from $\U$ is a tuple $S=S_1,\dots,S_n$ be of independent random elements of $\U$.
 Then $\Indicator_{S_i\in A}$ as a Bernoulli random variable with probability of success $\Pr(A)$ and 
 
 \ceq{\hfill \Fr(S,A)}
@@ -384,7 +384,7 @@ Then $\Indicator_{S_i\in A}$ as a Bernoulli random variable with probability of 
 is (up to the factor $1/n$) a binomial random variable.
 
 \begin{void_thm}[Weak Law of Large Numbers]
-  For every event $A\subseteq\Omega$ and every $n>0$
+  For every event $A\subseteq\U$ and every $n>0$
   
   \ceq{\hfill\Pr\Big(\big|\Fr(s,A) - \Pr(A)  \big|\ge\epsilon\Big)}
   {\le}
@@ -392,7 +392,7 @@ is (up to the factor $1/n$) a binomial random variable.
 \end{void_thm}
 
 \begin{proof}
-  Let $S_1,\dots,S_n$ be independent random elements of $\Omega$.
+  Let $S_1,\dots,S_n$ be a random sample from $\U$.
   Up to the factor $1/n$, the distribution of $\Fr(S,A)$ is binomial with parameters $n$ and $\Pr(A)$.
   Therefore it has expected value $\Pr(A)$ and  variance $\le1/n$. 
   By Chebyshev's inequality we obtain 
@@ -407,8 +407,8 @@ is (up to the factor $1/n$) a binomial random variable.
 Sometime we are interested in the minimal size of a sample that approximates the probability up to a given $\epsilon$.
 
 \begin{corollary}\label{corl_wlln}
-  Assume $\Omega$ is finite (of arbitrary cardinality, tough).
-  For every $A\subseteq\Omega$ and every $\epsilon>0$ there is a sample $s$ of size
+  Assume $\U$ is finite (of arbitrary cardinality, tough).
+  For every $A\subseteq\U$ and every $\epsilon>0$ there is a sample $s$ of size
 
   \ceq{\hfill |s|}
       {=}
@@ -430,16 +430,16 @@ Sometime we are interested in the minimal size of a sample that approximates the
 In the following section we need a better bound for the Weak Law of Large Numbers.
 This is obtained with a similar proof.
 
-\begin{void_thm}[Weak Law of Large Numbers (with exponential bound)]
-  For every event $A\subseteq\Omega$ and every $n>0$
+\begin{void_thm}[Weak Law of Large Numbers (with exponential bound)]\label{WLLN_exp}
+  For every event $A\subseteq\U$ and every $n>0$
   
   \ceq{\hfill 2 e^{-2n\epsilon^2}}
   {\ge}
-  {\Pr \Big(s\in\Omega^n\ :\ \big|\Fr(s,A) - \Pr(A)  \big|\ge\epsilon\Big).}
+  {\Pr \Big(s\in\U^n\ :\ \big|\Fr(s,A) - \Pr(A)  \big|\ge\epsilon\Big).}
 \end{void_thm}
 
 \begin{proof}
-  Let $S_1,\dots,S_n$ be independent random elements of $\Omega$.
+  Let $S_1,\dots,S_n$ be a random sample from $\U$.
   Define
   
   \ceq{\hfill M}
@@ -458,9 +458,9 @@ This is obtained with a similar proof.
 Using the exponential bounds above, we can improve (by a constant factor) the size of the minimal sample size that approximates the probability obtained in Corollary~\ref{corl_wlln}.
 
 \begin{corollary}
-  For every $A\subseteq\Omega$ and every $\epsilon>0$ there is a sample $s$ of size
+  For every $A\subseteq\U$ and every $\epsilon>0$ there is a sample $s$ of size $n$ where
 
-  \ceq{\hfill|s|}
+  \ceq{\hfill n}
       {=}
       {\left\lfloor\frac{\log 2}{2\epsilon^2}+1\right\rfloor} 
       
@@ -474,18 +474,18 @@ Using the exponential bounds above, we can improve (by a constant factor) the si
 %%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%
-\section{The Uniform Law of Large Numbers}\label{uniform}
+\section{The Uniform Law of Large Numbers (1)}\label{uniform}
 
-Throughout this section we work with some fixed formula $\phi(x\,;z)$ and with a the family of definable subsets $\phi(\Omega\,;b)_{b\in\V}$ that are events of the sample space $\Omega,\Pr$.
+Throughout this section we work with a fixed family of definable subsets $\phi(\U\,;b)_{b\in\V}$ that are events of the sample space $\U,\Pr$.
 It is convenient to introduce some abbreviations
 
 \ceq{\hfill \Pr(b)}
 {=}
-{\Pr\Big(\phi(\Omega\,;b)\Big)}
+{\Pr\Big(\phi(\U\,;b)\Big)}
 
 \ceq{\hfill\Fr(s,b)}
 {=}
-{\Fr\Big(s,\phi(\Omega\,;b)\Big)}
+{\Fr\Big(s,\phi(\U\,;b)\Big)}
 
 \ceq{\hfill\Indicator_{s,b}}
 {=}
@@ -501,20 +501,164 @@ An \emph{$\epsilon$-approximation\/} is a sample $s$ such that
 We are interested in estimating the minimal size of an $\epsilon$-approximation.
 
 The main theorem of this section is this famous result of Vapnik-Chervonenkis~\cite{VC}.
-Following Devroye and Lugosi~\cite{DL}, we prove a slightly different inequality.
+
+
+\def\medrel#1{\parbox[t]{5ex}{$\displaystyle\hfil #1$}}
+\def\ceq#1#2#3{\parbox[t]{35ex}{$\displaystyle #1$}\medrel{#2}{$\displaystyle #3$}}
+
+\begin{void_thm}[Vapnik-Chervonenkis Inequality]\label{VC_inequality}
+  Let $\pi_\phi(n)$ be the shatter function of $\phi(\U\,;b)_{b\in\V}$.
+  Let $S=S_1,\dots,S_n$ be a random sample from $\U$.
+  Then, for every $b\in\V$
+
+  \ceq{\hfill\Pr\,\Big(\big|\Fr(S,b) - \Pr(b)\big|\ge\epsilon\Big)}
+  {\le}
+  {4\,\pi_\phi(n)\exp\bigg(-\frac{n\epsilon^2}{32}\bigg).}
+\end{void_thm}
+
+N.B. Some technical hypothesis of measurability are necessary when $\phi(\U\,;b)_{b\in\V}$ is uncountable. This have been omitted in the statement above, and will be discussed below.
+
+\begin{proof}
+  Let $S'=S'_1,\dots,S'_n$ be an independent copy of $S$.
+  Then, by the triangular inequality
+
+  \ceq{\hfill\Pr\,\Big(\big|\Fr(S,b) - \Pr(b)\big|\ge\epsilon\Big)}
+  {\le}
+  {\Pr\,\bigg(\big|\Fr(S,b) - \Fr(S',b)\big|\ge\frac\epsilon2\bigg)\ +\ (*)}
+
+  where, by the Weak Law of Large Numbers~\ref{WLLN_exp},
+  
+  \ceq{\hfill (*)}
+  {=}
+  {\Pr\,\bigg(\big|\Fr(S',b) - \Pr(b)\big|\ge\frac\epsilon2\bigg)}
+
+
+  \ceq{}
+  {\le}
+  {2\,e^{-n\epsilon^2/2}}
+
+  Let $\sigma=\sigma_1,\dots,\sigma_n$ be a tuple of independent sign random variables.
+  Then
+  
+  \ceq{\hfill\Pr\bigg(\big|\Fr(S,b) - \Fr(S',b)\big|\ge\frac\epsilon2\bigg)}
+  {=}
+  {\Pr\bigg(\sum_{i=1}^n\big|\Indicator_{S_i,b} - \Indicator_{S'_i,b}\big|\ge\frac{n\epsilon}2\bigg)}
+
+  Then, again by the triangular inequality
+
+  \ceq{}
+  {\le}
+  {2\,\Pr\bigg(\Big|\sum_{i=1}^n\sigma_i\,\Indicator_{S_i,b}\Big|\ge\frac{n\epsilon}4\bigg)}
+
+  Putting together the inequalities above we obtain
+
+  \ceq{(1)\hfill\Pr\,\Big(\sup_{b\in\V}\big|\Fr(S,b) - \Pr(b)\big|\ge\epsilon\Big)}
+  {\le}
+  {2\,\Pr\bigg(\sup_{b\in\V}\Big|\sum_{i=1}^n\sigma_i\,\Indicator_{S_i,b}\Big|\ge\frac{n\epsilon}4\bigg)\ +\ 2\,e^{-n\epsilon^2/2}}
+
+
+  Let $s=s_1,\dots,s_n$ be a possible realization of $S$.
+
+
+  \ceq{\hfill\Pr\bigg(\sup_{b\in\V}\Big|\sum_{i=1}^n\sigma_i\,\Indicator_{S_i,b}\Big|\ge\frac{n\epsilon}4\ \big|\  S=s\bigg)}
+  {=}
+  {\Pr\bigg(\sup_{b\in\V}\Big|\sum_{i=1}^n\sigma_i\,\Indicator_{s_i,b}\Big|\ge\frac{n\epsilon}4\bigg)}
+
+  Finally, note that the r.h.s.\@ of (2) only depends on $\phi\big(\range(s),b\big)$.
+  Hence the $\sup_{b\in\V}(\cdot)$ on the r.h.s.\@ is actually a maximum among $m=\pi_\phi(n)$ events.
+  Say, we can choose $b_1,\dots,b_m\in\V$ such that
+
+  \ceq{(2)}
+  {=}
+  {\Pr\bigg(\sup_{j\le m}\Big|\sum_{i=1}^n\sigma_i\,\Indicator_{s_i,b_j}\Big|\ge\frac{n\epsilon}4\bigg)}
+
+  Note that, ingeneral, for any real random variables $X_1,\dots,X_m$ we have
+
+  \ceq{\hfill\Pr\Big(\sup_{i\le m} X_i \ge \epsilon\Big)}
+  {=}
+  {\Pr\Big(\bigcup_{i=0}^m\ X_i \ge \epsilon\Big)}
+
+  \ceq{}
+  {\le}
+  {\sum_{i=1}^m \Pr\big(X_i \ge\epsilon\big)}
+
+  Hence, continuing from (2) we obtain
+
+  \ceq{}
+  {\le}
+  {\sum_{j=1}^m \Pr\bigg(\Big|\sum_{i=1}^n\sigma_i\,\Indicator_{s_i,b_j}\Big|\ge\frac{n\epsilon}4\bigg).}
+
+
+  \ceq{}
+  {\le}
+  {2\,\pi_\phi(n)\,\exp\bigg(-\frac{n\epsilon^2}{32}\bigg),}
+
+
+  where the last inequality is obtained from Hoeffding's Inequality~\ref{Hoeffding_inequality}.
+  In fact, Hoeffding's Inequality, applied to $X_i=\sigma_i\,\Indicator_{s_i,b}$ with $n\epsilon/4$ for $\epsilon$, yields
+
+  \ceq{\hfill\Pr\bigg(\Big|\sum_{i=1}^n\sigma_i\,\Indicator_{s_i,b}\Big|\ge\frac{n\epsilon}4\bigg)}
+  {\le}
+  {2\,\exp\Big(-\frac{n\epsilon^2}{32}\Big).}
+
+  Unsurprisingly, the bound does not depends on $b$.
+  Finally, proceeding from (1) we obtain
+
+  \ceq{}
+  {\le}
+  {2\pi_\phi(n)\exp\Big(-\frac{n\epsilon^2}{32}\Big)\ +\ 2\,e^{-n\epsilon^2/2}}
+
+  \ceq{}
+  {\le}
+  {4\pi_\phi(n)\exp\Big(-\frac{n\epsilon^2}{32}\Big),}
+
+  which finally proves the theorem.
+\end{proof}
+
+
+
+\begin{corollary}
+  For every every $\epsilon>0$ there is a finite sample $s$ such that
+
+  \ceq{\hfill\Big|\Fr(s,b) - \Pr(b) \Big|}{<}{\epsilon}\hfill for every $b\in\V$.
+\end{corollary}
+\begin{proof}
+  It suffices to require that $n=|s|=|S|$ is large enough to guarantee 
+  
+  \ceq{\hfill\Pr\,\Big(\big|\Fr(S,b) - \Pr(b)\big|\ge\epsilon\Big)}
+  {<}
+  {1}\hfill for every $b\in\V$.
+
+  By the Vapnik-Chervonenkis inequality~\ref{VC_inequality}, it suffices that
+
+  \ceq{\hfill4\;\pi_\phi(n)\,\exp\bigg(-\frac{n\epsilon^2}{32}\bigg)}
+  {<}
+  {1}
+
+  By Sauer-Shelah Lemma~\ref{lem_sauer}, $\pi_\phi(n)$ grows polynomially.
+  Hence the inequality holds for $n$ large enough.
+\end{proof}
+
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%
+\section{The Uniform Law of Large Numbers (2)}\label{uniform2}
+
+We prove a second version of the Vapnik-Chervonenkis Inequality.
+Which, I conjecture, is due to Devroye and Lugosi~\cite{DL}.
  
-\begin{void_thm}[Vapnik-Chervonenkis inequality]\label{VC_inequality}
-  Let $\pi_\phi(n)$ be the shatter function of $\phi(\Omega\,;b)_{b\in\V}$.
-  Let $S=S_1,\dots,S_n$ be independent random elements of $\Omega$.
+\begin{void_thm}[Devroye-Lugosi Inequality]\label{DL_inequality}
+  Let $\pi_\phi(n)$ be the shatter function of $\phi(\U\,;b)_{b\in\V}$.
+  Let $S=S_1,\dots,S_n$ be a random sample from $\U$.
   Then, for every $b\in\V$
 
   \ceq{\hfill\Ex\,\Big|\Fr(S,b) - \Pr(b)\Big|}
   {<}
-  {2\sqrt{\frac{\log\;2\,\pi_\phi(2n)}{n}}}.\QED
+  {2\sqrt{\frac{\log\;\big(2\,\pi_\phi(n)\big)}{n}}}.\QED
 \end{void_thm}
-
-N.B. Some technical hypothesis of measurability are necessary when $\phi(\Omega\,;b)_{b\in\V}$ is uncountable. This have been omitted in the statement above, and will be discussed below.
-
 
 Before embarking of the proof of the theorem above, we prove the following (easy though mysterious) lemma, which also has independent interest.
 
@@ -600,7 +744,7 @@ Before embarking of the proof of the theorem above, we prove the following (easy
   {\le}
   {\Ex\big[\sup_{b\in\V}(\cdots)\big].}
 
-  Write $\Indicator_b$ for the indicator function of $\phi(\Omega\,;b)$.
+  Write $\Indicator_b$ for the indicator function of $\phi(\U\,;b)$.
   Then
 
   \ceq{\hfill\big|\Fr(S,b) - \Fr(S',b)\big|}
@@ -659,4 +803,47 @@ Before embarking of the proof of the theorem above, we prove the following (easy
 
   and the same holds for $-\sigma_i\big(\Indicator_{s_i,b} -  \Indicator_{s'_i,b}\big)$.%
 \QED
+
+
+As an application we prove the Glivenko-Cantelli Theorem, an important theorem of mathematical statistics.
+The theorem says that the empirical cumulative distribution function converges uniformly to the true one.
+We prove an informative variant which gives the rate of convergence (though, this is not optimal).
+
+\begin{void_thm}[Glivenko-Cantelli Theorem]
+  Let $X=X_1,\dots,X_n$ be i.i.d.\@ random variables.
+  Let $F(z)=\Pr(X_i\le z)$ be their common cumulative distribution function.
+  Let $F_{\rm e}(x)$ be the empirical cumulative distribution function, that is,
+
+  \ceq{\hfill F_{\rm e}(X,z)}
+  {=}
+  {\frac1n\sum^n_{i=1}\Indicator_{X_i\le z}.}
+
+  Then, for every $z\in\RR$,
+
+  \ceq{\hfill\Ex\,\Big|F_{\rm e}(X,z) - F(z)\Big|}
+  {\le}
+  {2\,\sqrt{\frac{\log\big(2n+2\big)}{n}}}.\QED
+\end{void_thm}
+
+\begin{proof}
+  Take $\U=\V=\RR$ and $\phi(x\,;z) = x<z$.
+  Assign to $\phi(\U\,;b)=(-\infty,b]$ the probability measure $\Pr(X_i\le b)$.
+  Then, if $S=S_1,\dots,S_n$ is a random sample from $\U$
+
+  \ceq{\hfill\Ex\,\Big|F_{\rm e}(X,z) - F(z)\Big|}
+  {=}
+  {\Ex\Big|\Fr(S,b) - \Pr(b)\Big|}
+
+  hence, by the Vapnik-Chervonenkis inequality~\ref{VC_inequality}
+
+  \ceq{}
+  {\le}
+  {\sqrt{2\frac{\log\;\big(2\,\pi_\phi(n)\big)}{n}}}.
+  
+  It is clear that $\phi(\U\,;b)_{b\in\V}$ has \vc-dimension $1$.
+  Hence, by the Sauer-Shelah Lemma~\ref{lem_sauer} and the inequalities proved thereafter, $\pi_\phi(n)\le n+1$.
+  The theorem follows.
+\end{proof}
+
+
 \end{document}

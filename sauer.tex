@@ -149,7 +149,7 @@ We call the \vc-dimension of $\phi(x\,;z)^*$ the \emph{dual \vc-dimension\/} of 
 %%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%
-\section{The Sauer-Shelah lemma}
+\section{The Sauer-Shelah lemma}\label{sauer}
 
 \def\ceq#1#2#3{\parbox[t]{15ex}{$\displaystyle #1$}\medrel{#2}{$\displaystyle #3$}}
 
@@ -160,7 +160,7 @@ No wonder it has been discovered and rediscovered may times.
 It has been proved independently by Shelah~\cite{shelah72}, Sauer~\cite{sauer}, and Vapnik-Cher\-vo\-nen\-kis~\cite{VC} around 1970 (Shelah gives credit to Micha Perles).
 Saharon Shelah was working in model theory while Norbert Sauer, Vladimir Vapnik and Alexey Chervonenkis were in statistical learning theory.
 
-\begin{void_thm}[Sauer-Shelah Lemma]\label{thm_sauer}
+\begin{void_thm}[Sauer-Shelah Lemma]\label{lem_sauer}
 If $\phi(x\,;z)$ has \vc-dimension $k$ then for every $n\ge k$
 
 \ceq{\hfill\pi_\phi(n)}{\le}{\bigsum^{k}_{i=0} \binom{n}{i}.}\QED 
@@ -222,9 +222,58 @@ An alternative proof of the Sauer-Shelah Lemma derives it as corollary of a lemm
   \ceq{}{\le}{\sum^k_{i=0}{n\choose i}}\hfill because $\phi(x\,;z)$ has \vc-dimension $k$
 \end{proof}
 
-The \emph{\vc-density\/} of $\phi$ is the infimum over all real number $r$ such that $\pi_\phi(n)\in O(n^r)$.
+We write $f(n)=O(g(n))$ if there is a constant $C$ such that $|f(n)|\le C g(n)$ holds for all (sufficiently large) $n$.
+
+The \emph{\vc-density\/} of $\phi(x\,;z)$ is the infimum over all real number $r$ such that $\pi_\phi(n)\in O(n^r)$.
 It is infinite if no such $r$ exist.
 The  \emph{dual \vc-density\/} is defined accordingly.
+
+By the Sauer-Shelah lemma the \vc-density is at most as large as the \vc-dimension.
+It could be smaller, however it is usually rather difficult to compute.
+
+We conclude this section with a couple of inequalities that is useful to have at hand.
+
+\ceq{\hfill\sum^k_{i=0}{n\choose i}}
+{=}
+{\sum^k_{i=0}\frac{n!}{i!\,(n-i)!}}
+
+\ceq{}
+{\le}
+{\sum^k_{i=0}\frac{n^i}{i!}}
+
+\ceq{}
+{\le}
+{\sum^k_{i=0}\frac{n^i\,k!}{i!(k-i)!}}
+
+\ceq{}
+{=}
+{\sum^k_{i=0}n^i{k\choose i}}
+
+\ceq{}
+{=}
+{(n+1)^k}
+\hfill by the binomial theorem.\smallskip
+
+There is a second bound, which is better when $k\ge 3$ and holds for $n>k$
+
+\ceq{\hfill\sum^k_{i=0}{n\choose i}}
+{\le}
+{\Big(\frac{n}{k}\Big)^{\!k}\sum^k_{i=0}\Big(\frac{k}{n}\Big)^{\!i}{n\choose i}}
+\hfill because $\dfrac{k}{n}<1$
+
+\ceq{}
+{\le}
+{\Big(\frac{n}{k}\Big)^{\!k}\sum^n_{i=0}\Big(\frac{k}{n}\Big)^{\!i}{n\choose i}}
+
+\ceq{}
+{=}
+{\Big(\frac{n}{k}\Big)^{\!k}\Big(1+\frac{k}{n}\Big)}
+\hfill by the binomial theorem
+
+\ceq{}
+{\le}
+{\Big(\frac{n\,e}{k}\Big)^{\!k}}
+\hfill where $e$ is the base of the natural logarithm.
 
 
 \end{document}
