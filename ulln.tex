@@ -207,18 +207,18 @@ To obtain exponential bounds, we frequently apply the following trick.
   \ceq{\hfill\Pr \Big(M\le-\epsilon\Big)}
   {\le}
   {\exp{\Big(-\frac{2\epsilon^2}{nd^2}}\Big).}\smallskip
-\end{void_thm}
 
-Clearly, the two inequalities above imply the following
+  Clearly, the two inequalities above imply the following
 
 \ceq{\hfill\Pr \Big(|M|\ge\epsilon\Big)}
     {\le}
     {2\exp{\Big(-\frac{2\epsilon^2}{nd^2}}\Big).}\smallskip
 
+\end{void_thm}
 
 \begin{proof}
   Define $\Ex[X_i]=\mu_i$.
-  Let $t>0$ be arbitrary.
+  Let $t>0$ be arbitrary.\smallskip
 
   \ceq{\hfill \Pr\Big(M\ge\epsilon\Big)}{\le}{e^{-t\epsilon}\,\Ex\Big[e^{tM}\Big]}\hfill by Chernoff's method (\ref{lem_chernoff_method})
 
@@ -461,12 +461,14 @@ Using the exponential bounds above, we can improve (by a constant factor) the si
   For every $A\subseteq\U$ and every $\epsilon>0$ there is a sample $s$ of size $n$ where
 
   \ceq{\hfill n}
-      {=}
-      {\left\lfloor\frac{\log 2}{2\epsilon^2}+1\right\rfloor} 
+  {=}
+  {\left\lfloor\frac{\log 2}{2\epsilon^2}+1\right\rfloor} 
       
   such that
 
-  \ceq{\hfill\epsilon}{>}{\Big|\Fr(s,A) - \Pr(A) \Big|.}\QED
+  \ceq{\hfill\Big|\Fr(s,A) - \Pr(A) \Big|}
+  {<}
+  {\epsilon.}\QED
 \end{corollary}
 %%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%
@@ -474,7 +476,7 @@ Using the exponential bounds above, we can improve (by a constant factor) the si
 %%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%
-\section{The Uniform Law of Large Numbers (1)}\label{uniform}
+\section{A Uniform Law of Large Numbers}\label{uniform}
 
 Throughout this section we work with a fixed family of definable subsets $\phi(\U\,;b)_{b\in\V}$ that are events of the sample space $\U,\Pr$.
 It is convenient to introduce some abbreviations
@@ -513,7 +515,7 @@ The main theorem of this section is this famous result of Vapnik-Chervonenkis~\c
 
   \ceq{\hfill\Pr\,\Big(\big|\Fr(S,b) - \Pr(b)\big|\ge\epsilon\Big)}
   {\le}
-  {4\,\pi_\phi(n)\exp\bigg(-\frac{n\epsilon^2}{32}\bigg).}
+  {6\,\pi_\phi(n)\exp\bigg(-\frac{n\epsilon^2}{32}\bigg).}
 \end{void_thm}
 
 N.B. Some technical hypothesis of measurability are necessary when $\phi(\U\,;b)_{b\in\V}$ is uncountable. This have been omitted in the statement above, and will be discussed below.
@@ -532,7 +534,6 @@ N.B. Some technical hypothesis of measurability are necessary when $\phi(\U\,;b)
   {=}
   {\Pr\,\bigg(\big|\Fr(S',b) - \Pr(b)\big|\ge\frac\epsilon2\bigg)}
 
-
   \ceq{}
   {\le}
   {2\,e^{-n\epsilon^2/2}}
@@ -550,19 +551,19 @@ N.B. Some technical hypothesis of measurability are necessary when $\phi(\U\,;b)
   {\le}
   {2\,\Pr\bigg(\Big|\sum_{i=1}^n\sigma_i\,\Indicator_{S_i,b}\Big|\ge\frac{n\epsilon}4\bigg)}
 
-  Putting together the inequalities above we obtain
+  Putting together the inequalities above we obtain\smallskip
 
   \ceq{(1)\hfill\Pr\,\Big(\sup_{b\in\V}\big|\Fr(S,b) - \Pr(b)\big|\ge\epsilon\Big)}
   {\le}
   {2\,\Pr\bigg(\sup_{b\in\V}\Big|\sum_{i=1}^n\sigma_i\,\Indicator_{S_i,b}\Big|\ge\frac{n\epsilon}4\bigg)\ +\ 2\,e^{-n\epsilon^2/2}}
+  \smallskip
 
+  Let $s=s_1,\dots,s_n$ be a possible realization of $S$.\smallskip
 
-  Let $s=s_1,\dots,s_n$ be a possible realization of $S$.
-
-
-  \ceq{\hfill\Pr\bigg(\sup_{b\in\V}\Big|\sum_{i=1}^n\sigma_i\,\Indicator_{S_i,b}\Big|\ge\frac{n\epsilon}4\ \big|\  S=s\bigg)}
+  \ceq{\hfill\Pr\bigg(\sup_{b\in\V}\Big|\sum_{i=1}^n\sigma_i\,\Indicator_{s_i,b}\Big|\ge\frac{n\epsilon}4\bigg)}
   {=}
-  {\Pr\bigg(\sup_{b\in\V}\Big|\sum_{i=1}^n\sigma_i\,\Indicator_{s_i,b}\Big|\ge\frac{n\epsilon}4\bigg)}
+  {\Pr\bigg(\sup_{b\in\V}\Big|\sum_{i=1}^n\sigma_i\,\Indicator_{S_i,b}\Big|\ge\frac{n\epsilon}4\ \big|\  S=s\bigg)}
+  \smallskip
 
   Finally, note that the r.h.s.\@ of (2) only depends on $\phi\big(\range(s),b\big)$.
   Hence the $\sup_{b\in\V}(\cdot)$ on the r.h.s.\@ is actually a maximum among $m=\pi_\phi(n)$ events.
@@ -572,7 +573,7 @@ N.B. Some technical hypothesis of measurability are necessary when $\phi(\U\,;b)
   {=}
   {\Pr\bigg(\sup_{j\le m}\Big|\sum_{i=1}^n\sigma_i\,\Indicator_{s_i,b_j}\Big|\ge\frac{n\epsilon}4\bigg)}
 
-  Note that, ingeneral, for any real random variables $X_1,\dots,X_m$ we have
+  Note that, in general, for any real random variables $X_1,\dots,X_m$ we have
 
   \ceq{\hfill\Pr\Big(\sup_{i\le m} X_i \ge \epsilon\Big)}
   {=}
@@ -588,11 +589,9 @@ N.B. Some technical hypothesis of measurability are necessary when $\phi(\U\,;b)
   {\le}
   {\sum_{j=1}^m \Pr\bigg(\Big|\sum_{i=1}^n\sigma_i\,\Indicator_{s_i,b_j}\Big|\ge\frac{n\epsilon}4\bigg).}
 
-
   \ceq{}
   {\le}
   {2\,\pi_\phi(n)\,\exp\bigg(-\frac{n\epsilon^2}{32}\bigg),}
-
 
   where the last inequality is obtained from Hoeffding's Inequality~\ref{Hoeffding_inequality}.
   In fact, Hoeffding's Inequality, applied to $X_i=\sigma_i\,\Indicator_{s_i,b}$ with $n\epsilon/4$ for $\epsilon$, yields
@@ -606,18 +605,17 @@ N.B. Some technical hypothesis of measurability are necessary when $\phi(\U\,;b)
 
   \ceq{}
   {\le}
-  {2\pi_\phi(n)\exp\Big(-\frac{n\epsilon^2}{32}\Big)\ +\ 2\,e^{-n\epsilon^2/2}}
+  {4\pi_\phi(n)\exp\Big(-\frac{n\epsilon^2}{32}\Big)\ +\ 2\,\exp\Big(-\frac{n\epsilon^2}{2}\Big)}
 
   \ceq{}
   {\le}
-  {4\pi_\phi(n)\exp\Big(-\frac{n\epsilon^2}{32}\Big),}
+  {6\pi_\phi(n)\exp\Big(-\frac{n\epsilon^2}{32}\Big),}
 
   which finally proves the theorem.
 \end{proof}
 
-
-
 \begin{corollary}
+  Let $\phi(\U\,;b)_{b\in\V}$ have finite \vc-dimension. 
   For every every $\epsilon>0$ there is a finite sample $s$ such that
 
   \ceq{\hfill\Big|\Fr(s,b) - \Pr(b) \Big|}{<}{\epsilon}\hfill for every $b\in\V$.
@@ -631,36 +629,81 @@ N.B. Some technical hypothesis of measurability are necessary when $\phi(\U\,;b)
 
   By the Vapnik-Chervonenkis inequality~\ref{VC_inequality}, it suffices that
 
-  \ceq{\hfill4\;\pi_\phi(n)\,\exp\bigg(-\frac{n\epsilon^2}{32}\bigg)}
+  \ceq{(3)\hfill6\;\pi_\phi(n)\,\exp\bigg(-\frac{n\epsilon^2}{32}\bigg)}
   {<}
   {1}
 
-  By Sauer-Shelah Lemma~\ref{lem_sauer}, $\pi_\phi(n)$ grows polynomially.
+  By the Sauer-Shelah Lemma~\ref{lem_sauer}, $\pi_\phi(n)$ grows polynomially.
   Hence the inequality holds for $n$ large enough.
 \end{proof}
 
+The corollary above is sufficient for our intended applications.
+For completeness, the following proposition gives an explicit bound.
+
+\begin{proposition}
+  There is a sample as in the corollary above of size
+  
+  \ceq{\hfill c\,\frac{k}{\epsilon^2}\log\frac{k}{\epsilon^2}}
+  {}
+  {}
+  
+  where $c$ is an absolute constant and $k$ is the \vc-dimension of $\phi(\U\,;b)_{b\in\V}$.
+\end{proposition}
+
+\begin{proof}[Proofsketch]
+  By (3) in the proof above and the inequality proved after the Sauer-Shelah Lemma~\ref{lem_sauer} it suffices that $n=|s|$ satisfies
+  
+  \ceq{\hfill\log 6+k\,\log(n+1)}
+  {<}
+  {\frac{n\epsilon^2}{32},}
+  
+  which is the case if $n$ satisfies the following inequality 
+
+  \ceq{\hfill c'\,\frac{ k}{\epsilon^2}}
+  {<}
+  {\frac{n}{\log n},}
+
+  for some absolute constant $c'$.
+  Finally, the latter inequality is satisfied if 
+
+  \ceq{\hfill c\,\frac{k}{\epsilon^2}\log\frac{k}{\epsilon^2}}
+  {<}
+  {n}
+
+  for some absolute constant $c$.
+\end{proof}
 %%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%
-\section{The Uniform Law of Large Numbers (2)}\label{uniform2}
+\section{A Uniform Law of Large Numbers, again}\label{uniform2}
 
 We prove a second version of the Vapnik-Chervonenkis Inequality.
 Which, I conjecture, is due to Devroye and Lugosi~\cite{DL}.
  
-\begin{void_thm}[Devroye-Lugosi Inequality]\label{DL_inequality}
+\begin{void_thm}[Vapnik-Chervonenkis Inequality (2)]\label{DL_inequality}
   Let $\pi_\phi(n)$ be the shatter function of $\phi(\U\,;b)_{b\in\V}$.
   Let $S=S_1,\dots,S_n$ be a random sample from $\U$.
   Then, for every $b\in\V$
 
   \ceq{\hfill\Ex\,\Big|\Fr(S,b) - \Pr(b)\Big|}
-  {<}
+  {\le}
   {2\sqrt{\frac{\log\;\big(2\,\pi_\phi(n)\big)}{n}}}.\QED
 \end{void_thm}
 
-Before embarking of the proof of the theorem above, we prove the following (easy though mysterious) lemma, which also has independent interest.
+The same caveat on measurability apply as for Inequality~\ref{VC_inequality}.
+
+We note that the bound is not optimal, using a clever techniques called \textit{chaining}, Dudley could prove that
+
+\ceq{\hfill\Ex\,\Big|\Fr(S,b) - \Pr(b)\Big|}
+{<}
+{c\sqrt{\frac{k}{n}},}
+
+where $k$ is the \vc-dimension and $c$ is absolute constant.
+
+Before embarking in the proof of the theorem above, we prove the following (easy, although mysterious) lemma, which also has independent interest.
 
 \begin{lemma}\label{lem_mistero}
   Let $X_1,\dots,X_m$ be real valued random variables.
@@ -783,17 +826,24 @@ Before embarking of the proof of the theorem above, we prove the following (easy
   {\le}
   {\frac1n\,\sup_{s,s'}c\sqrt{2\log\big( 2\,\pi_\phi(2n)\big)}.}
 
-  Finally, as the r.h.s.\@ does not depend on $s,s'$,
+  As the r.h.s.\@ does not depend on $s,s'$,
 
   \ceq{}
   {\le}
-  {\frac{c}n\sqrt{2\log\big(2\,\pi_\phi(2n)\big).}}
+  {\frac{c}n\sqrt{2\log\big(2\,\pi_\phi(2n)\big)}}
 
-  The Vapnik-Chervonenkis inequality is proved if we can show the assumption of Lemma~\ref{lem_mistero} holds with $c=\sqrt{n}$.
+  Finally, as $\pi_\phi(2n)\le\pi_\phi(n)^2$,
+
+  \ceq{}
+  {\le}
+  {\frac{2c}n\sqrt{\log\big(2\,\pi_\phi(n)\big)}}
+  
+  The Vapnik-Chervonenkis inequality is proved if we can show the assumption of Lemma~\ref{lem_mistero} holds with $c=\sqrt{n}$.\smallskip
 
   \ceq{\hfill\Ex\bigg[\exp\bigg(t\sum^n_{i=1} \sigma_i\big(\Indicator_{s_i,b} -  \Indicator_{s'_i,b}\big)\bigg)\bigg]}
   {=}
   {\prod^n_{i=1} \Ex\bigg[\exp\Big(t\,\sigma_i\big(\Indicator_{s_i,b} -  \Indicator_{s'_i,b}\big)\Big)\bigg]}
+  \smallskip
 
   As $\sigma_i\big(\Indicator_{s_i,b} -  \Indicator_{s'_i,b}\big)$ takes values in $\{-1,1\}$ with mean $0$, by Lemma~\ref{lem_sign}
 
@@ -803,7 +853,6 @@ Before embarking of the proof of the theorem above, we prove the following (easy
 
   and the same holds for $-\sigma_i\big(\Indicator_{s_i,b} -  \Indicator_{s'_i,b}\big)$.%
 \QED
-
 
 As an application we prove the Glivenko-Cantelli Theorem, an important theorem of mathematical statistics.
 The theorem says that the empirical cumulative distribution function converges uniformly to the true one.
@@ -845,5 +894,39 @@ We prove an informative variant which gives the rate of convergence (though, thi
   The theorem follows.
 \end{proof}
 
+% \clearpage
+% The language $L$ is countable.
 
+% Let $D_n\subseteq M_n$ for $n\in\omega$.
+
+% Prove that there is an ultrafilter $F$ such that
+
+% \ceq{\hfill D}{=}{\prod_n D_n \Big/ F}
+
+% is a definable subset of
+
+% \ceq{\hfill N}{=}{\prod_n M_n \Big/ F}
+
+% only if there is a formula $\phi(x,z)$ and a sequence $b_n\in M^{|z|}$ such that $D_n=\phi(M_n,b_n)$ for almost all $n$.
+
+
+% Hint.
+
+% Prove the contrapositive.
+
+% Fix, for the time being, a formula $\phi(x,z)$ and assume that for infinitely many $n$ there is no  $b\in M^{|z|}$ such that $D_n=\phi(M_n,b)$.
+% Let $A$ be the set of such $n$.
+% Let $F\ni A$ be an ultrafilter and let $N$ as above.
+% Let $b\in N$ be arbitrary.
+% We prove that $D\neq\phi(N,b)$ 
+
+% For each $n\in A$ pick some $d_n\in D_n\simdiff\phi(M_n,b_n)$.
+% Choose $d_n$ arbitrarily when $n\omega\sm A$.
+% Let $d=(d_n)_n\in\omega$.
+% Then $d\in D\simdiff\phi(N,b)$, hence $D\neq\phi(N,b)$ as claimed.
+
+% Now use an opportune diagonalization to construct a filter that works for every formula $\phi(x,z)$.
+
+
+% pdftk  scombinatorics.pdf cat 25  output q.pdf
 \end{document}
