@@ -25,7 +25,7 @@ The first theorem less so, hence the title is only approximately correct.
 \def\ceq#1#2#3{\parbox[t]{30ex}{$\displaystyle #1$}\medrel{#2}{$\displaystyle #3$}}
 
 Let $\phi(x\,;z)$ be given. 
-Let $A\subseteq\U$ and $B\subseteq\V$ be finite sets. 
+Let $A\subseteq\U$ and $B\subseteq\V$ be finite sets.
 
 We say that $A'\subseteq A$ is a \emph{set of distinct representatives\/} for $\phi(A\,;B)$ if
 
@@ -47,20 +47,20 @@ or, in other words, if $\phi(A';B)$ is the graph of a bijection.
 
 \begin{proof}
   (\ssf{1}$\IMP$\ssf{2})
-  The following holds for any set of distinct representatives $A'$ and $B'\subseteq B$  
+  The following holds for any set of distinct representatives $A'$ and every set $B'\subseteq B$  
 
-  \ceq{\hfill|B'|\medrel{=}\bigg|\bigcup_{b\in B'}\phi(A';b')\bigg|}
+  \ceq{\hfill|B'|\medrel{=}\bigg|\bigcup_{b\in B'}\phi(A';b)\bigg|}
   {\subseteq}
   {\bigg|\bigcup_{b\in B'}\phi(A\,;b)\bigg|.}
 
   (\ssf{2}$\IMP$\ssf{1})
   Reason by induction on the cardinality of $B$.
-  If $B$ is empty, the claim is clear.
-  Now assume $|B|>0$ and consider two cases.
+  If $|B|=1$, the claim is clear.
+  Now assume $|B|>1$ and consider two cases.
 
   \begin{itemize}
     \item[a.]
-    This is the case when the inequality in \ssf{2} is strict for all $B'\subseteq B$. 
+    This is the case when the inequality in \ssf{2} is strict for all nonempty $B'\subset B$. 
     Pick any pair $a,b\in A,B$ such that $\phi(a\,;b)$. 
     Then $\phi(A\sm\{a\}\,; B\sm\{b\})$ still satisfy \ssf{2}.
     By induction hypothesis, it has a set of distinct representatives $A'$.
@@ -68,7 +68,7 @@ or, in other words, if $\phi(A';B)$ is the graph of a bijection.
 
     
     \item[b.]
-    Suppose instead that for some $B'\subseteq B$ the inequality in \ssf{2} holds with equality.
+    Suppose instead that for some nonempty $B'\subset B$ the inequality in \ssf{2} holds with equality.
     Define
 
     \ceq{\hfill A'}
@@ -123,7 +123,7 @@ Let $A\subseteq\U$ and $B\subseteq\V$ be finite sets.
 
 A \emph{matching\/} of $\phi(A\,;B)$ is a pair of sets $A'\subseteq A$  and $B'\subseteq B$ such that $\phi(A'\,;B')$ is the graph of a bijection between $A'$ and $B'$ in other words
 
-\ceq{\hfill|\phi(A';b)|\medrel{=}|\phi(a\,;B)|}{=}{1}\quad for every $a,b\in A',B'$.
+\ceq{\hfill|\phi(A';b)|\medrel{=}|\phi(a\,;B')|}{=}{1}\quad for every $a,b\in A',B'$.
 
 Yet in other words, $A'$ is a set of distinctive representatives for  $\phi(A\,;B')$
 
