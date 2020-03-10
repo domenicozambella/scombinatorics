@@ -208,7 +208,7 @@ Let $<$ be a strict partial order on $\U$. An \emph{antichain\/} is a set $A\sub
   $(\le)$ 
   We prove that the cardinality of an antichain cannot exceed the cardinality of a partition of $A$ into chains.
 
-  Let $A_1,\dots,A_k$ be a partition of $A$ into chains and let $A'$ be an antichains.
+  Let $A_1,\dots,A_k$ be a partition of $A$ into chains and let $A'$ be an antichain.
   A chain can contain at most one element of $A'$, hence $|A'|\le k$.
 
   $(\ge)$  
@@ -220,12 +220,12 @@ Let $<$ be a strict partial order on $\U$. An \emph{antichain\/} is a set $A\sub
   Let $\V$ be a disjoint copy of $\U$.
   Let $f:\U\to\V$ the bijection that maps each element of $\U$ to its copy in $\V$.
   For $a,b\in\U,\V$ let $\phi(a\,;b)$ hold if $a< f^{-1}b$.
-  We claim that $|A\sm A'|$ is the cardinality of the minimal cover of $\phi\big(A\,;f[A]\big)$. 
-  In fact, if $A_1,B_1$ a cover then $A \sm \big(A_1\cup f^{-1}[B_1]\big)$ is an antichain.
-  Indeed, if $a<b$ then either $a\in A_1$ or $fb\in B_1$, by the definition of cover.
+  Let $A_1,B_1$ be a cover, we claim that $A \sm \big(A_1\cup f^{-1}[B_1]\big)$ is an antichain.
+  In fact, if $a<b$ then either $a\in A_1$ or $fb\in B_1$, by the definition of cover.
   This proves the claim.
 
-  By K\H{o}nig's Theorem there is a matching $A'',B''$ of cardinality $|A''|=|A\sm A'|$.
+  As $A'$ has maximal cardinality, $|A| - |A'|\le |A_1\cup f^{-1}[B_1]|\le |A_1\cup B_1|$.
+  Therefore, by K\H{o}nig's Theorem there is a matching $A'',B''$ of cardinality $|A''|\ge |A_1\cup B_1|$. Hence $|A''|\ge |A\sm A'|$.
 
   We construct a chain-partition of $A$ as follow.
   Pick an element of $a_0\in A''$ and construct the longest possible chain $a_0,b_0,a_1,b_1,\dots,a_m,b_m,a_{m+1}$ where $a_i\in A''$ for all $i\le m$, and $b_i\in B''$ is the (unique) element such that $\phi(a_i\,;b_i)$ and $a_{i+1}\in A$ is the copy of $b_i\in B''$.
@@ -235,7 +235,7 @@ Let $<$ be a strict partial order on $\U$. An \emph{antichain\/} is a set $A\sub
   Finally, put each element of $A$ not covered by these chains in a chain on its own.
   
   Notice that the elements of $A''$ belongs to a chain of length at least 2.
-  Therefore the number $k$ of chains necessary to cover $A$ is $\le |A|\sm |A''| =  |A'|$.
+  Therefore the number $k$ of chains necessary to cover $A$ is $\le |A|\sm |A''| \le  |A'|$.
 \end{proof}
 
 \end{document}
