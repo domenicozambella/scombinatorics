@@ -1,0 +1,277 @@
+% !TEX root = scombinatorics.tex
+\documentclass[scombinatorics.tex]{subfiles}
+\begin{document}
+\chapter{}
+\label{fractional}
+
+
+
+\def\medrel#1{\parbox[t]{5ex}{$\displaystyle\hfil #1$}}
+\def\ceq#1#2#3{\parbox[t]{20ex}{$\displaystyle #1$}\medrel{#2}{$\displaystyle #3$}}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%
+\section{Transversals and packings}\label{Transversals_Packings}
+
+A subset $A\subseteq\U$ is a \emph{transversal\/} if $\phi(A,b)\neq\0$ for every $b\in\V$. Equivalently, if 
+
+\ceq{\hfill\V}
+{=}
+{\bigcup_{a\in A}\phi(a,\V).}
+
+
+The \emph{transversal number\/} of $\phi(x\,;z)$, denoted by\emph{ $\tau(\phi)$,} is the smallest cardinality of a transversal of $\phi(x\,;z)$.
+
+A subset $B\subseteq\V$ is a \emph{packing\/} if $\phi(\U,b)\cap\phi(\U,b')=\0$ for every $b,b'\in B$. Equivalently if $|\phi(a,B)|\le1$ for every $a\in\U$.
+The \emph{packing number\/} of $\phi(x\,;z)$, denoted by \emph{$\nu(\phi)$}, is the largest cardinality of a packing  $B\subseteq\V$.
+
+As any transversal is at least as large as any packing, we always have $\nu(\phi)\le\tau(\phi)$.
+Very little can be said in the reverse direction in general.
+
+A fractional multi-set $A$ over $\U$ is a \emph{fractional transversal\/} if $|\phi(A, b)|\ge1$ for every $b\in\V$.
+The \emph{fractional transversal number\/} of $\phi$, denoted by $\tau^*(\phi)$, is the  infimum of the size of the fractional transversals of $\phi$.
+
+A fractional multi-set $B$ over $\V$ is a \emph{fractional packing\/} if $|\phi(a,B)|\le1$ for every $a\in\U$.
+The \emph{fractional packing number\/} of $\phi$, denoted by $\nu^*(\phi)$, is the supremum of the size of the fractional packings of $\phi$.
+
+\begin{example}
+Let $\U=\RR^2$ and $\V$ is a set of $n$ lines in general position.
+Let $\phi$ be the incidence relation.
+%That is, any to lines intersect and every point is contained in at most to lines.
+Then $\nu(\phi)=1$, as any two lines intersect.
+And $\tau(\phi)=\lceil n/2\rceil$, as each point belongs to at most two lines.
+
+Let $B$ assign $1/2$ to every line. Then $|\phi(a,B)|\le1$ holds because each point is contained in at most two lines.
+Then $\nu^*(\phi)\ge n/2$.
+It is easy to see that $\tau^*(\phi)= n/2$.
+If $n$ is even, it is clear.
+If $n$ is odd, take $3$ any lines, and assign $1/2$ to the three intersection points.
+Proceed as in the even case with the other lines.\QED
+\end{example}
+
+\begin{exercise}
+Let $\U=\RR$ and $\V$ is a set of finitely many closed intervals.
+Let $\phi$ be the incidence relation.
+Then $\nu(\phi)=\tau(\phi)$.
+Hint: use induction on $\nu(\phi)$.
+\end{exercise}
+
+\begin{theorem}\label{thm_fractional_nu=tau}
+For every finite incidence relation $\nu^*(\phi)=\tau^*(\phi)$ and this value is rational.
+\end{theorem}
+\begin{proof}
+Let $\U=\{a_1,\dots,a_m\}$ and $\V=\{b_1,\dots,b_n\}$.
+Let $F$ be the $\{0,1\}$-valued incidence matrix $\phi(a_i,b_j)$.
+A multi-set over $\U$ is a naturally associated to a vector $0\le x\in\RR^m$.
+A multi-set over $\U$ is associated to a vector $0\le y\in\RR^n$.
+Then it is easy to verify that
+
+\ceq{\hfill\tau^*(\phi)}{=}{\min\,\big\{\,1_n^{\rm T}\;x\ :\ \ F\,x\ge 1_m,\ 0\le x\};}
+
+\ceq{\hfill\nu^*(\phi)}{=}{\max\big\{\,1_n^{\rm T}\ y\,\  :\ F^{\rm T}y\le 1_n,\,\  0\le y\}.}
+
+Therefore, by he duality of linear programming $\nu^*(\phi)=\tau^*(\phi)$.
+
+As $\tau^*(\phi)$ is the minimum of the linear function $x\mapsto 1_n^{\rm T}\;x$ over a polyhedron, such minimum is attained at vertex.
+The inequalities describing the polyhedron have rational coefficients, so also the vertices have rational coordinates.
+\end{proof}
+
+\section{Nets}
+
+Fix a set system $\Phi$ and let $\Pr$ be a probability measure on $\U$ such that all sets in $\Phi$ are measurable.
+Fix also $\epsilon>0$.
+An \emph{$\epsilon$-net\/} is a set $A\subseteq\U$ that intersects all sets in $\Phi$ of measure at least $\epsilon$.
+In other words, an $\epsilon$-net is a transversal for the set system $\Phi_\epsilon=\big\{\B\in\Phi\,:\,\Pr(\B)\ge\epsilon\big\}$.
+
+$\epsilon$-Nets, like all threshold structures are mathematically awkward. The advantage is that $\epsilon$-nets have a smaller size. 
+
+\begin{proposition}\label{prop_nets}
+For any $k,\epsilon>0$, every measure on a set system $\Phi$ of \vc-dimension $\le k$, has an $\epsilon$-net of cardinality $\displaystyle\le c\,\frac k\epsilon\,\ln \frac1\epsilon$ where $c$ is an absolute constant.
+\end{proposition}
+
+\begin{proof}
+We only prove a weaker bound by observing that every $\epsilon$-approximation is in particular an $\epsilon$-net. Hence from Proposition~\ref{corol_epsilon_approx} we obtain an $\epsilon$-net of cardinality $\displaystyle\le c\,(k/\epsilon^2)\,\ln(k/\epsilon)$.
+\end{proof}
+
+\begin{proposition}\label{prop_bound_fractional_trans}
+Let $\Phi$ be a finite set system with \vc-dimension $\le k$. Then 
+
+\ceq{\hfill\tau(\Phi)}{\le}{ c\,k\,\tau^*(\Phi)\,\ln\tau^*(\Phi)}
+
+where $c$ is an absolute constant.
+\end{proposition}
+
+\begin{proof}
+Let $r=\tau^*(\Phi)$ ad let $A$ be an optimal fractional transversal.
+As $\Phi$ is finite we can assume that the support of $A$ is finite.
+After normalizing, $A$ defines a probability measure on $\U$ concentrated on $\supp A$.
+Namely, $\Pr(\{x\})=(1/r)A(x)$ for all $x\in\U$.
+By the definition of fractional transversal every set in $\Phi$ has measure at last $1/r$.
+Therefore every $(1/r)$-net is a transversal.
+By Proposition~\ref{prop_nets} we obtain a transversal of cardinality $\le c\,k\, r \ln r$.
+\end{proof}
+
+\section{Helly-type properies}
+
+We now investigate methods of bounding $\tau^*(\phi)=\nu^*(\phi)$.
+Recall a classical theorem of Helly.
+
+\begin{proposition}[(Helly Theorem)]
+Let $\Phi$ be a finite family of convex sets in $\RR^d$.
+Assume that any $d+1$ sets from $\Phi$ have non-empty intersection.
+Then the whole family $\Phi$ has non-empty intersection.
+\end{proposition}
+
+Note that Helly's theorem does not hold for families of finite $\vc$-dimension.
+A counter example of \vc-dimension $2$ can be constructed with a family containing sets that are unions of two finite intervals of the real line.
+
+The following property is more robust.
+
+\begin{definition}
+Let $\phi$ be an incidence relation.
+We say that $\phi$ \emph{has fractional Helly number $k$\/} if for every $\alpha>0$ there is a $\beta>0$ such that:
+
+if $b_i\in\V$, for $i=1,\dots,n$, are such that
+
+\ceq{\hfill \bigcap_{i\in I}\phi(\U,b_i)}{\neq}{\0}\hfill for at least \ $\displaystyle\alpha{n\choose k}$ \ sets \ $\displaystyle I\in{[n]\choose k}$
+
+then
+
+\ceq{\hfill\bigcap_{i\in J}\phi(\U,b_i)}{\neq}{\0}\hfill for some $J\subseteq [n]$ of cardinality $\ge\beta\,n$.
+
+We say that $\phi$ has the \emph{fractional Helly property\/} if it has some finite Helly number.
+The \emph{fractional Helly number\/} of $\phi$ is the smallest number $k$ satisfying the property above.
+\QED
+\end{definition}
+
+For future reference we remark that the $\beta$ above may be used to obtain a bound to $\nu(\phi)$. In fact, if at least $\beta\,n$ definable sets intersect, then $\nu(\phi)\le n-\beta\,n+1$.  
+
+\begin{theorem}[(Matou\v{s}ek~\cite{M2004})]
+Let $\phi$ be an incidence relation with $\pi^*(\phi)\in o(n^k)$.
+Then $\phi$ has fractional Helly number $\le k$.
+\end{theorem}
+
+Recall that $\pi^*(\phi)\in o(n^k)$ means that $\lim_{n\to\infty}\pi^*(\phi)/n^k=0$.
+Which occurs in particular when the \vc-density is $<k$ or when the \vc-dimension is $\le k$.
+\begin{proof}
+Let $\phi$ and $k$ be as in the assumptions of the theorem.
+Let $\alpha$ be arbitrary and set $\beta=1/2m$ where $m$ is such that 
+
+\ceq{\hfill \pi^*(m)}{<}{\frac\alpha4{m\choose k}.}
+
+Fix some  $b_i\in\V$, for $i=1,\dots,n$ and assume
+ 
+\ceq{\hfill \bigcap_{i\in I}\phi(\U,b_i)}{\neq}{\0}\quad for at least \ $\displaystyle\alpha{n\choose k}$ \ sets \ $\displaystyle I\in{[n]\choose k}$
+
+We need to show that $\bigcap_{i\in J}\phi(\U,b_i)\neq\0$ for some  set $J\subseteq [n]$ of cardinality $\ge\beta\,n$.
+So, assume no such $J$ exists and reason for a contradiction.
+Note that we can assume that $n>2m$ because for $n\le2m$ we can take take $|J|=1$.
+
+Identify $J\subseteq[n]$ with a subset of $\V$.
+We will find a set $J\subseteq[n]$ of cardinality $m$ with many $\phi^*$-definable subsets, more than $\pi^*(m)$, a contradiction.
+
+Let $P$ be the set of pairs $I\subseteq J\subseteq[n]$ such that $|I|=k$ and $|J|=m$.
+We say that a pair $I\subseteq J$ in $P$ is \textit{good\/} if there is $a\in\U$ such that $I=\phi(a,J)$.
+That is, $I$ is a $\phi^*$-definable subset of $J$.
+
+\textit{Claim.} Assume on $P$ the uniform probability.
+Then the probability that a random pair is good is $\ge\alpha/4$.
+
+Assume the claim and proceed with the proof.
+We can think that the random pair in $P$ is chosen by first picking $J\in{[n]\choose m}$ with the uniform distribution and than $I\in{J\choose k}$ again with the uniform distribution. 
+(To say it more pedantically, we are applying the theorem of total probability.)
+If the the probability that a pair is good is $\ge\alpha/4$, then for at least one $J\in{[n]\choose m}$ the probability of finding a good subset $I$ is $\ge\alpha/4$.
+So, that $J$ has $\ge\frac\alpha4{m\choose k}$ good subsets.
+A contradiction which proves the theorem (given the claim).
+
+We now prove the claim.
+There is another equivalent way to pick a random pair in $P$.
+First we choose at random $I\subseteq[n]$ of cardinality $k$, then we choose at random $m-k$ elements from $[n]\sm I$.
+By assumption, the probability that $I$ is such that $\bigcap_{i\in I}\phi(\U,b_i)\neq\0$ is at least $\alpha$.
+So, assume that $I$ is such, and fix any $a\in \bigcap_{i\in I}\phi(\U,b_i)$.
+By the assumption that we would like to contradict, there are $<\beta n$ many $i\in[n]$ such that $\phi(a,b_i)$.
+Then the probability that all $i\in J\sm I$ are such that $\neg\phi(a,b_i)$ is at least
+
+\ceq{\hfill\frac{\displaystyle{n-\beta n\choose m-k}}{\displaystyle{n-k\choose m-k}}}{\ge}{\prod^{m-k-1}_{i=0}\frac{n-\beta n-i}{n-k-i}}
+\medrel{\ge}
+$\displaystyle\prod^{m-k}_{i=0}\frac{n-\beta n-i}{n-k-i}$
+
+\ceq{}{\ge}{\prod^{m-k}_{i=0}\frac{n-\beta n-m}{n-m}}
+\medrel{\ge}
+$\displaystyle\bigg(\frac{n-\beta n-m}{n-m}\bigg)^m$
+
+\ceq{}{=}
+{\bigg(1-\frac{\beta n}{n-m}\bigg)^m}
+
+\smallskip recall that $n>2m$ and $\beta\le1/2m$, then
+
+\ceq{}{\ge}{\displaystyle(1-2\beta)^m}
+\medrel{=}
+$\displaystyle\bigg(1-\frac{1}{m}\bigg)^m$
+\medrel{\ge}
+$\displaystyle\frac{1}{4}$
+
+Therefore the probability that a random pair in $P$ is good is at least $\alpha/4$.
+This proves the claim and with it the theorem.
+\end{proof}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{The (p,q)-theorem}
+
+For integers $p\ge q$ we say that $\phi$ has the \emph{$(p,q)$-property\/} if out of any $p$ definable sets there are $q$ sets with non-empty intersection.
+
+\begin{theorem}[(Alon, Kleitman + Matou\v sek)] Let $p\ge q\ge d+1$ be natural numbers.
+Then there is a number $N=N(d,p,q)$ such that if $\phi$ has \vc-codensity $\le d$  satisfies the $(p,q)$-property then $\tau(\phi)\le N$.
+\end{theorem}
+
+\begin{proof}
+As we are not trying to optimize $N$, we may prove the theorem for $q=d+1$.
+
+By Proposition~\ref{prop_bound_fractional_trans}, $\tau(\phi)$ is bounded by a function of $\tau^*(\phi)$, so it is enough to bound $\tau^*(\phi)$. By Proposition~\ref{thm_fractional_nu=tau},  $\tau^*(\phi)=\nu^*(\phi)$, so it is enough to bound $\nu^*(\phi)$.
+
+Let $A$ be an optimal fractional packing. By Theorem~\ref{thm_fractional_nu=tau} we may assume that $A$ is rational valued. Therefore $A=(1/m)\,C$ where $m$ is a positive integer and $C$ is a (integral valued) multi-subset of $\V$. 
+
+As explained in Section~\ref{multisets}, after replacing each $b\in\V$ with $m$ copies $b_1,\dots,b_m$ and denote the resultig set by $\V_m$.
+Replace each arc $\<a,b\>$ in $\phi$ with the arcs $\<a,b_1\>,\dots,\<a,b_m\>$.
+Denote by $\phi_m$ the new incidence relation.
+We can assume that $C$ is a plain subset of $\V_m$ with the property that $|\phi(a,C)|\le m$ for every $a\in\U$.
+%Then $C$ is a transversal of $\phi_m$.  
+
+\smallskip
+\textit{Claim 1.} $\phi_m$ satisfies the $(p',q)$-property with $p'=q(p-1)+1$.
+
+A $p'$-collection of $\phi_m$ definable sets either contains $q$ copies of the same $\phi$-definable set or it contains $p$ distinct $\phi$-definable sets. In both case it has a subcollection of $q$ sets with non-empty intersection. This proves Claim~1.
+
+\smallskip
+\textit{Claim 2.}
+There is an $\alpha=\alpha(p,q)>0$ such that for every $n$ and every $b_1,\dots,b_n\in\V'$
+
+\ceq{\hfill \bigcap_{i\in I}\phi(\U,b_i)}{\neq}{\0}\hfill for at least \ $\displaystyle\alpha{n\choose q}$ \ sets \ $\displaystyle I\in{[n]\choose q}$.
+
+By Claim~1, every $p'$-collection of $\phi_m$-definable sets contains at least one $q$-collection with non-empty intersection.
+Every $q$-collection is contained in ${n-q\choose p'-q}$ many $p'$-collections.
+Therefore the number $q$-collections of definable sets with non-empty intersection is
+
+\ceq{\hfill\frac{\displaystyle{n\choose p'}}{\displaystyle{n-q\choose p'-q}}}{=}{\frac{\displaystyle{n\choose q}}{\displaystyle{p'\choose q}}.}
+
+Therefore, claim~2 holds with \smash{$\displaystyle\alpha={p'\choose q}^{-1}$\kern-1ex}.
+
+\medskip
+\textit{Claim 3.}
+There is a $\beta=\beta(p,q)>0$ such that for every $n$ and every $b_1,\dots,b_n\in\V'$ there is an $a\in\U$ such that $\phi(a,b_i)$ holds for at least $\beta n$ many $b_i$.
+
+As $\phi'$ has the same \vc-codensity as $\phi$,  Caim~3 follows immediately from Claim~2 by Helly fractional theorem.
+
+Now, apply Claim~3 with the elements of $C$ as $b_1,\dots,b_n$. Then $\nu^*(\phi)=n/m$. So, from $\beta\,n\le |\phi(a,C)|\le m$, we obtain  $\nu^*(\phi)\le 1/\beta$. So $N=1/\beta$ is the bound claimed by the theorem.
+\end{proof}
+
+\end{document}
