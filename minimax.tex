@@ -192,16 +192,19 @@ the \emph{cover number\/} of $\phi(A\,;B)$ is the minimal cardinality of a cover
 %%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%
+\clearpage
 \section{Dilworth's Theorem}\label{shadow}
 
 Dilworth's Theorem is minimax theorem essentially equivalent to K\H{o}nig's Theorem.
 To highlight the connection we choose to prove it using K\H{o}nig's Theorem. 
 Alternatively we could have proved Dilworth's Theorem directly and derived K\H{o}nig's and Hall's Theorem from it.
 
-Let $<$ be a strict partial order on $\U$. An \emph{antichain\/} is a set $A\subseteq\U$ such that $a<a'$ for every $a,a'\in A$. A \emph{chain\/} is a set $A$ such that $a<a'\;\vee\ a'<a$ for every distinct $a,a'\in A$.
+Let $<$ be a strict partial order on $\U$.
+An \emph{antichain\/} is a set $A'\subseteq\U$ such that $a<a'$ for every $a,a'\in A'$. A \emph{chain\/} is a set $A'\subseteq\U$ such that $a<a'\;\vee\ a'<a$ for every distinct $a,a'\in A'$.
 
 \begin{void_thm}[Dilworth's Theorem]
-   The maximal cardinality of an antichain $A'\subseteq A$ equals the minimal cardinality of a partition of $\U$ into chains. 
+  Let $A\subseteq\U$ be finite. 
+  The maximal cardinality of an antichain $A'\subseteq A$ equals the minimal cardinality of a partition of $A$ into chains. 
 \end{void_thm}
 
 \begin{proof}
@@ -219,13 +222,14 @@ Let $<$ be a strict partial order on $\U$. An \emph{antichain\/} is a set $A\sub
 
   Let $\V$ be a disjoint copy of $\U$.
   Let $f:\U\to\V$ the bijection that maps each element of $\U$ to its copy in $\V$.
-  For $a,b\in\U,\V$ let $\phi(a\,;b)$ hold if $a< f^{-1}b$.
-  Let $A_1,B_1$ be a cover, we claim that $A \sm \big(A_1\cup f^{-1}[B_1]\big)$ is an antichain.
+  For $a,b\in\U$ such that $a<b$ let $\phi(a\,;fb)$.
+  Let $A_1,B_1$ be a cover of $\phi\big(A\,;f[A]\big)$.
+  We claim that $A \sm \big(A_1\cup f^{-1}[B_1]\big)$ is an antichain.
   In fact, if $a<b$ then either $a\in A_1$ or $fb\in B_1$, by the definition of cover.
   This proves the claim.
 
   As $A'$ has maximal cardinality, $|A| - |A'|\le |A_1\cup f^{-1}[B_1]|\le |A_1\cup B_1|$.
-  Therefore, by K\H{o}nig's Theorem there is a matching $A'',B''$ of cardinality $|A''|\ge |A_1\cup B_1|$. Hence $|A''|\ge |A\sm A'|$.
+  If we choose a over $A_1,B_1$ of minimal cardinality, by K\H{o}nig's Theorem there is a matching $A'',B''$ of cardinality $|A''|\ge |A_1\cup B_1|$. Hence $|A''|\ge |A\sm A'|$.
 
   We construct a chain-partition of $A$ as follow.
   Pick an element of $a_0\in A''$ and construct the longest possible chain $a_0,b_0,a_1,b_1,\dots,a_m,b_m,a_{m+1}$ where $a_i\in A''$ for all $i\le m$, and $b_i\in B''$ is the (unique) element such that $\phi(a_i\,;b_i)$ and $a_{i+1}\in A$ is the copy of $b_i\in B''$.
