@@ -19,16 +19,33 @@
 %%%%%%%%%%%%%%%%%%%%%%%
 \section{Sperner's Theorem}\label{sperner}
 
-We say that $\phi(A\,;b)_{b\in\V}$ is an \emph{antichain\/} if there is no pair of elements $b,b'\in\V$ such that $\phi(A\,;b)\subset\phi(A\,;b')$.
+We say that $\phi(A\,;b)_{b\in\V}$ is an \emph{antichain\/} if there is no pair of distinct elements $b,b'\in\V$ such that $\phi(A\,;b)\subset\phi(A\,;b')$.
 Antichains are also called \emph{Sperner systems.}
+
+If all sets in $\phi(A\,;b)_{b\in\V}$ are distinct and of equal cardinality, then we clearly have an antichain.
+If $|A|=n$, the cardinality of a collection of subsets of $A$, all of cardinality $k$, is maximal when $k=\lfloor n/2\rfloor$ or $k=\lceil n/2\rceil$.
+In this case
+
+\ceq{\hfill\big|\phi(A\,;b)_{b\in\V}\big|}
+{=}
+{{n\choose\lfloor n/2\rfloor}}
+
+\ceq{}
+{=}
+{{n\choose\lceil n/2\rceil}.}
+
+The following classical theorem it is not possible to improve this bound holds for all antichain.
+This is one of the first results of external combinatorics (though the term has been coined a few years later).
 
 \def\ceq#1#2#3{\parbox[t]{36ex}{$\displaystyle #1$}\medrel{#2}{$\displaystyle #3$}}
 
 \begin{void_thm}[Sperner's Theorem]
-   Let $A\subseteq\U$ have cardinality $n$, finite.
-   If $\phi(A\,;b)_{b\in\V}$ is an antichain then
-   
-   \ceq{\hfill\big|\phi(A\,;b)_{b\in\V}\big|}{\le}{{n\choose\lfloor n/2\rfloor}.}
+  Let $A\subseteq\U$ have cardinality $n$, finite.
+  If $\phi(A\,;b)_{b\in\V}$ is an antichain then
+  
+  \ceq{\hfill\big|\phi(A\,;b)_{b\in\V}\big|}
+  {\le}
+  {{n\choose\lfloor n/2\rfloor}.}
 \end{void_thm}
 \smallskip
 \begin{proof}
