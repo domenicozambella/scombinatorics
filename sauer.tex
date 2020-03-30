@@ -82,14 +82,16 @@ Moreover, if $\pi_\phi(n)=2^n$ for some $n$, then $\pi_\phi(k)=2^k$ for every $k
 The \emph{Vapnik-Cher\-vo\-nen\-kis dimension\/} of $\phi(\U\,;b)_{b\in\V}$, abbreviated by \emph{\vc-dimension}, is the maximal cardinality of a finite set $A\subseteq\U$ that is shattered by $\phi(x\,;z)$.
 Equivalently, it is the maximal $k$ such that $\pi_\phi(k)=2^k$.
 If such a maximum does not exist,
-we say that the \vc-dimension is infinite.
+we say that the \vc-dimension is infinite or that $\phi(x\,;z)$ has \emph{\ip\/} (the independence property).
+Otherwise, we say that $\phi(x\,;z)$ has \emph{\nip\/} (not the independence property).
+We may also say: \textit{is\/} \ip, or \textit{is\/} \nip.
 
 As $\U$ and $\V$ are usually clear from the context, we may say \vc-dimension of $\phi(x\,;z)$ for the \vc-dimension of $\phi(\U\,;b)_{b\in\V}$.
 
 \begin{example}
   If $\phi(x\,;z)$ is either $\top$ or $\bot$, then it shatters only the empty set, therefore it has \vc-dimension $0$.\QED
 \end{example}
-well Levine.
+
 \begin{example}
   If $\phi(x\,;z)$ has ladder dimension $n$ then it has \vc-dimension at most $n$. Hence stable formulas are \nip.\QED
 \end{example}
@@ -138,7 +140,10 @@ We call the \vc-dimension of $\phi(x\,;z)^*$ the \emph{dual \vc-dimension\/} of 
   That is, $\phi(x\,;z)$ shatters $A=\{a_i\,:\, i\in k\}$.
 \end{proof}
 
-
+\begin{exercise}
+  (???) Prove that there is a formula with \vc-dimension $k$ and dual dimension $2^k$.
+  \QED
+\end{exercise}
 
 %%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%
@@ -183,7 +188,7 @@ An alternative proof of the Sauer-Shelah Lemma derives it as corollary of a lemm
 
   Notice that
   
-  \ceq{\hfill\phi(A,b)_{b\in\V}}{=}{\phi(A',b)_{b\in\V}\quad \cup\quad \Big\{\{a\}\cup\psi(A',b)\ :\ b\in\V\Big\}.}
+  \ceq{\hfill\big|\phi(A,b)_{b\in\V}\big|}{=}{\bigg|\phi(A',b)_{b\in\V}\quad \cup\quad \Big\{\{a\}\cup\psi(A',b)\ :\ b\in\V\Big\}\bigg|.}
   
   as the two sets in the r.h.s.\@ are disjoint
 
@@ -195,9 +200,9 @@ An alternative proof of the Sauer-Shelah Lemma derives it as corollary of a lemm
   
   and
 
-  \ceq{\hfill\big|\psi(A',b)_{b\in\V}\big|}{\le}{\Big|\{C\subseteq A'\; :\; C \textrm{\ is\ shattered\ by\ }\psi(x\,;z)\}\Big|.}
+  \ceq{\hfill\big|\psi(A',b)_{b\in\V}\big|}{\le}{\Big|\{C\subseteq A'\; :\; C \textrm{\ is\ shattered\ by\ }\psi(x\,;z)\}\Big|}
 
-  \ceq{}{=}{\Big|\{C\subseteq A'\; :\; C\cup\{a\} \textrm{\ is\ shattered\ by\ }\phi(x\,;z)\}\Big|}\hfill(2)
+  \ceq{}{=}{\Big|\{C\subseteq A'\; :\; C\cup\{a\} \textrm{\ is\ shattered\ by\ }\phi(x\,;z)\}\Big|.}\hfill(2)
 
   In fact, $C\subseteq A'$ is shattered by $\psi(x\,;y)$ if an only if $C\cup\{a\}$ it is shattered by $\phi(x\,;y)$.
   Clearly, 
@@ -263,7 +268,7 @@ There is a second bound, which is better when $k\ge 3$ and holds for $n>k$
 
 \ceq{}
 {=}
-{\Big(\frac{n}{k}\Big)^{\!k}\Big(1+\frac{k}{n}\Big)}
+{\Big(\frac{n}{k}\Big)^{\!k}\Big(1+\frac{k}{n}\Big)^n}
 \hfill by the binomial theorem
 
 \ceq{}
