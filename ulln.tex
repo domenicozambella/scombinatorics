@@ -186,7 +186,7 @@ To obtain exponential bounds, we frequently apply the following trick.
   {\le}
   {\log\frac{b\,e^{ta}-a\,e^{tb}}{d}}
 
-  taking the Taylor series expansion of the r.h.s.\@ at $t=0$ (the first and second derivatives vanish at $0$; the second derivative is always $\le 1/4$) we obtain
+  taking the Taylor series expansion of the r.h.s.\@ at $t=0$ (the first and second derivatives vanish at $0$; the second derivative is always $\le d^2/4$) we obtain
 
   \ceq{\hfill\log\Ex\Big[e^{tX}\Big]}
   {\le}
@@ -250,7 +250,7 @@ A \emph{random sign variable\/} (a.k.a.\@ Rademacher random variable) is a rando
 
 \begin{lemma}\label{lem_sign}
   Let $\sigma$ be a random sign variable.
-  Then for every $t>0$
+  Then for every $t$
 
   \ceq{\hfill\Ex\Big[e^{t\sigma}\Big]}
       {\le}
@@ -277,7 +277,7 @@ A \emph{random sign variable\/} (a.k.a.\@ Rademacher random variable) is a rando
 
   \ceq{}
   {=}
-  {\sum^\infty_{i=0}\frac{(t/2)^{2i}}{i!}}
+  {\sum^\infty_{i=0}\frac{(t^2/2)^{i}}{i!}}
 
   \ceq{}
   {=}
@@ -292,6 +292,7 @@ A \emph{random sign variable\/} (a.k.a.\@ Rademacher random variable) is a rando
   {\exp{\Big(\frac{t^2d^2}8}\Big),}
 
   where $\Ex[X]=\mu$ and $d=b-a$.
+  Here we prove a marginally weaker bound (2 in place of 8).
 
   Let $X'$ be an independent copy of $X$ (a.k.a.\@ ghost sample).
   In particular $\mu=\Ex(X')$.
@@ -333,7 +334,7 @@ A \emph{random sign variable\/} (a.k.a.\@ Rademacher random variable) is a rando
   {e^{t^2d^2/2}}
   \hfill  because $|X-X'|\le d$.
   
-This yields the bound above (only with 2 in place of 8).\QED
+This yields the bound above with 2 in place of 8.\QED
 \end{void_def}
 %%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%
@@ -518,7 +519,8 @@ The main theorem of this section is this famous result of Vapnik-Chervonenkis~\c
   {6\,\pi_\phi(n)\exp\bigg(-\frac{n\epsilon^2}{32}\bigg).}
 \end{void_thm}
 
-N.B. Some technical hypothesis of measurability are necessary when $\phi(\U\,;b)_{b\in\V}$ is uncountable. This have been omitted in the statement above, and will be discussed below.
+N.B. Some technical measure-theoretical assumptions are necessary when $\phi(\U\,;b)_{b\in\V}$ is uncountable.
+These have been omitted in the statement above, and will be discussed below.
 
 \begin{proof}
   Let $S'=S'_1,\dots,S'_n$ be an independent copy of $S$.
@@ -528,12 +530,14 @@ N.B. Some technical hypothesis of measurability are necessary when $\phi(\U\,;b)
   {\le}
   {\Pr\,\bigg(\big|\Fr(S,b) - \Fr(S',b)\big|\ge\frac\epsilon2\bigg)\ +\ (*)}
 
-  where, by the Weak Law of Large Numbers~\ref{WLLN_exp},
-  
+  where,
+
   \ceq{\hfill (*)}
   {=}
   {\Pr\,\bigg(\big|\Fr(S',b) - \Pr(b)\big|\ge\frac\epsilon2\bigg)}
-
+ 
+ which, by the Weak Law of Large Numbers~\ref{WLLN_exp}, 
+  
   \ceq{}
   {\le}
   {2\,e^{-n\epsilon^2/2}}
@@ -643,9 +647,9 @@ For completeness, the following proposition gives an explicit bound.
 \begin{proposition}
   There is a sample $s$ as in the corollary above of size
   
-  \ceq{\hfill c\,\frac{k}{\epsilon^2}\log\frac{k}{\epsilon^2}}
-  {}
-  {}
+  \ceq{\hfill n}
+  {\le}
+  {c\,\frac{k}{\epsilon^2}\log\frac{k}{\epsilon^2}}
   
   where $c$ is an absolute constant and $k$ is the \vc-dimension of $\phi(\U\,;b)_{b\in\V}$.
 \end{proposition}
