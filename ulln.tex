@@ -346,7 +346,6 @@ This yields the bound above with 2 in place of 8.\QED
 \def\medrel#1{\parbox[t]{5ex}{$\displaystyle\hfil #1$}}
 \def\ceq#1#2#3{\parbox[t]{34ex}{$\displaystyle #1$}\medrel{#2}{$\displaystyle #3$}}
 %\def\smallcirc{\mathord{\kern-.2ex\raisebox{.4ex}{$\scriptscriptstyle\circ$}}}
-\def\Indicator{{\mathds I}}
 
 A \emph{sample\/} $s$ is a sequence $s_1,\dots,s_n$ of elements of $\U$.
 Its length $|s|=n$ is also called \emph{size\/} or \emph{dimension.}
@@ -547,7 +546,7 @@ These have been omitted in the statement above, and will be discussed below.
   
   \ceq{\hfill\Pr\bigg(\big|\Fr(S,b) - \Fr(S',b)\big|\ge\frac\epsilon2\bigg)}
   {=}
-  {\Pr\bigg(\sum_{i=1}^n\big|\Indicator_{S_i,b} - \Indicator_{S'_i,b}\big|\ge\frac{n\epsilon}2\bigg)}
+  {\Pr\bigg(\Big|\sum_{i=1}^n\Indicator_{S_i,b} - \Indicator_{S'_i,b}\Big|\ge\frac{n\epsilon}2\bigg)}
 
   Then, again by the triangular inequality
 
@@ -575,11 +574,11 @@ These have been omitted in the statement above, and will be discussed below.
 
   \ceq{(2)}
   {=}
-  {\Pr\bigg(\sup_{j\le m}\Big|\sum_{i=1}^n\sigma_i\,\Indicator_{s_i,b_j}\Big|\ge\frac{n\epsilon}4\bigg)}
+  {\Pr\bigg(\max_{j\le m}\Big|\sum_{i=1}^n\sigma_i\,\Indicator_{s_i,b_j}\Big|\ge\frac{n\epsilon}4\bigg)}
 
   Note that, in general, for any real random variables $X_1,\dots,X_m$ we have
 
-  \ceq{\hfill\Pr\Big(\sup_{i\le m} X_i \ge \epsilon\Big)}
+  \ceq{\hfill\Pr\Big(\max_{i\le m} X_i \ge \epsilon\Big)}
   {=}
   {\Pr\Big(\bigcup_{i=0}^m\ X_i \ge \epsilon\Big)}
 
@@ -761,7 +760,7 @@ Before embarking in the proof of the theorem above, we prove the following (easy
   {\Ex\Big[\max_{i\le m} e^{t X_i}\Big]}
 
   \ceq{}
-  {=}
+  {\le}
   {\Ex\Big[\sum_{i\le m} e^{t X_i}\Big]}
 
   \ceq{}
@@ -769,7 +768,7 @@ Before embarking in the proof of the theorem above, we prove the following (easy
   {\sum_{i\le m}\Ex\big[ e^{t X_i}\big]}
 
   \ceq{}
-  {=}
+  {\le}
   {m\,e^{c^2t^2/2}}
 
   Taking the logarithm of both sides and replacing $t$ with \smash{$\dfrac{\sqrt{2\log m}}{c}$}, we obtain the first inequality of the lemma.
@@ -890,8 +889,8 @@ We prove an informative variant which gives the rate of convergence (though, thi
 \end{void_thm}
 
 \begin{proof}
-  Take $\U=\V=\RR$ and $\phi(x\,;z) = x<z$.
-  Assign to $\phi(\U\,;b)=(-\infty,b]$ the probability measure $\Pr(X_i\le b)$.
+  Take $\U=\V=\RR$ and $\phi(x\,;z) = x\le z$.
+  Assign to $\phi(\U\,;b)=(-\infty,b]$ probability $\Pr(X_i\le b)$.
   Then, if $S=S_1,\dots,S_n$ is a random sample from $\U$
 
   \ceq{\hfill\Ex\,\Big|F_{\rm e}(X,z) - F(z)\Big|}
