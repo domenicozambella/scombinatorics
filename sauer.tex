@@ -122,26 +122,61 @@ As $\U$ and $\V$ are usually clear from the context, we may say \vc-dimension of
 We call the \vc-dimension of $\phi(x\,;z)^*$ the \emph{dual \vc-dimension\/} of  $\phi(x\,;z)$.
 
 \begin{proposition}
-  If $\phi(x\,;z)$ has \vc-dimension $<k$ then its dual \vc-dimension is $< 2^k$.
+  If $\phi(x\,;z)$ has \vc-dimension $k$, then its dual \vc-dimension is $<2^{k+1}$.
 \end{proposition}
   
 \begin{proof}
-  Suppose that the \vc-dimension of $\phi(x\,;z)^*$ is at least $2^k$.
-  We prove that the \vc-dimension of $\phi(x\,;z)$ is at least $k$.
-  Let $B=\{b_I\,:\,I\subseteq k\}$ be a set of cardinality $2^k$ shattered by $\phi(x\,;z)^*$. 
-  That is, for every $\J\subseteq \P(k)$ there is $a_\J$ such that
+  Suppose that the \vc-dimension of $\phi(x\,;z)^*$ is $\ge 2^{k+1}$.
+  We prove that the \vc-dimension of $\phi(x\,;z)$ is at least $k+1$.
+  Let $B=\big\{b_I\,:\,I\subseteq [k+1]\big\}$ be a set of cardinality $2^{k+1}$ shattered by $\phi(x\,;z)^*$. 
+  That is, for every $\J\subseteq \P[k+1]$ there is $a_\J$ such that
   
   \ceq{\hfill\phi(a_\J, b_I)}{\IFF}{I\in\J}
   
-  Let $a_i=a_{\{I\subseteq k\,:\, i\in I\}}$. Then from the equivalence above we obtain
+  Let $a_i=a_{\{I\; :\ i\,\in\, I\}}$. Then from the equivalence above we obtain
   
   \ceq{\hfill\phi(a_i, b_I)}{\IFF}{i\in I}
   
-  That is, $\phi(x\,;z)$ shatters $A=\{a_i\,:\, i\in k\}$.
+  That is, $\phi(x\,;z)$ shatters $A=\big\{a_i\,:\, i\in [k+1]\big\}$.
 \end{proof}
 
-\begin{exercise}[(???)]
-  Prove that, for all $k>1$, there is a formula with \vc-dimension $k-1$ and dual dimension $2^k-1$.
+\begin{exercise}
+  Prove that, for all $k$, there is a formula with \vc-dimension $k$ and dual dimension $2^{k+1}-1$.
+  
+  % Hint: Let $\U$ an infinite set and 
+  
+  % \ceq{\hfill\V}{=}{\bigcup^{m}_{i=0}{\U\choose i}}\hfill where $m=2^{k+1}-1$.
+
+  % The formula $\phi(x\,;z)$ is $x\in z$.
+  % As noted above, $\phi(x\,;z)$ has \vc-dimension $2^{k+1}-1$.
+  % If we prove that $\phi(x\,;z)^*$ has dimension $k$, we are done (because the dual of the dual is the primal).
+  % It is easy to verify that the dimension of $\phi(x\,;z)^*$ is at least $k$.
+  % To prove equality, assume for a contradiction that some $B\subseteq\V$ of cardinality $k+1$ is shattered by $\phi(x\,;z)^*$.
+  % Then for every $B'\subseteq B$ there is an $a_{B'}\in\U$ such that $B'=\phi(a_{B'}\,;B)$.
+  % Or, given that $\phi(x\,;z)$ is $x\in z$,
+
+  % \ceq{\hfill a_{B'}}{\in}{\bigcap_{\ \ b\in B'\ \ }b}
+
+  % \ceq{\hfill a_{B'}}{\notin}{\bigcup_{b\in B\sm B'}b.}
+
+  % Let $A=\{a_{B'}\ :\ \0\neq B'\subseteq B\}$.
+  % As $a_{B'}\neq a_{B''}$ when $B'\neq B''$, then $A$ has cardinality $2^{k+1}$.
+  % % Let $A=\{a_{\{b\}}\ :\ b\in B\}$.
+  % % As $a_{B'}\neq a_{B''}$ when $B'\neq B''$, then $A$ has cardinality $2^{k+1}$.
+  % % Note that if $b\neq b'$ then $b\cap A\neq b'\cap A$.
+  % % In fact, $a_{\{b\}}\in b\sm b'$ and vice versa $a_{\{b'\}}\in b'\sm b$.
+  % % Therefore $|A|=|B|=k+1$.
+  % It is easy to check that $\phi(x\,;z)$ shatters also $C=\{b\cap A\ : b\in B\}$.
+  % But $C$ 
+  
+
+
+
+
+
+
+
+  
   \QED
 \end{exercise}
 
@@ -225,7 +260,7 @@ An alternative proof of the Sauer-Shelah Lemma derives it as corollary of a lemm
 
 We write $f(n)=O(g(n))$ if there is a constant $C$ such that $|f(n)|\le C g(n)$ holds for all (sufficiently large) $n$.
 
-The \emph{\vc-density\/} of $\phi(x\,;z)$ is the infimum over all real number $r$ such that $\pi_\phi(n)\in O(n^r)$.
+The \emph{\vc-density\/} of $\phi(x\,;z)$ is the infimum over all real number $r$ such that $\pi_\phi(n)= O(n^r)$.
 It is infinite if no such $r$ exist.
 The  \emph{dual \vc-density\/} is defined accordingly.
 
