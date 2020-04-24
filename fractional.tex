@@ -7,6 +7,10 @@
 \def\medrel#1{\parbox[t]{5ex}{$\displaystyle\hfil #1$}}
 \def\ceq#1#2#3{\parbox[t]{23ex}{$\displaystyle #1$}\medrel{#2}{$\displaystyle #3$}}
 
+This chapter is less selfcointained than the rest of these notes.
+We need to apply the duality of linear programming (a consequence of Farkas's Lemma).
+The reader can use the result as a black box.
+Otherwise, we would recommend~\cite{LPmatousek}*{Chapter 6}, a lively and conceptual introduction to linear programming (a rarity for an otherwise rather dry subject).
 
 %%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%
@@ -18,7 +22,7 @@
 
 Let $\phi(x\,;z)$ be given. 
 Let $A\subseteq\U$ and $B\subseteq\V$ be finite sets. 
-(It seems that most of the section smoothly generalizes to rational valued formulas and multisets, see below.)
+%(It seems that most of the section smoothly generalizes to rational valued formulas and multisets, see below.)
 
 A subset $A'\subseteq A$ is a \emph{transversal\/} if $\phi(A',b)\neq\0$ for every $b\in B$. Equivalently, if the sets $\phi(a,B)_{a\in A'}$ cover $B$, i.e.
 
@@ -281,7 +285,7 @@ Namely, there is a bound to the cardinality of the transversal number $\tau$ tha
 As we are not trying to optimize $N$, we may prove the theorem for $q=k+1$.
 By Proposition~\ref{prop_bound_fractional_trans}, the transversal number is bounded by a function of $\tau^*$, so it is enough to bound $\tau^*$. By Proposition~\ref{thm_fractional_nu=tau}, we can equivalently bound the fractional packing number $\nu^*$ because it coincides with $\tau^*$.
 
-Let $B'\subseteq B$ be an optimal fractional packing.  That is, $\nu^*=|B'|$ where $B'\le\Indicator_B$ is such that $|\phi(a,B')|\le1$ for every $a\in A$. From $B'$ we want to obtain a regular set $C'$, which is easier to work with. 
+Let $B'\subseteq B$ be an optimal fractional packing.  That is, $\nu^*=|B'|$ where $B'\le\Indicator_B$ is such that $|\phi(a,B')|\le1$ for every $a\in A$. As we rather work with regular sets than with fractional multisets, we apply a trick that allows to replace $B'$ with a regular set $C'$. 
 
 By Theorem~\ref{thm_fractional_nu=tau} we may assume that $B'$ is rational valued. Therefore $B'=(1/m)\,C$ where $m$ is a positive integer and $C$ is a integral valued multiset over $\V$.
 Replace $\V$ with $\V\times[m]$.
@@ -313,9 +317,9 @@ Therefore the number $q$-collections with non-empty intersection is
 
 Therefore, the claim holds with $\displaystyle1/\alpha={qp\choose q}$.
 
-Now we can resume the proof of the theorem (our goal is to bound $\nu^*$ by a function of $p,q$, and $k$).
+Now we can resume the proof of the theorem (recall that our goal is to bound $\nu^*$ by a function of $p,q$, and $k$).
 Let $\beta=\beta(\alpha,k)$ be as in Theorem~\ref{thm_matousek}.
-As $\phi\!_{_\times}\!(x\,;z,y)$ has the same \vc-codimension as $\phi(x\,;z)$, by Claim~2 there is a set $D\subseteq C'$ of cardinality $>\beta n$ be such that
+As $\phi\!_{_\times}\!(x\,;z,y)$ has the same \vc-codimension as $\phi(x\,;z)$, by Claim~2 there is a set $D\subseteq C'$ of cardinality at least $\beta n$ such that
 
 \ceq{\hfill \bigcap_{b,i\in D}\phi\!_{_\times}\!(A\,;b,i)}{\neq}{\0}
 
