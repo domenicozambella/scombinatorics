@@ -163,20 +163,21 @@ We will deal with the following property, which is more robust. It says that if 
 \begin{definition}
 We say that $\phi(x\,;z)$ \emph{has fractional Helly number $k$\/} if for all $\alpha>0$ there is a $\beta>0$ such that  for every finite $A\subseteq\U$ and $B\subseteq\V$ the following holds (write $n$ for $|B|$):
 
-\ceq{\hfill \bigcap_{b\in B'}\phi(A,b)}{\neq}{\0}\hfill for at least \ $\displaystyle\alpha{n\choose k}$ \ sets \ $\displaystyle B'\in{B\choose k}$
+\ceq{(1)\hfill \bigcap_{b\in B'}\phi(A,b)}{\neq}{\0}\hfill for at least \ $\displaystyle\alpha{n\choose k}$ \ sets \ $\displaystyle B'\in{B\choose k}$
 
 then
 
-\ceq{\hfill\bigcap_{b\in B''}\phi(A,b)}{\neq}{\0}\hfill for some $B''\subseteq B$ of cardinality $\ge\beta\,n$.
-
-%\ceq{\hfill\big|\phi(a,B)\big|}{\geq}{\beta\,n}\hfill for some $a\in A$.
+\ceq{(2)\hfill\bigcap_{b\in B''}\phi(A,b)}{\neq}{\0}\hfill for some $B''\subseteq B$ of cardinality $\ge\beta\,n$.
 
 We say that $\phi$ has the \emph{fractional Helly property\/} if it has some finite Helly number.
 The \emph{fractional Helly number\/} of $\phi(x\,;z)$ is the smallest number $k$ satisfying the property above.\QED
 \end{definition}
 
-% For future reference we remark that the $\beta$ above may be used to obtain a bound to $\nu$. 
-% In fact, if at least $\beta\,n$ definable sets intersect, then $\nu\le n-\beta\,n+1$.
+For further reference, we note that (2) in the definition above can be rewritten as 
+
+\ceq{(2$'$)\hfill\big|\phi(a,B)\big|}{\geq}{\beta\,n}\hfill for some $a\in A$.
+
+The following is proves that \nip{} formulas have the fractionally Helly property (in a strong sense).
 
 \begin{theorem}[(Matou\v{s}ek)]\label{thm_matousek}
 Let  $\phi(x\,;z)$ have \vc-codimension $<k$.
@@ -198,23 +199,24 @@ That is,
 
 and
 
-\ceq{(2)\hfill\bigcap_{b\in B''}\phi(A,b)}{=}{\0}\hfill for all $B''\subseteq B$ of cardinality $\ge\beta\,n$.
+\ceq{(2)\hfill\big|\phi(a\,;B)\big|}{<}{\beta\,n}\hfill for all $a\in A$.
 
-Note that we can assume that $n>2m$ because for $n\le2m$ we can take any $B''$ of cardinality $1$.
-We will find a set $B''\subseteq B$ of cardinality $m$ with many $\phi(x\,;z)^*$-definable subsets, more than $\pi^*(m)$, a contradiction.
+Note that we can assume that $n>2m$ otherwise $\beta\,n<1$ and (2) never occur.
+We will find a set $B''\subseteq B$ of cardinality $m$ with more than $\pi^*(m)$ distinct $\phi(x\,;z)^*$-definable subsets, a contradiction.
 
 Let $P$ be the set of pairs $B'\subseteq B''\subseteq B$ such that $|B'|=k$ and $|B''|=m$.
 We say that a pair $B'\subseteq B''$ in $P$ is \textit{good\/} if there is $a\in A$ such that $B'=\phi(a,B'')$.
 That is, $B'$ is a $\phi(x\,;z)^*$-definable subset of $B''$.
 
-Claim 1. Assume the uniform probability on $P$.
+Claim 1. 
+Assume the uniform probability on $P$.
 Then the probability that a random pair is good is $\ge\alpha/4$.
 
 Assume Claim~1 for now and continue with the proof.
 We can think that the random pair in $P$ is chosen by first picking $B''\in{B\choose m}$ with the uniform distribution and than $B'\in{B''\choose k\phantom{'}}$ again with the uniform distribution. 
 (To put it more pedantically, we are applying the theorem of total probability.)
 If the the probability that a pair is good is $\ge\alpha/4$, then for at least one $B''\in{B\choose m}$ the probability of finding a good subset $B'$ is $\ge\alpha/4$.
-Therefore, $B''$ has $\ge\frac\alpha4{m\choose k}$ good subsets.
+Therefore, $B''$ has $\ge\frac\alpha4{m\choose k}>\pi^*(m)$ good subsets.
 A contradiction which proves the theorem given the claim.
 
 We now prove the claim.
@@ -222,7 +224,7 @@ There is another equivalent way to pick a random pair in $P$.
 First we choose at random $B'\subseteq B$ of cardinality $k$ then obtain $B''$ by adding $m-k$ random elements from $B\sm B'$.
 By (1), the probability that $B'$ is such that $\bigcap_{b\in B'}\phi(A,b)\neq\0$ is at least $\alpha$.
 So, assume that $B'$ is such, and fix any $a$ is this intersection.
-By (2), there are $<\beta n$ many $b\in B$ such that $\phi(a,b)$.
+By (2), there are $|\phi(a,B)|<\beta n$.
 Then the probability that all $b\in B''\sm B'$ are such that $\neg\phi(a,b)$ is at least\smallskip
 
 \ceq{\hfill{n-\beta n\choose m-k}\bigg/{n-k\choose m-k}}
@@ -234,7 +236,9 @@ Then the probability that all $b\in B''\sm B'$ are such that $\neg\phi(a,b)$ is 
 {\ge}
 {\prod^{m-k-1}_{i=0}\frac{n-\beta n-m}{n-m}}
 
-\ceq{}{\ge}{\bigg(\frac{n-\beta n-m}{n-m}\bigg)^m}
+\ceq{}
+{\ge}
+{\bigg(\frac{n-\beta n-m}{n-m}\bigg)^m}
 
 \ceq{}
 {=}
@@ -319,12 +323,7 @@ Therefore, the claim holds with $\displaystyle1/\alpha={qp\choose q}$.
 
 Now we can resume the proof of the theorem (recall that our goal is to bound $\nu^*$ by a function of $p,q$, and $k$).
 Let $\beta=\beta(\alpha,k)$ be as in Theorem~\ref{thm_matousek}.
-As $\phi\!_{_\times}\!(x\,;z,y)$ has the same \vc-codimension as $\phi(x\,;z)$, by Claim~2 there is a set $D\subseteq C'$ of cardinality at least $\beta n$ such that
-
-\ceq{\hfill \bigcap_{b,i\in D}\phi\!_{_\times}\!(A\,;b,i)}{\neq}{\0}
-
-So, for some $a\in A$ we have $\beta\,n\le |\phi(a,C')|\le m$.
-Therefore  $\nu^*\le 1/\beta$.
+As $\phi\!_{_\times}\!(x\,;z,y)$ has the same \vc-codimension as $\phi(x\,;z)$, by Claim~2 there is an $a\in A$ such that $\phi(a,C')$ has cardinality at least $\beta\,n$. So, from $\beta\,n\le |\phi(a,C')|\le m$ we obtain $\nu^*\le 1/\beta$.
 \end{proof}
 
 \end{document}
