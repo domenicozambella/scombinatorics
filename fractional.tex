@@ -1,18 +1,12 @@
 % !TEX root = scombinatorics.tex
 \documentclass[scombinatorics.tex]{subfiles}
 \begin{document}
-\chapter{}
+\chapter{Small transversals}
 \label{fractional}
 
-
-
 \def\medrel#1{\parbox[t]{5ex}{$\displaystyle\hfil #1$}}
-\def\ceq#1#2#3{\parbox[t]{20ex}{$\displaystyle #1$}\medrel{#2}{$\displaystyle #3$}}
+\def\ceq#1#2#3{\parbox[t]{23ex}{$\displaystyle #1$}\medrel{#2}{$\displaystyle #3$}}
 
-\vskip-4ex
-\emph{\LARGE\bf Work in progress}
-
-\vskip10ex
 
 %%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%
@@ -24,6 +18,7 @@
 
 Let $\phi(x\,;z)$ be given. 
 Let $A\subseteq\U$ and $B\subseteq\V$ be finite sets. 
+(It seems that most of the section smoothly generalizes to rational valued formulas and multisets, see below.)
 
 A subset $A'\subseteq A$ is a \emph{transversal\/} if $\phi(A',b)\neq\0$ for every $b\in B$. Equivalently, if the sets $\phi(a,B)_{a\in A'}$ cover $B$, i.e.
 
@@ -57,7 +52,7 @@ Very little can be said in general about the reverse direction.
 A (fractional) multiset over $\U$ is a nonnegative real-valued function $A':\U\to\RR_{\ge0}$.
 We interpret $A'(a)$ as the multiplicity of the element $a$ in the multiset $A'$.
 
-We write $\phi(A',b)$ for the multiset $A'\cdot\Indicator_{\phi(\U,b)}$.
+We write \emph{$\phi(A',b)$\/} for the multiset $A'\cdot\Indicator_{\phi(\U,b)}$.
 
 The \emph{support\/} of a multiset is the set where it is positive.
 For multisets of finite support we define the \emph{size\/} to be\smallskip 
@@ -73,7 +68,7 @@ If $A'$ and $A''$ are multisets we write $A'\le A''$ if $A'(a)\le A''(a)$ holds 
 A \emph{fractional transversal\/} is a multiset $A'\le\Indicator_A$ such that $|\phi(A', b)|\ge1$ for every $b\in B$.
 The \emph{fractional transversal number\/} of $\phi(x\,;z)$, denoted by $\tau^*$, is the  infimum of the size of the fractional transversals of $\phi(x\,;z)$.
 
-A fractional multiset $B$ over $\V$ is a \emph{fractional packing\/} if $|\phi(a,B)|\le1$ for every $a\in\U$.
+A fractional multiset $B'\le\Indicator_B$ over $\V$ is a \emph{fractional packing\/} if $|\phi(a,B')|\le1$ for every $a\in A$.
 The \emph{fractional packing number\/} of $\phi(x\,;z)$, denoted by $\nu^*$, is the supremum of the size of the fractional packings of $\phi(x\,;z)$.
 
 The notation $\tau^*$ and $\nu^*$ is standard. 
@@ -114,16 +109,16 @@ Then it is easy to verify that
 Therefore, by he duality of linear programming $\nu^*=\tau^*$.
 
 As $\tau^*$ is the minimum of the linear function $x\mapsto 1_n^{\rm T}\;x$ over a polyhedron, such minimum is attained at vertex.
-The inequalities describing the polyhedron have rational coefficients, so also the vertices have rational coordinates.
+The inequalities describing the polyhedron have rational coefficients, so also the vertices have rational coordinates (elaborate on this).
 \end{proof}
 
-When $\phi(x\,;z)$ has finite \vc-dimension, we can bound the transversal number $\tau$ with a function of $\tau^*$. 
+When $\phi(x\,;z)$ has finite \vc-dimension, the transversal number $\tau$ is bounded by a function of $\tau^*$. 
 
 \begin{proposition}\label{prop_bound_fractional_trans}
   Let $\phi(x\,;z)$ have \vc-dimension $k$.
   Then for all finite sets $A\subseteq\U$ and $B\subseteq\V$
   
-  \ceq{\hfill\tau}{\le}{ c\,k\,(\tau^*)^2\,\ln\tau^*}
+  \ceq{\hfill\tau}{\le}{ c\,k\,(\tau^*)^2\,\ln (k\,\tau^*)}
   
   where $c$ is an absolute constant.
 \end{proposition}
@@ -156,59 +151,62 @@ Assume that any $d+1$ sets from $\Phi$ have non-empty intersection.
 Then the whole family $\Phi$ has non-empty intersection.\QED
 \end{proposition}
 
-Note that Helly's theorem does not hold for families of finite $\vc$-dimension.
+Note that Helly's theorem does not hold for families of finite \vc-dimension.
 A counter example of \vc-dimension $2$ can be constructed with a family containing sets that are unions of two finite intervals of the real line.
 
-We will deal with the following property, which is more robust.
+We will deal with the following property, which is more robust. It says that if there is \textit{plenty\/} of \textit{small\/} collections of sets with nonempty intersection, then there is a \textit{large\/} collection with nonempty intersection.
 
 \begin{definition}
-We say that $\phi(x\,;z)$ \emph{has fractional Helly number $k$\/} if for every $\alpha>0$ there is a $\beta>0$ such that:
+We say that $\phi(x\,;z)$ \emph{has fractional Helly number $k$\/} if for all $\alpha>0$ there is a $\beta>0$ such that  for every finite $A\subseteq\U$ and $B\subseteq\V$ the following holds (write $n$ for $|B|$):
 
-if $B\subseteq\V$ is any finite set (say of cardinality $n$) such that
-
-\ceq{\hfill \bigcap_{b\in B'}\phi(\U,b)}{\neq}{\0}\hfill for at least \ $\displaystyle\alpha{n\choose k}$ \ sets \ $\displaystyle B'\in{B\choose k}$
+\ceq{\hfill \bigcap_{b\in B'}\phi(A,b)}{\neq}{\0}\hfill for at least \ $\displaystyle\alpha{n\choose k}$ \ sets \ $\displaystyle B'\in{B\choose k}$
 
 then
 
-\ceq{\hfill\bigcap_{b\in B''}\phi(\U,b)}{\neq}{\0}\hfill for some $B''\subseteq B$ of cardinality $\ge\beta\,n$.
+\ceq{\hfill\bigcap_{b\in B''}\phi(A,b)}{\neq}{\0}\hfill for some $B''\subseteq B$ of cardinality $\ge\beta\,n$.
+
+%\ceq{\hfill\big|\phi(a,B)\big|}{\geq}{\beta\,n}\hfill for some $a\in A$.
 
 We say that $\phi$ has the \emph{fractional Helly property\/} if it has some finite Helly number.
-The \emph{fractional Helly number\/} of $\phi$ is the smallest number $k$ satisfying the property above.\QED
+The \emph{fractional Helly number\/} of $\phi(x\,;z)$ is the smallest number $k$ satisfying the property above.\QED
 \end{definition}
 
-For future reference we remark that the $\beta$ above may be used to obtain a bound to $\nu$. In fact, if at least $\beta\,n$ definable sets intersect, then $\nu\le n-\beta\,n+1$.
+% For future reference we remark that the $\beta$ above may be used to obtain a bound to $\nu$. 
+% In fact, if at least $\beta\,n$ definable sets intersect, then $\nu\le n-\beta\,n+1$.
 
-\begin{theorem}[(Matou\v{s}ek)]
-Let  $\phi(x\,;z)$ have dual \vc-dimension $<k$.
-Then $\phi(x\,;z)$ has fractional Helly number $\le k$.
+\begin{theorem}[(Matou\v{s}ek)]\label{thm_matousek}
+Let  $\phi(x\,;z)$ have \vc-codimension $<k$.
+Then $\phi(x\,;z)$ has fractional Helly number $k$.
+Moreover, $\beta$ in the definition above only depends on $\alpha$ and $k$.
 \end{theorem}
 
 \begin{proof}
 Let $\alpha$ be arbitrary and set $\beta=1/2m$ where $m$ is such that 
 
-\ceq{\hfill \pi^*(m)}{<}{\frac\alpha4{m\choose k}.}
+\ceq{\hfill \bigsum^{k-1}_{i=0} \binom{n}{i}}{<}{\frac\alpha4{m\choose k}.}
 
-Assume for a contradiction that finite $B\subseteq\V$ contradicts the definition above.
+Note that, by the Sauer-Shelah Lemma~\ref{lem_sauer}, the r.h.s.\@ is strictly larger than $\pi^*_\phi(m)$ for all $\phi(x\,;z)$ with \vc-codimension $<k$.
+
+Assume for a contradiction that some finite $A\subseteq\U$ and $B\subseteq\V$ contradicts the definition above.
 That is,
  
-\ceq{\hfill \bigcap_{b\in B'}\phi(\U,b)}{\neq}{\0}\hfill for at least \ $\displaystyle\alpha{n\choose k}$ \ sets \ $\displaystyle B'\in{B\choose k}$
+\ceq{(1)\hfill \bigcap_{b\in B'}\phi(A,b)}{\neq}{\0}\hfill for at least \ $\displaystyle\alpha{n\choose k}$ \ sets \ $\displaystyle B'\in{B\choose k}$
 
 and
 
-\ceq{\hfill\bigcap_{b\in B''}\phi(\U,b)}{=}{\0}\hfill for all $B''\subseteq B$ of cardinality $\ge\beta\,n$.
+\ceq{(2)\hfill\bigcap_{b\in B''}\phi(A,b)}{=}{\0}\hfill for all $B''\subseteq B$ of cardinality $\ge\beta\,n$.
 
 Note that we can assume that $n>2m$ because for $n\le2m$ we can take any $B''$ of cardinality $1$.
-
 We will find a set $B''\subseteq B$ of cardinality $m$ with many $\phi(x\,;z)^*$-definable subsets, more than $\pi^*(m)$, a contradiction.
 
 Let $P$ be the set of pairs $B'\subseteq B''\subseteq B$ such that $|B'|=k$ and $|B''|=m$.
-We say that a pair $B'\subseteq B''$ in $P$ is \textit{good\/} if there is $a\in\U$ such that $B'=\phi(a,B'')$.
+We say that a pair $B'\subseteq B''$ in $P$ is \textit{good\/} if there is $a\in A$ such that $B'=\phi(a,B'')$.
 That is, $B'$ is a $\phi(x\,;z)^*$-definable subset of $B''$.
 
-\textit{Claim.} Assume the uniform probability on $P$.
+Claim 1. Assume the uniform probability on $P$.
 Then the probability that a random pair is good is $\ge\alpha/4$.
 
-We assume the claim for now and continue with the proof.
+Assume Claim~1 for now and continue with the proof.
 We can think that the random pair in $P$ is chosen by first picking $B''\in{B\choose m}$ with the uniform distribution and than $B'\in{B''\choose k\phantom{'}}$ again with the uniform distribution. 
 (To put it more pedantically, we are applying the theorem of total probability.)
 If the the probability that a pair is good is $\ge\alpha/4$, then for at least one $B''\in{B\choose m}$ the probability of finding a good subset $B'$ is $\ge\alpha/4$.
@@ -217,33 +215,39 @@ A contradiction which proves the theorem given the claim.
 
 We now prove the claim.
 There is another equivalent way to pick a random pair in $P$.
-First we choose at random $B'\subseteq B$ of cardinality $k$, then we choose at random $m-k$ elements from $B\sm B'$.
-By assumption, the probability that $B''$ is such that $\bigcap_{i\in B''}\phi(\U,b)\neq\0$ is at least $\alpha$.
-So, assume that $B'$ is such, and fix any $a\in \bigcap_{b\in B'}\phi(\U,b)$.
-By the assumption that we aim to contradict, there are $<\beta n$ many $b\in B$ such that $\phi(a,b)$.
-Then the probability that all $b\in B''\sm B'$ are such that $\neg\phi(a,b)$ is at least
+First we choose at random $B'\subseteq B$ of cardinality $k$ then obtain $B''$ by adding $m-k$ random elements from $B\sm B'$.
+By (1), the probability that $B'$ is such that $\bigcap_{b\in B'}\phi(A,b)\neq\0$ is at least $\alpha$.
+So, assume that $B'$ is such, and fix any $a$ is this intersection.
+By (2), there are $<\beta n$ many $b\in B$ such that $\phi(a,b)$.
+Then the probability that all $b\in B''\sm B'$ are such that $\neg\phi(a,b)$ is at least\smallskip
 
-\ceq{\hfill\frac{\displaystyle{n-\beta n\choose m-k}}{\displaystyle{n-k\choose m-k}}}{\ge}{\prod^{m-k-1}_{i=0}\frac{n-\beta n-i}{n-k-i}}
-\medrel{\ge}
-$\displaystyle\prod^{m-k}_{i=0}\frac{n-\beta n-i}{n-k-i}$
+\ceq{\hfill{n-\beta n\choose m-k}\bigg/{n-k\choose m-k}}
+{=}
+{\prod^{m-k-1}_{i=0}\frac{n-\beta n-i}{n-k-i}}
+\hfill we write $\beta n$ for $\lfloor \beta n \rfloor$
 
-\ceq{}{\ge}{\prod^{m-k}_{i=0}\frac{n-\beta n-m}{n-m}}
-\medrel{\ge}
-$\displaystyle\bigg(\frac{n-\beta n-m}{n-m}\bigg)^m$
+\ceq{}
+{\ge}
+{\prod^{m-k-1}_{i=0}\frac{n-\beta n-m}{n-m}}
 
-\ceq{}{=}
+\ceq{}{\ge}{\bigg(\frac{n-\beta n-m}{n-m}\bigg)^m}
+
+\ceq{}
+{=}
 {\bigg(1-\frac{\beta n}{n-m}\bigg)^m}
 
-\smallskip recall that $n>2m$ and $\beta\le1/2m$, then
+\ceq{}
+{\ge}
+{\displaystyle(1-2\beta)^m\vphantom{\bigg)}}
+\hfill because $n>2m$
 
-\ceq{}{\ge}{\displaystyle(1-2\beta)^m}
-\medrel{=}
-$\displaystyle\bigg(1-\frac{1}{m}\bigg)^m$
-\medrel{\ge}
-$\displaystyle\frac{1}{4}$
+\ceq{}
+{\ge}
+{\bigg(1-\frac{1}{m}\bigg)^m}
+\hfill because $\beta\le1/2m.$
 
-Therefore the probability that a random pair in $P$ is good is at least $\alpha/4$.
-This proves the claim and with it the theorem.
+As we can assume $m\ge 2$, the probability that a random pair in $P$ is good is at least $\alpha/4$.
+This proves Claim~1 and with it the theorem.
 \end{proof}
 
 
@@ -253,61 +257,70 @@ This proves the claim and with it the theorem.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{The (p,q)-theorem}
 
-For integers $p\ge q$ we say that $\phi(x\,;z)$ has the \emph{$(p,q)$-property\/} if out of any $p$ definable sets there are $q$ sets with non-empty intersection.
+For integers $p\ge q$ we say that $\phi(x\,;z)$ has the \emph{$(p,q)$-property\/} if for every finite $A\subseteq\U$ and every $B\subseteq\V$ of cardinality $p$ there is some $B'\subseteq B$ of cardinality $q$ such that
 
-For every finite $A\subseteq\U$ and $B\subseteq\V$, and every $B'\subseteq B$ of cardinality $p$ such that there is some $B''\subseteq B'$ of cardinality $q$ such that
-
-\ceq{\hfill \bigcap_{b\in B''}\phi(A\,;b)}
+\ceq{\hfill \bigcap_{b\in B'}\phi(A\,;b)}
 {\neq}
 {\0}
 
-For {\nip} formulas the $(p,q)$-property has this interesting consequence.
-There is a bound for the cardinality of the transversal number $\tau$ that only depends on $p,q$ and the \vc-dimension of the formula.
+For ease of speaking we call $\phi(A\,;b)_{b\in B}$ a $p$-collection of definable subsets of $A$.
+Note that, strictly speaking, these is not collection of sets but collection of parameters defining sets (though not intrinsically relevant, it is convenient not to assume extensionality). 
 
-\begin{theorem}[(Alon, Kleitman + Matou\v sek)]
-  Let $p\ge q\ge k+1$ be natural numbers.
+Hence, we can rephrase the $(p,q)$-property in plain English: out of any $p$-collection of definable sets there are at least $q$ sets with nonempty intersection.
+
+For {\nip} formulas the $(p,q)$-property has this interesting consequence.
+Namely, there is a bound to the cardinality of the transversal number $\tau$ that only depends on $p,q$ and the \vc-dimension of the formula. Alon and Kleitman proved it for collections of convex sets of the euclidean space, later Matou\v{s}ek adapted the proof to collections of finite \vc-dimension (formally, the two results do not imply each other).
+
+\begin{theorem}[(Alon, Kleitman + Matou\v{s}ek)]
+  Let $p\ge q> k$ be natural numbers.
   There is a number $N=N(k,p,q)$ such that 
-  $\tau\le N$ for all formulas $\phi(x\,;z)$ with the $(p,q)$-property and dual \vc-dimension $\le k$.
+  $\tau_{\phi(A\,;B)}\le N$ for all formulas $\phi(x\,;z)$ with the $(p,q)$-property and \vc-codimension $\le k$, and every $A\subseteq\U$ and $B\subseteq\V$.
 \end{theorem}
 
 \begin{proof}
-As we are not trying to optimize $N$, we may prove the theorem for $q=d+1$.
-By Proposition~\ref{prop_bound_fractional_trans}, the transversal number is bounded by a function of $\tau^*$, so it is enough to bound $\tau^*$. By Proposition~\ref{thm_fractional_nu=tau}, we can equivalently bound the fractional packing number $\nu^*$, because it coincides with $\tau^*$.
+As we are not trying to optimize $N$, we may prove the theorem for $q=k+1$.
+By Proposition~\ref{prop_bound_fractional_trans}, the transversal number is bounded by a function of $\tau^*$, so it is enough to bound $\tau^*$. By Proposition~\ref{thm_fractional_nu=tau}, we can equivalently bound the fractional packing number $\nu^*$ because it coincides with $\tau^*$.
 
-Let $B'$ be an optimal fractional packing. By Theorem~\ref{thm_fractional_nu=tau} we may assume that $B'$ is rational valued. Therefore $B'=(1/m)\,C$ where $m$ is a positive integer and $C$ is a integral valued multiset over $\V$.
+Let $B'\subseteq B$ be an optimal fractional packing.  That is, $\nu^*=|B'|$ where $B'\le\Indicator_B$ is such that $|\phi(a,B')|\le1$ for every $a\in A$. From $B'$ we want to obtain a regular set $C'$, which is easier to work with. 
 
-Replace $\V$ with $\V\times[m]$ and $B$ with $B\times[m]$.
-Let $\phi_m(a\,;b,i)$ be equivalent to $\phi(a\,;b)$.
-Now we can assume that $C\subseteq B\times[m]$ and that $|\phi_m(a,C)|\le m$ for every $a\in\U$.
+By Theorem~\ref{thm_fractional_nu=tau} we may assume that $B'$ is rational valued. Therefore $B'=(1/m)\,C$ where $m$ is a positive integer and $C$ is a integral valued multiset over $\V$.
+Replace $\V$ with $\V\times[m]$.
+Define $\phi\!_{_\times}\!(a\,;b,i)$ to be the relation that holds if and only if $\phi(a\,;b)$ holds.
+Then we can replace the multiset $C$ with a regular set $C'\subseteq\V\times[m]$ such that $|\phi\!_{_\times}\!(a\,;C')|\le m$ for every $a\in A$.
+
+If write $n$ for $|C'|$, then $\nu^*=n/m$.
 
 \smallskip
-Claim~1. $\phi_m(x\,;z,y)$ satisfies the $(p',q)$-property with $p'=qp$.
+Claim~1. $\phi\!_{_\times}\!(x\,;z,y)$ satisfies the $(qp,q)$-property.
 
-If a $p'$-collection of $\phi_m(A\,;z,y)$ definable sets contains $q$ copies of the same definable set, this is the required a collection with nonempty intersection.
+Let $D\subseteq\V\times[m]$ have cardinality $qp$. 
+If the $qp$-collection $\phi\!_{_\times}\!(A\,;b,i)_{b,i\in D}$ contains $q$ copies of the same definable set $\phi(A\,;b)$, then we immediately have the required $q$-collection with nonempty intersection.
 So, suppose not.
-Then it contains $p$ distinct $\phi$-definable sets.
+Then  $\phi\!_{_\times}\!(A\,;b,i)_{b,i\in D}$ contains $p$ distinct sets $\phi(A,b_1),\dots,\phi(A,b_p)$. 
+Then the $q$-collection with nonempty intersection is obtained from the $(p,q)$-property of $\phi(x\,;z)$.
 
 \smallskip
 Claim 2.
-There is an $\alpha=\alpha(p,q)>0$ such that for every finite $D'\subseteq\V\times[m]$
+There is an $\alpha=\alpha(p,q)>0$ such that
 
-\ceq{\hfill \bigcap_{d\in D'}\phi(\U,d)}{\neq}{\0}\hfill for at least \ $\displaystyle\alpha{n\choose q}$ \ sets \ $\displaystyle I\in{[n]\choose q}$.
+\ceq{\hfill \bigcap_{b,i\in D}\phi\!_{_\times}\!(A\,;b,i)}{\neq}{\0}\hfill for at least \ $\displaystyle\alpha{n\choose q}$ \ sets \ $\displaystyle D\in{C'\choose q}$.
 
-By Claim~1, every $p'$-collection of $\phi_m$-definable sets contains at least one $q$-collection with non-empty intersection.
-Every $q$-collection is contained in ${n-q\choose p'-q}$ many $p'$-collections.
-Therefore the number $q$-collections of definable sets with non-empty intersection is
+By Claim~1, every $qp$-collection of $\phi\!_{_\times}\!$-definable sets contains at least one $q$-collection with non-empty intersection.
+Every $q$-collection is contained in ${n-q\choose qp-q}$ many $qp$-collections.
+Therefore the number $q$-collections with non-empty intersection is
 
-\ceq{\hfill\frac{\displaystyle{n\choose p'}}{\displaystyle{n-q\choose p'-q}}}{=}{\frac{\displaystyle{n\choose q}}{\displaystyle{p'\choose q}}.}
+\ceq{\hfill{n\choose qp}\Big/{n-q\choose qp-q}}{=}{{n\choose q}\Big/{qp\choose q}.}
 
-Therefore, claim~2 holds with \smash{$\displaystyle\alpha={p'\choose q}^{-1}$\kern-1ex}.
+Therefore, the claim holds with $\displaystyle1/\alpha={qp\choose q}$.
 
-\medskip
-\textit{Claim 3.}
-There is a $\beta=\beta(p,q)>0$ such that for every $n$ and every $b_1,\dots,b_n\in\V'$ there is an $a\in\U$ such that $\phi(a,b_i)$ holds for at least $\beta n$ many $b_i$.
+Now we can resume the proof of the theorem (our goal is to bound $\nu^*$ by a function of $p,q$, and $k$).
+Let $\beta=\beta(\alpha,k)$ be as in Theorem~\ref{thm_matousek}.
+As $\phi\!_{_\times}\!(x\,;z,y)$ has the same \vc-codimension as $\phi(x\,;z)$, by Claim~2 there is a set $D\subseteq C'$ of cardinality $>\beta n$ be such that
 
-As $\phi'$ has the same \vc-codensity as $\phi$,  Caim~3 follows immediately from Claim~2 by Helly fractional theorem.
+\ceq{\hfill \bigcap_{b,i\in D}\phi\!_{_\times}\!(A\,;b,i)}{\neq}{\0}
 
-Now, apply Claim~3 with the elements of $C$ as $b_1,\dots,b_n$. Then $\nu^*=n/m$. So, from $\beta\,n\le |\phi(a,C)|\le m$, we obtain  $\nu^*\le 1/\beta$. So $N=1/\beta$ is the bound claimed by the theorem.
+So, for some $a\in A$ we have $\beta\,n\le |\phi(a,C')|\le m$.
+Therefore  $\nu^*\le 1/\beta$.
 \end{proof}
 
 \end{document}

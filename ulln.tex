@@ -375,7 +375,7 @@ Then a sample of size $\le n$ that approximate the probability within $\epsilon$
 Random variables are convenient formalism to discuss these probabilities.
 We say \emph{random element\/} of $\U$ for a random variables $S$ such that $\Pr(S\in A)=\Pr(A)$ for every $A\subseteq\U$.
 A \emph{random sample\/} from $\U$ is a tuple $S=S_1,\dots,S_n$ be of independent random elements of $\U$.
-Then $\Indicator_{S_i\in A}$ as a Bernoulli random variable with probability of success $\Pr(A)$ and 
+Then $\Indicator_{S_i\in A}=\Indicator_{A}\circ S_i$ is a Bernoulli random variable with probability of success $\Pr(A)$ and 
 
 \ceq{\hfill \Fr(S,A)}
 {=}
@@ -416,7 +416,7 @@ Sometime we are interested in the minimal size of a sample that approximates the
       
   such that
 
-  \ceq{\hfill\Big|\Fr(s,A) - \Pr(A) \Big|}{<}{\epsilon.}
+  \ceq{\hfill\Big|\Fr(s,A) - \Pr(A)\Big|}{<}{\epsilon.}
 \end{corollary}
 
 \begin{proof}
@@ -547,6 +547,17 @@ These have been omitted in the statement above, and will be discussed below.
   \ceq{\hfill\Pr\bigg(\big|\Fr(S,b) - \Fr(S',b)\big|\ge\frac\epsilon2\bigg)}
   {=}
   {\Pr\bigg(\Big|\sum_{i=1}^n\Indicator_{S_i,b} - \Indicator_{S'_i,b}\Big|\ge\frac{n\epsilon}2\bigg)}
+  \smallskip
+  
+  % \ceq{\hfill}
+  % {=}
+  % {\Pr\bigg(\Big|\sum_{i=1}^n\sigma_i\,\Indicator_{S_i,b} - \sum_{i=1}^n\sigma_i\,\Indicator_{S'_i,b}\Big|\ge\frac{n\epsilon}2\bigg)}
+  % \smallskip
+
+  \ceq{\hfill}
+  {=}
+  {\Pr\bigg(\Big|\sum_{i=1}^n\sigma_i\big(\Indicator_{S_i,b} - \Indicator_{S'_i,b}\big)\Big|\ge\frac{n\epsilon}2\bigg)}
+  \smallskip
 
   Then, again by the triangular inequality
 
