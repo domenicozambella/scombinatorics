@@ -433,7 +433,7 @@ This is obtained with a similar proof.
 \begin{void_thm}[Weak Law of Large Numbers (with exponential bound)]\label{WLLN_exp}
   For every event $A\subseteq\U$ and every $n>0$
   
-  \ceq{\hfill 2 e^{-2n\epsilon^2}}
+  \ceq{\hfill 2\, e^{-2n\epsilon^2}}
   {\ge}
   {\Pr \Big(s\in\U^n\ :\ \big|\Fr(s,A) - \Pr(A)  \big|\ge\epsilon\Big).}
 \end{void_thm}
@@ -567,19 +567,19 @@ These have been omitted in the statement above, and will be discussed below.
 
   Putting together the inequalities above we obtain\smallskip
 
-  \ceq{(1)\hfill\Pr\,\Big(\sup_{b\in\V}\big|\Fr(S,b) - \Pr(b)\big|\ge\epsilon\Big)}
+  \ceq{\hfill\Pr\,\Big(\sup_{b\in\V}\big|\Fr(S,b) - \Pr(b)\big|\ge\epsilon\Big)}
   {\le}
   {2\,\Pr\bigg(\sup_{b\in\V}\Big|\sum_{i=1}^n\sigma_i\,\Indicator_{S_i,b}\Big|\ge\frac{n\epsilon}4\bigg)\ +\ 2\,e^{-n\epsilon^2/2}}
   \smallskip
 
   Let $s=s_1,\dots,s_n$ be a possible realization of $S$.\smallskip
 
-  \ceq{\hfill\Pr\bigg(\sup_{b\in\V}\Big|\sum_{i=1}^n\sigma_i\,\Indicator_{s_i,b}\Big|\ge\frac{n\epsilon}4\bigg)}
+  \ceq{(1)\hfill\Pr\bigg(\sup_{b\in\V}\Big|\sum_{i=1}^n\sigma_i\,\Indicator_{s_i,b}\Big|\ge\frac{n\epsilon}4\bigg)}
   {=}
   {\Pr\bigg(\sup_{b\in\V}\Big|\sum_{i=1}^n\sigma_i\,\Indicator_{S_i,b}\Big|\ge\frac{n\epsilon}4\ \big|\  S=s\bigg)}
   \smallskip
 
-  Finally, note that the r.h.s.\@ of (2) only depends on $\phi\big(\range(s),b\big)$.
+  Finally, note that the r.h.s.\@ of (1) only depends on $\phi\big(\{s_1,\dots,s_n\}\,;b\big)$.
   Hence the $\sup_{b\in\V}(\cdot)$ on the r.h.s.\@ is actually a maximum among $m=\pi_\phi(n)$ events.
   Say, we can choose $b_1,\dots,b_m\in\V$ such that
 
