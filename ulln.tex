@@ -659,7 +659,7 @@ For completeness, the following proposition gives an explicit bound.
   
   \ceq{\hfill n}
   {\le}
-  {c\,\frac{k}{\epsilon^2}\log\frac{k}{\epsilon^2}}
+  {c\,\frac{k}{\epsilon^2}\log\frac{k}{\epsilon}}
   
   where $c$ is an absolute constant and $k$ is the \vc-dimension of $\phi(\U\,;b)_{b\in\V}$.
 \end{proposition}
@@ -680,12 +680,23 @@ For completeness, the following proposition gives an explicit bound.
   for some absolute constant $c'$.
   Finally, the latter inequality is satisfied if 
 
-  \ceq{\hfill c\,\frac{k}{\epsilon^2}\log\frac{k}{\epsilon^2}}
+  \ceq{\hfill c''\,\frac{k}{\epsilon^2}\log\frac{k}{\epsilon^2}}
   {<}
   {n}
 
-  for some absolute constant $c$.
+  for some absolute constant $c''$, see the exercise below.
 \end{proof}
+
+\begin{exercise}
+  Prove that for all $x,y>1$
+
+  \ceq{\hfill 2x\log x <y}
+  {\IMP}
+  {x< \frac{y}{\log y}}\QED
+  
+  %Hint: it suffices to prove that $2x\log x <y$  implies $\log x^2<\log y$.
+\end{exercise}
+
 
 
 % In fact the theorem is still true if $X$ is infinite, but we have to add the following measurability assumptions:
