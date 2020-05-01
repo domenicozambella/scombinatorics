@@ -99,17 +99,17 @@ Hint: use induction on $\nu$.\QED
 \begin{proof}
 Let $A=\{a_1,\dots,a_m\}$ and $B=\{b_1,\dots,b_n\}$.
 Let $F$ be the $\{0,1\}$-valued incidence matrix $\phi(a_i,b_j)$.
-A multi-set over $\U$ is a naturally associated to a vector $0\le x\in\RR^m$.
-A multi-set over $\U$ is associated to a vector $0\le y\in\RR^n$.
+A multi-set over $A$ is a naturally associated to a vector $0\le x\in\RR^m$.
+A multi-set over $B$ is associated to a vector $0\le y\in\RR^n$.
 Then it is easy to verify that
 
-\ceq{\hfill\tau^*}{=}{\min\,\big\{\,1_n^{\rm T}\;x\ :\ \ F\,x\ge 1_m,\ 0\le x\};}
+\ceq{\hfill\tau^*}{=}{\min\,\big\{\,1_m^{\rm T}\;x\ :\ \ F\,x\ge 1_n,\ 0\le x\};}
 
-\ceq{\hfill\nu^*}{=}{\max\big\{\,1_n^{\rm T}\ y\,\  :\ F^{\rm T}y\le 1_n,\,\  0\le y\}.}
+\ceq{\hfill\nu^*}{=}{\max\big\{\,1_n^{\rm T}\ y\,\  :\ F^{\rm T}y\le 1_m,\,\  0\le y\}.}
 
 Therefore, by he duality of linear programming $\nu^*=\tau^*$.
 
-As $\tau^*$ is the minimum of the linear function $x\mapsto 1_n^{\rm T}\;x$ over a polyhedron, such minimum is attained at vertex.
+As $\tau^*$ is the minimum of the linear function $x\mapsto 1_m^{\rm T}\;x$ over a polyhedron, such minimum is attained at vertex.
 The inequalities describing the polyhedron have rational coefficients, so also the vertices have rational coordinates (elaborate on this).
 \end{proof}
 
@@ -275,8 +275,8 @@ Hence, we can rephrase the $(p,q)$-property in plain English: out of any $p$-col
 
 Helly's theorem says that any finite collection of convex sets in $\RR^d$ satisfying the $(d + 1, d + 1)$-property has non-empty intersection, i.e.\@ admits a transversal of size $1$.
 A generalization of this was conjectured by Hadwiger and Debrunner, and many
-years later proved by Alon and Kleitman.
-Subsequently Matou\v{s}ek adapted their proof to collections of sets with finite \vc-dimension (formally, the two results do not imply each other).
+years later proved by Alon and Kleitman~\cite{AK1} and~\cite{AK2}.
+Subsequently Matou\v{s}ek~\cite{matousek} adapted their proof to collections of sets with finite \vc-dimension (formally, the two results do not imply each other).
 More precisely, Matou\v{s}ek proved the existence of a bound to the cardinality of the transversal number $\tau$ of {\nip} formulas with the $(p,q)$-property, and that this bound depends only on $p,q$ and the \vc-codimension of the formula.
 
 \begin{theorem}[(Alon, Kleitman + Matou\v{s}ek)]
