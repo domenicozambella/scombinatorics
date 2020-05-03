@@ -116,13 +116,16 @@ As $\U$ and $\V$ are usually clear from the context, we may say \vc-dimension of
   If $\phi(\U\,;b)_{b\in\V}$ is the set of all subsets of $\U$ of cardinality $\le k$.
   Then its \vc-dimension is $k$ and
   
-  \ceq{\hfill\pi_\phi(n)}{=}{\sum^k_{i=0} \binom{n}{i}.}\QED
+  \ceq{\hfill\pi_\phi(n)}{=}{\sum^k_{i=0} \binom{n}{i}.}
+  
+  Incidentally, we note that this is also the shatter function of the collection of all subsets of $\U$ of cardinality exactly $k$.
+  In fact we always assume $\U$ is infinite (or at least very large, in this case, size $\ge2k$ suffices).\QED
 \end{example}
 
-We call the \vc-dimension of $\phi(x\,;z)^*$ the \emph{dual \vc-dimension\/} or \emph{\vc-codimension\/} of $\phi(x\,;z)$.
+The \vc-dimension of $\phi(x\,;z)^*$ is called the \emph{dual \vc-dimension\/} or \emph{\vc-codimension\/} of $\phi(x\,;z)$.
 
-\begin{proposition}
-  If $\phi(x\,;z)$ has \vc-dimension $k$, then its dual \vc-dimension is $<2^{k+1}$.
+\begin{proposition}\label{prop_bound_VCcodim}
+  If $\phi(x\,;z)$ has \vc-dimension $k$, then its \vc-codimension is $\le2^{k+1}-1$.
 \end{proposition}
   
 \begin{proof}
@@ -131,7 +134,7 @@ We call the \vc-dimension of $\phi(x\,;z)^*$ the \emph{dual \vc-dimension\/} or 
   Let $B=\big\{b_I\,:\,I\subseteq [k+1]\big\}$ be a set of cardinality $2^{k+1}$ shattered by $\phi(x\,;z)^*$. 
   That is, for every $\J\subseteq \P[k+1]$ there is $a_\J$ such that
   
-  \ceq{\hfill\phi(a_\J, b_I)}{\IFF}{I\in\J}
+  \ceq{\hfill\phi(a_\J, b_I)}{\IFF}{I\in\J}\hfill for all $I\subseteq [k+1]$
   
   Let $a_i=a_{\{I\; :\ i\,\in\, I\}}$. Then from the equivalence above we obtain
   
@@ -140,46 +143,40 @@ We call the \vc-dimension of $\phi(x\,;z)^*$ the \emph{dual \vc-dimension\/} or 
   That is, $\phi(x\,;z)$ shatters $A=\big\{a_i\,:\, i\in [k+1]\big\}$.
 \end{proof}
 
+We prove that the bound in the proposition above is optimal.
+
+\begin{proposition}
+  For every $k$, there is some formula $\phi(x\,;z)$ with \vc-dimension $k$ and \vc-codimension $2^{k+1}-1$.
+\end{proposition}
+\begin{proof}
+  Let $k$ be given.
+  We claim that there is a formula $\phi(x\,;z)$ with \vc-dimension $2^{k+1}-1$ and \vc-codimension $k$.
+  As the dual of the dual is the primal, this claim is equivalent to the proposition.
+  Let $\U$ an infinite set, let $\V=\P(\U)$, and define
+  
+  \ceq{\hfill\phi(x\,;z)}{=}{x\in A \wedge z\subseteq A\ \imp\ x\in z,}
+  
+  where $A\subseteq\U$ is some fixed set of cardinality $2^{k+1}-1$. (This definition may look contrived. In fact, we could have set $\U=A$ and $\phi(x\,;z)=x\in z$, but we insist that $\U$ and $\V$ are infinite sets.)
+
+  Clearly, $\phi(x\,;z)$ has \vc-dimension $2^{k+1}-1$.
+  Note that the dimension of $\phi(x\,;z)^*$ is at least $k$.
+  Otherwise $\phi(x\,;z)$ would have dimension $\le2^k-1$ by Proposition~\ref{prop_bound_VCcodim}.
+  
+  So, it suffices to prove that the dimension of $\phi(x\,;z)^*$ is exactly $k$.
+  Assume for a contradiction that some $B=\big\{b_i\ :\ i\in[k+1]\big\}\subseteq\V$ is shattered by $\phi(x\,;z)^*$.
+  Then there is some set $\big\{a_I:I\subseteq[k+1]\big\}\subseteq\U$ such that
+  
+  \ceq{\hfill\phi(a_I, b_i)}{\IFF}{i\in I}
+
+  From the definition of $\phi(x\,;z)$ is is easy to infer that $\big\{a_I:I\subseteq[k+1]\big\}\subseteq A$ but this is impossible by cardinality reasons.
+\end{proof}
+
 \begin{exercise}
-  Prove that, for all $k$, there is a formula with \vc-dimension $k$ and dual dimension $2^{k+1}-1$.
-  
-  % Hint: Let $\U$ an infinite set and 
-  
-  % \ceq{\hfill\V}{=}{\bigcup^{m}_{i=0}{\U\choose i}}\hfill where $m=2^{k+1}-1$.
-
-  % The formula $\phi(x\,;z)$ is $x\in z$.
-  % As noted above, $\phi(x\,;z)$ has \vc-dimension $2^{k+1}-1$.
-  % If we prove that $\phi(x\,;z)^*$ has dimension $k$, we are done (because the dual of the dual is the primal).
-  % It is easy to verify that the dimension of $\phi(x\,;z)^*$ is at least $k$.
-  % To prove equality, assume for a contradiction that some $B\subseteq\V$ of cardinality $k+1$ is shattered by $\phi(x\,;z)^*$.
-  % Then for every $B'\subseteq B$ there is an $a_{B'}\in\U$ such that $B'=\phi(a_{B'}\,;B)$.
-  % Or, given that $\phi(x\,;z)$ is $x\in z$,
-
-  % \ceq{\hfill a_{B'}}{\in}{\bigcap_{\ \ b\in B'\ \ }b}
-
-  % \ceq{\hfill a_{B'}}{\notin}{\bigcup_{b\in B\sm B'}b.}
-
-  % Let $A=\{a_{B'}\ :\ \0\neq B'\subseteq B\}$.
-  % As $a_{B'}\neq a_{B''}$ when $B'\neq B''$, then $A$ has cardinality $2^{k+1}$.
-  % % Let $A=\{a_{\{b\}}\ :\ b\in B\}$.
-  % % As $a_{B'}\neq a_{B''}$ when $B'\neq B''$, then $A$ has cardinality $2^{k+1}$.
-  % % Note that if $b\neq b'$ then $b\cap A\neq b'\cap A$.
-  % % In fact, $a_{\{b\}}\in b\sm b'$ and vice versa $a_{\{b'\}}\in b'\sm b$.
-  % % Therefore $|A|=|B|=k+1$.
-  % It is easy to check that $\phi(x\,;z)$ shatters also $C=\{b\cap A\ : b\in B\}$.
-  % But $C$ 
-  
-
-
-
-
-
-
-
-  
-  \QED
+  Let $\phi(x\,;z)$ have \vc-dimension $k$.
+  Assume that there is no $A\subseteq\U$ of cardinality $\le k$ such that $\phi(a\,;\V)_{a\in A}$ covers $\V$.
+  Prove that $\phi(x\,;z)$ has \vc-codimension $\le2^{k+1}-2$.
+  Prove that the bound is optimal.\QED
 \end{exercise}
-
 %%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%
