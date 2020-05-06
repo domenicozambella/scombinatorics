@@ -78,8 +78,7 @@ So, $\pi_\phi(n)$ gives the maximal number of definable subsets that a set of ca
 Trivially, $\pi_\phi(n)\le2^n$ for all $n$.
 Moreover, if $\pi_\phi(n)=2^n$ for some $n$, then $\pi_\phi(k)=2^k$ for every $k\le n$.
 
-
-The \emph{Vapnik-Cher\-vo\-nen\-kis dimension\/} of $\phi(\U\,;b)_{b\in\V}$, abbreviated by \emph{\vc-dimension}, is the maximal cardinality of a finite set $A\subseteq\U$ that is shattered by $\phi(x\,;z)$.
+The \emph{Vapnik-Chervonenkis dimension\/} of $\phi(\U\,;b)_{b\in\V}$, or of $\phi(x\,;z)$, abbreviated by \emph{\vc-dimension}, is the maximal cardinality of a finite set $A\subseteq\U$ that is shattered by $\phi(x\,;z)$.
 Equivalently, it is the maximal $k$ such that $\pi_\phi(k)=2^k$.
 If such a maximum does not exist,
 we say that the \vc-dimension is infinite or that $\phi(x\,;z)$ has \emph{\ip\/} (the independence property).
@@ -156,7 +155,7 @@ We prove that the bound in the proposition above is optimal.
   
   \ceq{\hfill\phi(x\,;z)}{=}{x\in A \wedge z\subseteq A\ \imp\ x\in z,}
   
-  where $A\subseteq\U$ is some fixed set of cardinality $2^{k+1}-1$. (This definition may look contrived. In fact, we could have set $\U=A$ and $\phi(x\,;z)=x\in z$, but we insist that $\U$ and $\V$ are infinite sets.)
+  where $A\subseteq\U$ is some fixed set of cardinality $2^{k+1}-1$. (This definition may look contrived. In fact, had we not required that $\U$ and $\V$ are infinite sets, we could have taken $\U=A$ and $\phi(x\,;z)=x\in z$.)
 
   Clearly, $\phi(x\,;z)$ has \vc-dimension $2^{k+1}-1$.
   Note that the dimension of $\phi(x\,;z)^*$ is at least $k$.
@@ -175,8 +174,12 @@ We prove that the bound in the proposition above is optimal.
   Let $\phi(x\,;z)$ have \vc-dimension $k$.
   Assume that there is no $A\subseteq\U$ of cardinality $\le k$ such that $\phi(a\,;\V)_{a\in A}$ covers $\V$.
   Prove that $\phi(x\,;z)$ has \vc-codimension $\le2^{k+1}-2$.
-  Prove that the bound is optimal.\QED
+  Prove that the bound is optimal.
+  Hint: let $\U$ be any infinite set $\V=\U^{(\le m)}$, where $m=2^{k+1}-2$.
+  Let $\phi(x\,;z)=x\in z$.
+  Prove that $\phi(x\,;z)$ has \vc-codimension $k$.\QED
 \end{exercise}
+
 %%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%
@@ -185,7 +188,6 @@ We prove that the bound in the proposition above is optimal.
 \section{The Sauer-Shelah lemma}\label{sauer}
 
 \def\ceq#1#2#3{\parbox[t]{15ex}{$\displaystyle #1$}\medrel{#2}{$\displaystyle #3$}}
-
 
 According to Gil Kalai in~\cite{kalai}, Sauer-Shelah's Lemma can been described as an \textit{eigentheorem\/} because it is important in many different areas of mathematic (model theory, learning theory, probability theory, ergodic theory, Banach spaces, to name a few).
 No wonder it has been discovered and rediscovered may times.
@@ -203,13 +205,11 @@ The set system presented in Example~\ref{ex_vcdim_opt} shows that the bound is o
 
 An alternative proof of the Sauer-Shelah Lemma derives it as corollary of a lemma by Alain Pajor~\cite{pajor}.
 
-
 \begin{void_thm}[Pajor's Lemma]\label{lem_pajor}
   Let $A\subseteq\U$ be finite.
   
   \ceq{\hfill|\phi(A,b)_{b\in\V}|}{\le}{\Big|\{C\subseteq A\; :\; C \textrm{\ is\ shattered\ by\ }\phi(x\,;z)\}\Big|}.
 \end{void_thm}
-
 
 \begin{proof}
   If $A$ is empty then $|\phi(A,b)_{b\in\V}|=1$ and $\0$ is the only subset of $A$ that $\phi$ shatters, so the inequality holds trivially.
@@ -307,6 +307,5 @@ There is a second bound, which is better when $k\ge 3$ and holds for $n>k$
 {\le}
 {\Big(\frac{n\,e}{k}\Big)^{\!k}}
 \hfill where $e$ is the base of the natural logarithm.
-
 
 \end{document}

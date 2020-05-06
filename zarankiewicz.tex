@@ -1,0 +1,95 @@
+% !TEX root = scombinatorics.tex
+\documentclass[scombinatorics.tex]{subfiles}
+\begin{document}
+
+\chapter{Zarankiewicz problem(s)}
+
+\label{zarankiewicz}
+
+% \sections{The Beineke-Schwenk problem}
+
+% Determine the quadruples $m,n;s,t$ of positive integers such that for every $\phi(x\,;z)$ and every pair $A\subseteq\U$ and $B\subseteq\V$ of cardinality $m$ respectively $n$ there are $A'\subseteq A$ and $B'\subseteq B$ such that either $A'\times B'\subseteq\phi(x\,;z)$ or $A'\times B'\subseteq\neq\phi(x\,;z)$.
+
+% Sometimes the problem is formulated as follows.
+% Given $s,t$ determine the least $n$ such that $n,n;s,t$ is a quadruple as above.
+
+
+\def\medrel#1{\parbox[t]{6ex}{$\displaystyle\hfil #1$}}
+\def\ceq#1#2#3{\parbox[t]{25ex}{$\displaystyle #1$}\medrel{#2}{$\displaystyle #3$}}
+
+Let us start with presenting Zarankiewicz problem.
+Let $A\subseteq\U$ and $B\subseteq\V$ have cardinality $m$ respectively $n$.
+Given two integers $s,t$ (both at least $2$ to avoid trivialities), what is the maximal cardinality of a graph $\phi(A\,;B)$ that does not contain $A'\times B'$  for any $A'\subseteq A$ and $B'\subseteq B$ of cardinality $s$ respectively $t$?
+Denote this maximum by \emph{$z(m, n; s, t)$.}
+Define also \emph{$z(n; t)$} $=z(m, n; s, t)$.
+In 1951 Zarankiewicz posed the problem of determining $z(n; 3)$ for $n = 4, 5, 6$ and the  general problem has also become known as the problem of Zarankiewicz.
+
+
+\section{The K\H{o}v\'ari-S\'os-Tur\'an Theorem}
+The theorem in this section is a classical result of K\H{o}v\'ari, S\'os, and Tur\'an.
+They actually proved it for $z(n;t)$ but the proof easily generalizes.
+
+In the proof we need the following generalization of the binomial coefficient. 
+For any positive integer $t$ and any real $x$ we define
+
+\ceq{\hfill\binom{x}{t}}{=}{\frac{x(x-1)\cdots(x-t+1)}{t!}.}
+
+It is easy to verify that for any fixed $t$, this is a convex and strictly increasing function of $x$.
+
+\begin{void_thm}[K\H{o}v\'ari-S\'os-Tur\'an Theorem]\label{thm_KST}
+  For all $2\le s\le m$ and $2\le t\le n$
+  \smallskip
+
+  \ceq{\hfill z(m, n; s, t)}{<}{(s-1)^{1/t}(n-t+1)m^{1-1/t}+(t-1)m}
+
+  or also
+
+  \ceq{}{<}{c\,\big(n\,m^{1-1/t}+m\big)}
+  
+  for some $c = c(s,t)$.
+
+  
+\end{void_thm}
+\begin{proof}
+  Let $A\subseteq\U$ and $B\subseteq\V$ have cardinality $m$ respectively $n$.
+  Let $P$ be the set of pairs $\<a,B'\>$ such that $B'\subseteq\phi(a\,;B)$ and $B'$ has cardinality $t$.
+  Writing $d_a$ for the cardinality of $\phi(a\,;B)$, we have
+
+  \ceq{\hfill|P|}{=}{\sum_{a\in A}\binom{d_a}{t}}
+
+  Write $z$ for $|\phi(A\,;B)|$, and note that
+
+  \ceq{\hfill z}{=}{\sum_{a\in A}d_a.}
+
+  As \smash{$\displaystyle\binom{x}{t}$} is a convex function of $x$,
+  \smallskip
+
+  \ceq{(1)\hfill\binom{z/m}{t}}{\le}{\frac1m\,|P|.}
+  \smallskip
+
+  Now, suppose that $z=z(m, n; s, t)$.
+  Then for any fixed $B'\subseteq B$ there are at most $s-1$ pairs $\<a,B'\>\in P$. 
+  Hence
+
+  \ceq{(2)\hfill|P|}{\le}{(s-1)\binom{n}{t}.}
+
+  Together, (1) and (2) yield
+  \smallskip
+
+  \ceq{\hfill m\binom{z/m}{t}}{\le}{(s-1)\binom{n}{t}.}
+  \smallskip
+
+  As \smash{$\displaystyle\binom{x}{t}$} is strictly increasing function of $x$, and $z/m<n$,
+  \smallskip
+
+  \ceq{\hfill m \Big(\frac{z}{m}-t+1\Big)^t}{<}{(s-1)\big(n-t+1\big)^t}
+  \medskip
+
+  which easily yields the theorem.
+\end{proof}
+
+
+\section{The {\sc nip} case}
+
+
+\end{document}

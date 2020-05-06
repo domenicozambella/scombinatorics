@@ -42,17 +42,18 @@ books and indoctrinated generations of confused students.
 Throughout this and the next section we work with a given probability space $\U,\Pr$.
 For simplicity, the following two propositions are proved for discrete $\Pr$, but they are easily seen to hold in  general.
 
-\begin{definition}A function $f:\RR\to\RR$ is \emph{convex\/} if for every tuples of real numbers $p_i$ and $x_i$ such that
+\begin{definition}\label{def_convex}
+  A function $f:\RR\to\RR$ is \emph{convex\/} if for every tuples of real numbers $p_i$ and $x_i$ such that
 
-\ceq{\hfill\sum^n_{i=1}p_i}
-{=}
-{1}
+  \ceq{\hfill\sum^n_{i=1}p_i}
+  {=}
+  {1}
 
-we have
+  we have
 
-\ceq{\hfill f\bigg(\sum^n_{i=1}p_ix_i\bigg)}
-{\le}
-{\sum^n_{i=1}p_if(x_i).}\QED
+  \ceq{\hfill f\bigg(\sum^n_{i=1}p_ix_i\bigg)}
+  {\le}
+  {\sum^n_{i=1}p_if(x_i).}\QED
 \end{definition}
 
 Note that, though the definition is usually given with $n=2$, the general property above follows easily.
