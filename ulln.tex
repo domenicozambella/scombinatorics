@@ -368,14 +368,14 @@ It is convenient to rewrite it using indicator functions
 We are interested in the \textit{existence\/} of samples that approximate the probability within $\epsilon$.
 Suppose that, for a given event $A$, we can prove that
 
-\ceq{\hfill\Pr \Big(s\in\U^n:\, \big|\Fr(s,A) - \Pr(A) \big|\ge\epsilon\Big)}{\le}{\textrm{some\_bound}(\epsilon,n)}
+(1)\hfil$\displaystyle\Pr \Big(s\in\U^n:\, \big|\Fr(s,A) - \Pr(A) \big|\ge\epsilon\Big)\ \ \le\ \ \textrm{some\_bound}(\epsilon,n)$
 
 and that, for $n$ large enough, some\_bound$(\epsilon,n)<1$.
 Then a sample of size $\le n$ that approximate the probability within $\epsilon$ is guaranteed to exit.
 
 Random variables are convenient formalism to discuss these probabilities.
 We say \emph{random element\/} of $\U$ for a random variables $S$ such that $\Pr(S\in A)=\Pr(A)$ for every $A\subseteq\U$.
-A \emph{random sample\/} from $\U$ is a tuple $S=S_1,\dots,S_n$ be of independent random elements of $\U$.
+A \emph{random sample\/} from $\U$ is a tuple $S=S_1,\dots,S_n$ of independent random elements of $\U$.
 Then $\Indicator_{S_i\in A}=\Indicator_{A}\circ S_i$ is a Bernoulli random variable with probability of success $\Pr(A)$ and 
 
 \ceq{\hfill \Fr(S,A)}
@@ -383,19 +383,24 @@ Then $\Indicator_{S_i\in A}=\Indicator_{A}\circ S_i$ is a Bernoulli random varia
 {\frac1n\sum^n_{i=1}\Indicator_{S_i\in A}}
 
 is (up to the factor $1/n$) a binomial random variable.
+This will be used to find a bound to
+
+\ceq{\hfill\Pr\Big(\big|\Fr(S,A) - \Pr(A)\big|\ge\epsilon\Big)}
+  {}
+  {}
+
+which is immediately seen to be equal to the probability in (1).
 
 \begin{void_thm}[Weak Law of Large Numbers]
-  For every event $A\subseteq\U$ and every $n>0$
+  For every event $A\subseteq\U$ and every tuple $S=S_1,\dots,S_n$ of independent random elements of $\U$
   
-  \ceq{\hfill\Pr\Big(\big|\Fr(s,A) - \Pr(A)  \big|\ge\epsilon\Big)}
+  \ceq{\hfill\Pr\Big(\big|\Fr(S,A) - \Pr(A)\big|\ge\epsilon\Big)}
   {\le}
   {\frac1{n\epsilon^2}.}
 \end{void_thm}
 
 \begin{proof}
-  Let $S_1,\dots,S_n$ be a random sample from $\U$.
-  Up to the factor $1/n$, the distribution of $\Fr(S,A)$ is binomial with parameters $n$ and $\Pr(A)$.
-  Therefore it has expected value $\Pr(A)$ and  variance $\le1/n$. 
+  The random variable $\Fr(S,A)$ has expected value $\Pr(A)$ and variance $\le1/n$. 
   By Chebyshev's inequality we obtain 
   
   \ceq{\hfill\Pr\Big(\big|\Fr(S,A) - \Pr(A)\big|\ge\epsilon\Big)}
@@ -406,6 +411,7 @@ is (up to the factor $1/n$) a binomial random variable.
 \end{proof}
 
 Sometime we are interested in the minimal size of a sample that approximates the probability up to a given $\epsilon$.
+
 
 \begin{corollary}\label{corl_wlln}
   Assume $\U$ is finite (of arbitrary cardinality, tough).
@@ -432,15 +438,14 @@ In the following section we need a better bound for the Weak Law of Large Number
 This is obtained with a similar proof.
 
 \begin{void_thm}[Weak Law of Large Numbers (with exponential bound)]\label{WLLN_exp}
-  For every event $A\subseteq\U$ and every $n>0$
+  For every event $A\subseteq\U$ and every tuple $S=S_1,\dots,S_n$ of independent random elements of $\U$ 
   
-  \ceq{\hfill 2\, e^{-2n\epsilon^2}}
-  {\ge}
-  {\Pr \Big(s\in\U^n\ :\ \big|\Fr(s,A) - \Pr(A)  \big|\ge\epsilon\Big).}
+  \ceq{\hfill\Pr\Big(\big|\Fr(S,A) - \Pr(A)\big|\ge\epsilon\Big)}
+  {\le}
+  {2\, e^{-2n\epsilon^2}.}
 \end{void_thm}
 
 \begin{proof}
-  Let $S_1,\dots,S_n$ be a random sample from $\U$.
   Define
   
   \ceq{\hfill M}
@@ -449,9 +454,9 @@ This is obtained with a similar proof.
 
   As $\Ex[\Indicator_{S_i\in A}]=\Pr(A)$, the inequality we have to prove can be rewritten as 
 
-  \ceq{\hfill 2\, e^{-2n\epsilon^2}}
-  {\ge}
-  {\Pr \Big(|M|\ge n\epsilon\Big)}
+  \ceq{\hfill\Pr \Big(|M|\ge n\epsilon\Big)}
+  {\le}
+  {2\, e^{-2n\epsilon^2}}
 
   and this follows immediately from Hoeffding inequality.
   \end{proof}
