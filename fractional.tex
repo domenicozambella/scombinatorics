@@ -24,14 +24,14 @@ Let $A\subseteq\U$ and $B\subseteq\V$ be finite sets.
 
 A subset $A'\subseteq A$ is a \emph{transversal\/} if $\phi(A',b)\neq\0$ for every $b\in B$. Equivalently, if the sets $\phi(a,B)_{a\in A'}$ cover $B$, i.e.
 
-\ceq{\hfill\V}
+\ceq{\hfill B}
 {=}
 {\bigcup_{a\in A'}\phi(a,B).}
 
 The \emph{transversal number\/} is the smallest cardinality of a transversal $A'$.
 It denoted by \emph{$\tau$.} 
 
-A subset $B'\subseteq B$ is a \emph{packing\/} if $\phi(A,b)\cap\phi(A,b')=\0$ for every $b,b'\in B'$. Equivalently if $|\phi(a,B')|\le1$ for every $a\in A$.
+A subset $B'\subseteq B$ is a \emph{packing\/} if $\phi(A,b)\cap\phi(A,b')=\0$ for every distinct $b,b'\in B'$. Equivalently if $|\phi(a,B')|\le1$ for every $a\in A$.
 The \emph{packing number\/} is the largest cardinality of a packing $B'$.
 It is denoted by \emph{$\nu$.}
 
@@ -55,6 +55,10 @@ A (fractional) multiset over $\U$ is a real-valued function $A':\U\to\RR$.
 The support \emph{support} of a multiset $A'$ is the set where it takes nonzero values.
 In this chapter will only consider nonnegative multisets with finite support.
 These can be interpreted as measures concentrated on a finite set.
+
+If $A'':\U\to\RR$ is another multiset, we write \emph{$A'\cdot A''$\/} for the pointwise product of the two. 
+We write \emph{$A'\le A''$\/} if $A'(a)\le A''(a)$ for every $a\in \U$.
+
 We define the \emph{size\/} of $A'$ to be\smallskip 
 
 \ceq{\hfill\emph{$|A'|$}}
@@ -98,14 +102,14 @@ Hint: use induction on $\nu$.\QED
 \end{theorem}
 \begin{proof}
 Let $A=\{a_1,\dots,a_m\}$ and $B=\{b_1,\dots,b_n\}$.
-Let $F$ be the $\{0,1\}$-valued incidence matrix $\phi(a_i,b_j)$.
+Let $F$ be the $\{0,1\}$-valued matrix $\Indicator_{\phi(a_i,b_j)}$.
 A multi-set over $A$ is a naturally associated to a vector $0\le x\in\RR^m$.
 A multi-set over $B$ is associated to a vector $0\le y\in\RR^n$.
 Then it is easy to verify that
 
-\ceq{\hfill\tau^*}{=}{\min\,\big\{\,1_m^{\rm T}\;x\ :\ \ F\,x\ge 1_n,\ 0\le x\};}
+\ceq{\hfill\tau^*}{=}{\inf\,\big\{\,1_m^{\rm T}\;x\ :\ F^{\rm T}\,x\ge 1_n,\ 0\le x\};}
 
-\ceq{\hfill\nu^*}{=}{\max\big\{\,1_n^{\rm T}\ y\,\  :\ F^{\rm T}y\le 1_m,\,\  0\le y\}.}
+\ceq{\hfill\nu^*}{=}{\sup\big\{\,1_n^{\rm T}\ y\,\  :\ \ F\,y\le 1_m,\,\  0\le y\}.}
 
 Therefore, by he duality of linear programming $\nu^*=\tau^*$.
 
@@ -185,7 +189,7 @@ Moreover, $\beta$ in the definition above only depends on $\alpha$ and $k$.
 \begin{proof}
 Let $\alpha$ be arbitrary and set $\beta=1/2m$ where $m$ is such that 
 
-\ceq{\hfill \bigsum^{k-1}_{i=0} \binom{n}{i}}{<}{\frac\alpha4{m\choose k}.}
+\ceq{\hfill \bigsum^{k-1}_{i=0} \binom{m}{i}}{<}{\frac\alpha4{m\choose k}.}
 
 Note that, by the Sauer-Shelah Lemma~\ref{lem_sauer}, the r.h.s.\@ is strictly larger than $\pi^*_\phi(m)$ for all $\phi(x\,;z)$ with \vc-codimension $<k$.
 
@@ -202,7 +206,7 @@ Note that we can assume that $n>2m$ otherwise $\beta\,n<1$ and (2) never occur.
 We will find a set $B''\subseteq B$ of cardinality $m$ with more than $\pi^*(m)$ distinct $\phi(x\,;z)^*$-definable subsets, a contradiction.
 
 Let $P$ be the set of pairs $B'\subseteq B''\subseteq B$ such that $|B'|=k$ and $|B''|=m$.
-We say that a pair $B'\subseteq B''$ in $P$ is \textit{good\/} if there is $a\in A$ such that $B'=\phi(a,B'')$.
+We say that a pair $B'\subseteq B''$ in $P$ is \textit{good\/} if there is $a\in A$ such that $B'=\phi(a\,;B'')$.
 That is, $B'$ is a $\phi(x\,;z)^*$-definable subset of $B''$.
 
 Claim 1. 
@@ -234,7 +238,7 @@ Then the probability that all $b\in B''\sm B'$ are such that $\neg\phi(a,b)$ is 
 {\prod^{m-k-1}_{i=0}\frac{n-\beta n-m}{n-m}}
 
 \ceq{}
-{\ge}
+{=}
 {\bigg(\frac{n-\beta n-m}{n-m}\bigg)^m}
 
 \ceq{}
@@ -279,15 +283,15 @@ years later proved by Alon and Kleitman~\cite{AK1} and~\cite{AK2}.
 Subsequently Matou\v{s}ek~\cite{matousek} adapted their proof to collections of sets with finite \vc-dimension (formally, the two results do not imply each other).
 More precisely, Matou\v{s}ek proved the existence of a bound to the cardinality of the transversal number $\tau$ of {\nip} formulas with the $(p,q)$-property, and that this bound depends only on $p,q$ and the \vc-codimension of the formula.
 
-\begin{theorem}[(Alon, Kleitman + Matou\v{s}ek)]
+\begin{theorem}[(p,q)-Theorem (Alon, Kleitman + Matou\v{s}ek)]
   Let $p\ge q> k$ be natural numbers.
   There is a number $N=N(k,p,q)$ such that 
-  $\tau_{\phi(A\,;B)}\le N$ for all formulas $\phi(x\,;z)$ with the $(p,q)$-property and \vc-codimension $\le k$, and every $A\subseteq\U$ and $B\subseteq\V$.
+  $\tau_{\phi(A\,;B)}\le N$ for all formulas $\phi(x\,;z)$ with the $(p,q)$-property and \vc-codimension $< k$, and every $A\subseteq\U$ and $B\subseteq\V$.
 \end{theorem}
 
 \begin{proof}
 As we are not trying to optimize $N$, we may prove the theorem for $q=k+1$.
-By Proposition~\ref{prop_bound_fractional_trans}, the transversal number is bounded by a function of $\tau^*$, so it is enough to bound $\tau^*$. By Proposition~\ref{thm_fractional_nu=tau}, we can equivalently bound the fractional packing number $\nu^*$ because it coincides with $\tau^*$.
+By Proposition~\ref{prop_bound_fractional_trans}, the transversal number is bounded by a function of $\tau^*$, so it is enough to bound $\tau^*$. By Theorem~\ref{thm_fractional_nu=tau}, we can equivalently bound the fractional packing number $\nu^*$ because it coincides with $\tau^*$.
 
 Let $B'\subseteq B$ be an optimal fractional packing.  That is, $\nu^*=|B'|$ where $B'\le\Indicator_B$ is such that $|\phi(a,B')|\le1$ for every $a\in A$. As we rather work with regular sets than with fractional multisets, we apply a trick that allows to replace $B'$ with a regular set $C'$. 
 
@@ -315,7 +319,7 @@ There is an $\alpha=\alpha(p,q)>0$ such that
 
 By Claim~1, every $qp$-collection of $\phi\!_{_\times}\!$-definable sets contains at least one $q$-collection with non-empty intersection.
 Every $q$-collection is contained in ${n-q\choose qp-q}$ many $qp$-collections.
-Therefore the number $q$-collections with non-empty intersection is
+Therefore the number $q$-collections with non-empty intersection is at least
 
 \ceq{\hfill{n\choose qp}\Big/{n-q\choose qp-q}}{=}{{n\choose q}\Big/{qp\choose q}.}
 

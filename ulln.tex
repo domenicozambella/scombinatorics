@@ -383,13 +383,13 @@ Then $\Indicator_{S_i\in A}=\Indicator_{A}\circ S_i$ is a Bernoulli random varia
 {\frac1n\sum^n_{i=1}\Indicator_{S_i\in A}}
 
 is (up to the factor $1/n$) a binomial random variable.
-This will be used to find a bound to
+This random variable is used below to find the bound in (1), in fact
 
 \ceq{\hfill\Pr\Big(\big|\Fr(S,A) - \Pr(A)\big|\ge\epsilon\Big)}
   {}
   {}
 
-which is immediately seen to be equal to the probability in (1).
+equals the probability in (1) but is easier to estimate.
 
 \begin{void_thm}[Weak Law of Large Numbers]
   For every event $A\subseteq\U$ and every tuple $S=S_1,\dots,S_n$ of independent random elements of $\U$
@@ -932,43 +932,7 @@ We prove an informative variant which gives the rate of convergence (though, thi
   {\sqrt{2\frac{\log\;\big(2\,\pi_\phi(n)\big)}{n}}}.
   
   It is clear that $\phi(\U\,;b)_{b\in\V}$ has \vc-dimension $1$.
-  Hence, by the Sauer-Shelah Lemma~\ref{lem_sauer} and the inequalities proved thereafter, $\pi_\phi(n)\le n+1$.
+  By the Sauer-Shelah Lemma~\ref{lem_sauer} and the inequalities proved thereafter, $\pi_\phi(n)\le n+1$.
   The theorem follows.
 \end{proof}
-
-% \clearpage
-% The language $L$ is countable.
-
-% Let $D_n\subseteq M_n$ for $n\in\omega$.
-
-% Prove that there is an ultrafilter $F$ such that
-
-% \ceq{\hfill D}{=}{\prod_n D_n \Big/ F}
-
-% is a definable subset of
-
-% \ceq{\hfill N}{=}{\prod_n M_n \Big/ F}
-
-% only if there is a formula $\phi(x,z)$ and a sequence $b_n\in M^{|z|}$ such that $D_n=\phi(M_n,b_n)$ for almost all $n$.
-
-
-% Hint.
-
-% Prove the contrapositive.
-
-% Fix, for the time being, a formula $\phi(x,z)$ and assume that for infinitely many $n$ there is no  $b\in M^{|z|}$ such that $D_n=\phi(M_n,b)$.
-% Let $A$ be the set of such $n$.
-% Let $F\ni A$ be an ultrafilter and let $N$ as above.
-% Let $b\in N$ be arbitrary.
-% We prove that $D\neq\phi(N,b)$ 
-
-% For each $n\in A$ pick some $d_n\in D_n\simdiff\phi(M_n,b_n)$.
-% Choose $d_n$ arbitrarily when $n\omega\sm A$.
-% Let $d=(d_n)_n\in\omega$.
-% Then $d\in D\simdiff\phi(N,b)$, hence $D\neq\phi(N,b)$ as claimed.
-
-% Now use an opportune diagonalization to construct a filter that works for every formula $\phi(x,z)$.
-
-
-% pdftk  scombinatorics.pdf cat 25  output q.pdf
 \end{document}

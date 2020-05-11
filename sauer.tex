@@ -1,61 +1,13 @@
 % !TEX root = scombinatorics.tex
 \documentclass[scombinatorics.tex]{subfiles}
 \begin{document}
-\chapter{Stable and {\sc nip} relations}
+\chapter{Vapnik-Chervonenkis theory}
 \label{sauer}
 
 
 
 \def\medrel#1{\parbox[t]{5ex}{$\displaystyle\hfil #1$}}
 \def\ceq#1#2#3{\parbox[t]{20ex}{$\displaystyle #1$}\medrel{#2}{$\displaystyle #3$}}
-
-
-%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%
-\section{Stable formulas}\label{VCdim}
-
-The \emph{ladder-dimension\/} of $\phi(\U\,;b)_{b\in\V}$, or of $\phi(x\,;z)$ when $\U$ and $\V$ are clear, is the maximal length $n$ of a chain of the form
-
-\ceq{\hfill\phi(A\,;b_0)\ \subset}{\dots}{\subset\ \phi(A\,;b_{n-1})}
- 
-for some set $A\subseteq\U$ and some $b_0,\dots,b_{n-1}\in\V$. If a maximal length exists we say that  $\phi(x\,;z)$ is \emph{stable\/} otherwise we say that $\phi(x\,;z)$ is \emph{unstable.}
-
-
-% \begin{lemma}
-%   If $\psi_i(x\,;z_i)$ are stable formulas on $\V_i$ then $\psi_2(x\,;z_2)\wedge\psi_2(x\,;z_2)$ is a stable formula on $\V_1\times\V_2$.
-% \end{lemma}
-  
-% \begin{proof}
-%   Let $A\subseteq\U$ and $b_i,c_i\in\V,\W$ be such that 
-  
-%   \ceq{\hfill\phi(A\,;b_0,c_0)\ \subset}{\dots}{\subset\ \phi(A\,;b_{n-1}),c_{n-1}}
- 
-  
-%   For $n=1,2$ let $H_n\subseteq{\omega\choose 2}$ contain those pairs $j<i$ such that $\neg\phi_n({\mr a^n_i}\,;{\gr b_j})$. 
-%   By the equivalence above $H_1\cup H_2={\omega\choose 2}$. 
-%   By the Ramsey Theorem there is an infinite set $H$ such that ${H\choose 2}\subseteq H_n$ for at least one of $n=1,2$.
-%   Suppose $H_1$ for definiteness. So, we obtain an infinite sequence $a^1_i$, $b_i$ such that
-  
-%   \ceq{\hfill j<i}{\IFF}{\neg\phi_1({\mr a^1_i}\,;{\gr b_j})}\hfill for all $i,j<\omega$
-  
-%   hence $\phi_1({\mr x_1}\,;{\gr z})$ is unstable.
-% \end{proof}
-  
-% We say that $\Aa\subseteq\U$ is \emph{approximable\/} if for every finite set $A\subseteq\U$ there is a $b\in\V$ such that $\phi(A\,;b)=\Aa\cap A$.
-% If we also have that $\phi(\U\,;b)\subseteq\U$, then we say that $\Aa\subseteq\U$ is approximable \emph{from below.}
-
-% \begin{fact}
-%   The following are equivalent
-%   \begin{itemize}
-%     \item[1.] $\Aa\subseteq\U$ is approximable from below;
-%     \item[2.] for every finite set $A\subseteq\Aa$ there is a $b\in\V$ such that $A\subseteq\phi(\U\,;b)\subseteq\U$.\QED
-%   \end{itemize}
-% \end{fact}
-
-
 
 
 
