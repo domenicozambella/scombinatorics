@@ -1,0 +1,70 @@
+% !TEX root = scombinatorics.tex
+\documentclass[scombinatorics.tex]{subfiles}
+\begin{document}
+
+\chapter{Szemer\'edi regularity lemma}
+
+\label{szemeredi}
+
+\def\medrel#1{\parbox[t]{6ex}{$\displaystyle\hfil #1$}}
+\def\ceq#1#2#3{\parbox[t]{25ex}{$\displaystyle #1$}\medrel{#2}{$\displaystyle #3$}}
+
+
+
+\section{}
+
+For $B\subseteq\V$ we write $\sim_B$ for the equivalence relation on $\U$ of defined by
+
+\ceq{\hfill\emph{$a\sim_Ba'$}}
+{\IMP}
+{\phi(a\,;B)=\phi(a'\,;B)}
+
+A similar notation is used in the dual case, i.e.\@ to any $A\subseteq\U$ we associate a equivalence relation $\sim_A$ on $\V$.
+
+For every $\epsilon$ there is an $N=N(\epsilon)$ and two sets $A\subseteq\U$ $B\subseteq\V$ such that  
+
+A multiset $A:\U\to\RR$ is \emph{simple\/} if for some finite $B$ 
+
+\ceq{\hfill a\sim_Ba'}
+{\IMP}
+{A(a)=A(a').}
+
+We may also say \emph{$B$-simple.}
+
+
+that are constant on $\sim_\V$ equivalence classes.
+
+For $B\subseteq\V$ the equivalence is defined 
+
+is $\phi(\U\,;b)_{b\in\V}$-compatible if
+
+\ceq{\hfill \phi(a\,;\V)=\phi(a'\,;)}
+{\IMP}
+{A(a)=A(a')}
+
+
+
+For every $b\in B$ the multiset $\phi(A\,b)$ is two valued fun
+
+Let $A\subseteq\U$ then $\Indicator_A$ is constant on $B$ if and only if 
+
+\begin{proposition}
+  For every multiset $A$, every $\epsilon>0$ and every finite $B\subseteq\U$ there is a multiset $A'$ constant on $B$ such that
+
+
+\end{proposition}
+
+\end{document}
+
+% \begin{proposition}
+%   The following are equivalent
+%   \begin{itemize}
+%     \item[1.] every $b\in B$ the multiset $\phi(A\,;b)$ is constant on its support;
+%     \item[2.] $\phi(a\,;B)=\phi(a';B)\ \IMP\ A(a)=A(a')$\quad for every $a,a'\in\U$.
+%   \end{itemize}
+% \end{proposition}
+
+% \begin{proof}
+%   \ssf{1}$\IMP$\ssf{2} Suppose $\phi(a\,;B)=\phi(a'\,;B)$ and $A(a)\neq A(a')$ for some  $a,a'\in\U$.
+  
+% \end{proof}

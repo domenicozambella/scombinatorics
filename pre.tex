@@ -16,9 +16,8 @@
 
 Let $\U$ and $\V$ be two (large) sets.
 Let $\phi(x\,;z)$ be a relation symbol, or a formula, whatever.
-We denote by \emph{$\phi(\U\,;\V)$\/} the set $\{\<a,b\>\in\U\times\V\, :\, \phi(a\,;b)\}$ which we call: the relation defined by $\phi(x\,;z)$.
-Sets of the form \emph{$\phi(\U\,;b)$}$=\{a\in\U\,:\, \phi(a\,;b)\}$, for some $b\in\V$, are called \emph{definable\/} sets.
-
+We denote by \emph{$\phi(\U\,;\V)$\/} the set $\{\<a,b\>\in\U\times\V\; :\; \phi(a\,;b)\}$ which we call: the relation defined by $\phi(x\,;z)$.
+Sets of the form \emph{$\phi(\U\,;b)$}$=\{a\in\U\;:\; \phi(a\,;b)\}$, for some $b\in\V$, are called \emph{definable\/} sets.
 
 In the first chapters we always restrict the study to the \emph{trace\/} of $\phi(\U\,;\V)$ on some finite set $A\times B$, where $A\subseteq\U$ and $B\subseteq\V$. 
 We wite $\phi(A\,;B)$ for $\phi(\U\,;\V)\cap A\times B$.
@@ -27,14 +26,39 @@ We call it a definable subset of $A$.
 
 We denote by \emph{$\phi(\U\,;b)_{b\in\V}$} and \emph{$\phi(A\,;b)_{b\in\V}$} the collection of definable sets, respectively definable subsets of $A$.
 
+A similar notations is used with the roles of $\U$ and $\V$ interchanged.
+I.e., we think of $\U$ as the set of parameters defining subsets of $\V$.
+We write \emph{$\phi(x\,;z)^{\rm op}$\/} to signal that the formula $\phi(x\,;z)$ is considered in this \emph{dual\/} setting.
+
 For the model theoretic minded, it would be more appropriate to call the definable sets \textit{global types}, respectively \textit{types over $A$}.
 But this would make the terminology (if possible) more obscure.
 
 For $k\le|A|$ we use following notation interchangeably
+\smallskip
 
 \ceq{\hfill\emph{$\displaystyle{A\choose k}$}\medrel{=}\emph{$\vphantom{\Big[}A^{(k)}$}}
 {=}
 {\Big\{A'\subseteq A\ :\ |A'|=k \Big\}}
+\smallskip
 
+For $n$ a non negative integer we write
+
+\ceq{\hfill \emph{$(n]$}}
+{=}
+{\{1,\dots,n\},}
+\bigskip
+
+\ceq{\hfill \emph{$n$}\medrel{=}\emph{$[n)$}}
+{=}
+{\{0,\dots,n-1\},}
+\bigskip
+
+\ceq{\rm and\hfill\emph{$[n]$}}
+{=}
+{\{0,\dots,n\}}\noindent\nolinebreak[4]\hfill\rlap{\textcolor{red}{\Large\danger}}
+\bigskip
+
+Note that the latter conflicts with the notation used in combinatorics.
 
 \end{document}
+%\noindent\llap{\textcolor{red}{\Large\danger}\kern1.5ex}

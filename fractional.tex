@@ -76,9 +76,6 @@ The \emph{fractional transversal number\/} of $\phi(x\,;z)$, denoted by $\tau^*$
 A fractional multiset $B'\le\Indicator_B$ over $\V$ is a \emph{fractional packing\/} if $|\phi(a,B')|\le1$ for every $a\in A$.
 The \emph{fractional packing number\/} of $\phi(x\,;z)$, denoted by $\nu^*$, is the supremum of the size of the fractional packings of $\phi(x\,;z)$.
 
-The notation $\tau^*$ and $\nu^*$ is standard. 
-It is not related with the dual/opposite of a formula, $\phi(x\,;z)^*$. 
-
 \begin{example}
   The sets $\U,\V$ and the relation $\phi(A\,;B)$ are as in the example~\ref{expl_tr_pk}.
   Let $B'$ be a multiset that assigns $1/2$ to every line in $B$. Then $|\phi(a,B')|\le1$ holds because each point is contained in at most two lines.
@@ -102,14 +99,18 @@ Hint: use induction on $\nu$.\QED
 \end{theorem}
 \begin{proof}
 Let $A=\{a_1,\dots,a_m\}$ and $B=\{b_1,\dots,b_n\}$.
-Let $F$ be the $\{0,1\}$-valued matrix $\Indicator_{\phi(a_i,b_j)}$.
+Let $F$ be the $m\times n$-matrix with entries $\Indicator_{\phi(a_i,b_j)}$.
 A multi-set over $A$ is a naturally associated to a vector $0\le x\in\RR^m$.
 A multi-set over $B$ is associated to a vector $0\le y\in\RR^n$.
 Then it is easy to verify that
 
-\ceq{\hfill\tau^*}{=}{\inf\,\big\{\,1_m^{\rm T}\;x\ :\ F^{\rm T}\,x\ge 1_n,\ 0\le x\};}
+\ceq{\hfill\tau^*}
+{=}
+{\inf\,\big\{\,1_m^{\rm T}\;x\ :\ F^{\rm T}\,x\ge 1_n,\ 0\le x\};}
 
-\ceq{\hfill\nu^*}{=}{\sup\big\{\,1_n^{\rm T}\ y\,\  :\ \ F\,y\le 1_m,\,\  0\le y\}.}
+\ceq{\hfill\nu^*}
+{=}
+{\sup\big\{\,1_n^{\rm T}\ y\,\  :\ \ F\,y\le 1_m,\,\  0\le y\}.}
 
 Therefore, by he duality of linear programming $\nu^*=\tau^*$.
 
@@ -203,11 +204,11 @@ and
 \ceq{(2)\hfill\big|\phi(a\,;B)\big|}{<}{\beta\,n}\hfill for all $a\in A$.
 
 Note that we can assume that $n>2m$ otherwise $\beta\,n<1$ and (2) never occur.
-We will find a set $B''\subseteq B$ of cardinality $m$ with more than $\pi^*(m)$ distinct $\phi(x\,;z)^*$-definable subsets, a contradiction.
+We will find a set $B''\subseteq B$ of cardinality $m$ with more than $\pi^*(m)$ distinct $\phi(x\,;z)^{\rm op}$-definable subsets, a contradiction.
 
 Let $P$ be the set of pairs $B'\subseteq B''\subseteq B$ such that $|B'|=k$ and $|B''|=m$.
 We say that a pair $B'\subseteq B''$ in $P$ is \textit{good\/} if there is $a\in A$ such that $B'=\phi(a\,;B'')$.
-That is, $B'$ is a $\phi(x\,;z)^*$-definable subset of $B''$.
+That is, $B'$ is a $\phi(x\,;z)^{\rm op}$-definable subset of $B''$.
 
 Claim 1. 
 Assume the uniform probability on $P$.
@@ -279,11 +280,12 @@ Hence, we can rephrase the $(p,q)$-property in plain English: out of any $p$-col
 
 Helly's theorem says that any finite collection of convex sets in $\RR^d$ satisfying the $(d + 1, d + 1)$-property has non-empty intersection, i.e.\@ admits a transversal of size $1$.
 A generalization of this was conjectured by Hadwiger and Debrunner, and many
-years later proved by Alon and Kleitman~\cite{AK1} and~\cite{AK2}.
-Subsequently Matou\v{s}ek~\cite{matousek} adapted their proof to collections of sets with finite \vc-dimension (formally, the two results do not imply each other).
-More precisely, Matou\v{s}ek proved the existence of a bound to the cardinality of the transversal number $\tau$ of {\nip} formulas with the $(p,q)$-property, and that this bound depends only on $p,q$ and the \vc-codimension of the formula.
+years later proved by Alon and Kleitman~\cite{AK1},~\cite{AK2}.
+Subsequently, after proving Theorem~\ref{thm_matousek}, Matou\v{s}ek~\cite{matousek} noted that the method in~\cite{AK2} applies also to collections of sets with finite \vc-dimension.
+More precisely, Matou\v{s}ek proved the existence of a bound to the cardinality of the transversal number $\tau$ of {\nip} formulas with the $(p,q)$-property, and that this bound depends only on $p,q$ and the \vc-codimension of the formula. 
+(Formally, the results~\cite{AK2} and~\cite{matousek} do not imply each other.)
 
-\begin{theorem}[(p,q)-Theorem (Alon, Kleitman + Matou\v{s}ek)]
+\begin{theorem}[(Alon, Kleitman + Matou\v{s}ek)]
   Let $p\ge q> k$ be natural numbers.
   There is a number $N=N(k,p,q)$ such that 
   $\tau_{\phi(A\,;B)}\le N$ for all formulas $\phi(x\,;z)$ with the $(p,q)$-property and \vc-codimension $< k$, and every $A\subseteq\U$ and $B\subseteq\V$.

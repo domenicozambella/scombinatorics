@@ -73,16 +73,16 @@ As $\U$ and $\V$ are usually clear from the context, we may say \vc-dimension of
   In fact we always assume $\U$ is infinite (or at least very large, in this case, size $\ge2k$ suffices).\QED
 \end{example}
 
-The \vc-dimension of $\phi(x\,;z)^*$ is called the \emph{dual \vc-dimension\/} or \emph{\vc-codimension\/} of $\phi(x\,;z)$.
+The \vc-dimension of $\phi(x\,;z)^{\rm op}$ is called the \emph{dual \vc-dimension\/} or \emph{\vc-codimension\/} of $\phi(x\,;z)$.
 
 \begin{proposition}\label{prop_bound_VCcodim}
   If $\phi(x\,;z)$ has \vc-dimension $k$, then its \vc-codimension is $\le2^{k+1}-1$.
 \end{proposition}
   
 \begin{proof}
-  Suppose that the \vc-dimension of $\phi(x\,;z)^*$ is $\ge 2^{k+1}$.
+  Suppose that the \vc-dimension of $\phi(x\,;z)^{\rm op}$ is $\ge 2^{k+1}$.
   We prove that the \vc-dimension of $\phi(x\,;z)$ is at least $k+1$.
-  Let $B=\big\{b_I\,:\,I\subseteq [k+1]\big\}$ be a set of cardinality $2^{k+1}$ shattered by $\phi(x\,;z)^*$. 
+  Let $B=\big\{b_I\,:\,I\subseteq [k+1]\big\}$ be a set of cardinality $2^{k+1}$ shattered by $\phi(x\,;z)^{\rm op}$. 
   That is, for every $\J\subseteq \P[k+1]$ there is $a_\J$ such that
   
   \ceq{\hfill\phi(a_\J, b_I)}{\IFF}{I\in\J}\hfill for all $I\subseteq [k+1]$
@@ -110,11 +110,11 @@ We prove that the bound in the proposition above is optimal.
   where $A\subseteq\U$ is some fixed set of cardinality $2^{k+1}-1$. (This definition may look contrived. In fact, had we not required that $\U$ and $\V$ are infinite sets, we could have taken $\U=A$ and $\phi(x\,;z)=x\in z$.)
 
   Clearly, $\phi(x\,;z)$ has \vc-dimension $2^{k+1}-1$.
-  Note that the dimension of $\phi(x\,;z)^*$ is at least $k$.
+  Note that the dimension of $\phi(x\,;z)^{\rm op}$ is at least $k$.
   Otherwise $\phi(x\,;z)$ would have dimension $\le2^k-1$ by Proposition~\ref{prop_bound_VCcodim}.
   
-  So, it suffices to prove that the dimension of $\phi(x\,;z)^*$ is exactly $k$.
-  Assume for a contradiction that some $B=\big\{b_i\ :\ i\in[k+1]\big\}\subseteq\V$ is shattered by $\phi(x\,;z)^*$.
+  So, it suffices to prove that the dimension of $\phi(x\,;z)^{\rm op}$ is exactly $k$.
+  Assume for a contradiction that some $B=\big\{b_i\ :\ i\in[k+1]\big\}\subseteq\V$ is shattered by $\phi(x\,;z)^{\rm op}$.
   Then there is some set $\big\{a_I:I\subseteq[k+1]\big\}\subseteq\U$ such that
   
   \ceq{\hfill\phi(a_I, b_i)}{\IFF}{i\in I}
