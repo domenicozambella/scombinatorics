@@ -50,12 +50,39 @@ Setting $A=\{a_1,\dots,a_n\}$ we easily obtain a chain from a ladder, the conver
   Prove that there is a ladder $a_1,\dots,a_n$ and $b_0,\dots,b_n$ such that $A=\{a_1,\dots,a_n\}$ and conclude that $\phi(x\,;z)$ has ladder index $n+1$.\QED
 \end{exercise}
 
-The following is obvious but worth noting.
+The following are obvious but worth noting.
 
 \begin{fact}\label{fact_stability_dual}
   Let $\phi(x\,;z)$ have ladder index $n+1$. 
   Then $\phi(x\,;z)^{\rm op}$ has ladder index $n$ or $n+1$.\QED
 \end{fact}
+ 
+\begin{fact}\label{fact_stability_neg}
+  Let $\phi(x\,;z)$ have ladder index $n$. 
+  Then $\neg\phi(x\,;z)$ has ladder index $n$.\QED
+\end{fact}
+
+\begin{proof}
+  If for all $h\in(n]$ and $k\in[n]$ we have
+
+  \ceq{\hfill\neg\phi(a_h\,;b_k)}
+  {\IFF}
+  {h\le k}
+
+  then $a'_h=a_{n+1-h}$ and $b'_k=b_{n-k}$ satisfy
+
+  \ceq{\hfill\phi(a'_h\,;b'_k)}
+  {\IFF}
+  {\phi(a_{n+1-h}\,;b_{n-h})}
+
+  \ceq{}
+  {\IFF}
+  {n-k>n+1-h}
+
+  \ceq{}
+  {\IFF}
+  {h\le k}
+\end{proof}
  
 The following definition is connected with those above, though in a less evident manner.
 We write ${}^n2$ for the set of binary sequences of length $n$ or, more precisely, the set of functions $s:[n)\to[2)$.
@@ -68,7 +95,7 @@ A \emph{branching tree\/} of hight $n$ for the formula $\phi(x\,;z)$ is a functi
 \nopagebreak[4]\par
 \ceq{\hfill r}{\mapsto}{a_r},
 
-which we may also write as $\bar a=\<a_r:r\in{}^{<n}2\>$, such that
+which we may also present by writing $\bar a=\<a_r:r\in{}^{<n}2\>$, such that
 
 \ceq{\ssf{2r}\hfill\0}
 {\neq}
@@ -168,7 +195,7 @@ Then \ssf{2r} requires that all formulas in each branch $s\in2^n$ are satified b
 \smallskip
 
 
-We call the maximal height of a branching tree for $\phi(x\,;z)$ the \emph{2-rank\/} of  $\phi(x\,;z)$.
+The \emph{2-rank\/} of $\phi(x\,;z)$ is the maximal height of a branching tree for $\phi(x\,;z)$.
 If such a maximal integer does not exist, we say that the 2-rank is infinite.
 
 A branching tree $\bar a'=\<a'_r:r\in{}^m2\>$ is a \emph{subtree\/} of $\bar a$ if there is an $\subseteq$-preserving map $f:{}^m2\to{}^n2$ such that $a'_r=a_{fr}$.
@@ -251,7 +278,7 @@ For the theorem below we need the following Ramsey-like lemma.
   We prove the contrapositive.
   We show that if there is a ladder of length $m=2^n$, say $a_1,\dots,a_{m-1}$ and $b_0,\dots,b_{m-1}$, then there is a branching tree $\bar a'$ of height $n$.
   This also proves the first inequality above.
-  In fact, otherwise $n_{\rm ld}\ge 2^{n_{\rm 2r}+1}$ and there would exist a branching tree of height $n_{\rm 2r}+1$ which is a contradiction.
+  In fact, if $n_{\rm ld}\ge 2^{n_{\rm 2r}+1}$, there would exist a branching tree of height $n_{\rm 2r}+1$ which is a contradiction.
   
   The branching tree $\bar a'=\<a'_r\, :\, r\in{}^{<n}2\>$ is defined as follows
 
@@ -283,9 +310,9 @@ For the theorem below we need the following Ramsey-like lemma.
   We prove the contrapositive.
   We claim that if there is a branching tree of height $2^n+2$ then there is a ladder of length $n$.
   This yields also the second inequality of the theorem.
-  In fact, otherwise $n_{\rm 2r}\ge 2^{n_{\rm ld}+1}+2$ and there would exist a latter of length $n_{\rm ld}+1$ which is a contradiction.
+  In fact, if $n_{\rm 2r}\ge 2^{n_{\rm ld}+1}+2$, there would exist a ladder of length $n_{\rm ld}+1$ which is a contradiction.
 
-  The claim is true when $n=0$ because $a_\0$ and $b_0,b_1$ is a ladder of length $2$.
+  The claim is trivial for $n=0$.
   Now we assume the claim is true for $n$ and prove it for $n+1$.
 
   Let $\<a_r\, :\, r\in{}^{<\, 2m+2}2\>$, where $m=2^n$, be a branching tree of height $2^{n+1}+2$.
@@ -296,23 +323,25 @@ For the theorem below we need the following Ramsey-like lemma.
   
   \qquad\qquad \llap{blue}\qquad otherwise, that is, $\neg\phi(a\,;b)$.
   
-  The following two cases are exhaustive by Lemma~\ref{lem_Reamsey_tree}. Note that we are applying the lemma only to the subtree $\<a_{1^\frown r}:r\in{}^{2m+1}2\>$.
+  We consider two cases.
+  These are exhaustive by Lemma~\ref{lem_Reamsey_tree}.
+  Note that we are applying the lemma only to the subtree $\<a_{1^\frown r}:r\in{}^{2m+1}2\>$.
 
   Case 1: for some $b$ there is a red subtree of $\<a_{1^\frown r}:r\in{}^{2m+1}2\>$ of height $m+1$.
   Let $\bar a'$ be this red tree and consider its subtree $\<a'_{0^\frown r}\,:\,r\in {}^{<\,m}2\>$.
   By induction hypothesis, there are $A\subseteq\{a'_{0^\frown r}\,:\,r\in {}^{<\,m}2\}$ and $b_0,\dots,b_n$ such that
 
-  \ceq{(1)\hfill\psi(A\,;b_0)\ \subset}{\dots}{\subset\ \psi(A\,;b_n)}
+  \ceq{(1)\hfill\phi(A\,;b_0)\ \subset}{\dots}{\subset\ \phi(A\,;b_n)}
 
   Let $A'=A\cup\{a'_\0\}$ then
 
-  \ceq{(2)\hfill\psi(A'\,;b_0)\ \subset}{\dots}{\subset\ \psi(A'\,;b_n)}
+  \ceq{(2)\hfill\phi(A'\,;b_0)\ \subset}{\dots}{\subset\ \phi(A'\,;b_n)}
 
-  In fact, as $b_0,\dots,b_n\in\neg\phi(a'_\0\,;\V)$, these are the same chain as (1).
-  Therefore, if we extend the chain on the right with $\psi(A'\,;b,c)=A'$, we obtain the required chain of length $n+1$.
+  In fact, as $b_0,\dots,b_n\in\neg\phi(a'_\0\,;\V)$, this is the same chain as (1).
+  Therefore, if we extend the chain on the right with $\phi(A'\,;b)=A'$, we obtain the required chain of length $n+1$.
   
   Case 2: for every $b$ there is a blue subtree of $\<a_{1^\frown r}:r\in{}^{2m+1}2\>$ of height $m$.
-  Choose $b$ such that $\neg\phi(a_\0, b)$ and let $\bar a'$ the blue subtree.
+  Choose $b$ such that $\neg\phi(a_\0, b)$ and let $\bar a'$ the corresponding blue subtree.
   Apply the induction hypothesis to obtain $A\subseteq\range(\bar a')$ and $b_0,\dots,b_n$ such that (1).
   We claim that (2) above holds with $A'=A\cup\{a_\0\}$.
   In fact, $b_0,\dots,b_n\in\phi(a_\0\,;\V)$ so (2) is the chain in (1) with all sets augmented by $a_\0$.
@@ -327,8 +356,12 @@ For the theorem below we need the following Ramsey-like lemma.
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Approximable sets}
 
-We say that $\Aa\subseteq\U$ is \emph{approximable\/} if for every finite set $A\subseteq\U$ there is a $b\in\V$ such that $\phi(A\,;b)=\Aa\cap A$.
-If we also have that $\phi(\U\,;b)\subseteq\U$, then we say that $\Aa\subseteq\U$ is approximable \emph{from below.} The following is immediate.
+\begin{definition}\label{def_approx}
+  We say that $\Aa\subseteq\U$ is \emph{approximable\/} if for every finite set $A\subseteq\U$ there is a $b\in\V$ such that $\phi(A\,;b)=\Aa\cap A$.
+  If we also have that $\phi(\U\,;b)\subseteq\U$, then we say that $\Aa\subseteq\U$ is approximable \emph{from below.}
+\end{definition}
+
+The following is immediate.
 
 \begin{fact}
   The following are equivalent
@@ -337,6 +370,51 @@ If we also have that $\phi(\U\,;b)\subseteq\U$, then we say that $\Aa\subseteq\U
     \item[2.] for every finite set $A\subseteq\Aa$ there is a $b\in\V$ such that $A\subseteq\phi(\U\,;b)\subseteq\Aa$.\QED
   \end{itemize}
 \end{fact}
+
+\begin{proposition}
+  Let $\phi(x\,;z)$ be a stable formula.
+  Every set approximable by $\phi(x\,;z)$ is approximable from below by the formula
+
+  \ceq{\hfill \psi(x\,;z_0,\dots,z_n)}{=}{\bigwedge_{i=0}^n\phi(x\,;z_i)}
+  
+  where $n$ is the ladder index of $\phi(x\,;z)$.
+\end{proposition}
+
+\begin{proof}
+  Let $A\subseteq\Aa$ be finite.
+  To prove that $A\subseteq\psi(\U\,;b_0,\dots,b_n)\subseteq\Aa$ for some $b_0,\dots,b_0$.
+  To obtain the $b_k$, we construct a ladder by stages.
+  Pick any $b_0$ be such that $A\subseteq\phi(\U\,;b_0)$.
+  Now, suppose that $a_1,\dots,a_k$ and $b_0,\dots,b_k$ have been defined.
+  If 
+
+  \ceq{\hfill A}{\subseteq}{\bigcap_{i=1}^k\phi(\U\,;b_i)\medrel{\subseteq}\Aa}
+
+  we set $b_{k+1}=\dots=b_n=b_k$ and stop as we already have the required parameters.
+  Otherwise pick any element
+
+  \ceq{\hfill a_{k+1}}{\in}{\bigcap_{i=1}^k\phi(\U\,;b_i)\sm\Aa}
+
+  and some $b_{k+1}$ such that
+
+  \ceq{\hfill A}{\subseteq}{\phi(\U\,;b_{k+1})\medrel{\subseteq}\U\sm\{a_1,\dots,a_{k+1}\}}.
+
+  Such a $b_{k+1}$ exists because $\Aa$ is approximable (apply Definition~\ref{def_approx} with $A\cup\{a_1,\dots,a_{k+1}\}$ for $A$).
+
+  We stop at stage $n$.
+  Note that we have constructed a ladder of length $n$ for $\neg\phi(x\,;z)$.
+  In fact for all $h\in(n]$ and $k\in[n]$ we have
+  
+  \ceq{\hfill\neg\phi(a_h\,;b_k)}
+  {\IFF}
+  {h\le k.}
+  
+  By Fact~\ref{fact_stability_neg} it is not possible to prolonge this chain, hence
+
+  \ceq{\hfill A}{\subseteq}{\bigcap_{i=1}^n\phi(\U\,;b_i)\medrel{\subseteq}\Aa}
+
+  as required.
+\end{proof}
 
 % \begin{lemma}
 %   Let $\psi_i(x\,;z)$ have ladder index $n_i$, then $\phi(x\,;z)=\psi_1(x\,;z)\wedge\psi_2(x\,;z)$ has ladder index 
