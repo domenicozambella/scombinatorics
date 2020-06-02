@@ -171,7 +171,7 @@ Then \ssf{2r} requires that all formulas in each branch $s\in2^n$ are satified b
 We call the maximal height of a branching tree for $\phi(x\,;z)$ the \emph{2-rank\/} of  $\phi(x\,;z)$.
 If such a maximal integer does not exist, we say that the 2-rank is infinite.
 
-A branching tree $\bar a'=\<a'_r:r\in{}^m2\>$ is a subtree of $\bar a$ if there is an $\subseteq$-preserving map $f:{}^m2\to{}^n2$ such that $a'_r=a_{fr}$.
+A branching tree $\bar a'=\<a'_r:r\in{}^m2\>$ is a \emph{subtree\/} of $\bar a$ if there is an $\subseteq$-preserving map $f:{}^m2\to{}^n2$ such that $a'_r=a_{fr}$.
 
 For the theorem below we need the following Ramsey-like lemma.
 
@@ -183,7 +183,7 @@ For the theorem below we need the following Ramsey-like lemma.
 
 % As it happens, a more general lemma is easier to prove.
 
-\begin{lemma}
+\begin{lemma}\label{lem_Reamsey_tree}
   Let $\bar a=\<a_r\, :\, r\in{}^{<n}2\>$ be a branching tree for $\phi(x\,;z)$.
   Let $k\in[n]$ be given.
   Then, for every red-blue coloring of $\range(\bar a)$,  there is a monochromatic branching subtree, say $\bar a'=\<a'_r\, :\, r\in{}^{n'}2\>$, and either all nodes of $\bar a'$ are red and $n'=k$, or they are all blue and $n'=n-k$.
@@ -223,7 +223,7 @@ For the theorem below we need the following Ramsey-like lemma.
   
   \ceq{\hfill n_{\rm ld}}{<}{2^{n_{\rm 2r}+1};}
 
-  \ceq{\hfill n_{\rm 2r}}{<}{2^{n_{\rm ld}+1}+1.}
+  \ceq{\hfill n_{\rm 2r}}{<}{2^{n_{\rm ld}+1}+2.}
 \end{theorem}
 
 \begin{proof}[Proof (\kern.1ex\ssf{2}\kern.3ex\boldmath$\IMP$\ssf{1})]
@@ -281,45 +281,42 @@ For the theorem below we need the following Ramsey-like lemma.
 
   \textbf{(\ssf{1}\kern.2ex\boldmath$\IMP$\ssf{2}\kern.1ex)}\ 
   We prove the contrapositive.
-  We claim that if there is a branching tree of height $2^n+1$ then there is a ladder of length $n$.
+  We claim that if there is a branching tree of height $2^n+2$ then there is a ladder of length $n$.
   This yields also the second inequality of the theorem.
-  In fact, otherwise $n_{\rm 2r}\ge 2^{n_{\rm ld}+1}+1$ and there would exist a latter of length $n_{\rm ld}+1$ which is a contradiction.
+  In fact, otherwise $n_{\rm 2r}\ge 2^{n_{\rm ld}+1}+2$ and there would exist a latter of length $n_{\rm ld}+1$ which is a contradiction.
 
   The claim is true when $n=0$ because $a_\0$ and $b_0,b_1$ is a ladder of length $2$.
   Now we assume the claim is true for $n$ and prove it for $n+1$.
 
-  Let $\<a_r\, :\, r\in{}^{<\, 2m+1}2\>$, where $m=2^n$, be a branching tree of height $2^{n+1}+1$.
-  To every pair of elements $b,c\in\V$ we associate a red-blue coloring of $\range(\bar a)$ as follows.
+  Let $\<a_r\, :\, r\in{}^{<\, 2m+2}2\>$, where $m=2^n$, be a branching tree of height $2^{n+1}+2$.
+  To each $b\in\V$ we associate a red-blue coloring of $\range(\bar a)$ as follows.
   A node $a\in\range(\bar a)$ is colored
   
-  \quad red if $\psi(a\,;b,c)=\phi(a\,;b)\vee\phi(a\,;c)$ holds;
+  \qquad\qquad \llap{red}\qquad if $\phi(a\,;b)$ holds;
   
-  \quad blue otherwise, that is, $\neg\psi(a\,;b,c)=\neg\phi(a\,;b)\wedge\neg\phi(a\,;c)$.
+  \qquad\qquad \llap{blue}\qquad otherwise, that is, $\neg\phi(a\,;b)$.
+  
+  The following two cases are exhaustive by Lemma~\ref{lem_Reamsey_tree}. Note that we are applying the lemma only to the subtree $\<a_{1^\frown r}:r\in{}^{2m+1}2\>$.
 
-  Case 1: for some $b,c$ there is a red subtree $\bar a'$ of height $m+1$.
-  Consider the subtree $\bar a'_0=\<a'_{0^\frown r}\,:\,r\in {}^{<\,m}2\>$.
-  By induction hypothesis, there are $A\subseteq\range(\bar a'_0)$ and $b_0,c_0,\dots,b_n,c_n$ such that
+  Case 1: for some $b$ there is a red subtree of $\<a_{1^\frown r}:r\in{}^{2m+1}2\>$ of height $m+1$.
+  Let $\bar a'$ be this red tree and consider its subtree $\<a'_{0^\frown r}\,:\,r\in {}^{<\,m}2\>$.
+  By induction hypothesis, there are $A\subseteq\{a'_{0^\frown r}\,:\,r\in {}^{<\,m}2\}$ and $b_0,\dots,b_n$ such that
 
-  \ceq{(1)\hfill\psi(A\,;b_0,c_0)\ \subset}{\dots}{\subset\ \psi(A\,;b_n,c_n)}
+  \ceq{(1)\hfill\psi(A\,;b_0)\ \subset}{\dots}{\subset\ \psi(A\,;b_n)}
 
   Let $A'=A\cup\{a'_\0\}$ then
 
-  \ceq{(2)\hfill\psi(A'\,;b_0,c_0)\ \subset}{\dots}{\subset\ \psi(A'\,;b_n,c_n)}
+  \ceq{(2)\hfill\psi(A'\,;b_0)\ \subset}{\dots}{\subset\ \psi(A'\,;b_n)}
 
-  In fact, as $b_0,c_0,\dots,b_n,c_n\in\neg\phi(a'_\0\,;\V)$, these are the same chain as (1).
+  In fact, as $b_0,\dots,b_n\in\neg\phi(a'_\0\,;\V)$, these are the same chain as (1).
   Therefore, if we extend the chain on the right with $\psi(A'\,;b,c)=A'$, we obtain the required chain of length $n+1$.
   
-  Case 2: for every $b,c$ there is a blue subtree $\bar a'$ of height $m$.
-  Choose $b,c$ such that $\phi(a_\0, b)\wedge\neg\phi(a_\0, c)$.
-  By the choice of $b$, a blue subtree does not contain $a_\0$.
-  Therefore $\bar a'$ is a subtree of $\<a_{i^\frown r}\,:\,r\in {}^{<\,2m}2\>$ for $i$ either $0$ or $1$.
-  Apply the induction hypothesis to obtain $A\subseteq\range(\bar a')$ and $b_0,c_0,\dots,b_n,c_n$ such that (1).
+  Case 2: for every $b$ there is a blue subtree of $\<a_{1^\frown r}:r\in{}^{2m+1}2\>$ of height $m$.
+  Choose $b$ such that $\neg\phi(a_\0, b)$ and let $\bar a'$ the blue subtree.
+  Apply the induction hypothesis to obtain $A\subseteq\range(\bar a')$ and $b_0,\dots,b_n$ such that (1).
   We claim that (2) above holds with $A'=A\cup\{a_\0\}$.
-  In fact, if $i=0$ then $b_0,c_0,\dots,b_n,c_n\in\neg\phi(a_\0\,;\V)$ and (2) is the same chain as (1).
-  If $i=1$, then $b_0,c_0,\dots,b_n,c_n\in\phi(a_\0\,;\V)$ and (2) is the chain in (1) with all sets augmented by $a_\0$.
-  If $i=0$ we can extend the chain on the right with $\psi(A'\,;b,b)=A'$.
-  If $i=1$ we can extend the chain on the left with $\psi(A'\,;c,c)=\0$.
-  Either way, we obtain the required chain of length $n+1$.
+  In fact, $b_0,\dots,b_n\in\phi(a_\0\,;\V)$ so (2) is the chain in (1) with all sets augmented by $a_\0$.
+  We can extend the chain on the left with $\phi(A'\,;b)=\0$ and obtain the required chain of length $n+1$.
 \end{proof}
 
 
