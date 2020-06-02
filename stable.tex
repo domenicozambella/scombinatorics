@@ -186,7 +186,7 @@ For the theorem below we need the following Ramsey-like lemma.
 \begin{lemma}
   Let $\bar a=\<a_r\, :\, r\in{}^{<n}2\>$ be a branching tree for $\phi(x\,;z)$.
   Let $k\in[n]$ be given.
-  Then, for every red-blue coloring of $\range(\bar a)$,  there is a branching subtree $\bar a'=\<a'_r\, :\, r\in{}^{n'}2\>$ such that either all nodes of $\bar a'$ are red and $n'=k$, or they are all blue and $n'=n-k$.
+  Then, for every red-blue coloring of $\range(\bar a)$,  there is a monochromatic branching subtree, say $\bar a'=\<a'_r\, :\, r\in{}^{n'}2\>$, and either all nodes of $\bar a'$ are red and $n'=k$, or they are all blue and $n'=n-k$.
 \end{lemma}
 
 \begin{proof}
@@ -289,7 +289,7 @@ For the theorem below we need the following Ramsey-like lemma.
   Now we assume the claim is true for $n$ and prove it for $n+1$.
 
   Let $\<a_r\, :\, r\in{}^{<\, 2m+1}2\>$, where $m=2^n$, be a branching tree of height $2^{n+1}+1$.
-  To every pair of elements $b,c\in\V$ we associate a 2-coloring of $\range(\bar a)$ as follows.
+  To every pair of elements $b,c\in\V$ we associate a red-blue coloring of $\range(\bar a)$ as follows.
   A node $a\in\range(\bar a)$ is colored
   
   \quad red if $\psi(a\,;b,c)=\phi(a\,;b)\vee\phi(a\,;c)$ holds;
