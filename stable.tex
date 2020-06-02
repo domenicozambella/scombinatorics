@@ -66,15 +66,15 @@ A \emph{branching tree\/} of hight $n$ for the formula $\phi(x\,;z)$ is a functi
 
 \ceq{\hfill\bar{a}\ :\ {}^{<n}2}{\to}{\U}
 \nopagebreak[4]\par
-\ceq{\hfill r}{\mapsto}{a_r}\hfill which we may also write as $\bar a=\<a_r:r\in{}^{<n}2\>$
+\ceq{\hfill r}{\mapsto}{a_r},
 
-such that
+which we may also write as $\bar a=\<a_r:r\in{}^{<n}2\>$, such that
 
 \ceq{\ssf{2r}\hfill\0}
 {\neq}
 {\bigcap_{h=0}^n\neg^{s_h}\,\phi(a_{s\restriction h}\,;\V)}
 
-where $\neg^i$ is a negation for $i=1$ and an empty symbol for $i=0$.
+where $\neg^i$, for $i$ a non negative integer, denotes a negation symbol repeated $i$ times.
 In other words \ssf{2r} requires the existence of some $\<b_s:s\in{}^n2\>$ such that
 
 \ceq{\hfill\phi(a_{s\restriction h}\,;b_s)}
@@ -89,7 +89,7 @@ or, with slightly different notation,
 
 It helps to represent a branching tree as follows.
 For definiteness, fix $n=3$.
-Consider a full binary tree of height $n+1$ and assign to each node different from root and leaves a formula as depicted below.
+Consider a full binary tree of height $n+1$ and assign to each internal node (different from root and leaves) a formula as depicted below.
 Then \ssf{2r} requires that all formulas in each branch $s\in2^n$ are satified by some $b_s\in\V$.
 \medskip
 
@@ -171,24 +171,27 @@ Then \ssf{2r} requires that all formulas in each branch $s\in2^n$ are satified b
 We call the maximal height of a branching tree for $\phi(x\,;z)$ the \emph{2-rank\/} of  $\phi(x\,;z)$.
 If such a maximal integer does not exist, we say that the 2-rank is infinite.
 
+A branching tree $\bar a'=\<a'_r:r\in{}^m2\>$ is a subtree of $\bar a$ if there is an $\subseteq$-preserving map $f:{}^m2\to{}^n2$ such that $a'_r=a_{fr}$.
+
 For the theorem below we need the following Ramsey-like lemma.
 
-\begin{lemma}\label{lem_Ramsey_on_trees}
-  Let $\bar a=\<a_r\, :\, r\in{}^{<2m}2\>$ be a branching tree for $\phi(x\,;z)$.
-  Let $k\in[2m]$ be given.
-  Then, for every $2$-coloring of $\range(\bar a)$, there is a branching tree $\bar a'=\<a'_r\, :\, r\in{}^m2\>$ such that  $\range(\bar a')$ is a monochromatic subset of $\range(\bar a)$.\QED
-\end{lemma}
+% \begin{lemma}\label{lem_Ramsey_on_trees}
+%   Let $\bar a=\<a_r\, :\, r\in{}^{<2m}2\>$ be a branching tree for $\phi(x\,;z)$.
+%   Let $k\in[2m]$ be given.
+%   Then, for every $2$-coloring of $\range(\bar a)$, there is a branching tree $\bar a'=\<a'_r\, :\, r\in{}^m2\>$ such that  $\range(\bar a')$ is a monochromatic subset of $\range(\bar a)$.\QED
+% \end{lemma}
 
-As it happens, a more general lemma is easier to prove.
+% As it happens, a more general lemma is easier to prove.
 
 \begin{lemma}
   Let $\bar a=\<a_r\, :\, r\in{}^{<n}2\>$ be a branching tree for $\phi(x\,;z)$.
   Let $k\in[n]$ be given.
-  Then, for every red-blue coloring of $\range(\bar a)$,  there is a branching tree $\bar a'=\<a'_r\, :\, r\in{}^{n'}2\>$ such that $\range(\bar a')\subseteq\range(\bar a)$ and, either all nodes of $\bar a'$ are red and $n'=k$, or they are all blue and $n'=n-k$.
+  Then, for every red-blue coloring of $\range(\bar a)$,  there is a branching subtree $\bar a'=\<a'_r\, :\, r\in{}^{n'}2\>$ such that either all nodes of $\bar a'$ are red and $n'=k$, or they are all blue and $n'=n-k$.
 \end{lemma}
 
 \begin{proof}
-  Induction on $n$. If $k=0$ or $k=n$, the lemma is trivially true.
+  Induction on $n$.
+  First, note that the lemma is trivial when $k=0$ or $k=n$.
   In particular the lemma holds for $n=0$.
 
   Assume the lemma true for $n$ and prove it for $n+1$.
@@ -218,12 +221,12 @@ As it happens, a more general lemma is easier to prove.
   \end{itemize}
   Precisely, if $n_{\rm ld}$ and $n_{\rm 2r}$ are the ladder index and the 2-rank, respectively, then 
   
-  \ceq{\hfill n_{\rm ld}}{<}{2^{n_{\rm 2r}+1}.}
+  \ceq{\hfill n_{\rm ld}}{<}{2^{n_{\rm 2r}+1};}
 
   \ceq{\hfill n_{\rm 2r}}{<}{2^{n_{\rm ld}+1}+1.}
 \end{theorem}
 
-\begin{proof}
+\begin{proof}[Proof (\kern.1ex\ssf{2}\kern.3ex\boldmath$\IMP$\ssf{1})]
   % \def\ceq#1#2#3{\parbox[t]{29ex}{$\displaystyle #1$}\medrel{#2}{$\displaystyle #3$}}
   % \ssf{1}$\IMP$\ssf{2} 
   % We prove the contrapositive.
@@ -244,7 +247,7 @@ As it happens, a more general lemma is easier to prove.
   % {\IFF}
   % {h\le k}
 
-  (\ssf{2}$\IMP$\ssf{1}) 
+  
   We prove the contrapositive.
   We show that if there is a ladder of length $m=2^n$, say $a_1,\dots,a_{m-1}$ and $b_0,\dots,b_{m-1}$, then there is a branching tree $\bar a'$ of height $n$.
   This also proves the first inequality above.
@@ -276,7 +279,7 @@ As it happens, a more general lemma is easier to prove.
   {\IFF}
   {r^\frown1\ \subseteq\ s}
 
-  (\ssf{1}$\IMP$\ssf{2})
+  \textbf{(\ssf{1}\kern.2ex\boldmath$\IMP$\ssf{2}\kern.1ex)}\ 
   We prove the contrapositive.
   We claim that if there is a branching tree of height $2^n+1$ then there is a ladder of length $n$.
   This yields also the second inequality of the theorem.
@@ -286,81 +289,37 @@ As it happens, a more general lemma is easier to prove.
   Now we assume the claim is true for $n$ and prove it for $n+1$.
 
   Let $\<a_r\, :\, r\in{}^{<\, 2m+1}2\>$, where $m=2^n$, be a branching tree of height $2^{n+1}+1$.
-  To every $b\in\V$ we associate a 2-coloring of $\bar a$.
-  A node $a\in\range(\bar a)$ is red if $\phi(a\,;b)$ blue otherwise.
-
-  Case 1. For some $b$ there is a red subtree $\bar a'$ of height $m+1$.
-  Consider the subtrees $\bar{a'}_0=\<a'_{0^\frown r}\;:\;r\in {}^{<\,m}2\>$.
-  By induction hypothesis there is an $A'\subseteq\range(\bar a'_0)$ and some $b'_0,\dots,b'_n\in\neg\phi(a'_\0\,;\V)$ such that
-
-  \ceq{(1)\hfill\phi(A'\,;b'_0)\ \subset}{\dots}{\subset\ \phi(A'\,;b'_n)}
-
-  By the choice of $b'_0,\dots,b'_n$, this chain stays unchanged if we replace $A'$ by $A''=A'\cup\{a'_\0\}$.
-  Therefore we obtain the required chain of length $n+1$ extending (1) with $\phi(A'',b)=A''$.
+  To every pair of elements $b,c\in\V$ we associate a 2-coloring of $\range(\bar a)$ as follows.
+  A node $a\in\range(\bar a)$ is colored
   
-  Case 2. For every $b$ there is a blue subtree $\bar a'$ of height $m$.
-  Choose $b$ such that $\phi(a_\0, b)$ and apply the induction hypothesis to obtain $A'\subseteq\range(\bar a')$ and $b'_0,\dots,b'_n$ such that
-
-  \ceq{(1)\hfill\phi(A'\,;b'_0)\ \subset}{\dots}{\subset\ \phi(A'\,;b'_n)}
-
+  \quad red if $\psi(a\,;b,c)=\phi(a\,;b)\vee\phi(a\,;c)$ holds;
   
-  Then $\range(\bar a')\subseteq\{a_{0^\frown r}\;:\;r\in {}^{<\,m}2\}$ 
+  \quad blue otherwise, that is, $\neg\psi(a\,;b,c)=\neg\phi(a\,;b)\wedge\neg\phi(a\,;c)$.
 
-  To every $b\in\phi(a_\0\,;\V)$ we associate a 2-coloring of $\bar a_0$ given by the truth of $\phi(a\,b)$ for $a\in\range(\bar a_0)$
+  Case 1: for some $b,c$ there is a red subtree $\bar a'$ of height $m+1$.
+  Consider the subtree $\bar a'_0=\<a'_{0^\frown r}\,:\,r\in {}^{<\,m}2\>$.
+  By induction hypothesis, there are $A\subseteq\range(\bar a'_0)$ and $b_0,c_0,\dots,b_n,c_n$ such that
+
+  \ceq{(1)\hfill\psi(A\,;b_0,c_0)\ \subset}{\dots}{\subset\ \psi(A\,;b_n,c_n)}
+
+  Let $A'=A\cup\{a'_\0\}$ then
+
+  \ceq{(2)\hfill\psi(A'\,;b_0,c_0)\ \subset}{\dots}{\subset\ \psi(A'\,;b_n,c_n)}
+
+  In fact, as $b_0,c_0,\dots,b_n,c_n\in\neg\phi(a'_\0\,;\V)$, these are the same chain as (1).
+  Therefore, if we extend the chain on the right with $\psi(A'\,;b,c)=A'$, we obtain the required chain of length $n+1$.
   
-  
-  There are two cases.
-
-  Case 1. There is a a branching tree $\bar a_0'$ of height $m$ such that $\range(\bar a'_0)\subseteq\range(\bar a_0)$ and $\phi(a'\,b)$ for all $a'\in\range(\bar a')$.
-
-  By induction hypothesis, there is an $A\subseteq\range(\bar a')$ and some $b_0,\dots,b_n\in\neg\phi(a_\0\,;\V)$ such that 
-
-  \ceq{(1)\hfill\phi(A\,;b_0)\ \subset}{\dots}{\subset\ \phi(A\,;b_n)}
-
-  By the choice of $b_0,\dots,b_n$, this chain stays unchanged if we replace $A$ by $A'=A\cup\{a_\0\}$.
-  Therefore we obtain the required chain of length $n+1$ extending (1) with $\phi(A',b)=A'$.
-  
-  %\ceq{\hfill\phi(A'\,;b'_0)\ \subset}{\dots}{\subset\ \phi(A'\,;b_n)\ \subset\ \phi(A',b)}
-
-  For some $b$ like above the is a 
-
-  Case 1.
-  For either $i=0$ or $i=1$, there is a $b$ that witness the non emptiness of some branch in the tree $\bar a_i$ and $\neg^i\phi(a,b)$ holds for all $a\in\range(\bar a_i)$.  
-  
-  $A'=\{a_{r}\;:\;r\in {}^{<\,m}2\}\subseteq A$ such that $\phi(A'\,b_{r^\frown1})=A'$.
-  By the induction hypothesis there is $A''\subseteq A'$ such that for some $b'_0,\dots,b'n\in B$
-
-  \ceq{\hfill\phi(A'\,;b'_0)\ \subset}{\dots}{\subset\ \phi(A'\,;b'_n)}
-
-
-  \ceq{\hfill\phi(A'\,;b'_0)\ \subset}{\dots}{\subset\ \phi(A'\,;b'_n)}
-
-  Let $A_i\subseteq A$ and $B_i\subseteq B$ be as in the proof of the lemma above, with $2m$ for $n$.
-
-  % Note that $B_0$ and $B_1$ are disjoint sets, in fact $B_0=\neg\phi(a_\0\,;B)$ and $B_1=\phi(a_\0\,;B)$.
-
-  Color red the elements of $A_0$ such that $\phi(a,b)$, blue otherwise.
-  Let $k=2^n$.
-
-  By induction hypothesis there are $a_1,\dots,a_{2^n}\in A_0$ and $B\subseteq B_0$ such that
-
-  \ceq{\hfill\phi(a_0\,;B)\ \subset}{\dots}{\subset\ \phi(a_m\,;B)}
-
-  Pick any $b\in B\sm B_0$.
-  If the are $m/2$ sets in the chain such that $\phi(a_0\,;b)$ then set 
-
-
-  \ceq{\hfill\phi(a_0\,;B'_0)\ \subset}{\dots}{\subset\ \phi(a_m\,;B'_0)}
-
-
-  Color the pairs $\{h,k\}\in [m)^{(2)}$ if
-
-  We claim that there are $a'_1,\dots,a'_{m'}$ 
-
-  \ceq{\hfill\phi(a'_0\,;B')\ \subset}{\dots}{\subset\ \phi(a'_{m'}\,;B')}
-
-
-
+  Case 2: for every $b,c$ there is a blue subtree $\bar a'$ of height $m$.
+  Choose $b,c$ such that $\phi(a_\0, b)\wedge\neg\phi(a_\0, c)$.
+  By the choice of $b$, a blue subtree does not contain $a_\0$.
+  Therefore $\bar a'$ is a subtree of $\<a_{i^\frown r}\,:\,r\in {}^{<\,2m}2\>$ for $i$ either $0$ or $1$.
+  Apply the induction hypothesis to obtain $A\subseteq\range(\bar a')$ and $b_0,c_0,\dots,b_n,c_n$ such that (1).
+  We claim that (2) above holds with $A'=A\cup\{a_\0\}$.
+  In fact, if $i=0$ then $b_0,c_0,\dots,b_n,c_n\in\neg\phi(a_\0\,;\V)$ and (2) is the same chain as (1).
+  If $i=1$, then $b_0,c_0,\dots,b_n,c_n\in\phi(a_\0\,;\V)$ and (2) is the chain in (1) with all sets augmented by $a_\0$.
+  If $i=0$ we can extend the chain on the right with $\psi(A'\,;b,b)=A'$.
+  If $i=1$ we can extend the chain on the left with $\psi(A'\,;c,c)=\0$.
+  Either way, we obtain the required chain of length $n+1$.
 \end{proof}
 
 
