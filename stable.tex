@@ -194,8 +194,7 @@ Then \ssf{2r} requires that all formulas in each branch $s\in2^n$ are satified b
 \end{tikzpicture}
 \smallskip
 
-
-The \emph{2-rank\/} of $\phi(x\,;z)$ is the maximal height of a branching tree for $\phi(x\,;z)$.
+The Shelah local \emph{2-rank\/} of $\phi(x\,;z)$ is the maximal height of a branching tree for $\phi(x\,;z)$.
 If such a maximal integer does not exist, we say that the 2-rank is infinite.
 
 A branching tree $\bar a'=\<a'_r:r\in{}^m2\>$ is a \emph{subtree\/} of $\bar a$ if there is an $\subseteq$-preserving map $f:{}^m2\to{}^n2$ such that $a'_r=a_{fr}$.
@@ -245,10 +244,10 @@ The proof is based on Hodges~\cite{hodges}.
 It is a direct proof which yields an explicit bound on the 2-rank given the ladder index (it yields also the converse bound, but this is easy).
 However, this bound seems to be far from optimal.
 
-In the next section we give a second proof which elaborates on Shelah's original ideas.
-This proof is indirect but interesting as it relates stability with some new interesting notions.
+In the next section we sketch a second proof which elaborates on Shelah's original ideas.
+This proof is indirect but interesting as it relates stability with some new concept of approximable sets.
 
-\begin{theorem}
+\begin{theorem}\label{thm_hodges}
   The following are equivalent
   \begin{itemize}
     \item[1.] $\phi(x\,;z)$ is stable;
@@ -425,13 +424,13 @@ The following is immediate.
 
 We prove that the formula $\psi(x\,;z_0,\dots,z_n)$ in the lemma above is itself stable, though with a larger ladder index.
   
-\begin{proposition}
+\begin{lemma}
   Let $\psi_i(x\,;z)$, where $i=1,\dots,m$, be formulas with ladder index $n_i$. Let
   
   \ceq{\hfill \phi(x\,;z)}{=}{\bigwedge_{i=1}^m\phi_i(x\,;z)}
   
   Then $\phi(x\,;z)$ has ladder index $<R(n_1,\dots, n_m)$, the Ramsey number for $m$-colorings.
-\end{proposition}
+\end{lemma}
   
 \begin{proof} 
   Suppose for a contradiction that there is a ladder $a_1,\dots,a_n$ and $b_0,\dots,b_n$ of length $n=R(n_1,\dots, n_m)$.
@@ -454,7 +453,7 @@ The ladder index of every $\phi_i(x\,;z)$ is the same as $\phi(x\,;z_0)$ as a re
 
 \begin{lemma}
   If $\Aa$ is approximated from below by a stable formula $\phi(x\,;z)$ then for some $b_0,\dots,b_n\in\V$ 
-  
+  \\[-1ex]
   \ceq{\hfill \Aa}{=}{\bigcup^n_{i=0}\phi(\U\,;b_i)}
   
   where $n+1$ is the ladder index of $\phi(x\,;z)$. 
@@ -466,7 +465,7 @@ The ladder index of every $\phi_i(x\,;z)$ is the same as $\phi(x\,;z_0)$ as a re
   Pick any $b_0$ be such that $\phi(\U\,;b_0)\subseteq\Aa$.
   Now, suppose that $a_1,\dots,a_k$ and $b_0,\dots,b_k$ have been defined.
   If 
-
+  \\[-1ex]
   \ceq{\hfill\Aa}{\subseteq}{\bigcup_{i=1}^k\phi(\U\,;b_i)}
 
   we set $b_{k+1}=\dots=b_n=b_k$ and stop.
@@ -494,11 +493,31 @@ The ladder index of every $\phi_i(x\,;z)$ is the same as $\phi(x\,;z_0)$ as a re
   as required.
 \end{proof}
   
-The following corollary is the main theorem of this section.
+The main theorem of this section is an immediate corollary is the three lemmas above.
 
-\begin{corollary}
-  If $\phi(x\,;z)$ is stable then there are $n,m$ and some parameters $b_{i,j}$ such that
+\begin{theorem}\label{thm_stable_definability}
+  Let $\phi(x\,;z)$ be stable.
+  Then there is a formula of the form
 
-  \ceq{\hfill\Aa}{=}{\bigcup_{j=0}^m\bigcap_{i=0}^n\phi(\U\,;b_{i,j})}\QED
-\end{corollary}
+  \ceq{\hfill\psi(x\,;\bar z)}{=}{\bigvee_{j=0}^m\bigwedge_{i=0}^n\phi(z\,;z_{i,j})}
+  
+  such that every set $\Aa\subseteq\U$ approximable by  $\phi(x\,;z)$ is definable by $\psi(x\,;\bar b)$ for some $n{\times}m$-tuple of parameters $\bar b\in\V^{n\times m}$.\QED
+\end{theorem}
+
+We conclude this section with the sketch of an argument that shows that stable formulas have finite 2-rank, that is, \ssf{1}$\IMP$\ssf{2} of Theorem~\ref{thm_hodges}.
+
+% Assume the 2-rank is infinite and reason for a contradiction.
+% Assume for the moment that the rank is $\omega$, in the sense that there is an infinite branching tree $\<a_r:r\in2^{<\omega}\>$. 
+% Let $\<b_s:s\in2^{\omega}\>$ be witnesses of \ssf{2r}.
+% Let $Q\subseteq\{b_s:s\in2^{\omega}\}$ the set of sequences that are eventually $0$.
+% Note that in the proof of Theorem~\ref{thm_stable_definability} we can require that $\bar b\in Q^{n\times m}$.
+% But there are 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Stable Erd\H{o}s-Hajnal}
+
 \end{document}
