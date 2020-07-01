@@ -25,7 +25,6 @@ for some set $A\subseteq\U$ and some $b_0,\dots,b_n\in\V$.
 Note that we allow $\phi(A\,;b_0)$ to be empty.
 This choice produces a small asymmetry in the definition of ladder; see also Fact~\ref{fact_stability_dual}.
 
-
 \begin{example}
   If $\phi(\U\,;b)_{b\in\V}$ consists of just one set, the ladder index is $1$.
   If it contains two distinct sets, the  chain index is at least $2$ and it is exactly $2$ if there are no more two sets, or if all sets are disjoint.\QED
@@ -34,7 +33,7 @@ This choice produces a small asymmetry in the definition of ladder; see also Fac
 If a maximal length does not exist, we say that $\phi(x\,;z)$ is \emph{unstable,} or that it has the \emph{order-property.} 
 Otherwise we say that it is \emph{stable.}
 
-In place of requiring the existence of a chain as in \ssf{ch}, we could equivalently equivalently ask for a pair of tuples $a_1,\dots,a_n\in\U$ and $b_0,\dots,b_n\in\V$ such that
+In place of requiring the existence of the chain in \ssf{ch}, we could equivalently ask for a pair of tuples $a_1,\dots,a_n\in\U$ and $b_0,\dots,b_n\in\V$ such that
 
 \ceq{\ssf{ld}\hfill\phi(a_h\,;b_k)}
 {\IFF}
@@ -50,11 +49,11 @@ Setting $A=\{a_1,\dots,a_n\}$ we easily obtain a chain from a ladder, the conver
   Prove that there is a ladder $a_1,\dots,a_n$ and $b_0,\dots,b_n$ such that $A=\{a_1,\dots,a_n\}$ and conclude that $\phi(x\,;z)$ has ladder index $n+1$.\QED
 \end{exercise}
 
-The following are obvious but worth noting.
+The following facts are obvious but worth noting.
 
 \begin{fact}\label{fact_stability_dual}
   Let $\phi(x\,;z)$ have ladder index $n+1$. 
-  Then $\phi(x\,;z)^{\rm op}$ has ladder index $n$ or $n+1$.\QED
+  Then $\phi(x\,;z)^{\rm op}$ has ladder index $\ge n$.\QED
 \end{fact}
  
 \begin{fact}\label{fact_stability_neg}
@@ -241,11 +240,12 @@ For the theorem below we need the following Ramsey-like lemma.
 
 We are now ready to characterize stability via the 2-rank.
 The proof is based on Hodges~\cite{hodges}.
-It is a direct proof which yields an explicit bound on the 2-rank given the ladder index (it yields also the converse bound, but this is easy).
+It is a direct proof which yields an explicit bound on the 2-rank given the ladder index (it yields also the converse, but this is easy).
 However, this bound seems to be far from optimal.
-
-In the next section we sketch a second proof which elaborates on Shelah's original ideas.
-This proof is indirect but interesting as it relates stability with some new concept of approximable sets.
+Shelah's original proof is model theoretic and does not gives explicit bounds.
+In the next section we will introduce some of the ideas used in Shelah's proof.
+% In the next section we sketch a second proof which elaborates on Shelah's original ideas.
+% This proof is indirect but.
 
 \begin{theorem}\label{thm_hodges}
   The following are equivalent
@@ -390,9 +390,9 @@ The following is immediate.
 
 \begin{proof}
   Let $A\subseteq\Aa$ be finite.
-  To prove that $A\subseteq\psi(\U\,;b_0,\dots,b_n)\subseteq\Aa$ for some $b_0,\dots,b_n$.
-  To obtain the $b_k$, we construct a ladder by stages.
-  Pick any $b_0$ be such that $A\subseteq\phi(\U\,;b_0)$.
+  We prove that $A\subseteq\psi(\U\,;b_0,\dots,b_n)\subseteq\Aa$ for some $b_0,\dots,b_n$.
+  To obtain the $b_k$, we construct a ladder inductively.
+  Pick any $b_0$ be such that $A\subseteq\phi(\U\,;b_0)$, which we can do by approximability.
   Now, suppose that $a_1,\dots,a_k$ and $b_0,\dots,b_k$ have been defined.
   If 
 
@@ -415,7 +415,7 @@ The following is immediate.
   {\IFF}
   {h\le k.}
   
-  As $\phi(x\,;z)$ ha ladder index $n+1$, by Fact~\ref{fact_stability_neg} it is not possible to prolong this chain, hence
+  As $\phi(x\,;z)$ has ladder index $n+1$, by Fact~\ref{fact_stability_neg} it is not possible to further prolong this chain, hence
 
   \ceq{\hfill A}{\subseteq}{\bigcap_{i=0}^n\phi(\U\,;b_i)\medrel{\subseteq}\Aa}
 
@@ -443,7 +443,7 @@ We prove that the formula $\psi(x\,;z_0,\dots,z_n)$ in the lemma above is itself
   Assume $i{=}1$ for definiteness.
 
   Write $a'_1,\dots,a'_{n_1}$ and $b'_0,\dots,b'_{n_1}$ for the tuples obtained by restricting $a_1,\dots,a_n$ and $b_0,\dots,b_n$ to the indexes in $H$.
-  These tuples witness that $\phi_1(x\,;z)$ has ladder index at least $n_1$, which contradicts the assumption of the lemma.
+  These tuples witness that $\phi_1(x\,;z)$ has ladder index at least $n_1+1$, which contradicts the assumption of the lemma.
 \end{proof}
 
 To apply the proposition to the formula $\psi(x\,;z_0,\dots,z_n)$ in the lemma above, let $z=z_0,\dots,z_n$ and let $\phi_i(x\,;z)=\phi(x\,;z_i)$.
@@ -518,6 +518,6 @@ We conclude this section with the sketch of an argument that shows that stable f
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Stable Erd\H{o}s-Hajnal}
+%\section{Stable Erd\H{o}s-Hajnal}
 
 \end{document}
