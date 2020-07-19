@@ -98,7 +98,7 @@ which we may also present by writing $\bar a=\<a_r:r\in{}^{<n}2\>$, such that
 
 \ceq{\ssf{2r}\hfill\0}
 {\neq}
-{\bigcap_{h=0}^n\neg^{s_h}\,\phi(a_{s\restriction h}\,;\V)}
+{\bigcap_{h=0}^{n-1}\neg^{s_h}\,\phi(a_{s\restriction h}\,;\V)}\hfill for all $s\in {}^n2$.
 
 where $\neg^i$, for $i$ a non negative integer, denotes a negation symbol repeated $i$ times.
 In other words \ssf{2r} requires the existence of some $\<b_s:s\in{}^n2\>$ such that
@@ -314,16 +314,16 @@ In the next section we will introduce some of the ideas used in Shelah's proof.
   {r^\frown1\ \subseteq\ s}
 
   \textbf{(\ssf{1}\kern.2ex\boldmath$\IMP$\ssf{2}\kern.1ex)}\ 
-  We prove the contrapositive.
-  We claim that if there is a branching tree of height $2^n+2$ then there is a ladder of length $n+1$.
+   We prove the contrapositive.
+  We claim that if there is a branching tree $\bar a$ of height $2^n-2$ then there is a ladder $a_1,\dots,a_{n-1}$ and $b_0,\dots,b_{n-1}$, of length $n$, s.t. $\{b_0,\dots,b_{n-1}\}\subseteq \<b_s:s\in{}^{2^n-2}2\>$.
   This yields also the second inequality of the theorem.
-  In fact, if $n_{\rm 2r}\ge 2^{n_{\rm ld}}+2$, there would exist a ladder of length $n_{\rm ld}+1$ which is a contradiction.
+  In fact, if $n_{\rm 2r}\ge 2^{n_{\rm ld}+1}-2$, there would exist a ladder of length $n_{\rm ld}+1$ which is a contradiction.
 
-  The claim is true for $n=0$, as witnesses by the ladder $a_\0$.
+  The claim is true for $n=2$.
   Now we assume the claim is true for $n$ and prove it for $n+1$.
 
-  Let $\<a_r\, :\, r\in{}^{<\, 2m+2}2\>$, where $m=2^n$, be a branching tree of height $2^{n+1}+2$.
-  To each $b\in\V$ we associate a red-blue coloring of $\range(\bar a)$ as follows.
+  Let $\<a_r\, :\, r\in{}^{<\, 2m+2}2\>$, where $m=2^n-2$, be a branching tree of height $2^{n+1}-2$.
+  To each $b\in\<b_s:s\in{}^{2m+2}2\>$ we associate a red-blue coloring of $\range(\bar a)$ as follows.
   A node $a\in\range(\bar a)$ is colored
   
   \qquad\qquad \llap{red}\qquad if $\phi(a\,;b)$ holds;
@@ -347,7 +347,7 @@ In the next section we will introduce some of the ideas used in Shelah's proof.
   Therefore, if we extend the chain on the right with $\phi(A'\,;b)=A'$, we obtain the required chain of length $n+2$.
   
   Case 2: for every $b$ there is a blue subtree of $\<a_{1^\frown r}:r\in{}^{2m+1}2\>$ of height $m$.
-  Choose $b$ such that $\neg\phi(a_\0, b)$ and let $\bar a'$ the corresponding blue subtree.
+  Choose $b\in\<b_s:s\in{}^{2m+2}2\>$ such that $\neg\phi(a_\0, b)$ and let $\bar a'$ the corresponding blue subtree.
   Apply the induction hypothesis to obtain $A\subseteq\range(\bar a')$ and $b_0,\dots,b_n$ such that (1).
   We claim that (2) above holds with $A'=A\cup\{a_\0\}$.
   In fact, $b_0,\dots,b_n\in\phi(a_\0\,;\V)$ so (2) is the chain in (1) with all sets augmented by $a_\0$.
