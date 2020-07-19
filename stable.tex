@@ -330,28 +330,28 @@ In the next section we will introduce some of the ideas used in Shelah's proof.
   
   \qquad\qquad \llap{blue}\qquad otherwise, that is, $\neg\phi(a\,;b)$.
   
-  We consider two cases that are exhaustive by Lemma~\ref{lem_Reamsey_tree}.
+    We consider two cases that are exhaustive by Lemma~\ref{lem_Reamsey_tree}.
   Note that we are applying the lemma only to the subtree $\<a_{1^\frown r}:r\in{}^{2m+1}2\>$.
 
   Case 1: for some $b$ there is a red subtree of $\<a_{1^\frown r}:r\in{}^{2m+1}2\>$ of height $m+1$.
   Let $\bar a'$ be this red tree and consider its subtree $\<a'_{0^\frown r}\,:\,r\in {}^{<\,m}2\>$.
-  By induction hypothesis, there are $A\subseteq\{a'_{0^\frown r}\,:\,r\in {}^{<\,m}2\}$ and $b_0,\dots,b_n$ such that
+  By induction hypothesis, there are $A\subseteq\{a'_{0^\frown r}\,:\,r\in {}^{<\,m}2\}$ and $b_0,\dots,b_{n-1}$ such that
 
-  \ceq{(1)\hfill\phi(A\,;b_0)\ \subset}{\dots}{\subset\ \phi(A\,;b_n)}
+  \ceq{(1)\hfill\phi(A\,;b_0)\ \subset}{\dots}{\subset\ \phi(A\,;b_{n-1})}
 
   Let $A'=A\cup\{a'_\0\}$ then
 
-  \ceq{(2)\hfill\phi(A'\,;b_0)\ \subset}{\dots}{\subset\ \phi(A'\,;b_n)}
+  \ceq{(2)\hfill\phi(A'\,;b_0)\ \subset}{\dots}{\subset\ \phi(A'\,;b_{n-1})}
 
-  In fact, as $b_0,\dots,b_n\in\neg\phi(a'_\0\,;\V)$, this is the same chain as (1).
-  Therefore, if we extend the chain on the right with $\phi(A'\,;b)=A'$, we obtain the required chain of length $n+2$.
+  In fact, as $b_0,\dots,b_{n-1}\in\neg\phi(a'_\0\,;\V)$, this is the same chain as (1).
+  Therefore, if we extend the chain on the right with $\phi(A'\,;b)=A'$, we obtain the required chain of length $n+1$.
   
-  Case 2: for every $b$ there is a blue subtree of $\<a_{1^\frown r}:r\in{}^{2m+1}2\>$ of height $m$.
+  C  Case 2: for every $b$ there is a blue subtree of $\<a_{1^\frown r}:r\in{}^{2m+1}2\>$ of height $m$.
   Choose $b\in\<b_s:s\in{}^{2m+2}2\>$ such that $\neg\phi(a_\0, b)$ and let $\bar a'$ the corresponding blue subtree.
-  Apply the induction hypothesis to obtain $A\subseteq\range(\bar a')$ and $b_0,\dots,b_n$ such that (1).
+  Apply the induction hypothesis to obtain $A\subseteq\range(\bar a')$ and $b_0,\dots,b_{n-1}$ such that (1).
   We claim that (2) above holds with $A'=A\cup\{a_\0\}$.
   In fact, $b_0,\dots,b_n\in\phi(a_\0\,;\V)$ so (2) is the chain in (1) with all sets augmented by $a_\0$.
-  We can extend the chain on the left with $\phi(A'\,;b)=\0$ and obtain the required chain of length $n+2$.
+  We can extend the chain on the left with $\phi(A'\,;b)=\0$ and obtain the required chain of length $n+1$.
 \end{proof}
 
 
