@@ -315,7 +315,7 @@ In the next section we will introduce some of the ideas used in Shelah's proof.
 
   \textbf{(\ssf{1}\kern.2ex\boldmath$\IMP$\ssf{2}\kern.1ex)}\ 
    We prove the contrapositive.
-  We claim that if there is a branching tree $\bar a$ of height $2^n-2$ then there is a ladder $a_1,\dots,a_{n-1}$ and $b_0,\dots,b_{n-1}$, of length $n$, s.t. $\{b_0,\dots,b_{n-1}\}\subseteq \<b_s:s\in{}^{2^n-2}2\>$.
+   We claim that if there is a branching tree $\bar a$ of height $2^n-2$ then there is a ladder $a_1,\dots,a_{n-1}$ and $b_0,\dots,b_{n-1}$, of length $n$, s.t. $a_1,\dots,        a_{n-1} \in \range(\bar a)$ and $b_0,\dots,b_{n-1} \in \<b_s:s\in{}^{2^n-2}2\>$.
   This yields also the second inequality of the theorem.
   In fact, if $n_{\rm 2r}\ge 2^{n_{\rm ld}+1}-2$, there would exist a ladder of length $n_{\rm ld}+1$ which is a contradiction.
 
@@ -330,7 +330,7 @@ In the next section we will introduce some of the ideas used in Shelah's proof.
   
   \qquad\qquad \llap{blue}\qquad otherwise, that is, $\neg\phi(a\,;b)$.
   
-    We consider two cases that are exhaustive by Lemma~\ref{lem_Reamsey_tree}.
+  We consider two cases that are exhaustive by Lemma~\ref{lem_Reamsey_tree}.
   Note that we are applying the lemma only to the subtree $\<a_{1^\frown r}:r\in{}^{2m+1}2\>$.
 
   Case 1: for some $b$ there is a red subtree of $\<a_{1^\frown r}:r\in{}^{2m+1}2\>$ of height $m+1$.
@@ -346,7 +346,7 @@ In the next section we will introduce some of the ideas used in Shelah's proof.
   In fact, as $b_0,\dots,b_{n-1}\in\neg\phi(a'_\0\,;\V)$, this is the same chain as (1).
   Therefore, if we extend the chain on the right with $\phi(A'\,;b)=A'$, we obtain the required chain of length $n+1$.
   
-  C  Case 2: for every $b$ there is a blue subtree of $\<a_{1^\frown r}:r\in{}^{2m+1}2\>$ of height $m$.
+  Case 2: for every $b$ there is a blue subtree of $\<a_{1^\frown r}:r\in{}^{2m+1}2\>$ of height $m$.
   Choose $b\in\<b_s:s\in{}^{2m+2}2\>$ such that $\neg\phi(a_\0, b)$ and let $\bar a'$ the corresponding blue subtree.
   Apply the induction hypothesis to obtain $A\subseteq\range(\bar a')$ and $b_0,\dots,b_{n-1}$ such that (1).
   We claim that (2) above holds with $A'=A\cup\{a_\0\}$.
@@ -366,7 +366,7 @@ The notion of approximable set is a combinatorial counterpart of the model theor
 
 \begin{definition}\label{def_approx}
   We say that $\Aa\subseteq\U$ is \emph{approximable\/} if for every finite set $A\subseteq\U$ there is a $b\in\V$ such that $\phi(A\,;b)=\Aa\cap A$.
-  If we also have that $\phi(\U\,;b)\subseteq\U$, then we say that $\Aa$ is approximable \emph{from below.}
+  If we also have that $\phi(\U\,;b)\subseteq\Aa$, then we say that $\Aa$ is approximable \emph{from below.}
 \end{definition}
 
 The following is immediate.
@@ -429,17 +429,17 @@ We prove that the formula $\psi(x\,;z_0,\dots,z_n)$ in the lemma above is itself
   
   \ceq{\hfill \phi(x\,;z)}{=}{\bigwedge_{i=1}^m\phi_i(x\,;z)}
   
-  Then $\phi(x\,;z)$ has ladder index $<R(n_1,\dots, n_m)$, the Ramsey number for $m$-colorings.
+  Then $\phi(x\,;z)$ has ladder index $<R(n_1+1,\dots, n_m+1)$, the Ramsey number for $m$-colorings.
 \end{lemma}
   
 \begin{proof} 
-  Suppose for a contradiction that there is a ladder $a_1,\dots,a_n$ and $b_0,\dots,b_n$ of length $n=R(n_1,\dots, n_m)$.
+  Suppose for a contradiction that there is a ladder $a_1,\dots,a_n$ and $b_0,\dots,b_n$ of length $n=R(n_1+1,\dots, n_m+1)-1$.
   Let $C_i$ contains the pairs $\{h,k\}$ such that $0\le k<h\le n$ and $\neg\phi_i(a_h\,;b_k)$.
   Then from \ssf{ld} we obtain 
   
   \ceq{\hfill\bigcup_{i=1}^mC_i}{=}{\binom{[n]}{2}}
   
-  By the definition of $n$, for some $i\in[m]$, there is a set $H$ of cardinality $n_i$ such that $H^{(2)}\subseteq C_i$.
+  By the definition of $n$, for some $i\in[m]$, there is a set $H$ of cardinality $n_i+1$ such that $H^{(2)}\subseteq C_i$.
   Assume $i{=}1$ for definiteness.
 
   Write $a'_1,\dots,a'_{n_1}$ and $b'_0,\dots,b'_{n_1}$ for the tuples obtained by restricting $a_1,\dots,a_n$ and $b_0,\dots,b_n$ to the indexes in $H$.
