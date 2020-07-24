@@ -97,17 +97,20 @@ The \vc-dimension of $\phi(x\,;z)^{\rm op}$ is called the \emph{dual \vc-dimensi
 We prove that the bound in the proposition above is optimal.
 
 \begin{proposition}
-  For every $k$, there is some formula $\phi(x\,;z)$ with \vc-dimension $k$ and \vc-codimension $2^{k+1}-1$.
+  For every $k$, there is a formula $\phi(x\,;z)$ that has \vc-dimension $k$ and \vc-codimension $2^{k+1}-1$.
 \end{proposition}
 \begin{proof}
   Let $k$ be given.
   We claim that there is a formula $\phi(x\,;z)$ with \vc-dimension $2^{k+1}-1$ and \vc-codimension $k$.
   As the dual of the dual is the primal, this claim is equivalent to the proposition.
-  Let $\U$ an infinite set, let $\V=\P(\U)$, and define
+  Let $\U$ an infinite set, let $\V=\P(\U)$.
+  Fix an equivalence relation on $\U$ with $2^{k+1}-1$ many classes.
+  We say that $b\in\V$ is compatible if it is union of equivalence classes.
+  Define
   
-  \ceq{\hfill\phi(x\,;z)}{=}{x\in A \wedge z\subseteq A\ \imp\ x\in z,}
+  \ceq{\hfill\phi(x\,;z)}{=}{x\in z \ \wedge\ z\textrm{ is compatible}}%\A x_1,x_2\big[x_1\sim x_2\imp [x_1\in z\iff x_2\in z]\big]}
   
-  where $A\subseteq\U$ is some fixed set of cardinality $2^{k+1}-1$. (This definition may look contrived. In fact, had we not required that $\U$ and $\V$ are infinite sets, we could have taken $\U=A$ and $\phi(x\,;z)=x\in z$.)
+  (Recall that in the preliminaries to this notes, we have agreed that $\U$ and $\V$ are some fixed infinite sets. Without this constraint we could have taken as $\U$ a set of cardinality $2^{k+1}-1$; defined $\phi(x\,;z)=x\in z$; and forgot the equivalence relation altogether.)
 
   Clearly, $\phi(x\,;z)$ has \vc-dimension $2^{k+1}-1$.
   Note that the dimension of $\phi(x\,;z)^{\rm op}$ is at least $k$.
@@ -115,11 +118,12 @@ We prove that the bound in the proposition above is optimal.
   
   So, it suffices to prove that the dimension of $\phi(x\,;z)^{\rm op}$ is exactly $k$.
   Assume for a contradiction that some $B=\big\{b_i\ :\ i\in[k+1]\big\}\subseteq\V$ is shattered by $\phi(x\,;z)^{\rm op}$.
-  Then there is some set $\big\{a_I:I\subseteq[k+1]\big\}\subseteq\U$ such that
+  Then there is some set $A=\big\{a_I:I\subseteq[k+1]\big\}\subseteq\U$ such that
   
   \ceq{\hfill\phi(a_I, b_i)}{\IFF}{i\in I}
 
-  From the definition of $\phi(x\,;z)$ is is easy to infer that $\big\{a_I:I\subseteq[k+1]\big\}\subseteq A$ but this is impossible by cardinality reasons.
+  The $b_i\in B$ are necessarily compatible sets, therefore any two distinct $a_I\in A$ are non equivalent.
+  But this is impossible by cardinality reasons.
 \end{proof}
 
 \begin{exercise}
