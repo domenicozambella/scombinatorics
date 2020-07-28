@@ -197,13 +197,13 @@ diagrams={>=latex}
 \newtheoremstyle{mio}% name
      {2\parskip}%      Space above
      {\parskip}%      Space below
-     {\sl}%         Body font
+     {\vl}%         Body font
      {}%         Indent amount (empty = no indent, \parindent = para indent)
      {\bfseries}% Thm head font
      {}%        Punctuation after thm head
      {1.5ex}%     Space after thm head: " " = normal interword space;
            %   \newline = linebreak
-     {\llap{\thmnumber{#2}\hskip2mm}\thmname{#1}\thmnote{\kern1ex\bfseries #3}}% Thm head spec (can be left empty, meaning `normal')
+     {\llap{\thmnumber{\vl #2}\hskip2mm}\thmname{\vl #1}\thmnote{\kern1ex\bfseries\vl #3}}% Thm head spec (can be left empty, meaning `normal')
 
 \newtheoremstyle{liscio}% name
      {2\parskip}%      Space above
@@ -254,7 +254,7 @@ diagrams={>=latex}
 
 \pagestyle{plain}
 
-\definecolor{violet}{RGB}{115, 0, 205}
+\definecolor{violet}{RGB}{105, 5, 0}
 \definecolor{brown}{RGB}{150, 50, 10}
 \definecolor{green}{RGB}{5,100, 15}
 \def\mr{\color{brown}}
