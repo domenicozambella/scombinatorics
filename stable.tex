@@ -247,11 +247,11 @@ For the theorem below we need the following Ramsey-like lemma.
 We are now ready to characterize stability via the 2-rank.
 The proof is based on Hodges~\cite{hodges}.
 It is a direct proof which yields an explicit bound on the 2-rank given the ladder index (it yields also the converse, but this is easy).
-However, this bound seems to be far from optimal.
-Shelah's original proof is model theoretic and does not gives explicit bounds.
-In the next section we will introduce some of the ideas used in Shelah's proof.
-% In the next section we sketch a second proof which elaborates on Shelah's original ideas.
-% This proof is indirect but.
+This bound may be far from optimal.
+
+Shelah was the first to prove the equivalence \ssf{1}$\IFF$\ssf{2} below.
+His proof is model theoretic and does not gives explicit bounds.
+However it introduces some deep insight on sable formulas that we will present in the next section.
 
 \begin{theorem}\label{thm_hodges}
   The following are equivalent
@@ -373,7 +373,7 @@ The notion of approximable set is a combinatorial counterpart of the model theor
 
 \begin{definition}\label{def_approx}
   We say that $\Aa\subseteq\U$ is \emph{approximable\/} if for every finite set $A\subseteq\U$ there is a $b\in\V$ such that $\phi(A\,;b)=\Aa\cap A$.
-  If we also have that $\phi(\U\,;b)\subseteq\Aa$, then we say that $\Aa$ is approximable \emph{from below.}
+  If we also have that $\phi(\U\,;b)\subseteq\Aa$, then we say that $\Aa$ is approximable \emph{from below.}\QED
 \end{definition}
 
 The following is immediate.
@@ -386,14 +386,16 @@ The following is immediate.
   \end{itemize}
 \end{fact}
 
-\begin{proposition}
+Towards the main theorem of this section we prove three separated lemmas.
+
+\begin{lemma}
   Let $\phi(x\,;z)$ be a stable formula.
   Every set $\Aa\subseteq\U$ approximable by $\phi(x\,;z)$ is approximable from below by the formula
 
   \ceq{\hfill \psi(x\,;z_0,\dots,z_n)}{=}{\bigwedge_{i=0}^n\phi(x\,;z_i)}
   
   where $n+1$ is the ladder index of $\phi(x\,;z)$.
-\end{proposition}
+\end{lemma}
 
 \begin{proof}
   Let $A\subseteq\Aa$ be finite.
@@ -504,14 +506,36 @@ The main theorem of this section is an immediate corollary is the three lemmas a
 
 \begin{theorem}\label{thm_stable_definability}
   Let $\phi(x\,;z)$ be stable.
-  Then there is a formula of the form
+  Then there are $m, n$ such every set $\Aa\subseteq\U$ approximable by $\phi(x\,;z)$ is definable by $\psi(x\,;\bar b)$, where
 
   \ceq{\hfill\psi(x\,;\bar z)}{=}{\bigvee_{j=0}^m\bigwedge_{i=0}^n\phi(z\,;z_{i,j})}
   
-  such that every set $\Aa\subseteq\U$ approximable by  $\phi(x\,;z)$ is definable by $\psi(x\,;\bar b)$ for some $n{\times}m$-tuple of parameters $\bar b\in\V^{n\times m}$.\QED
+  and $\bar b\in\V^{n\times m}$ is some $n{\times}m$-tuple of parameters. The numbers $m,n$ only depend on the ladder index of $\phi(x\,;z)$.\QED
 \end{theorem}
 
-We conclude this section with the sketch of an argument that shows that stable formulas have finite 2-rank, that is, \ssf{1}$\IMP$\ssf{2} of Theorem~\ref{thm_hodges}.
+
+We conclude this section with the sketch of an argument that shows that stable formulas have finite 2-rank, that is, \ssf{1}$\IMP$\ssf{2} in Theorem~\ref{thm_hodges}.
+
+First of all note that Theorem~\ref{thm_stable_definability} remains valid, with the same formula $\psi(x\,;\bar z)$, when $\U$ is replaced by a subset $\U'\subseteq\U$.
+In fact, the ladder index of $\phi(x\,;z)$ does not decrease when moving to a subset.
+
+Assume that the $2$-rank of $\psi(x\,;\bar z)$ is infinite.
+We claim that, with the appropriate $\U$ and $\V$, there is a branching tree of height $\omega$, say $\{a_s:s\in2^{<\omega}\}$.
+
+Model theoretically, the claim is immediate.
+A low-tech combinatorial proof is also not difficult but it requires some handwork which we entrust to the reader.
+
+For $s\in2^\omega$, let $\U_s=\{a_{s\restriction n}:n<\omega\}\subseteq\U$.
+Let $\Aa_s=\{a_{s\restriction n}:n<\omega,\ s_n=1\}\subseteq\U_s$.
+Then $\Aa_s$ is approximable with respect to the collection $\phi(\U_s\,;b)_{b\in\V}$.
+From the theorem above, we obtain $\Aa_s=\psi(\U_s\,;\bar b_s)$ for some  $\bar b_s\in\V^{n\times m}$, where the formula $\psi(x\,;\bar z)$ does non depend on $s$.
+
+For $s\neq s'$, let $n$ be least such that $s_n\neq s'_n$.
+Then $a_{s\restriction n}=a_{s'\restriction n}$ belongs to $\U_s\cap\U_{s'}$ and to $\Aa_s\simdiff\Aa_{s'}$.
+Therefore $\bar b_s\neq\bar b_{s'}$, hence there is a continuum of tuples $\bar b_s$.
+
+On the other hand, without loss of generality we can assume that $\V$ is a countable set. 
+A contradiction. 
 
 % Assume the 2-rank is infinite and reason for a contradiction.
 % Assume for the moment that the rank is $\omega$, in the sense that there is an infinite branching tree $\<a_r:r\in2^{<\omega}\>$. 
