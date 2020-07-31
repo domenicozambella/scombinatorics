@@ -193,7 +193,7 @@ Then \ssf{2r} requires that all formulas in each branch $s\in2^n$ are satified b
 \end{tikzpicture}
 \smallskip
 
-The Shelah local \emph{2-rank\/} of $\phi(x\,;z)$ is the maximal height of a branching tree for $\phi(x\,;z)$.
+The Shelah \emph{2-rank\/} of $\phi(x\,;z)$ is the maximal height of a branching tree for $\phi(x\,;z)$.
 If such a maximal integer does not exist, we say that the 2-rank is infinite.
 
 \begin{example}
@@ -204,7 +204,7 @@ If such a maximal integer does not exist, we say that the 2-rank is infinite.
 
 A branching tree $\bar a'=\<a'_r:r\in{}^m2\>$ is a \emph{subtree\/} of $\bar a$ if there is an $\subseteq$-preserving map $f:{}^m2\to{}^n2$ such that $a'_r=a_{fr}$.
 
-For the theorem below we need the following Ramsey-like lemma.
+The theorem below needs the following Ramsey-like lemma.
 
 % \begin{lemma}\label{lem_Ramsey_on_trees}
 %   Let $\bar a=\<a_r\, :\, r\in{}^{<2m}2\>$ be a branching tree for $\phi(x\,;z)$.
@@ -513,27 +513,27 @@ The main theorem of this section is an immediate corollary is the three lemmas a
   and $\bar b\in\V^{n\times m}$ is some $n{\times}m$-tuple of parameters. The numbers $m,n$ only depend on the ladder index of $\phi(x\,;z)$.\QED
 \end{theorem}
 
-
 We conclude this section with the sketch of an argument that shows that stable formulas have finite 2-rank, that is, \ssf{1}$\IMP$\ssf{2} in Theorem~\ref{thm_hodges}.
 
-First of all note that Theorem~\ref{thm_stable_definability} remains valid, with the same formula $\psi(x\,;\bar z)$, when $\U$ is replaced by a subset $\U'\subseteq\U$.
-In fact, the ladder index of $\phi(x\,;z)$ does not decrease when moving to a subset.
+As a matter of fact, below we prove an apparently weaker claim
+\begin{itemize}
+  \item[\#] if there is a branching tree of height $\omega$, say $\{a_s:s\in2^{<\omega}\}$, the ladder index is infinite.
+\end{itemize}
+In general an infinite 2-rank does not always implies the existence of a branching tree of height $\omega$.
+Nevertheless, by standard model theoretic argument of compactness, this suffices to obtain \ssf{1}$\IMP$\ssf{2} in Theorem~\ref{thm_hodges}.
+Model theory is beyond the scope of this notes, hence here we only present the argument that proves \#.
 
-Assume that the $2$-rank of $\psi(x\,;\bar z)$ is infinite.
-We claim that, with the appropriate $\U$ and $\V$, there is a branching tree of height $\omega$, say $\{a_s:s\in2^{<\omega}\}$.
-
-Model theoretically, the claim is immediate.
-A low-tech combinatorial proof is also not difficult but it requires some handwork which we entrust to the reader.
+First note that Theorem~\ref{thm_stable_definability} remains valid when $\U$ is replaced by a subset.
+In fact, the same formula $\psi(x\,;\bar z)$ works for all $\U'\subseteq\U$ because the ladder index of $\phi(x\,;z)$ does not decrease when moving to a subset.
 
 For $s\in2^\omega$, let $\U_s=\{a_{s\restriction n}:n<\omega\}\subseteq\U$.
-Let $\Aa_s=\{a_{s\restriction n}:n<\omega,\ s_n=1\}\subseteq\U_s$.
-Then $\Aa_s$ is approximable with respect to the collection $\phi(\U_s\,;b)_{b\in\V}$.
-From the theorem above, we obtain $\Aa_s=\psi(\U_s\,;\bar b_s)$ for some  $\bar b_s\in\V^{n\times m}$, where the formula $\psi(x\,;\bar z)$ does non depend on $s$.
+Let $\Aa_s=\{a_{s\restriction n}:n<\omega,\ s_n=1\}$.
+Then $\Aa_s\subseteq\U_s$ is approximable with respect to the collection $\phi(\U_s\,;b)_{b\in\V}$.
+Therefore, from the theorem above, we obtain $\Aa_s=\psi(\U_s\,;\bar b_s)$ for some  $\bar b_s\in\V^{n\times m}$, where the formula $\psi(x\,;\bar z)$ does non depend on $s$.
 
 For $s\neq s'$, let $n$ be least such that $s_n\neq s'_n$.
 Then $a_{s\restriction n}=a_{s'\restriction n}$ belongs to $\U_s\cap\U_{s'}$ and to $\Aa_s\simdiff\Aa_{s'}$.
-Therefore $\bar b_s\neq\bar b_{s'}$, hence there is a continuum of tuples $\bar b_s$.
-
+Therefore $\bar b_s\neq\bar b_{s'}$, hence there is a continuum of such tuples $\bar b_s$.
 On the other hand, without loss of generality we can assume that $\V$ is a countable set. 
 A contradiction. 
 
