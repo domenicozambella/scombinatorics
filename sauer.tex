@@ -59,7 +59,7 @@ As $\U$ and $\V$ are usually clear from the context, we may say \vc-dimension of
  
 \begin{example} 
   Let $\U=\V=\RR^2$.
-  Let $\phi(x_1,x_2\,;z_1,z_2)$ be the formula $y<z_1\cdot x + z_2$.
+  Let $\phi(x_1,x_2\,;z_1,z_2)$ be the formula $x_2<z_1\cdot x_1 + z_2$.
   Then its  \vc-dimension $3$ (by Radon's Theorem).\QED
 \end{example}
  
@@ -82,16 +82,16 @@ The \vc-dimension of $\phi(x\,;z)^{\rm op}$ is called the \emph{dual \vc-dimensi
 \begin{proof}
   Suppose that the \vc-dimension of $\phi(x\,;z)^{\rm op}$ is $\ge 2^{k+1}$.
   We prove that the \vc-dimension of $\phi(x\,;z)$ is at least $k+1$.
-  Let $B=\big\{b_I\,:\,I\subseteq [k+1]\big\}$ be a set of cardinality $2^{k+1}$ shattered by $\phi(x\,;z)^{\rm op}$. 
-  That is, for every $\J\subseteq \P[k+1]$ there is $a_\J$ such that
+  Let $B=\big\{b_I\,:\,I\subseteq [k+1)\big\}$ be a set of cardinality $2^{k+1}$ shattered by $\phi(x\,;z)^{\rm op}$. 
+  That is, for every $\J\subseteq \P[k+1)$ there is $a_\J$ such that
   
-  \ceq{\hfill\phi(a_\J, b_I)}{\IFF}{I\in\J}\hfill for all $I\subseteq [k+1]$
+  \ceq{\hfill\phi(a_\J, b_I)}{\IFF}{I\in\J}\hfill for all $I\subseteq [k+1)$
   
   Let $a_i=a_{\{I\; :\ i\,\in\, I\}}$. Then from the equivalence above we obtain
   
   \ceq{\hfill\phi(a_i, b_I)}{\IFF}{i\in I}
   
-  That is, $\phi(x\,;z)$ shatters $A=\big\{a_i\,:\, i\in [k+1]\big\}$.
+  That is, $\phi(x\,;z)$ shatters $A=\big\{a_i\,:\, i\in [k+1)\big\}$.
 \end{proof}
 
 We prove that the bound in the proposition above is optimal.
@@ -117,8 +117,8 @@ We prove that the bound in the proposition above is optimal.
   Otherwise $\phi(x\,;z)$ would have dimension $\le2^k-1$ by Proposition~\ref{prop_bound_VCcodim}.
   
   So, it suffices to prove that the dimension of $\phi(x\,;z)^{\rm op}$ is exactly $k$.
-  Assume for a contradiction that some $B=\big\{b_i\ :\ i\in[k+1]\big\}\subseteq\V$ is shattered by $\phi(x\,;z)^{\rm op}$.
-  Then there is some set $A=\big\{a_I:I\subseteq[k+1]\big\}\subseteq\U$ such that
+  Assume for a contradiction that some $B=\big\{b_i\ :\ i\in[k+1)\big\}\subseteq\V$ is shattered by $\phi(x\,;z)^{\rm op}$.
+  Then there is some set $A=\big\{a_I:I\subseteq[k+1)\big\}\subseteq\U$ such that
   
   \ceq{\hfill\phi(a_I, b_i)}{\IFF}{i\in I}
 
@@ -128,11 +128,10 @@ We prove that the bound in the proposition above is optimal.
 
 \begin{exercise}
   Let $\phi(x\,;z)$ have \vc-dimension $k$.
-  Assume that there is no $A\subseteq\U$ of cardinality $\le k$ such that $\phi(a\,;\V)_{a\in A}$ covers $\V$.
+  Assume that there is no $A\subseteq\U$ of cardinality $\le k+1$ such that $\phi(a\,;\V)_{a\in A}$ covers $\V$.
   Prove that $\phi(x\,;z)$ has \vc-codimension $\le2^{k+1}-2$.
   Prove that the bound is optimal.
-  Hint: let $\U$ be any infinite set $\V=\U^{(\le m)}$, where $m=2^{k+1}-2$.
-  Let $\phi(x\,;z)=x\in z$.
+  Hint: let $\U$ be an infinite set, $\V = \P(\U)$, and consider an equivalence relation $\sim$ s.t. $\U / {\sim} = C \cup \{c_0, \dots, c_k\}$ with $|C| = 2^{k+1}-2$ and take the same formula used in the previous Proposition, but with $b \in \V$ compatible if it is the union of equivalence classes that belongs to $C$ or if it coincides with $c_i$ for some $i \in \{0,\dots, k\}$.
   Prove that $\phi(x\,;z)$ has \vc-codimension $k$.\QED
 \end{exercise}
 
@@ -166,7 +165,7 @@ Saharon Shelah was working in model theory while Norbert Sauer, Vladimir Vapnik 
 \begin{void_thm}[Sauer-Shelah Lemma]\label{lem_sauer}
 If $\phi(x\,;z)$ has \vc-dimension $k$ then for every $n\ge k$
 
-\ceq{\hfill\pi_\phi(n)}{\le}{\bigsum^{k}_{i=0} \binom{n}{i}.} 
+\ceq{\hfill\pi_\phi(n)}{\le}{\bigsum^{k}_{i=0} \binom{n}{i}.}
 \end{void_thm}
 
 The set system presented in Example~\ref{ex_vcdim_opt} shows that the bound is optimal.
