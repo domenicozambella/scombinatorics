@@ -511,15 +511,15 @@ We are interested in estimating the minimal size of an $\epsilon$-approximation.
 The main theorem of this section is this famous result of Vapnik-Chervonenkis~\cite{VC}.
 
 
-\def\medrel#1{\parbox[t]{5ex}{$\displaystyle\hfil #1$}}
-\def\ceq#1#2#3{\parbox[t]{35ex}{$\displaystyle #1$}\medrel{#2}{$\displaystyle #3$}}
+\def\medrel#1{\parbox[t]{4ex}{$\displaystyle\hfil #1$}}
+\def\ceq#1#2#3{\parbox[t]{38ex}{$\displaystyle #1$}\medrel{#2}{$\displaystyle #3$}}
 
 \begin{void_thm}[Vapnik-Chervonenkis Inequality]\label{VC_inequality}
   Let $\pi_\phi(n)$ be the shatter function of $\phi(\U\,;b)_{b\in\V}$.
   Let $S=S_1,\dots,S_n$ be a random sample from $\U$.
   Then
 
-  \ceq{(1)\hfill\Pr\,\Big(\sup_{b\in\V}\big|\Fr(S,b) - \Pr(b)\big|\ge\epsilon\Big)}
+  \ceq{(1)\hfill\Pr\bigg(\!\E b{\in}\V\,\big|\Fr(S,b) - \Pr(b)\big|>\epsilon\bigg)}
   {\le}
   {8\,\pi_\phi(n)\exp\bigg(-\frac{n\epsilon^2}{32}\bigg).}
 \end{void_thm}
@@ -528,12 +528,18 @@ N.B. Some technical measure-theoretical assumptions are necessary when $\phi(\U\
 These have been omitted in the statement above, and will be discussed below.
 
 \begin{proof}
-  First of all notice that we can assume $n \ge \frac{18}{\epsilon^2}$, since otherwise the r.h.s of (1) would be $\ge 1$, making the statement trivially true. Let $S'=S'_1,\dots,S'_n$ be an independent copy of $S$ and $\sigma=\sigma_1,\dots,\sigma_n$ be a tuple of sign random variables independent from each other and from the previuos ones.
-  Then
-  
-  \ceq{\hfill\Pr\bigg(\sup_{b\in\V}\big|\Fr(S,b) - \Fr(S',b)\big|\ge\frac\epsilon2\bigg)}
+  Let $S'=S'_1,\dots,S'_n$ be an independent copy of $S$.
+  We claim that
+
+  \ceq{(2)\hfill\Pr\bigg(\!\E b{\in}\V\,\big|\Fr(S,b) - \Fr(S',b)\big|>\frac\epsilon2\bigg)}
+  {\le}
+  {4\,\pi_\phi(n)\,\exp\bigg(-\frac{n\epsilon^2}{32}\bigg).}
+
+  Let $\sigma=\sigma_1,\dots,\sigma_n$ be a tuple of independent sign random variables.
+
+  \ceq{\hfill\Pr\bigg(\!\E b{\in}\V\,\big|\Fr(S,b) - \Fr(S',b)\big|\ge\frac\epsilon2\bigg)}
   {=}
-  {\Pr\bigg(\sup_{b\in\V}\Big|\sum_{i=1}^n\Indicator_{S_i,b} - \Indicator_{S'_i,b}\Big|\ge\frac{n\epsilon}2\bigg)}
+  {\Pr\bigg(\!\E b{\in}\V\,\Big|\sum_{i=1}^n\Indicator_{S_i,b} - \Indicator_{S'_i,b}\Big|\ge\frac{n\epsilon}2\bigg)}
   \smallskip
   
   % \ceq{\hfill}
@@ -543,96 +549,87 @@ These have been omitted in the statement above, and will be discussed below.
 
   \ceq{\hfill}
   {=}
-  {\Pr\bigg(\sup_{b\in\V}\Big|\sum_{i=1}^n\sigma_i\big(\Indicator_{S_i,b} - \Indicator_{S'_i,b}\big)\Big|\ge\frac{n\epsilon}2\bigg)}
+  {\Pr\bigg(\!\E b{\in}\V\,\Big|\sum_{i=1}^n\sigma_i\big(\Indicator_{S_i,b} - \Indicator_{S'_i,b}\big)\Big|\ge\frac{n\epsilon}2\bigg).}
   \smallskip
 
-  Then, by the triangular inequality
+  Then, as $S$ and $S'$ are equally distributed, by the triangular inequality, 
 
   \ceq{}
   {\le}
-  {2\,\Pr\bigg(\sup_{b\in\V}\Big|\sum_{i=1}^n\sigma_i\,\Indicator_{S_i,b}\Big|\ge\frac{n\epsilon}4\bigg)}
+  {2\,\Pr\bigg(\!\E b{\in}\V\,\Big|\sum_{i=1}^n\sigma_i\,\Indicator_{S_i,b}\Big|\ge\frac{n\epsilon}4\bigg).}
 
-    Let $s=s_1,\dots,s_n$ be a possible realization of $S$ then, by the independence of $\sigma$,\smallskip
-
-  \ceq{(2)\hfill\Pr\bigg(\sup_{b\in\V}\Big|\sum_{i=1}^n\sigma_i\,\Indicator_{s_i,b}\Big|\ge\frac{n\epsilon}4\bigg)}
-  {=}
-  {\Pr\bigg(\sup_{b\in\V}\Big|\sum_{i=1}^n\sigma_i\,\Indicator_{S_i,b}\Big|\ge\frac{n\epsilon}4\ \big|\  S=s\bigg)}
-  \smallskip
-
-  Note that the l.h.s.\@ of (2) only depends on $\phi\big(\{s_1,\dots,s_n\}\,;b\big)$.
-  Hence the $\sup_{b\in\V}(\cdot)$ on the l.h.s.\@ is actually a maximum among $m=\pi_\phi(n)$ events.
-  Say, we can choose $b_1,\dots,b_m\in\V$ such that
+  Conditioning over all possible  realization of $S$ we obtain
 
   \ceq{(3)}
   {=}
-  {\Pr\bigg(\max_{j\le m}\Big|\sum_{i=1}^n\sigma_i\,\Indicator_{s_i,b_j}\Big|\ge\frac{n\epsilon}4\bigg)}
+  {2\!\sum_{s\in\U^n}\Pr(s)\cdot\Pr\bigg(\!\E b{\in}\V\,\Big|\sum_{i=1}^n\sigma_i\,\Indicator_{s_i,b}\Big|\ge\frac{n\epsilon}4 \bigg).}
 
-  Note that, in general, for any real random variables $X_1,\dots,X_m$ we have
+  Now fix $s\in\U^n$ and proceed to obtain bound for 
 
-  \ceq{\hfill\Pr\Big(\max_{i\le m} X_i \ge \epsilon\Big)}
-  {=}
-  {\Pr\Big(\bigcup_{i=0}^m\ X_i \ge \epsilon\Big)}
+  \ceq{\hfill\Pr\bigg(\!\E b{\in}\V\,\Big|\sum_{i=1}^n\sigma_i\,\Indicator_{s_i,b}\Big|\ge\frac{n\epsilon}4\bigg)}
+  {}{}
+  \smallskip
+
+  This probability only depends on the value of $\phi\big(\{s_1,\dots,s_n\}\,;b\big)$.
+  Therefore, we can choose $b_1,\dots,b_m\in\V$, where $m=\pi_\phi(n)$, such that
 
   \ceq{}
-  {\le}
-  {\sum_{i=1}^m \Pr\big(X_i \ge\epsilon\big)}
+  {=}
+  {\Pr\bigg(\bigvee_{i=1}^{m}\Big|\sum_{i=1}^n\sigma_i\,\Indicator_{s_i,b_j}\Big|\ge\frac{n\epsilon}4\bigg).}
 
-  Hence, continuing from (3) we obtain
+  Hence,
 
   \ceq{}
   {\le}
   {\sum_{j=1}^m \Pr\bigg(\Big|\sum_{i=1}^n\sigma_i\,\Indicator_{s_i,b_j}\Big|\ge\frac{n\epsilon}4\bigg).}
-
+  
+  By Hoeffding's Inequality~\ref{Hoeffding_inequality} applied to $X_i=\sigma_i\,\Indicator_{s_i,b}$ with $n\epsilon/4$ for $\epsilon$ we obtain
+  
   \ceq{}
   {\le}
-  {2\,\pi_\phi(n)\,\exp\bigg(-\frac{n\epsilon^2}{32}\bigg),}
+  {2\pi_\phi(n)\,\exp\bigg(-\frac{n\epsilon^2}{32}\bigg).}
 
-  where the last inequality is obtained from Hoeffding's Inequality~\ref{Hoeffding_inequality}.
-  In fact, Hoeffding's Inequality, applied to $X_i=\sigma_i\,\Indicator_{s_i,b}$ with $n\epsilon/4$ for $\epsilon$, yields
+  Finally, as this bound does no depend on $s$, from (3) we obtain (2).
 
-  \ceq{\hfill\Pr\bigg(\Big|\sum_{i=1}^n\sigma_i\,\Indicator_{s_i,b}\Big|\ge\frac{n\epsilon}4\bigg)}
-  {\le}
-  {2\,\exp\Big(-\frac{n\epsilon^2}{32}\Big).}
-
-  Hence, by (2), we can conclude that
+  To prove (1), we write $X$ for the set of those $s\in\U^n$ such that for some $b_s\in\V$
   
-  \ceq{\hfill\Pr\bigg(\sup_{b\in\V}\Big|\sum_{i=1}^n\sigma_i\,\Indicator_{S_i,b}\Big|\ge\frac{n\epsilon}4\bigg)}
-  {\le}
-  {2\,\pi_\phi(n)\,\exp\bigg(-\frac{n\epsilon^2}{32}\bigg),}
-  \smallskip
-  
-  
-  Now let $X_0\subseteq \U^n$ be the set of all $s = s_1,\dots,s_n$ s.t. $\Pr(\sup_{b\in\V}|\Fr(s,b) - \Fr(S',b)|\ge\frac{\epsilon}2) > \frac{1}{2}$.
-  By what we've said we have
- $$\Pr\big(S \in X_0\big)\Pr\bigg(\sup_{b\in\V}\Big|\Fr(S,b) - \Fr(S',b)\Big| \ge\frac{\epsilon}2 \ \big|\ S \in X_0 \bigg)
-  \le
-  4\,\pi_\phi(n)\,\exp\bigg(-\frac{n\epsilon^2}{32}\bigg)$$
- 
-  by independence of $S,S'$ and by definition of $X_0$ we get 
-  
-   \ceq{\hfill\Pr\big(S \in X_0\big)}
-  {\le}
-  {8\,\pi_\phi(n)\,\exp\bigg(-\frac{n\epsilon^2}{32}\bigg),}
-  
-  Fix $s \in \U^n \setminus X_0$ and $b \in \V$, by the first Weak Law of Large Numbers~\ref{Weak_Law_1} and our assumptions on $n$ we have
-  
-  \ceq{\hfill\Pr\Big(\big|\Fr(S',b) - \Pr(b)\big|<\frac{\epsilon}{3}\Big)}
+  \ceq{\hfill \big|\Fr(s,b_s) - \Pr(b_s)\big|}
   {>}
-  {\frac{1}{2}.}
+  {\epsilon}
+
+  and show that $\Pr(X)\le 8\,\pi_\phi(n)\,\exp\big(-n\epsilon^2/32\big)$.
+
+Consider the set $Y$ of those $s$ such there is a $t_s\in\U^n$ such that the following inequalities hold simultaneously
+
+  \ceq{\hfill \big|\Fr(t_s,b_s) - \Pr(b_s)\big|}
+  {<}
+  {\frac\epsilon2}
   
-  This, combined with the fact that $\Pr(\sup_{b\in\V}|\Fr(s,b) - \Fr(S',b)|<\frac{\epsilon}2) > \frac{1}{2}$, allows us to say that there exist a tuple $t \in \U^n$ s.t.
-  \begin{itemize}
-      \item $\big|\Fr(s,b)-\Fr(t,b)\big| < \frac{\epsilon}{2}$
-      \item $\big|\Fr(t,b) - \Pr(b)\big|<\frac{\epsilon}{3}$
-  \end{itemize}
+  \ceq{\hfill \big|\Fr(s,b_s) - \Fr(t_s,b_s)\big|}
+  {<}
+  {\frac\epsilon2}
   
-  and therefore by triangular inequality $\big|\Fr(s,b) - \Pr(b)\big|< \frac{5\epsilon}6$. As $b \in \V$ was arbitrary we have that for all $s \in \U^n\setminus X_0$, $\sup_{b\in\V}|\Fr(s,b) - \Pr(b)|< \epsilon$. So
-  
-  \ceq{\hfill\Pr\,\Big(\sup_{b\in\V}\big|\Fr(S,b) - \Pr(b)\big|\ge\epsilon\Big)}
+
+
+  Write $p_s$ for the probability on the l.h.s.\@ of the inequality above, then  
+
+  \ceq{\hfill\Pr\bigg(\!\E b{\in}\V\,\big|\Fr(S,b) - \Fr(S',b)\big|\ge\frac\epsilon2\bigg)}
+  {=}
+  {\sum_{s\in X}\Pr(s)\cdot p_s \ +\ \sum_{s\in\U^n\sm X}\Pr(s)\cdot p_s }
+
+  From this and (2) we obtain 
+
+  \ceq{\hfill\Pr(X)}
   {\le}
-  {\Pr\big(S \in X_0\big)}
-  
-  and this concludes the proof.
+  {8\,\pi_\phi(n)\,\exp\bigg(-\frac{n\epsilon^2}{32}\bigg)}
+
+  We claim that
+
+  \ceq{\hfill\Pr\bigg(\!\E b{\in}\V\,\big|\Fr(S,b) - \Pr(b)\big|\ge\epsilon\bigg)}
+  {\le}
+  {\Pr\bigg(\!\E b{\in}\V\,\big|\Fr(S,b) - \Pr(b)\big|\ge\frac\epsilon2}
+
+
 \end{proof}
 
 \begin{corollary}
@@ -644,13 +641,13 @@ These have been omitted in the statement above, and will be discussed below.
 \begin{proof}
   It suffices to require that $n=|s|=|S|$ is large enough to guarantee 
   
-  \ceq{\hfill\Pr\,\Big(\big|\Fr(S,b) - \Pr(b)\big|\ge\epsilon\Big)}
+  \ceq{\hfill\Pr\bigg(\!\E b{\in}\V\ \big|\Fr(S,b) - \Pr(b)\big|\ge\epsilon\bigg)}
   {<}
-  {1}\hfill for every $b\in\V$.
+  {1}.
 
   By the Vapnik-Chervonenkis inequality~\ref{VC_inequality}, it suffices that
 
-  \ceq{(3)\hfill6\;\pi_\phi(n)\,\exp\bigg(-\frac{n\epsilon^2}{32}\bigg)}
+  \ceq{(3)\hfill 8\;\pi_\phi(n)\,\exp\bigg(-\frac{n\epsilon^2}{32}\bigg)}
   {<}
   {1}
 
@@ -727,20 +724,21 @@ We prove a second version of the Vapnik-Chervonenkis Inequality.
 Which, I conjecture, is due to Devroye and Lugosi~\cite{DL}.
  
 \begin{void_thm}[Vapnik-Chervonenkis Inequality (2)]\label{DL_inequality}
-  Let $\pi_\phi(n)$ be the shatter function of $\phi(\U\,;b)_{b\in\V}$.
   Let $S=S_1,\dots,S_n$ be a random sample from $\U$.
   Then, for every $b\in\V$
 
-  \ceq{\hfill\Ex\,\Big|\Fr(S,b) - \Pr(b)\Big|}
+  \ceq{\hfill\Ex\,\bigg[\sup_{b\in\V}\Big|\Fr(S,b) - \Pr(b)\Big|\bigg]}
   {\le}
-  {2\sqrt{\frac{\log\;\big(2\,\pi_\phi(n)\big)}{n}}}.\QED
+  {2\sqrt{\frac{\log\;\big(2\,\pi_\phi(n)\big)}{n}}}
+
+  where $\pi_\phi(n)$ is the shatter function of $\phi(\U\,;b)_{b\in\V}$.\QED
 \end{void_thm}
 
 The same caveat on measurability apply as for Inequality~\ref{VC_inequality}.
 
 We note that the bound is not optimal, using a clever techniques called \textit{chaining}, Dudley could prove that
 
-\ceq{\hfill\Ex\,\Big|\Fr(S,b) - \Pr(b)\Big|}
+\ceq{\hfill\Ex\,\bigg[\sup_{b\in\V}\Big|\Fr(S,b) - \Pr(b)\Big|\bigg]}
 {<}
 {c\sqrt{\frac{k}{n}},}
 
@@ -910,9 +908,9 @@ We prove an informative variant which gives the rate of convergence (though, thi
   {=}
   {\frac1n\sum^n_{i=1}\Indicator_{X_i\le z}.}
 
-  Then, for every $z\in\RR$,
+  Then
 
-  \ceq{\hfill\Ex\,\Big|F_{\rm e}(X,z) - F(z)\Big|}
+  \ceq{\hfill\Ex\bigg[\sup_{z\in\RR}\Big|F_{\rm e}(X,z) - F(z)\Big|\bigg]}
   {\le}
   {2\,\sqrt{\frac{\log\big(2n+2\big)}{n}}}.\QED
 \end{void_thm}
@@ -922,9 +920,9 @@ We prove an informative variant which gives the rate of convergence (though, thi
   Assign to $\phi(\U\,;b)=(-\infty,b]$ probability $\Pr(X_i\le b)$.
   Then, if $S=S_1,\dots,S_n$ is a random sample from $\U$
 
-  \ceq{\hfill\Ex\,\Big|F_{\rm e}(X,z) - F(z)\Big|}
+  \ceq{\hfill\Ex\bigg[\sup_{z\in\RR}\Big|F_{\rm e}(X,z) - F(z)\Big|\bigg]}
   {=}
-  {\Ex\Big|\Fr(S,b) - \Pr(b)\Big|}
+  {\Ex\bigg[\sup_{z\in\RR}\Big|\Fr(S,b) - \Pr(b)\Big|\bigg]}
 
   hence, by the Vapnik-Chervonenkis inequality~\ref{VC_inequality}
 
