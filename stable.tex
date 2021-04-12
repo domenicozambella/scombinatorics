@@ -502,16 +502,18 @@ The ladder index of every $\phi_i(x\,;z)$ is the same as $\phi(x\,;z_0)$ as a re
   as required.
 \end{proof}
   
-The main theorem of this section is an immediate corollary is the three lemmas above.
+The main theorem of this section is an immediate corollary of the three lemmas above.
 
 \begin{theorem}\label{thm_stable_definability}
   Let $\phi(x\,;z)$ be stable.
   Then there are $m, n$ such every set $\Aa\subseteq\U$ approximable by $\phi(x\,;z)$ is definable by $\psi(x\,;\bar b)$, where
 
-  \ceq{\hfill\psi(x\,;\bar z)}{=}{\bigvee_{j=0}^m\bigwedge_{i=0}^n\phi(z\,;z_{i,j})}
+  \ceq{\hfill\psi(x\,;\bar z)}{=}{\bigvee_{j=0}^m\bigwedge_{i=0}^n\phi(x\,;z_{i,j})}
   
-  and $\bar b\in\V^{n\times m}$ is some $n{\times}m$-tuple of parameters. The numbers $m,n$ only depend on the ladder index of $\phi(x\,;z)$.\QED
+  and $\bar b\in\V^{n\times m}$ is some $n{\times}m$-tuple of parameters.\QED
 \end{theorem}
+
+Note that the numbers $m,n$ in the theorem above do not depend on the set $\Aa$ approximated by $\phi(x\,;z)$. As a matter of fact, $m,n$ only depend on the ladder index of $\phi(x\,;z)$.
 
 We conclude this section with the sketch of an argument that shows that stable formulas have finite 2-rank, that is, \ssf{1}$\IMP$\ssf{2} in Theorem~\ref{thm_hodges}.
 
