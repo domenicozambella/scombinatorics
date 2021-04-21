@@ -88,7 +88,7 @@ We write ${}^n2$ for the set of binary sequences of length $n$ or, more precisel
 We write $s_h$ for the value of $s$ at $h$, and $s{\restriction} h$ for the restriction of $s$ to $[h)$.
 We define ${}^{<n}2=\big\{r\, :\, r\in {}^h2,\ h\in[n)\big\}$.
 
-A \emph{branching tree\/} of hight $n$ for the formula $\phi(x\,;z)$ is a function 
+A \emph{branching tree\/} of height $n$ for the formula $\phi(x\,;z)$ is a function 
 
 \ceq{\hfill\bar{a}\ :\ {}^{<n}2}{\to}{\U}
 \nopagebreak[4]\par
@@ -105,13 +105,13 @@ In other words \ssf{2r} requires the existence of some $\<b_s:s\in{}^n2\>$ such 
 
 \ceq{\hfill\phi(a_{s\restriction h}\,;b_s)}
 {\IFF}
-{s_h=1}\hfill for all pairs $s\in {}^n2$ and $h\in[n)$
+{s_h=0}\hfill for all pairs $s\in {}^n2$ and $h\in[n)$
 
 or, with slightly different notation,
 
 \ceq{\hfill\phi(a_r\,;b_s)}
 {\IFF}
-{r^\frown1\subseteq s}\hfill for all pairs $r\subset s\in {}^n2$.
+{r^\frown0\subseteq s}\hfill for all pairs $r\subset s\in {}^n2$.
 
 It helps to represent a branching tree as follows.
 For definiteness, fix $n=3$.
@@ -198,11 +198,11 @@ If such a maximal integer does not exist, we say that the 2-rank is infinite.
 
 \begin{example}
   If $\phi(\U\,;b)_{b\in\V}$ consists of just one set, the only branching tree for $\phi(x\,;z)$ is the empty tree.
-  Therefore the 2-rank is $1$.
-  If there are at least two distinct definable sets, then we can always find $a_\0, b_0,b_1$ such that $\phi(a_\0,b_0)\wedge\phi(a_\0,b_1)$ hence the 2-rank is at least $2$.\QED  
+  Therefore the 2-rank is $0$.
+  If there are at least two distinct definable sets, then we can always find $a_\0, b_0,b_1$ such that $\phi(a_\0,b_0)\niff\phi(a_\0,b_1)$ hence the 2-rank is at least $1$.\QED  
 \end{example}
 
-A branching tree $\bar a'=\<a'_r:r\in{}^m2\>$ is a \emph{subtree\/} of $\bar a$ if there is an $\subseteq$-preserving map $f:{}^m2\to{}^n2$ such that $a'_r=a_{fr}$.
+A branching tree $\bar a'=\<a'_r:r\in{}^{<m}2\>$ is a \emph{subtree\/} of $\bar a$ if there is an $\subseteq$-preserving map $f:{}^{<m}2\to{}^{<n}2$ such that $a'_r=a_{fr}$.
 
 The theorem below needs the following Ramsey-like lemma.
 
@@ -236,12 +236,12 @@ The theorem below needs the following Ramsey-like lemma.
 
   First suppose that $a_\0$ is blue.
   If, for either $i=0$ or $i=1$, there is a red branching tree $\bar a'_i$ of height $k$, we are done.
-  Otherwise, for both $i=0,1$ there is a blue branching tree $\bar a'_i$ of hight $n-k$.
+  Otherwise, for both $i=0,1$ there is a blue branching tree $\bar a'_i$ of height $n-k$.
   Then we graft these two trees on $a_\0$, which is also blue, and obtain the required blue tree of height $n-k+1$.
   
   Now suppose that $a_\0$ is red.
   If, for either $i=0$ or $i=1$, there is a blue branching tree $\bar a'_i\subseteq \bar a_i$ of height $n-(k-1)$, we are done.
-  Otherwise, we graft on $a_\0$ two red trees of hight $k-1$ to obtain a red tree of height $k$.  
+  Otherwise, we graft on $a_\0$ two red trees of height $k-1$ to obtain a red tree of height $k$.  
 \end{proof}
 
 We are now ready to characterize stability via the 2-rank.
@@ -270,7 +270,7 @@ However it introduces some deep insight on sable formulas that we will present i
   % \def\ceq#1#2#3{\parbox[t]{29ex}{$\displaystyle #1$}\medrel{#2}{$\displaystyle #3$}}
   % \ssf{1}$\IMP$\ssf{2} 
   % We prove the contrapositive.
-  % If there is a binary tree of hight $n$ then there is a ladder of length $n$.
+  % If there is a binary tree of height $n$ then there is a ladder of length $n$.
   % This also proves the first inequality of the proposition.
 
   % Let $\{a_s\; :\; s\in2^{<n}\}$ and $\{b_s\; :\; s\in2^{n}\}$ satisfy \ssf{2r}.
