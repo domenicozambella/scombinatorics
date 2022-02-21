@@ -2,7 +2,7 @@
 \documentclass[scombinatorics.tex]{subfiles}
 \begin{document}
 \chapter{Stability}
-\label{sauer}
+\label{stability}
 
 
 
@@ -15,7 +15,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{The order property}\label{ladder}
+\section{The chain/ladder index}\label{ladder}
 
 The \emph{chain index\/} of $\phi(\U\,;b)_{b\in\V}$, or of $\phi(x\,;z)$ when $\U$ and $\V$ are clear, is the maximal length (that is, $n+1$) of a chain of the form
 
@@ -57,30 +57,17 @@ The following facts are obvious but worth noting.
 \end{fact}
  
 \begin{fact}\label{fact_stability_neg}
-  Let $\phi(x\,;z)$ have ladder index $n$. 
-  Then $\neg\phi(x\,;z)$ has ladder index $n$.\QED
+  Let $\phi(x\,;z)$ have ladder index $n+1$. 
+  Then $\neg\phi(x\,;z)$ has ladder index $n+1$.\QED
 \end{fact}
 
-\begin{proof}
-  If for all $h\in(n]$ and $k\in[n]$ 
+\begin{proof} Let $A\subseteq\U$ and $b_0,\dots,b_n\in\V$  be such that
 
-  \ceq{\hfill\neg\phi(a_h\,;b_k)}
-  {\IFF}
-  {h\le k}
+  \ceq{\hfill\phi(A\,;b_0)\ \subset}{\dots}{\subset\ \phi(A\,;b_n)}
 
-  then $a'_h=a_{n+1-h}$ and $b'_k=b_{n-k}$ satisfy
-
-  \ceq{\hfill\phi(a'_h\,;b'_k)}
-  {\IFF}
-  {\phi(a_{n+1-h}\,;b_{n-h})}
-
-  \ceq{}
-  {\IFF}
-  {n-k>n+1-h}
-
-  \ceq{}
-  {\IFF}
-  {h\le k}
+  Then
+  
+  \ceq{\hfill\neg\phi(A\,;b_n)\ \subset}{\dots}{\subset\ \neg\phi(A\,;b_0)}
 \end{proof}
  
 The following definition is connected with those above, though in a less evident manner.
@@ -88,30 +75,34 @@ We write ${}^n2$ for the set of binary sequences of length $n$ or, more precisel
 We write $s_h$ for the value of $s$ at $h$, and $s{\restriction} h$ for the restriction of $s$ to $[h)$.
 We define ${}^{<n}2=\big\{r\, :\, r\in {}^h2,\ h\in[n)\big\}$.
 
-A \emph{branching tree\/} of height $n$ for the formula $\phi(x\,;z)$ is a function 
+
+\section{Shelah's local binary rank}
+
+A \emph{binary tree height $n$\/} of elements of $\U$ is a function 
 
 \ceq{\hfill\bar{a}\ :\ {}^{<n}2}{\to}{\U}
 \nopagebreak[4]\par
-\ceq{\hfill r}{\mapsto}{a_r},
+\ceq{\hfill r}{\mapsto}{a_r}
 
-which we may also present by writing $\bar a=\<a_r:r\in{}^{<n}2\>$, such that
+Let $\phi(x;z)$ be fixed. 
+We say that the set $\B\subseteq\V$ has \emph{(Shelah' local) 2-rank\/} $n$, and write ${\rm R}_{\phi(x\,;z)}(\B)=n$, if $n$ is the largest interger such that there is binary tree of height $n$ in $\U$ such that 
 
 \ceq{\ssf{2r}\hfill\0}
 {\neq}
-{\bigcap_{h=0}^{n-1}\neg^{s_h}\,\phi(a_{s\restriction h}\,;\V)}\hfill for all $s\in {}^n2$.
+{\bigcap_{h=0}^{n-1}\neg^{s_h+1}\,\phi(a_{s\restriction h}\,;\B)}\hfill for all $s\in {}^n2$.
 
 where $\neg^i$, for $i$ a non negative integer, denotes a negation symbol repeated $i$ times.
-In other words \ssf{2r} requires the existence of some $\<b_s:s\in{}^n2\>$ such that
+In other words \ssf{2r} requires the existence of some $\<b_s:s\in{}^n2\>$ in $\B$ such that
 
 \ceq{\hfill\phi(a_{s\restriction h}\,;b_s)}
 {\IFF}
-{s_h=0}\hfill for all pairs $s\in {}^n2$ and $h\in[n)$
+{s_h=1}\hfill for all pairs $s\in {}^n2$ and $h\in[n)$
 
 or, with slightly different notation,
 
 \ceq{\hfill\phi(a_r\,;b_s)}
 {\IFF}
-{r^\frown0\subseteq s}\hfill for all pairs $r\subset s\in {}^n2$.
+{r^\frown1\subseteq s}\hfill for all pairs $r\subset s\in {}^n2$.
 
 It helps to represent a branching tree as follows.
 For definiteness, fix $n=3$.
@@ -131,7 +122,7 @@ Then \ssf{2r} requires that all formulas in each branch $s\in2^n$ are satified b
 %\tikzstyle{end} = [circle, minimum width=3pt,fill, inner sep=0pt]
 
 \begin{tikzpicture}[grow=right]
-\node[bag0] {{$\top$}}
+\node[bag0] {{$\B$}}
     child {
         node[bag] {$\phi(a_{\0};z)$}      
             child {
@@ -193,16 +184,14 @@ Then \ssf{2r} requires that all formulas in each branch $s\in2^n$ are satified b
 \end{tikzpicture}
 \smallskip
 
-The Shelah \emph{2-rank\/} of $\phi(x\,;z)$ is the maximal height of a branching tree for $\phi(x\,;z)$.
-If such a maximal integer does not exist, we say that the 2-rank is infinite.
+If a maximal integer $n$ does not exist, we say that the 2-rank of $\B$ is infinite.
 
 \begin{example}
-  If $\phi(\U\,;b)_{b\in\V}$ consists of just one set, the only branching tree for $\phi(x\,;z)$ is the empty tree.
-  Therefore the 2-rank is $0$.
-  If there are at least two distinct definable sets, then we can always find $a_\0, b_0,b_1$ such that $\phi(a_\0,b_0)\niff\phi(a_\0,b_1)$ hence the 2-rank is at least $1$.\QED  
+  Clearly ${\rm R}_{\phi(x,z)}(\B)=0$ when $\B$ is empty or when $\phi(\U\,;b)_{b\in\V}$ consists of just one set.
+  If there are at least two distinct sets in $\phi(\U\,;b)_{b\in\V}$, then we can always find $a_\0, b_0,b_1$ such that $\phi(a_\0,b_0)\niff\phi(a_\0,b_1)$ hence ${\rm R}_{\phi(x,z)}(\U)\ge1$.\QED  
 \end{example}
 
-A branching tree $\bar a'=\<a'_r:r\in{}^{<m}2\>$ is a \emph{subtree\/} of $\bar a$ if there is an $\subseteq$-preserving map $f:{}^{<m}2\to{}^{<n}2$ such that $a'_r=a_{fr}$.
+A binary tree $\bar a'=\<a'_r:r\in{}^{<m}2\>$ is a \emph{subtree\/} of $\bar a$ if there is an $\subseteq$-preserving map $f:{}^{<m}2\to{}^{<n}2$ such that $a'_r=a_{fr}$.
 
 The theorem below needs the following Ramsey-like lemma.
 
@@ -215,9 +204,9 @@ The theorem below needs the following Ramsey-like lemma.
 % As it happens, a more general lemma is easier to prove.
 
 \begin{lemma}\label{lem_Reamsey_tree}
-  Let $\bar a=\<a_r\, :\, r\in{}^{<n}2\>$ be a branching tree for $\phi(x\,;z)$.
+  Let $\bar a=\<a_r\, :\, r\in{}^{<n}2\>$ be a binary tree.
   Let $k\in[n]$ be given.
-  Then, for every red-blue coloring of $\range(\bar a)$,  there is a monochromatic branching subtree, say $\bar a'=\<a'_r\, :\, r\in{}^{n'}2\>$, and either all nodes of $\bar a'$ are red and $n'=k$, or they are all blue and $n'=n-k$.
+  Then, for every red-blue coloring of $\range(\bar a)$,  there is a monochromatic subtree $\bar a'=\<a'_r\, :\, r\in{}^{n'}2\>$, and either all nodes of $\bar a'$ are red and $n'=k$, or they are all blue and $n'=n-k$.
 \end{lemma}
 
 \begin{proof}
@@ -228,19 +217,19 @@ The theorem below needs the following Ramsey-like lemma.
   Assume the lemma true for $n$ and prove it for $n+1$.
   Let  $\bar a=\<a_r\, :\, r\in{}^{n+1}2\>$ be given.
   Fix some $k\in[n+1]$. 
-  We want a branching tree $\bar a'$ that is either red of height $k$ or blue of height $n+1-k$.
+  We want a binary tree $\bar a'$ that is either red of height $k$ or blue of height $n+1-k$.
   
   If we discard the trivial cases, we can assume $k\in(n]$.
 
   For $i=0,1$ we define $\bar a_i=\<a_{i^\frown r}\;:\;r\in {}^{<n}2\>$.
 
   First suppose that $a_\0$ is blue.
-  If, for either $i=0$ or $i=1$, there is a red branching tree $\bar a'_i$ of height $k$, we are done.
-  Otherwise, for both $i=0,1$ there is a blue branching tree $\bar a'_i$ of height $n-k$.
+  If, for either $i=0$ or $i=1$, there is a red binary tree $\bar a'_i$ of height $k$, we are done.
+  Otherwise, for both $i=0,1$ there is a blue binary tree $\bar a'_i$ of height $n-k$.
   Then we graft these two trees on $a_\0$, which is also blue, and obtain the required blue tree of height $n-k+1$.
   
   Now suppose that $a_\0$ is red.
-  If, for either $i=0$ or $i=1$, there is a blue branching tree $\bar a'_i\subseteq \bar a_i$ of height $n-(k-1)$, we are done.
+  If, for either $i=0$ or $i=1$, there is a blue binary tree $\bar a'_i\subseteq \bar a_i$ of height $n-(k-1)$, we are done.
   Otherwise, we graft on $a_\0$ two red trees of height $k-1$ to obtain a red tree of height $k$.  
 \end{proof}
 
@@ -257,9 +246,9 @@ However it introduces some deep insight on sable formulas that we will present i
   The following are equivalent
   \begin{itemize}
     \item[1.] $\phi(x\,;z)$ is stable;
-    \item[2.] $\phi(x\,;z)$ has finite 2-rank.
+    \item[2.] $\U$ has finite 2-rank.
   \end{itemize}
-  Precisely, if $n_{\rm ld}$ and $n_{\rm 2r}$ are the ladder index and the 2-rank, respectively, then 
+  Precisely, if $n_{\rm ld}$ and $n_{\rm 2r}$ are the ladder index and the 2-rank of $\U$, respectively, then 
   
   \ceq{\hfill n_{\rm ld}}{<}{2^{n_{\rm 2r}+1};}
 
@@ -367,7 +356,7 @@ However it introduces some deep insight on sable formulas that we will present i
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Approximable sets}
+\section{Definability of approximable sets}
 
 The notion of approximable set is a combinatorial counterpart of the model theoretical notion of externally definable set.
 
@@ -493,7 +482,7 @@ The ladder index of every $\phi_i(x\,;z)$ is the same as $\phi(x\,;z_0)$ as a re
   
   \ceq{\hfill\neg\phi(a_h\,;b_k)}
   {\IFF}
-  {h\le k.}
+  {h\le k.}\hfill (???)
   
   As $\phi(x\,;z)$ has ladder index $n+1$, it is not possible to prolonge this chain, hence
 
@@ -513,11 +502,40 @@ The main theorem of this section is an immediate corollary of the three lemmas a
   and $\bar b\in\V^{n\times m}$ is some $n{\times}m$-tuple of parameters.\QED
 \end{theorem}
 
-Note that the numbers $m,n$ in the theorem above do not depend on the set $\Aa$ approximated by $\phi(x\,;z)$. As a matter of fact, $m,n$ only depend on the ladder index of $\phi(x\,;z)$.
+Note that the numbers $m,n$ in the theorem above do not depend on the set $\Aa$ approximated by $\phi(x\,;z)$.
+Only the tuple $\bar b$ does.
+As a matter of fact, $m,n$ only depend on the ladder index of $\phi(x\,;z)$.
 
-We conclude this section with the sketch of an argument that shows that stable formulas have finite 2-rank, that is, \ssf{1}$\IMP$\ssf{2} in Theorem~\ref{thm_hodges}.
+\section{More on the definability of approximable sets}
 
-As a matter of fact, below we prove an apparently weaker claim
+Let $\B\subseteq\U$ be 
+
+\begin{lemma}
+  For every $n$ there is a first-order formula $\psi(\bar z)$, where $\bar z=z_1,\dots,z_n$, such that
+  
+  \ceq{\hfill\psi(x\,;\bar b)}{\IFF}{R_{\phi(x,z)}\big(\big)}
+  
+  
+  
+  There is a first-order formula $\psi(\bar z)$, where $\bar z=z_1,\dots,z_n$, such that for every 
+\end{lemma}
+
+\begin{theorem}\label{thm_stable_definability2}
+  Let $\phi(x\,;z)$ be stable.
+  Then there is a formula $\psi(x\,;\bar z)$, where $\bar z=z_1,\dots,z_n$, that is Boolean combination of the formulas $\phi(x\,;z_i)$ such that every approximable set $\Aa\subseteq\U$ is definable by $\psi(x\,;\bar a)$ for some $\bar a\in\Aa^n$.\QED
+\end{theorem}
+
+
+
+\begin{proof}
+  
+\end{proof}
+
+
+\begin{comment}
+  We conclude this section with the sketch of an argument that shows that stable formulas have finite 2-rank, that is, \ssf{1}$\IMP$\ssf{2} in Theorem~\ref{thm_hodges}.
+
+  As a matter of fact, below we prove an apparently weaker claim
 \begin{itemize}
   \item[\#] if there is a branching tree of height $\omega$, say $\{a_s:s\in2^{<\omega}\}$, the ladder index is infinite.
 \end{itemize}
@@ -545,6 +563,8 @@ A contradiction.
 % Let $Q\subseteq\{b_s:s\in2^{\omega}\}$ the set of sequences that are eventually $0$.
 % Note that in the proof of Theorem~\ref{thm_stable_definability} we can require that $\bar b\in Q^{n\times m}$.
 % But there are 
+
+\end{comment}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%

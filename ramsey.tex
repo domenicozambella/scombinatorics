@@ -1,0 +1,123 @@
+% !TEX root = scombinatorics.tex
+\documentclass[scombinatorics.tex]{subfiles}
+\begin{document}
+\chapter{Appendix: Ramsey's Theorem}\label{ramsey}
+
+\def\medrel#1{\parbox[t]{5ex}{$\displaystyle\hfil #1$}}
+\def\ceq#1#2#3{\parbox[t]{20ex}{$\displaystyle #1$}\medrel{#2}{$\displaystyle #3$}}
+
+\section{Upper bound for Ramsey numbers}
+
+\begin{definition}
+  The Ramsey number $R(s,t)$ is the minimum number $n$ such that any graph on $n$ vertices contains either an anticlique of size $s$ or a clique of size $t$.\QED
+\end{definition}
+
+Note that it is not clear a priori that Ramsey numbers are finite.
+Indeed, it could be the case that there is no finite number satisfying the conditions of $R(s, t)$ for some choice of $s, t$. 
+However, the following theorem proves that this is not the case and gives an explicit bound on $R(s, t)$.
+
+\begin{theorem}[(Ramsey's theorem)]
+  For any $s, t \ge 1$, the Ramsey number $R(s, t)$ is finite.
+  In particular,
+
+  \ceq{\#\hfill R(s,t)}{\le}{\binom{s+t-2}{s-1}}
+\end{theorem}
+
+\begin{proof}
+  First we prove that $R(s, t) \le R(s-1, t) + R(s, t-1)$ holds for every $s,t>1$.
+  To see this, consider a graph on $n = R(s-1, t) + R(s, t-1)$ vertices.
+  We prove that this graph has an anticlicque of size $s$ or a clicque of size $t$
+  Fix a vertex $v$.
+  It is immediate to verify that exacly one of these two cases occur:
+  \begin{itemize}
+    \item[i.] There are at least $R(s, t-1)$ edges
+    adjacent to $v$. 
+    Then we apply the definition of $R(s, t-1)$ to the neighbors of $v$, which implies that either they contain an anticlique of size $s$, or a clique of size $t-1$.
+    In the first (sub)case we are done.
+    Otherwise, we can extend this clique by adding $v$, and hence the whole graph contains a clique of size $t$.
+    \item[ii.] There are at least $R(s-1, t)$ that are not $v$ nor are adjacent to $v$.
+    Then we apply the definition of $R(s-1, t-1, t)$ to the non-neighbors of $v$ and we get either an anticlique of size $s-1$, or a clique of size $t$.
+    In the latter (sub)case we are done.
+    Otherwise, the anticlique can be extended by adding $v$ hence the whole graph contains an anticlique of size $s$.
+  \end{itemize}
+
+Given that $R(s, t) \le R(s-1, t) + R(s, t-1)$, it follows by induction that all Ramsey numbers are finite. Moreover, we get an explicit bound.
+First, \# holds for the base cases where $s = 1$ or $t = 1$ since every graph contains a clique or an anticlique of size $1$.
+The inductive step is as follows:
+
+\ceq{\hfill R(s,t)}{\le}{R(s-1, t) + R(s, t-1)}
+
+\ceq{\ssf 1}{\le}{\binom{s+t-3}{s-2} + \binom{s+t-3}{s-1}}
+
+\ceq{\ssf 2}{\le}{\binom{s+t-2}{s-1}}
+
+where \ssf1 follows from the induction hypothesis and \ssf2 follows from a standard identity for binomial coefficients.
+\end{proof}
+
+Now we consider a more general setting.
+We color the edges of $K_n$, the complete graph
+on $n$ vertices, with a certain number of colors and we ask whether there is a clique of a certain size all of whose edges have the same colour.
+We shall see that this is always true for a sufficiently large $n$.
+Note that the question about clique and anticlique corresponds to rapresenting a graph of size $n$ as a coloring of $K_n$ with $2$ colors, adjacent and non-adjacent.
+
+This leads to a more general definition of Ramsey numbers
+
+\begin{definition}
+  The Ramsey number $R(s_1,\dots,s_k)$ is the minimum number $n$ such that any coloring of the edges of $K_n$ with $k$ colors contains a clique of size $s_i$ in color $i$, for some $i$.\QED
+\end{definition}
+
+The following Theorem can be easily proved by induction on the number of colors.
+
+\begin{theorem}
+  For any $s_1,\dots,s_k\ge1$, the Ramsey number $R(s_1,\dots,s_k)$ is finite.\QED
+\end{theorem}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Lower bound for Ramsey numbers}
+
+\def\medrel#1{\parbox[t]{5ex}{$\displaystyle\hfil #1$}}
+\def\ceq#1#2#3{\parbox[t]{35ex}{$\displaystyle #1$}\medrel{#2}{$\displaystyle #3$}}
+
+\begin{theorem}
+    For every integer $k\ge 3$
+    
+    \ceq{\hfill\lfloor2^{k/2}\rfloor}{\le}{R(k,k).}
+\end{theorem}
+
+\begin{proof}
+  Fix some $k\ge3$. Consider a graph on $n$ vertices obtained by randomly choosing whether or not to put an edge between two verteces.
+  Each choice is taken independently by tossing a fair coin.
+
+  For every set $K$ of $k$ verteces, the probability that $K$ is a clique is 
+
+  \ceq{\hfill\Pr(K\textrm{ is a clique})}{=}{2^{-\binom{k}{2}}.}
+
+  By symmetry, this equals also $\Pr(K\textrm{ is an anticlique})$, hence
+
+  \ceq{\hfill\Pr(K\textrm{ is a clique or an anticlique})}{=}{2^{1-\binom{k}{2}}}
+
+  The probability that there is a clique or an anticlique of size $k$, is 
+
+  \ceq{}{\le}{\binom{n}{k}\ 2^{1-{\binom{k}{2}}}}
+
+  Hence, if for some $n$ the function above is $<1$, some graph of size $n$ with no clique nor anticlique exists. 
+  It is only let to verity that this occurs for all $n\ge\lfloor2^{k/2}\rfloor$ 
+
+  \ceq{\hfill\binom{n}{k}\ 2^{1-{\binom{k}{2}}}}{=}{\frac{n!}{k!(n-k)!}\ 2^{1-\frac{k(k-1)}{2}}}
+
+  \ceq{}{=}{\binom{n}{k}\ \frac{2^{1+k/2}}{2^{k^2/2}}}
+  
+  \ceq{}{<}{\frac{n^k}{k!}\ \frac{2^{1+k/2}}{2^{k^2/2}}}
+  
+  \ceq{}{\le}{1}
+
+The last inequality holds because, for $n$ as above, $n^k\le\lfloor2^{k/2}\rfloor^k\le\lfloor2^{1/2}\rfloor= 1$.
+\end{proof}
+
+See \cite{AS} for a discussion of the method of proof.
+
+\end{document}
