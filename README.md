@@ -1,4 +1,4 @@
-# Scombinatorics
+# [Scombinatorics](https://github.com/domenicozambella/scombinatorics/raw/master/scombinatorics.pdf)
 
 These are some aberrant notes on combinatorics.
 
