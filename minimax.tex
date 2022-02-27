@@ -120,19 +120,21 @@ or, in other words, if $\phi(A';B)$ is the graph of a bijection.
 Let $\phi(x\,;z)$ be given. 
 Let $A\subseteq\U$ and $B\subseteq\V$ be finite sets. 
 
-A \emph{matching\/} of $\phi(A\,;B)$ is a pair of sets $A'\subseteq A$  and $B'\subseteq B$ such that $\phi(A'\,;B')$ is the graph of a bijection between $A'$ and $B'$ in other words
-
-\ceq{\hfill|\phi(A';b)|\medrel{=}|\phi(a\,;B')|}{=}{1}\quad for every $a,b\in A',B'$.
-
-Yet in other words, $A'$ is a set of distinctive representatives for  $\phi(A\,;B')$
-
+A \emph{matching\/} of $\phi(A\,;B)$ is a pair of sets $A'\subseteq A$  and $B'\subseteq B$ such that $\phi(A'\,;B')$ is the graph of a bijection between $A'$ and $B'$.
 We call $|A'|=|B'|$ the cardinality of the matching.
 The \emph{matching number} of $\phi(A\,;B)$ is the maximal cardinality of a matching.
 
-Note that is $A'$ is a set of distinct representatives for $\phi(A\,;B)$, then there is a $B'\subseteq B$ such that $A',B'$.
-Hence the matching number is less or equal than the cardinality of any set of distinct representatives (if it exists).
+Note that if $\phi(A\,;B)$ admits a set $A'$ of distinct representatives then $A',B$ is a matching and, as this clearly maximal, the matching number of $\phi(A\,;B)$ is $|B|$.
 
-A \emph{(vertex) cover\/} of $\phi(A\,;B)$ is a pair of sets $A'\subseteq A$ and $B'\subseteq B$ such that $\phi(A\,;B)$ is contained in $\big(A'\times (B\sm B')\big)\,\cup\, \big((A\sm A')\times B'\big)$. We will mainly use this property as characterized by the easy fact below.
+A \emph{(vertex) cover\/} of $\phi(A\,;B)$ is a pair of sets $A'\subseteq A$ and $B'\subseteq B$ such that 
+
+\ceq{\hfill \phi(A\,;B)}{\subseteq}{\big(A'\times B\big)\,\cup\, \big(A\times B'\big)}
+
+or, in other words,
+
+\ceq{\hfill\phi(a,b)}{\IMP}{a\in A'\ \vee\ b\in B'}\hfill for every $a\in A$ and $b\in B$.
+
+We will mainly use this property as characterized by the easy fact below.
 
 \begin{fact}\label{fact_cover}
    The following are equivalent
@@ -154,12 +156,10 @@ The \emph{cover number\/} of $\phi(A\,;B)$ is the minimal cardinality of a cover
 
 \begin{proof}
   {\boldmath$(\le)$}
-  We prove that $|A''|\le|A'|+|B'|$ for every cover $A',B'$ and every matching $A'',B''$.
-
-  As  $\phi(A\,;b)\subseteq A'$ for every $b\in B\sm B'$, in particular we have that $\phi(A'';b)\subseteq A'$ for every $b\in B''\sm B'$.
-  By the definition of matching, all these sets $\phi(A'';b)$ are distinct singletons. 
-  Hence $|B''|-|B'|\le|B\sm B'|\le|A'|$ is clear.
-
+  Note that if $A'\subseteq A$ and $B'\subseteq B$ then every cover of $\phi(A,B)$ contains a cover of $\phi(A',B')$.
+  Therefore the coverer number of $\phi(A',B')$ is less or equal than the cover number of $\phi(A,B)$.
+  If $\phi(A',B')$ is a bijection, its cover number equals its cardinality.
+  Hence the cover number is at least as large as the maching number.
 
   {\boldmath$(\ge)$}
   Let $A',B'$ be a cover of minimal cardinality. 
