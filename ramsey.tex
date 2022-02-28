@@ -85,7 +85,7 @@ The following Theorem can be easily proved by induction on the number of colors.
 \begin{theorem}
     For every integer $k\ge 3$
     
-    \ceq{\hfill\lfloor2^{k/2}\rfloor}{\le}{R(k,k).}
+    \ceq{\hfill\lfloor2^{k/2}\rfloor}{<}{R(k,k).}
 \end{theorem}
 
 \begin{proof}
@@ -105,7 +105,7 @@ The following Theorem can be easily proved by induction on the number of colors.
   \ceq{}{\le}{\binom{n}{k}\ 2^{1-{\binom{k}{2}}}}
 
   Hence, if for some $n$ the function above is $<1$, some graph of size $n$ with no clique nor anticlique exists. 
-  It is only let to verity that this occurs for all $n\ge\lfloor2^{k/2}\rfloor$ 
+  It is only let to verity that this occurs for all $n\le\lfloor2^{k/2}\rfloor$ 
 
   \ceq{\hfill\binom{n}{k}\ 2^{1-{\binom{k}{2}}}}{=}{\frac{n!}{k!(n-k)!}\ 2^{1-\frac{k(k-1)}{2}}}
 
