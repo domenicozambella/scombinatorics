@@ -117,34 +117,47 @@ In the next section we show that these are the only cases.
 %%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%
-\section{The Erd\H{o}s-Ko-Rado Theorem}\label{ErdosKoRado}
+\section{Intersecting families}\label{ErdosKoRado}
+
+A family of sets is \emph{intersecting\/} if any two of its elements have non empty intersection.
 
 \def\medrel#1{\parbox[t]{4ex}{$\displaystyle\hfil #1$}}
 \def\ceq#1#2#3{\parbox[t]{20ex}{$\displaystyle #1$}\medrel{#2}{$\displaystyle #3$}}
 
 \begin{lemma}[(Peter J.~Cameron)]
    Let $G$ be a $1$-transitive finite graph.
-   If $G$ contains a clique of cardinality $m$, then every subgraph $H\subseteq G$ contains a clique of cardinality 
+   If $G$ contains a clique of cardinality $m$, then every subgraph $H\subseteq G$ contains a clique of cardinality $k$ where 
    
-   \ceq{}{\ge}{m\frac{|H|}{|G|}.}
+   \ceq{\hfill k}{\ge}{m\frac{|H|}{|G|}.}
 \end{lemma}
 
 \begin{proof}
+   Let $p=|\Aut(G)|$.
+   For any fixed $a\in G$ and $b$ ranging over $G$, the sets $F_{a,b}=\{f\in\Aut(G): fa=b\}$, are clearly mutually disjoint.
+   We claim that they all have the same cardinality. 
+   In fact, by $1$-transitivity, if $gb=b'$ then  $F_{a,b'}=g^{-1}F_{a,b}$.
+   Hence, for any given pair $\<a,b\>$, they have cardinality $p/|G|$.
+
    Let $C$ be a clique in $G$ of cardinality $m$.
    Let $k$ the cardinality of the largest clique in $H$.
-   Let $n=|\Aut(G)|$.
-   By $1$-transitivity, the sets $\{f\in\Aut(G): fa=b\}$, for any fixed $a\in G$ and $b$ ranging over $G$, have all the same cardinality. 
-   Hence, for any given pair $\<a,b\>$, they have cardinality $n/|G|$.
+   Count the elements of the following set
+   
+   \hfil$\Big\{\<a,f\>\in C\times\Aut(G)\ \ :\ \ fa\in H\Big\}$.
 
-   Count the pairs $\<a,f\>\in C\times\Aut(G)$ such that $fa\in H$.
-   For every $a\in C$ there are $n\cdot|H|$ automorphisms.
-   So the number of pairs is $m\cdot n\cdot|H|/|G|$
+   By the above, for every $a\in C$ there are $p\cdot|H|/|G|$ automorphisms that map $a$ in $H$.
+   So the number of pairs in the set above is $m\cdot p\cdot|H|/|G|$.
 
-   On the other hand for each $f\in\Aut(G)$ there are at most $k$ choices of $a\in C$.
-   So $m\cdot n\cdot|H|/|G|\le k\,n$.
+   Now we count the same set in a different way.
+   Note that $f[C]\cap H$ is a clicque of $H$, hence has cardinality $\le k$.
+   Therefore, for a given $f$ there at most $k$ choices of $a\in C$.
+   So $m\cdot p\cdot|H|/|G|\le k\,p$.
 \end{proof}
 
+We use the lemma above to bound the size $m$ of the maximal clicque in a graph $G$.
+We isolate an subgraph $H\subseteq G$ of which we can easily calculate the size $k$ of the maximal clicque.
+Then by the lemma 
 
+\ceq{\hfill m}{\le}{\frac{k}{|H|}|G|.}
 
 \begin{void_thm}[Erd\H{o}s-Ko-Rado Theorem]
    Let $A\subseteq\U$ be a finite set of cardinality $n$. 
@@ -157,11 +170,13 @@ In the next section we show that these are the only cases.
    
 \begin{proof}
    Let $m=\Big|\phi(A\,;b)_{b\in\V}\Big|$.
-   Consider the graph 
+   Consider the graph with verteces
    
    \ceq{\hfill G}{=}{{A\choose k},}
-   
-   \ceq{\hfill E(G)}{=}{\Big\{\{A',A''\}\ :\  A'\cap A''\neq\0\Big\}.}
+
+   Thne edgese of $G$ are   
+
+   \ceq{}{}{\Big\{\{A',A''\}\ :\  A'\cap A''\neq\0\Big\}.}
 
    Enumerate the elements of $A$, say $A=\{a_0,\dots,a_{n-1}\}$.
    Consider the following subgraph of $G$ 
@@ -169,13 +184,16 @@ In the next section we show that these are the only cases.
    \ceq{\hfill H}{=}{\Big\{\{a_i,\dots,a_{i+k-1}\}\ :\  0\le i<n\Big\},}
 
    where the indices are intended modulo $n$.
-   As $k\le n$, the largest clique in $H$ has cardinality $k$.
-   As $\phi(A'\,;b)_{b\in\V}$ is a clique of $G$, by the lemma above, 
-
-   \ceq{\hfill k}{\ge}{m\frac{|H|}{|G|}}\medrel{=}$\displaystyle m\cdot n\cdot {n\choose k}^{\!-1}$
+   The largest clique in $H$ has cardinality $k$.
+   This uses that $k\le 2/2$.
+   As $\phi(A\,;b)_{b\in\V}$ is an intersection family, it is a clique of $G$.
    
-   therefore
+   By the lemma above (and the remark after it)
 
-   \ceq{\hfill m}{\le}{{n-1\choose k-1}}
+   \ceq{\hfill\Big|\phi(A\,;b)_{b\in\V}\Big|}{\le}{{\frac{k}{n}{n\choose k}}}
+
+   and finally, by algebra,
+  
+   \ceq{}{=}{{{n-1}\choose {k-1}}.}
 \end{proof}
 \end{document}
