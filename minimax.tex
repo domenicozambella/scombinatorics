@@ -27,14 +27,7 @@ The first theorem less so, hence the title is only approximately correct.
 Let $\phi(x\,;z)$ be given. 
 Let $A\subseteq\U$ and $B\subseteq\V$ be finite sets.
 
-We say that $A'\subseteq A$ is a \emph{set of distinct representatives\/} for $\phi(A\,;B)$ if
-
-\ceq{\hfill|\phi(A';b)|\medrel{=}|\phi(a\,;B)|}
-{=}
-{1}
-\quad for every $a,b\in A',B$,
-
-or, in other words, if $\phi(A';B)$ is the graph of a bijection.
+We say that $A'\subseteq A$ is a \emph{set of distinct representatives\/} for $\phi(A\,;B)$ if there is a bijection $h:A'\to B$ such that $\phi(a;ha)$ for all $a\in A'$.
 
 \begin{void_thm}[Hall's Marriage Theorem]\label{thm_marriage}
   For every finite $B\subseteq\V$, the following are equivalent
@@ -64,7 +57,7 @@ or, in other words, if $\phi(A';B)$ is the graph of a bijection.
     Pick any pair $a,b\in A,B$ such that $\phi(a\,;b)$. 
     Then $\phi(A\sm\{a\}\,; B\sm\{b\})$ still satisfy \ssf{2}.
     By induction hypothesis, it has a set of distinct representatives $A'$.
-    Then $A'\cup\{a\}$ is a set of distinct representatives for $\phi(A\,;B)$.
+    Then $A'\cup\{a\}$ is a set of distinct representatives for $\phi(A\,;B)$ as we can extend any bijection $h:A'\to B\sm\{b\}$ by mapping $a$ to $b$. 
 
     
     \item[b.]
@@ -197,7 +190,7 @@ To highlight the connection we choose to prove it using K\H{o}nig's Theorem.
 Alternatively we could have proved Dilworth's Theorem directly and derived K\H{o}nig's and Hall's Theorem from it.
 
 Let $<$ be a strict partial order on $\U$.
-An \emph{antichain\/} is a set $A'\subseteq\U$ such that $a<a'$ for every $a,a'\in A'$. A \emph{chain\/} is a set $A'\subseteq\U$ such that $a<a'\;\vee\ a'<a$ for every distinct $a,a'\in A'$.
+An \emph{antichain\/} is a set $A'\subseteq\U$ such that $a\nless a'$ for every $a,a'\in A'$. A \emph{chain\/} is a set $A'\subseteq\U$ such that $a<a'\;\vee\ a'<a$ for every distinct $a,a'\in A'$.
 
 \begin{void_thm}[Dilworth's Theorem]
   Let $A\subseteq\U$ be finite. 
