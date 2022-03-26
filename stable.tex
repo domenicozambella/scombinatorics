@@ -17,67 +17,62 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{The chain/ladder index}\label{ladder}
 
-The \emph{chain index\/} of $\phi(\U\,;b)_{b\in\V}$, or of $\phi(x\,;z)$ when $\U$ and $\V$ are clear, is the maximal length (that is, $n+1$) of a chain of the form
+The \emph{chain index\/} of $\phi(\U\,;b)_{b\in\V}$, or of $\phi(x\,;z)$ when $\U$ and $\V$ are clear, is the maximal length (that is, $n$) of a chain of the form
 
-\ceq{\ssf{ch}\hfill\phi(A\,;b_0)\ \subset}{\dots}{\subset\ \phi(A\,;b_n)}
+\ceq{\ssf{ch}\hfill\0\subset\phi(A\,;b_1)\subset}{\dots}{\subset\phi(A\,;b_n)\subset A}
 
-for some set $A\subseteq\U$ and some $b_0,\dots,b_n\in\V$.
-Note that we allow $\phi(A\,;b_0)$ to be empty.
-This choice produces a small asymmetry below in the definition of ladder; see also Fact~\ref{fact_stability_dual}.
-
-\begin{example}
-  If $\phi(\U\,;b)_{b\in\V}$ consists of just one set, the chain index is $1$.
-  If it contains two distinct sets, the  chain index is at least $2$ and it is exactly $2$ if there are no more two sets, or if all sets are disjoint.\QED
-\end{example}
+for some set $A\subseteq\U$ and some $b_1,\dots,b_n\in\V$.
+We do not allow $\phi(A\,;b_i)$ to be neither empty nor $A$, this is just a technical tweak that helps with the notation.
+When $\phi(x\,;z)$ is the empty or the complete relation we agree that the chain rank is $0$. 
 
 If a maximal length does not exist, we say that $\phi(x\,;z)$ is \emph{unstable,} or that it has the \emph{order-property.} 
 Otherwise we say that it is \emph{stable.}
 
-In place of requiring the existence of the chain in \ssf{ch}, we could equivalently ask for a pair of tuples $a_1,\dots,a_n\in\U$ and $b_0,\dots,b_n\in\V$ such that
+In place of requiring the existence of the chain in \ssf{ch}, we could equivalently ask for a pair of tuples $a_1,\dots,a_n\in\U$ and $b_1,\dots,b_n\in\V$ such that
 
 \ceq{\ssf{ld}\hfill\phi(a_h\,;b_k)}
 {\IFF}
 {h\le k.}
 
-We call this pair of tuples a \emph{ladder\/} of length $n+1$.
+We call this pair of tuples a \emph{ladder\/} of length $n$.
 We may also say \emph{ladder index\/} instead of chain index.
 Setting $A=\{a_1,\dots,a_n\}$ we easily obtain a chain from a ladder, the converse is left as an easy exercise for the reader.
 
 \begin{exercise}
-  Let $\phi(x\,;z)$ have chain index $n+1$ or more. 
-  Let $A\subseteq\U$ be a minimal set such that a chain as in \ssf{ch} obtains for some $b_0,\dots,b_n\in\V$.
-  Prove that there is a ladder $a_1,\dots,a_n$ and $b_0,\dots,b_n$ such that $A=\{a_1,\dots,a_n\}$ and conclude that $\phi(x\,;z)$ has ladder index $n+1$.\QED
+  Let $\phi(x\,;z)$ have chain index $n$. 
+  Let $A\subseteq\U$ be a minimal set such that a chain as in \ssf{ch} obtains for some $b_1,\dots,b_n\in\V$.
+  Prove that there is a ladder $a_1,\dots,a_n$ and $b_1,\dots,b_n$ such that $A=\{a_1,\dots,a_n\}$ and conclude that $\phi(x\,;z)$ has ladder index $n$.\QED
 \end{exercise}
 
 The following facts are obvious but worth noting.
 
 \begin{fact}\label{fact_stability_dual}
-  Let $\phi(x\,;z)$ have ladder index $n+1$. 
-  Then $\phi(x\,;z)^{\rm op}$ has ladder index $\ge n$.\QED
+  Let $\phi(x\,;z)$ have ladder index $n$. 
+  Then $\phi(x\,;z)^{\rm op}$ has ladder index $n$.\QED
 \end{fact}
  
 \begin{fact}\label{fact_stability_neg}
-  Let $\phi(x\,;z)$ have ladder index $n+1$. 
-  Then $\neg\phi(x\,;z)$ has ladder index $n+1$.\QED
+  Let $\phi(x\,;z)$ have ladder index $n$. 
+  Then $\neg\phi(x\,;z)$ has ladder index $n$.\QED
 \end{fact}
 
-\begin{proof} Let $A\subseteq\U$ and $b_0,\dots,b_n\in\V$  be such that
+\begin{proof} Let $A\subseteq\U$ and $b_1,\dots,b_n\in\V$  be such that
 
-  \ceq{\hfill\phi(A\,;b_0)\ \subset}{\dots}{\subset\ \phi(A\,;b_n)}
+  \ceq{\hfill\phi(A\,;b_1)\ \subset}{\dots}{\subset\ \phi(A\,;b_n)}
 
   Then
   
-  \ceq{\hfill\neg\phi(A\,;b_n)\ \subset}{\dots}{\subset\ \neg\phi(A\,;b_0)}
+  \ceq{\hfill\neg\phi(A\,;b_n)\ \subset}{\dots}{\subset\ \neg\phi(A\,;b_1)}
 \end{proof}
  
 The following definition is connected with those above, though in a less evident manner.
-We write ${}^n2$ for the set of binary sequences of length $n$ or, more precisely, the set of functions $s:[n)\to[2)$.
-We write $s_h$ for the value of $s$ at $h$, and $s{\restriction} h$ for the restriction of $s$ to $[h)$.
-We define ${}^{<n}2=\big\{r\, :\, r\in {}^h2,\ h\in[n)\big\}$.
+
 
 
 \section{Shelah's local binary rank}
-
+We write ${}^n2$ for the set of binary sequences of length $n$ or, more precisely, the set of functions $s:[n)\to[2)$.
+We write $s_h$ for the value of $s$ at $h$, and $s{\restriction} h$ for the restriction of $s$ to $[h)$.
+We define ${}^{<n}2=\big\{r\, :\, r\in {}^h2,\ h\in[n)\big\}$.
 A \emph{binary tree height $n$\/} of elements of $\U$ is a function 
 
 \ceq{\hfill\bar{a}\ :\ {}^{<n}2}{\to}{\U}
@@ -377,29 +372,30 @@ The following is immediate.
 
 Towards the main theorem of this section we prove three separated lemmas.
 
-\begin{lemma}
+\begin{lemma}\label{lem_uno}
   Let $\phi(x\,;z)$ be a stable formula.
   Every set $\Aa\subseteq\U$ approximable by $\phi(x\,;z)$ is approximable from below by the formula
 
-  \ceq{\hfill \psi(x\,;z_0,\dots,z_n)}{=}{\bigwedge_{i=0}^n\phi(x\,;z_i)}
+  \ceq{\hfill \psi(x\,;z_1,\dots,z_n)}{=}{\bigwedge_{i=1}^n\phi(x\,;z_i)}
   
-  where $n+1$ is the ladder index of $\phi(x\,;z)$.
+  where $n$ is the ladder index of $\phi(x\,;z)$.
 \end{lemma}
 
 \begin{proof}
-  Let $A\subseteq\Aa$ be finite.
-  We prove that $A\subseteq\psi(\U\,;b_0,\dots,b_n)\subseteq\Aa$ for some $b_0,\dots,b_n$.
-  To obtain the $b_k$, we construct a ladder inductively.
-  Pick any $b_0$ be such that $A\subseteq\phi(\U\,;b_0)$, which we can do by approximability.
-  Now, suppose that $a_1,\dots,a_k$ and $b_0,\dots,b_k$ have been defined.
+  Let $A\subseteq\Aa$ be finite and non empty.
+  We prove that $A\subseteq\psi(\U\,;b_1,\dots,b_n)\subseteq A$ for some $b_1,\dots,b_n$.
+  We define $b_1,\dots,b_n$  together with some auxiliary
+  elements $a_1,\dots,a_n$.
+  Pick $a_1\in\Aa$ and let $b_1$ be such that $A\subseteq\phi(\U\,;b_1)$, which we can do by approximability.
+  Now, suppose that $a_1,\dots,a_k$ and $b_1,\dots,b_k$ have been defined.
   If 
 
-  \ceq{\hfill A}{\subseteq}{\bigcap_{i=0}^k\phi(\U\,;b_i)\medrel{\subseteq}\Aa}
+  \ceq{\hfill A}{\subseteq}{\bigcap_{i=1}^k\phi(\U\,;b_i)\medrel{\subseteq}\Aa}
 
   we set $b_{k+1}=\dots=b_n=b_k$ and stop as we already have the required parameters.
   Otherwise pick any element
 
-  \ceq{\hfill a_{k+1}}{\in}{\bigcap_{i=0}^k\phi(\U\,;b_i)\sm\Aa}
+  \ceq{\hfill a_{k+1}}{\in}{\bigcap_{i=1}^k\phi(\U\,;b_i)\sm\Aa}
 
   and some $b_{k+1}$ such that
 
@@ -407,63 +403,64 @@ Towards the main theorem of this section we prove three separated lemmas.
 
   Such a parameter $b_{k+1}$ exists because $\Aa$ is approximable (apply Definition~\ref{def_approx} with $A\cup\{a_1,\dots,a_{k+1}\}$ for $A$).
   Note that at stage $n$ we have constructed a ladder of length $n$ for $\neg\phi(x\,;z)$.
-  In fact for all $h\in(n]$ and $k\in[n]$ we have
+  In fact for all $h,k\in(n]$ we have
   
   \ceq{\hfill\neg\phi(a_h\,;b_k)}
   {\IFF}
   {h\le k.}
   
-  As $\phi(x\,;z)$ has ladder index $n+1$, by Fact~\ref{fact_stability_neg} it is not possible to further prolong this chain, hence
+  As $\neg\phi(x\,;z)$ has ladder index $n$, by Fact~\ref{fact_stability_neg} it is not possible to further prolong this chain, hence
 
-  \ceq{\hfill A}{\subseteq}{\bigcap_{i=0}^n\phi(\U\,;b_i)\medrel{\subseteq}\Aa}
+  \ceq{\hfill A}{\subseteq}{\bigcap_{i=1}^n\phi(\U\,;b_i)\medrel{\subseteq}\Aa}
 
   as required.
 \end{proof}
 
-We prove that the formula $\psi(x\,;z_0,\dots,z_n)$ in the lemma above is itself stable, though with a larger ladder index.
+We prove that the formula $\psi(x\,;z_1,\dots,z_n)$ in the lemma above is itself stable, though with a larger ladder index.
   
-\begin{lemma}
-  Let $\psi_i(x\,;z)$, where $i=1,\dots,m$, be formulas with ladder index $n_i$. Let
+\begin{lemma}\label{lem_due}
+  Let $\psi_i(x\,;z)$, where $i=1,\dots,m$, be formulas with ladder index $n$. Let
   
-  \ceq{\hfill \phi(x\,;z)}{=}{\bigwedge_{i=1}^m\phi_i(x\,;z)}
+  \ceq{\hfill \phi(x\,;z)}{=}{\bigwedge_{i=1}^m\psi_i(x\,;z)}
   
-  Then $\phi(x\,;z)$ has ladder index $< R(n_1+1,\dots, n_m+1)$, the Ramsey number for $m$-colorings.
+  Then $\phi(x\,;z)$ has ladder index $<R_m(n+1)$, the Ramsey number for $m$-colorings.
 \end{lemma}
   
 \begin{proof} 
-  Suppose for a contradiction that there is a ladder $a_1,\dots,a_n$ and $b_0,\dots,b_n$, where $n=R(n_1+1,\dots, n_m+1)-1$.
-  Let $C_i$ contains the pairs $\{h,k\}$ such that $\neg\phi_i(a_h\,;b_k)$ and $0\le k<h\le n$.
-  Then from \ssf{ld} we obtain 
+  Suppose for a contradiction that there is a ladder $a_1,\dots,a_p$ and $b_1,\dots,b_p$, where $p=R_m(n+1)$.
+  Let $C_i$ contains the pairs $\{h,k\}$ such that $\neg\phi_i(a_h\,;b_k)$ and $1\le k<h\le p$.
+  Then from the definition of ladder we obtain 
   
-  \ceq{\hfill\bigcup_{i=1}^mC_i}{=}{\binom{[n]}{2}}
+  \ceq{\hfill\bigcup_{i=1}^mC_i}{=}{\binom{(n]}{2}}
   
-  By the definition of $n$, for some $i\in[m]$, there is a set $H$ of cardinality $n_i+1$ such that $H^{(2)}\subseteq C_i$.
+  As $p=R_m(n+1)$, for some $i\in(m]$, there is a set $H$ of cardinality $n+1$ such that $H^{(2)}\subseteq C_i$.
   Assume $i{=}1$ for definiteness.
 
-  Write $a'_1,\dots,a'_{n_1}$ and $b'_0,\dots,b'_{n_1}$ for the tuples obtained by restricting $a_1,\dots,a_n$ and $b_0,\dots,b_n$ to the indexes in $H$.
-  These tuples witness that $\phi_1(x\,;z)$ has ladder index at least $n_1+1$, which contradicts the assumption of the lemma.
+  Write $a'_1,\dots,a'_{n+1}$ and $b'_1,\dots,b'_{n+1}$ for the tuples obtained by restricting $a_1,\dots,a_p$ and $b_1,\dots,b_p$ to the indexes in $H$.
+  These tuples witness that $\phi_1(x\,;z)$ has ladder index $\ge n+1$, which contradicts the assumption of the lemma.
 \end{proof}
 
-To apply the proposition to the formula $\psi(x\,;z_0,\dots,z_n)$ in the lemma above, let $z=z_0,\dots,z_n$ and let $\phi_i(x\,;z)=\phi(x\,;z_i)$.
+Let $\psi(x\,;z_1,\dots,z_n)$ be the formula obtained in Lemma~\ref{lem_uno} above, let $z=z_1,\dots,z_n$ and let $\phi_i(x\,;z)=\phi(x\,;z_i)$.
 That is, $\phi_i(x\,;z)$ defines a relation between $\U$ and $\V^{n+1}$ that depends only on the $i$-th coordinate.
-The ladder index of every $\phi_i(x\,;z)$ is the same as $\phi(x\,;z_0)$ as a relation between $\U$ and $\V$.
+The ladder index of every $\phi_i(x\,;z)$ is the same as $\phi(x\,;z_1)$ as a relation between $\U$ and $\V$.
 
 
 \begin{lemma}
-  If $\Aa$ is approximated from below by a stable formula $\phi(x\,;z)$ then for some $b_0,\dots,b_n\in\V$ 
+  If $\Aa$ is approximated from below by a stable formula $\phi(x\,;z)$ then for some $b_1,\dots,b_n\in\V$ 
   \\[-1ex]
-  \ceq{\hfill \Aa}{=}{\bigcup^n_{i=0}\phi(\U\,;b_i)}
+  \ceq{\hfill \Aa}{=}{\bigcup^n_{i=1}\phi(\U\,;b_i)}
   
-  where $n+1$ is the ladder index of $\phi(x\,;z)$. 
+  where $n$ is the ladder index of $\phi(x\,;z)$.
 \end{lemma}
   
 \begin{proof}
   Let $A\subseteq\U$ be finite.
-  To obtain the $b_k$, we construct a ladder by stages.
-  Pick any $b_0$ be such that $\phi(\U\,;b_0)\subseteq\Aa$.
-  Now, suppose that $a_1,\dots,a_k$ and $b_0,\dots,b_k$ have been defined.
+  We define $b_1,\dots,b_n$  together with some auxiliary
+  elements $a_1,\dots,a_n$.
+  Pick any $a_1\in\Aa$ and $b_1$ uch that $a_1\in\phi(\U\,;b_1)\subseteq\Aa$.
+  Now, suppose that $a_1,\dots,a_k$ and $b_1,\dots,b_k$ have been defined.
   If 
-  \\[-1ex]
+  
   \ceq{\hfill\Aa}{\subseteq}{\bigcup_{i=1}^k\phi(\U\,;b_i)}
 
   we set $b_{k+1}=\dots=b_n=b_k$ and stop.
@@ -478,15 +475,15 @@ The ladder index of every $\phi_i(x\,;z)$ is the same as $\phi(x\,;z_0)$ as a re
 
   Such a parameter $b_{k+1}$ exists because $\Aa$ is approximable from below.
   Note that at stage $n$ we have constructed a ladder of length $n$ for $\phi(x\,;z)$.
-  In fact for all $h\in(n]$ and $k\in[n]$ we have
+  In fact for all $h,k\in(n]$ we have
   
-  \ceq{\hfill\neg\phi(a_h\,;b_k)}
+  \ceq{\hfill\phi(a_h\,;b_k)}
   {\IFF}
-  {h\le k.}\hfill (???)
+  {h\le k.}\hfill
   
-  As $\phi(x\,;z)$ has ladder index $n+1$, it is not possible to prolonge this chain, hence
+  As $\phi(x\,;z)$ has ladder index $n$, it is not possible to prolonge this chain, hence
 
-  \ceq{\hfill\Aa}{=}{\bigcup_{i=0}^n\phi(\U\,;b_i)}
+  \ceq{\hfill\Aa}{=}{\bigcup_{i=1}^n\phi(\U\,;b_i)}
 
   as required.
 \end{proof}
@@ -497,7 +494,7 @@ The main theorem of this section is an immediate corollary of the three lemmas a
   Let $\phi(x\,;z)$ be stable.
   Then there are $m, n$ such every set $\Aa\subseteq\U$ approximable by $\phi(x\,;z)$ is definable by $\psi(x\,;\bar b)$, where
 
-  \ceq{\hfill\psi(x\,;\bar z)}{=}{\bigvee_{j=0}^m\bigwedge_{i=0}^n\phi(x\,;z_{i,j})}
+  \ceq{\hfill\psi(x\,;\bar z)}{=}{\bigvee_{j=1}^m\bigwedge_{i=1}^n\phi(x\,;z_{i,j})}
   
   and $\bar b\in\V^{n\times m}$ is some $n{\times}m$-tuple of parameters.\QED
 \end{theorem}
@@ -506,6 +503,8 @@ Note that the numbers $m,n$ in the theorem above do not depend on the set $\Aa$ 
 Only the tuple $\bar b$ does.
 As a matter of fact, $m,n$ only depend on the ladder index of $\phi(x\,;z)$.
 
+
+\begin{comment}
 \section{More on the definability of approximable sets}
 
 Let $\B\subseteq\U$ be 

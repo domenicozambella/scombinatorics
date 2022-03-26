@@ -113,9 +113,9 @@ The following Theorem can be easily proved by induction on the number of colors.
   
   \ceq{}{<}{\frac{n^k}{k!}\ \frac{2^{1+k/2}}{2^{k^2/2}}}
   
-  \ceq{}{\le}{1}
+  \ceq{}{<}{1}
 
-The last inequality holds because, for $n$ as above, $n^k\le\lfloor2^{k/2}\rfloor^k\le\lfloor2^{1/2}\rfloor= 1$.
+The last inequality holds because $2^{1+k/2}<k!$ for $k\ge3$ and, when $n$ is as above, $n^k\le\lfloor2^{k/2}\rfloor^k\le 2^{k^2/2}$.
 \end{proof}
 
 See \cite{AS} for a discussion of the method of proof.
