@@ -67,10 +67,11 @@ As $\U$ and $\V$ are usually clear from the context, we may say \vc-dimension of
   If $\phi(\U\,;b)_{b\in\V}$ is the set of all subsets of $\U$ of cardinality $\le k$.
   Then its \vc-dimension is $k$ and
   
-  \ceq{\hfill\pi_\phi(n)}{=}{\sum^k_{i=0} \binom{n}{i}.}
-  
-  Incidentally, we note that this is also the shatter function of the collection of all subsets of $\U$ of cardinality exactly $k$.
-  In fact we always assume $\U$ is infinite (or at least very large, in this case, size $\ge2k$ suffices).\QED
+  \ceq{\hfill\pi_\phi(n)}{=}
+  {\left\{\begin{array}{ll}
+    2^n &\textrm{if } n\le k\\[1ex]
+    \displaystyle\sum^k_{i=0} \binom{n}{i}&\textrm{if } n\ge k.\\
+    \end{array}\right.}\nopagebreak[9999]\vskip-\baselineskip\QED
 \end{example}
 
 The \vc-dimension of $\phi(x\,;z)^{\rm op}$ is called the \emph{dual \vc-dimension\/} or \emph{\vc-codimension\/} of $\phi(x\,;z)$.
@@ -82,16 +83,16 @@ The \vc-dimension of $\phi(x\,;z)^{\rm op}$ is called the \emph{dual \vc-dimensi
 \begin{proof}
   Suppose that the \vc-dimension of $\phi(x\,;z)^{\rm op}$ is $\ge 2^{k+1}$.
   We prove that the \vc-dimension of $\phi(x\,;z)$ is at least $k+1$.
-  Let $B=\big\{b_I\,:\,I\subseteq [k+1)\big\}$ be a set of cardinality $2^{k+1}$ shattered by $\phi(x\,;z)^{\rm op}$. 
-  That is, for every $\J\subseteq \P[k+1)$ there is $a_\J$ such that
+  Let $B=\big\{b_I\,:\,I\subseteq [k]\big\}$ be a set of cardinality $2^{k+1}$ shattered by $\phi(x\,;z)^{\rm op}$. 
+  That is, for every $\J\subseteq \P[k]$ there is $a_\J$ such that
   
-  \ceq{\hfill\phi(a_\J, b_I)}{\IFF}{I\in\J}\hfill for all $I\subseteq [k+1)$
+  \ceq{\hfill\phi(a_\J, b_I)}{\IFF}{I\in\J}\hfill for all $I\subseteq [k]$
   
   Let $a_i=a_{\{I\; :\ i\,\in\, I\}}$. Then from the equivalence above we obtain
   
   \ceq{\hfill\phi(a_i, b_I)}{\IFF}{i\in I}
   
-  That is, $\phi(x\,;z)$ shatters $A=\big\{a_i\,:\, i\in [k+1)\big\}$.
+  That is, $\phi(x\,;z)$ shatters $A=\big\{a_i\,:\, i\in [k]\big\}$.
 \end{proof}
 
 We prove that the bound in the proposition above is optimal.
@@ -117,8 +118,8 @@ We prove that the bound in the proposition above is optimal.
   Otherwise $\phi(x\,;z)$ would have dimension $\le2^k-1$ by Proposition~\ref{prop_bound_VCcodim}.
   
   So, it suffices to prove that the dimension of $\phi(x\,;z)^{\rm op}$ is exactly $k$.
-  Assume for a contradiction that some $B=\big\{b_i\ :\ i\in[k+1)\big\}\subseteq\V$ is shattered by $\phi(x\,;z)^{\rm op}$.
-  Then there is some set $A=\big\{a_I:I\subseteq[k+1)\big\}\subseteq\U$ such that
+  Assume for a contradiction that some $B=\big\{b_i\ :\ i\in[k]\big\}\subseteq\V$ is shattered by $\phi(x\,;z)^{\rm op}$.
+  Then there is some set $A=\big\{a_I:I\subseteq[k]\big\}\subseteq\U$ such that
   
   \ceq{\hfill\phi(a_I, b_i)}{\IFF}{i\in I}
 
@@ -131,7 +132,7 @@ We prove that the bound in the proposition above is optimal.
   Assume that there is no $A\subseteq\U$ of cardinality $\le k+1$ such that $\phi(a\,;\V)_{a\in A}$ covers $\V$.
   Prove that $\phi(x\,;z)$ has \vc-codimension $\le2^{k+1}-2$.
   Prove that the bound is optimal.
-  Hint: let $\U$ be an infinite set, $\V = \P(\U)$, and consider an equivalence relation $\sim$ s.t. $\U / {\sim} = C \cup \{c_0, \dots, c_k\}$ with $|C| = 2^{k+1}-2$ and take the same formula used in the previous Proposition, but with $b \in \V$ compatible if it is the union of equivalence classes that belongs to $C$ or if it coincides with $c_i$ for some $i \in \{0,\dots, k\}$.
+  Hint: let $\U$ be an infinite set, $\V = \P(\U)$, and consider an equivalence relation $\sim$ s.t. $\U / {\sim} = C \cup \{c_0, \dots, c_k\}$ with $|C| = 2^{k+1}-2$ and take the same formula used in the previous Proposition, but with $b \in \V$ compatible if it is the union of equivalence classes that belongs to $C$ or if it coincides with $c_i$ for some $i \in [k]$.
   Prove that $\phi(x\,;z)$ has \vc-codimension $k$.\QED
 \end{exercise}
 

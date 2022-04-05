@@ -73,7 +73,7 @@ The following definition is connected with those above, though in a less evident
 We write ${}^n2$ for the set of binary sequences of length $n$ or, more precisely, the set of functions $s:[n)\to[2)$.
 We write $s_h$ for the value of $s$ at $h$, and $s{\restriction} h$ for the restriction of $s$ to $[h)$.
 We define ${}^{<n}2=\big\{r\, :\, r\in {}^h2,\ h\in[n)\big\}$.
-A \emph{binary tree height $n$\/} of elements of $\U$ is a function 
+A \emph{binary tree\/} height $n$ of elements of $\U$ is a function 
 
 \ceq{\hfill\bar{a}\ :\ {}^{<n}2}{\to}{\U}
 \nopagebreak[4]\par
@@ -84,20 +84,20 @@ We say that the set $\B\subseteq\V$ has \emph{(Shelah' local) 2-rank\/} $n$, and
 
 \ceq{\ssf{2r}\hfill\0}
 {\neq}
-{\bigcap_{h=0}^{n-1}\neg^{s_h+1}\,\phi(a_{s\restriction h}\,;\B)}\hfill for all $s\in {}^n2$.
+{\bigcap_{h=0}^{n-1}\neg^{s_h}\,\phi(a_{s\restriction h}\,;\B)}\hfill for all $s\in {}^n2$.
 
 where $\neg^i$, for $i$ a non negative integer, denotes a negation symbol repeated $i$ times.
 In other words \ssf{2r} requires the existence of some $\<b_s:s\in{}^n2\>$ in $\B$ such that
 
 \ceq{\hfill\phi(a_{s\restriction h}\,;b_s)}
 {\IFF}
-{s_h=1}\hfill for all pairs $s\in {}^n2$ and $h\in[n)$
+{s_h=0}\hfill for all pairs $s\in {}^n2$ and $h\in[n)$
 
 or, with slightly different notation,
 
 \ceq{\hfill\phi(a_r\,;b_s)}
 {\IFF}
-{r^\frown1\subseteq s}\hfill for all pairs $r\subset s\in {}^n2$.
+{r^\frown0\subseteq s}\hfill for all pairs $r\subset s\in {}^n2$.
 
 It helps to represent a branching tree as follows.
 For definiteness, fix $n=3$.
@@ -119,28 +119,28 @@ Then \ssf{2r} requires that all formulas in each branch $s\in2^n$ are satified b
 \begin{tikzpicture}[grow=right]
 \node[bag0] {{$\B$}}
     child {
-        node[bag] {$\phi(a_{\0};z)$}      
+        node[bag] {\llap{$\neg$}$\phi(a_{\0};z)$}      
             child {
-                node[bag] {$\phi(a_1;z)$}
+                node[bag] {\llap{$\neg$}$\phi(a_1;z)$}
                     child {
-                       node[bag] {\footnotesize$\phi(a_{11};z)$\rlap{ ----- $b_{111}$}}
+                       node[bag] {\footnotesize\llap{$\neg$}$\phi(a_{11};z)$\rlap{ ----- $b_{111}$}}
                        edge from parent
                     }    
                     child {
-                       node[bag] {\footnotesize$\llap{$\neg$}\phi(a_{11};z)$\rlap{ ----- $b_{110}$}}
+                       node[bag] {\footnotesize$\phi(a_{11};z)$\rlap{ ----- $b_{110}$}}
                        edge from parent
                     }  
                  edge from parent
             }
             child {
-                node[bag] {\llap{$\neg$}$\phi(a_1;z)$}
+                node[bag] {$\phi(a_1;z)$}
                 edge from parent
                     child {
-                       node[bag] {\footnotesize$\phi(a_{10};z)$\rlap{ ----- $b_{101}$}}
+                       node[bag] {\footnotesize\llap{$\neg$}$\phi(a_{10};z)$\rlap{ ----- $b_{101}$}}
                        edge from parent
                     }    
                     child {
-                       node[bag] {\footnotesize\llap{$\neg$}$\phi(a_{10};z)$\rlap{ ----- $b_{100}$}}
+                       node[bag] {\footnotesize$\phi(a_{10};z)$\rlap{ ----- $b_{100}$}}
                        edge from parent
                     }  
                  edge from parent
@@ -148,28 +148,28 @@ Then \ssf{2r} requires that all formulas in each branch $s\in2^n$ are satified b
        edge from parent 
     }
     child {
-        node[bag] {\llap{$\neg$}$\phi(a_{\0};z)$}         
+        node[bag] {$\phi(a_{\0};z)$}         
             child {
-                node[bag] {$\phi(a_0;z)$}
+                node[bag] {\llap{$\neg$}$\phi(a_0;z)$}
                     child {
-                       node[bag] {\footnotesize$\phi(a_{01};z)$\rlap{ ----- $b_{011}$}}
+                       node[bag] {\footnotesize\llap{$\neg$}$\phi(a_{01};z)$\rlap{ ----- $b_{011}$}}
                        edge from parent
                     }    
                     child {
-                       node[bag] {\footnotesize\llap{$\neg$}$\phi(a_{01};z)$\rlap{ ----- $b_{010}$}}
+                       node[bag] {\footnotesize$\phi(a_{01};z)$\rlap{ ----- $b_{010}$}}
                        edge from parent
                     }  
                  edge from parent
             }
             child {
-                node[bag] {\llap{$\neg$}$\phi(a_0;z)$}
+                node[bag] {$\phi(a_0;z)$}
                 edge from parent
                     child {
-                       node[bag] {\footnotesize$\phi(a_{00};z)$\rlap{ ----- $b_{001}$}}
+                       node[bag] {\footnotesize\llap{$\neg$}$\phi(a_{00};z)$\rlap{ ----- $b_{001}$}}
                        edge from parent
                     }    
                     child {
-                       node[bag] {\footnotesize\llap{$\neg$}$\phi(a_{00};z)$\rlap{ ----- $b_{000}$}}
+                       node[bag] {\footnotesize$\phi(a_{00};z)$\rlap{ ----- $b_{000}$}}
                        edge from parent
                     }  
                  edge from parent
@@ -182,11 +182,11 @@ Then \ssf{2r} requires that all formulas in each branch $s\in2^n$ are satified b
 If a maximal integer $n$ does not exist, we say that the 2-rank of $\B$ is infinite.
 
 \begin{example}
-  Clearly ${\rm R}_{\phi(x,z)}(\B)=0$ when $\B$ is empty or when $\phi(\U\,;b)_{b\in\V}$ consists of just one set.
-  If there are at least two distinct sets in $\phi(\U\,;b)_{b\in\V}$, then we can always find $a_\0, b_0,b_1$ such that $\phi(a_\0,b_0)\niff\phi(a_\0,b_1)$ hence ${\rm R}_{\phi(x,z)}(\U)\ge1$.\QED  
+  Clearly ${\rm R}_{\phi(x,z)}(\B)=0$ when $\B$ is empty or when $\phi(\U\,;b)_{b\in\B}$ consists of just one set.
+  If there are at least two distinct sets in $\phi(\U\,;b)_{b\in\B}$, then we can always find $a_\0\in\U, b_0,b_1\in\B$ such that $\phi(a_\0,b_0)\niff\phi(a_\0,b_1)$ hence ${\rm R}_{\phi(x,z)}(\U)\ge1$.\QED  
 \end{example}
 
-A binary tree $\bar a'=\<a'_r:r\in{}^{<m}2\>$ is a \emph{subtree\/} of $\bar a$ if there is an $\subseteq$-preserving map $f:{}^{<m}2\to{}^{<n}2$ such that $a'_r=a_{fr}$.
+A binary tree $\bar a'=\<a'_r:r\in{}^{<m}2\>$ is a \emph{subtree\/} of $\bar a$ if there is an $\subseteq$-preserving map $f:{}^{<m}2\to{}^{<n}2$ such that $a'_r=a_{fr}$.\llap{$\neg$}
 
 The theorem below needs the following Ramsey-like lemma.
 

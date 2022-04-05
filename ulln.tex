@@ -396,16 +396,16 @@ equals the probability in (1) but is easier to estimate.
   
   \ceq{\hfill\Pr\Big(\big|\Fr(S,A) - \Pr(A)\big|\ge\epsilon\Big)}
   {\le}
-  {\frac1{n\epsilon^2}.}
+  {\frac1{4n\epsilon^2}.}
 \end{void_thm}
 
 \begin{proof}
-  The random variable $\Fr(S,A)$ has expected value $\Pr(A)$ and variance $\le1/n$. 
+  The random variable $\Fr(S,A)$ has expected value $\Pr(A)$ and variance $\le1/4n$. 
   By Chebyshev's inequality we obtain 
   
   \ceq{\hfill\Pr\Big(\big|\Fr(S,A) - \Pr(A)\big|\ge\epsilon\Big)}
   {\le}
-  {\frac1{n\epsilon^2}}
+  {\frac1{4n\epsilon^2}}
 
   which proves the theorem.
 \end{proof}
@@ -415,13 +415,7 @@ Sometime we are interested in the minimal size of a sample that approximates the
 
 \begin{corollary}\label{corl_wlln}
   Assume $\U$ is finite (of arbitrary cardinality, tough).
-  For every $A\subseteq\U$ and every $\epsilon>0$ there is a sample $s$ of size
-
-  \ceq{\hfill |s|}
-      {=}
-      {\left\lfloor\frac1{\epsilon^2}+1\right\rfloor} 
-      
-  such that
+  For every $A\subseteq\U$ and every $\epsilon>0$ there is a sample $s$ of any size $>1/ 4\,\epsilon^2$ such that
 
   \ceq{\hfill\Big|\Fr(s,A) - \Pr(A)\Big|}{<}{\epsilon.}
 \end{corollary}
@@ -429,7 +423,7 @@ Sometime we are interested in the minimal size of a sample that approximates the
 \begin{proof}
   By the Weak Law of Large Numbers above, a sample of size $n$ exists if
 
-  \ceq{\hfill\frac1{n\epsilon^2}}
+  \ceq{\hfill\frac1{4\,n\,\epsilon^2}}
       {<}
       {1}
 \end{proof}
@@ -461,23 +455,10 @@ This is obtained with a similar proof.
   and this follows immediately from Hoeffding inequality.
   \end{proof}
 
-Using the exponential bounds above, we can improve (by a constant factor) the size of the minimal sample size that approximates the probability obtained in Corollary~\ref{corl_wlln}.
+The bounds above does not improve the minimal sample size (obtained in  in Corollary~\ref{corl_wlln}) that approximates the probability obtained pf $\Pr(A)$.
+But, for large $n\epsilon^2$, it drastically increases the number of good samples.
+This is usefus as in the following section as we want to find a sample that works simultaneously for many sets $A$.
 
-\begin{corollary}
-  For every $A\subseteq\U$ and every $\epsilon>0$ there is a sample $s$ of size $n$ where
-
-  \ceq{\hfill n}
-  {=}
-  {\left\lfloor\frac{\log 2}{2\epsilon^2}+1\right\rfloor} 
-      
-  such that
-
-  \ceq{\hfill\Big|\Fr(s,A) - \Pr(A) \Big|}
-  {<}
-  {\epsilon.}\QED
-\end{corollary}
-%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%
